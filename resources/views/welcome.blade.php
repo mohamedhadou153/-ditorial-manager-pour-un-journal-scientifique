@@ -106,7 +106,7 @@
 </table>
 <div id="articles">
   <div class="articles-type">
-    <h3>Articles</h3>
+    <h3>this is articales</h3>
   </div>
 
  <div class="container-articles">
