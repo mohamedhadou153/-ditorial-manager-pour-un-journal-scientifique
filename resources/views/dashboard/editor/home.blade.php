@@ -137,52 +137,209 @@
 <style>
 	.main-body {
     padding: 15px;
-}
-.card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
+	}
+	.card {
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+	}
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-}
+	.card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 0 solid rgba(0,0,0,.125);
+		border-radius: .25rem;
+	}
 
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1rem;
-}
+	.card-body {
+		flex: 1 1 auto;
+		min-height: 1px;
+		padding: 1rem;
+	}
 
-.gutters-sm {
-    margin-right: -8px;
-    margin-left: -8px;
-}
+	.gutters-sm {
+		margin-right: -8px;
+		margin-left: -8px;
+	}
 
-.gutters-sm>.col, .gutters-sm>[class*=col-] {
-    padding-right: 8px;
-    padding-left: 8px;
-}
-.mb-3, .my-3 {
-    margin-bottom: 1rem!important;
-}
+	.gutters-sm>.col, .gutters-sm>[class*=col-] {
+		padding-right: 8px;
+		padding-left: 8px;
+	}
+	.mb-3, .my-3 {
+		margin-bottom: 1rem!important;
+	}
 
-.bg-gray-300 {
-    background-color: #e2e8f0;
-}
-.h-100 {
-    height: 100%!important;
-}
-.shadow-none {
-    box-shadow: none!important;
-}
+	.bg-gray-300 {
+		background-color: #e2e8f0;
+	}
+	.h-100 {
+		height: 100%!important;
+	}
+	.shadow-none {
+		box-shadow: none!important;
+	}
 </style>
+<style>
+	article {
+	--img-scale: 1.001;
+	--title-color: black;
+	--link-icon-translate: -20px;
+	--link-icon-opacity: 0;
+	position: relative;
+	border-radius: 16px;
+	box-shadow: none;
+	background: #fff;
+	transform-origin: center;
+	transition: all 0.4s ease-in-out;
+	overflow: hidden;
+	}
+
+	article a::after {
+	position: absolute;
+	inset-block: 0;
+	inset-inline: 0;
+	cursor: pointer;
+	content: "";
+	}
+
+	/* basic article elements styling */
+	article h2 {
+	margin: 0 0 18px 0;
+	font-family: "Bebas Neue", cursive;
+	font-size: 1.9rem;
+	letter-spacing: 0.06em;
+	color: var(--title-color);
+	transition: color 0.3s ease-out;
+	}
+
+	figure {
+	margin: 0;
+	padding: 0;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	}
+
+	article img {
+	max-width: 100%;
+	transform-origin: center;
+	transform: scale(var(--img-scale));
+	transition: transform 0.4s ease-in-out;
+	}
+
+	.article-body {
+	padding: 24px;
+	}
+
+	article a {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	color: #28666e;
+	}
+
+	article a:focus {
+	outline: 1px dotted #28666e;
+	}
+
+	article a .icon {
+	min-width: 24px;
+	width: 24px;
+	height: 24px;
+	margin-left: 5px;
+	transform: translateX(var(--link-icon-translate));
+	opacity: var(--link-icon-opacity);
+	transition: all 0.3s;
+	}
+
+	/* using the has() relational pseudo selector to update our custom properties */
+	article:has(:hover, :focus) {
+	--img-scale: 1.1;
+	--title-color: #28666e;
+	--link-icon-translate: 0;
+	--link-icon-opacity: 1;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	}
+
+
+	/************************ 
+	Generic layout (demo looks)
+	**************************/
+
+	*,
+	*::before,
+	*::after {
+	box-sizing: border-box;
+	}
+
+	body {
+	margin: 0;
+	font-family: "Figtree", sans-serif;
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	background-image: linear-gradient(45deg, #7c9885, #b5b682);
+	min-height: 100vh;
+	}
+
+	.articles {
+	display: grid;
+	max-width: 1200px;
+	margin-inline: auto;
+	padding-inline: 24px;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 24px;
+	}
+
+	@media screen and (max-width: 960px) {
+	article {
+		container: card/inline-size;
+	}
+	.article-body p {
+		display: none;
+	}
+	}
+
+	@container card (min-width: 380px) {
+	.article-wrapper {
+		display: grid;
+		grid-template-columns: 100px 1fr;
+		gap: 16px;
+	}
+	.article-body {
+		padding-left: 0;
+	}
+	figure {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	figure img {
+		height: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
+	}
+	}
+
+	.sr-only:not(:focus):not(:active) {
+	clip: rect(0 0 0 0); 
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap; 
+	width: 1px;
+	}
+</style>
+<link rel="stylesheet" href="/splide.min.css">
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
 </head> 
 <body>
 <nav class="navbar navbar-default">
@@ -231,7 +388,105 @@
 		</ul>
 	</div>
 </nav>
+<section class="splide animate__animated animate__zoomIn" aria-label="Splide Basic HTML Example">
+  <h2 id="carousel-heading">Basic Structure Example</h2>
+  <div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide">  
+				<article>
+					<div class="article-wrapper">
+					<figure>
+						<img src="https://picsum.photos/id/1011/800/450" alt="" />
+					</figure>
+					<div class="article-body">
+						<h2>This is some title</h2>
+						<p>
+						Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+						</p>
+						<a href="#" class="read-more">
+						Read more <span class="sr-only">about this is some title</span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						</a>
+					</div>
+					</div>
+				</article>
+			</li>
+
+			<li class="splide__slide">  
+				<article>
+					<div class="article-wrapper">
+					<figure>
+						<img src="https://picsum.photos/id/1011/800/450" alt="" />
+					</figure>
+					<div class="article-body">
+						<h2>This is some title</h2>
+						<p>
+						Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+						</p>
+						<a href="#" class="read-more">
+						Read more <span class="sr-only">about this is some title</span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						</a>
+					</div>
+					</div>
+				</article>
+			</li>
+
+			<li class="splide__slide" style="width: 400px">  
+				<article>
+					<div class="article-wrapper">
+					<figure>
+						<img src="https://picsum.photos/id/1011/800/450" alt="" />
+					</figure>
+					<div class="article-body">
+						<h2>This is some title</h2>
+						<p>
+						Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+						</p>
+						<a href="#" class="read-more">
+						Read more <span class="sr-only">about this is some title</span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						</a>
+					</div>
+					</div>
+				</article>
+			</li>
+			
+		</ul>
+  </div>
+</section>
+
 <main>
+<!-- <section class="articles">
+	<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
+		<h3>available</h3>
+	</div>
+  <article>
+    <div class="article-wrapper">
+      <figure>
+        <img src="https://picsum.photos/id/1011/800/450" alt="" />
+      </figure>
+      <div class="article-body">
+        <h2>This is some title</h2>
+        <p>
+          Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+        </p>
+        <a href="#" class="read-more">
+          Read more <span class="sr-only">about this is some title</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</section> -->
 	@yield('libre_article')
 	@yield('validation_article')
 	@yield('show_review')
@@ -239,5 +494,16 @@
 	@yield('sed_to_reviewer')
 	@yield('profile')
 </main>
+<div>
+</div>
+<script src="/splide.min.js"></script>
+<script>
+	var splide = new Splide( '.splide', {
+  type    : 'loop',
+  perPage : 5,
+  autoplay: true,
+} );
 
+splide.mount();
+</script>
 </body>

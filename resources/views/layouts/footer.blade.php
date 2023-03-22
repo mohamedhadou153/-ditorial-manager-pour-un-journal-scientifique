@@ -1,7 +1,7 @@
 <style>
 	.footer-basic {
   padding:40px 0;
-  background-color:whitesmoke;
+  background-color:black;
   color:black;
 }
 
@@ -12,7 +12,7 @@
   font-size:18px;
   line-height:1.6;
   margin-bottom:0;
-  color: black;
+  color: white;
 }
 
 .footer-basic li {
@@ -20,7 +20,7 @@
 }
 
 .footer-basic ul a {
-  color:black;
+  color:white;
   text-decoration:none;
   opacity:0.8;
 }

@@ -19,13 +19,13 @@ class ArticleController extends Controller
     }
     
     public function uploade(Request $request){
-        $request->validate([
-            'title'=>['required','string'],
-            'category'=>['required','string'],
-            'abstract'=>['required','string'],
-            'obj_pdf'=>'mimes:pdf',
-            'pic'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',                        
-        ]);
+        // $request->validate([
+        //     'title'=>['required','string'],
+        //     'category'=>['required','string'],
+        //     'abstract'=>['required','string'],
+        //     'obj_pdf'=>'mimes:pdf',
+        //     'pic'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',                        
+        // ]);
 
         if ($request->hasFile('obj_pdf') && $request->hasFile('pic')) {
 
@@ -110,13 +110,14 @@ class ArticleController extends Controller
         $articles = DB::table('articles')
         ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
         ->where('etat','=','traitement')
-        ->where('editorId','=','hadou@gmail.com')
+        ->where('editorId','=',$req)
         ->get();
         
         return view('dashboard.editor.article.traitement_article')->with('articles',$articles)->with('req',$req);
     }
 
     public function validation_article(Request $request){
+        $editorId = auth::guard('editor')->user()->email;
         $req = $request->id;
         $req1 = $request->e;
         $article = DB::table('articles')
@@ -128,7 +129,7 @@ class ArticleController extends Controller
         ->update(['etat'=> 'traitement']);
 
         DB::table('articles')->where('id',$req)
-        ->update(['editorId'=> $req1]);
+        ->update(['editorId'=> $editorId]);
         return view('dashboard.editor.article.validation_article')->with('articles',$article);
     }
 
@@ -146,7 +147,7 @@ class ArticleController extends Controller
     public function update_etat(Request $request){
         
         //$request->validate(['id'=>'required']);
-        $editorId = $request->editorId;
+        $editorId = auth::guard('editor')->user()->email;
         $id = $request->id;
         $etat = $request->etat;
 
@@ -212,22 +213,19 @@ class ArticleController extends Controller
 
     public function SendToEditor(Request $request){
         $reviewer = auth::guard('reviewer')->user()->email;
-        $rev = $request->e;
-        $id = $request->id;
+        $id_article = $request->id;
         $review = $request->review;
-        $rev1 = DB::table('articles')->select('reviewer1Id')->where('id','=',$id)->get();
-        $x = $rev==$rev1? true:false;
-        if($x){
-            DB::table('articles')
-            ->where('id',$id)
-            ->update(['review1'=> $review]);
-        }
-        else{
-         DB::table('articles')
-          ->where('id',$id)
-         ->update(['review2'=> $review]);
         
-        }
+        DB::table('articles')
+        ->where('id',$id_article)
+            ->where('reviewer1Id', $reviewer)
+       ->update(['review1'=> $review]);
+
+       DB::table('articles')
+       ->where('id',$id_article)
+        ->where('reviewer2Id', $reviewer)
+      ->update(['review2'=> $review]);
+
         return view('dashboard.reviewer.home');
 
     }

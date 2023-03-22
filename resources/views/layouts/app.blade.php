@@ -18,10 +18,7 @@
 	<div>
 	@include('layouts.header')
 	</div>
-  <div>
-	  @yield('show_accept_article_home')
-  </div>
-
+  
   <div>
 	@include('layouts.footer')
   </div>
