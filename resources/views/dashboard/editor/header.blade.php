@@ -336,18 +336,7 @@
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="{{route('editor.libre-article')}}">Libre Article</a></li>
-					<li><a href="{{route('editor.article-traitement')}}">Article in traitement</a></li>
-					<li><a href="{{route('editor.show-review')}}">Review</a></li>
-				</ul>
-			</li>
-		</ul>
-		
+	
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
 			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
