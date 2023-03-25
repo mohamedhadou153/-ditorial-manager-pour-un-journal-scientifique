@@ -39,6 +39,7 @@ Route::prefix('author')->name('author.')->group(function(){
         
         Route::post('/logout',[AuthorRegisterController::class,'logout'])->name('logout');
         Route::get('/profile',[AuthorRegisterController::class,'profile'])->name('profile');
+        Route::get('/edit-profile',[AuthorRegisterController::class,'edit_profile'])->name('edit-profile');
         Route::get('/change-profile',[AuthorRegisterController::class,'ChangeProfile'])->name('change-profile');
         Route::post('/uploade',[ArticleController::class,'uploade'])->name('uploade');
         Route::get('/create-article',[ArticleController::class,'index_create_article'])->name('create-article');

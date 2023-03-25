@@ -80,7 +80,7 @@ class EditorRegisterController extends Controller
     public function profile(){
         $email = Auth::guard('editor')->user()->email;
         $editor = DB::table('editors')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
         ->where('email','=',$email)
         ->get();
         
