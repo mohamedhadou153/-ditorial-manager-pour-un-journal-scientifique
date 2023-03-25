@@ -240,7 +240,6 @@
                 <li class="list-inline-item"><a href="#">Home</a></li>
                 <li class="list-inline-item"><a href="#">Services</a></li>
                 <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
             <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
