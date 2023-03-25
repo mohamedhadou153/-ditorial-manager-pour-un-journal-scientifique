@@ -1,44 +1,39 @@
 @extends('dashboard.editor.home')
 @section('libre_article')
-<div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Category</th>
-      <th scope="col">Etat</th>
-      <th scope="col">Author Email</th>
-      <th scope="col">Editor Email</th>
-      <th scope="col"> Fisrt Reviewer Email</th>
-      <th scope="col"> Seconde Reviewer Email</th>
-      <th scope="col"> Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach ($articles as $article)
-    <tr>
-      <th scope="row">{{$article->title}}</th>
-      <td>{{$article->category}}</td>
-      <td>{{$article->etat}}</td>
-      <td>{{$article->authorId}}</td>
-      <td>{{$article->editorId}}</td>
-      <td>{{$article->reviewer1Id}}</td>
-      <td>{{$article->reviewer2Id}}</td>
-      <td>
-        <div>
-        <!--<li><a href="{{route('editor.validation-article')}}" >edit</a></li>!-->
+  <section class="splide animate__animated animate__zoomIn" aria-label="Splide Basic HTML Example">
+  <h2 id="carousel-heading">Basic Structure Example</h2>
+  <div class="splide__track">
 
-        <form action="{{route('editor.send-to-reviewers')}}"  method="get" enctype="multipart/form-data" >         
-          @csrf         
-          <input type="hidden" value="{{$article->id}}" name="id">
-          <input type="hidden" value="{{auth::guard('editor')->user()->email}}" name="e" id="e">
-          <button type="submit" name="submit">tacke it</button>
-        </form>
-        </div>
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-</div>
+		<ul class="splide__list">
+    @foreach ($articles as $article)
+			<li class="splide__slide"> 
+         
+				<article>
+					<div class="article-wrapper">
+					<figure>
+						<img src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="" />
+					</figure>
+					<div class="article-body">
+						<h2>{{$article->title}}</h2>
+						<p>
+              {{$article->abstract}}
+						</p>
+						<a href="#" class="read-more">
+						Read more <span class="sr-only">about this is some title</span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						</a>
+					</div>
+					</div>
+				</article>
+        
+
+			</li>
+      @endforeach
+
+		</ul>
+ 
+  </div>
+</section
 @endsection

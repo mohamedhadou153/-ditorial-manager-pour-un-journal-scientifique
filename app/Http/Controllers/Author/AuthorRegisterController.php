@@ -66,6 +66,15 @@ class AuthorRegisterController extends Controller
         return view('dashboard.author.profile')->with('author',$author);
     }
 
+    public function edit_profile(){
+        $email = Auth::guard('author')->user()->email;
+        $author = DB::table('authors')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',$email)
+        ->get();
+        return view('dashboard.author.edit_profile')->with('author',$author);
+    }
+
     public function ChangeProfile(Request $request){
 
         $mail1 = Auth::guard('author')->user()->email;
@@ -99,8 +108,7 @@ class AuthorRegisterController extends Controller
         ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
         ->where('email','=',$mail2)
         ->get();
-        $var = var_dump($request->picture);
-        return view('dashboard.author.profile')->with('author',$author)->with('var',$var);
+        return view('dashboard.author.profile')->with('author',$author);
         
 
     }

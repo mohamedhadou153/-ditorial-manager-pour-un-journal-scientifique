@@ -13,6 +13,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="/vendor/css/sb-admin-2.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this page -->
+    <!-- <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
+	<link href="/profile.css" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
 <style>
 	body {
 		background: #eeeeee;
@@ -191,7 +206,7 @@
 }
 </style>
 </head> 
-<body>
+<body style="padding: 0px;">
 <nav class="navbar navbar-default">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
@@ -216,17 +231,11 @@
 				</ul>
 			</li>
 		</ul>
-		<form class="navbar-form form-inline">
-			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="Search by Name">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-		</form>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
 			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
 			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/300?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/200?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
 					<li class="divider"></li>
@@ -248,6 +257,24 @@
 	@yield('profile')
 
 </main>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/vendor/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="publiv/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/vendor/js/demo/datatables-demo.js"></script>
 
 </body>
 

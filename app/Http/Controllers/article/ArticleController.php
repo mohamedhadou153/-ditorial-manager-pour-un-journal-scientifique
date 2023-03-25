@@ -55,7 +55,7 @@ class ArticleController extends Controller
     public function index_show_libre_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id',)
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('authorID','=',$authId)->where('etat','=','libre')
         ->where('editorId','=',null)
         ->get();
@@ -76,7 +76,7 @@ class ArticleController extends Controller
     public function index_show_refuse_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('authorID','=',$authId)
         ->where('etat','=','refuse')
         ->get();
@@ -86,7 +86,7 @@ class ArticleController extends Controller
     public function index_show_accept_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('authorID','=',$authId)
         ->where('etat','=','accept')
         ->get();
@@ -98,7 +98,7 @@ class ArticleController extends Controller
     //editor functions
     public function show_libre_article(){
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','abstract','pic')
         ->where('etat','=','libre')
         ->where('editorId','=',null)
         ->get();
@@ -108,7 +108,7 @@ class ArticleController extends Controller
     public function article_traitement(){
         $req = auth::guard('editor')->user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('etat','=','traitement')
         ->where('editorId','=',$req)
         ->get();
@@ -121,7 +121,7 @@ class ArticleController extends Controller
         $req = $request->id;
         $req1 = $request->e;
         $article = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('id','=',$req)
         ->get();
 
@@ -140,8 +140,8 @@ class ArticleController extends Controller
         ->update(['etat'=> 'traitement']);
         DB::table('articles')->where('id',$req)
         ->update(['editorId'=> $req1]);
-        return view('dashboard.editor.article.send_to_reviewers')->with('id',$req);
-
+        $reviewers = DB::table('reviewers')->select('*')->where('status','active')->get();
+        return view('dashboard.editor.article.send_to_reviewers')->with('id',$req)->with('reviewers',$reviewers);
     }
 
     public function update_etat(Request $request){
@@ -195,7 +195,7 @@ class ArticleController extends Controller
         $rev = auth::guard('reviewer')->user()->email;
         $reviewerId = $request->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('etat','traitement')
         ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
         ->get();
@@ -205,7 +205,7 @@ class ArticleController extends Controller
     public function creation_review(Request $request){
         $req = $request->id;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id')
+        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic')
         ->where('id','=',$req)
         ->get();
         return view('dashboard.reviewer.article.creation_review')->with('articles',$articles);
