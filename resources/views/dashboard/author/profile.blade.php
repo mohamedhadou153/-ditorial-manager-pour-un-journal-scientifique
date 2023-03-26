@@ -118,7 +118,8 @@
       </div>
     </div>
   </div>
-
+@endforeach
+@endsection
 <!-- <form action="{{route('author.change-profile')}}" method="get">
 	
 	<div class="container">
@@ -216,5 +217,3 @@
     </div>
 </form> -->
 
-@endforeach
-@endsection
