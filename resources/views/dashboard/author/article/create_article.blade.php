@@ -75,9 +75,8 @@
 		-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-timing-function: ease-in-out;animation-timing-function: ease-in-out;
 		-webkit-animation-iteration-count: 1;animation-iteration-count: 1}
 		.actions li[aria-disabled="true"] a{display: none}
-		.actions li:first-child a{background: #e6e6e6;padding-left: 48px}
+		.actions li:first-child a{padding-left: 48px}
 		.actions li:first-child a:before{content: '\f177';left: 26px}
-		.actions li:first-child a:hover{background: #ccc}
 		.actions li:last-child a{padding-left: 29px;width: 167px;font-weight: 400}
 		.actions li:last-child a:before{right: 30px}
 		.checkbox{position: relative}
@@ -186,7 +185,7 @@
             return true; 
         },
         labels: {
-            finish: "Order again",
+            finish: "terminer",
             next: "Next",
             previous: "Previous"
         }
@@ -209,13 +208,12 @@
         $('.checkbox-circle label').removeClass('active');
         $(this).addClass('active');
     })
-})
+ })
 </script>
 @endsection
 @section('create_article_content')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
 <div class="wrapper">
-    <form action="">
+    <form method="GET" action="{{ route('author.uploade') }}"  enctype="multipart/form-data">
         <div id="wizard">
             <!-- SECTION 1 -->
             <h4></h4>
@@ -247,7 +245,7 @@
             <svg class="text-indigo-500 w-24 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
             <div class="input_field flex flex-col w-max mx-auto text-center">
                 <label>
-                    <input class="text-sm cursor-pointer w-36 hidden" type="file" multiple />
+                    
 					<div>
 								<input type="file" name="obj_pdf">
 								</div>
@@ -263,9 +261,9 @@
             <svg class="text-indigo-500 w-24 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
             <div class="input_field flex flex-col w-max mx-auto text-center">
                 <label>
-                    <input class="text-sm cursor-pointer w-36 hidden" type="file" multiple />
+                    
 					<div>
-								<input type="file" name="obj_pdf">
+								<input type="file" name="pic">
 								</div>
                 </label> 
               </div>
@@ -278,7 +276,8 @@
                     <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                 </svg>
                 <p class="success">Order placed successfully. Your order will be dispacted soon. meanwhile you can track your order in my order section.</p>
-            </section>
+                <input type="submit" href="/" value="Create article">
+			</section>
         </div>
     </form>
 </div>
