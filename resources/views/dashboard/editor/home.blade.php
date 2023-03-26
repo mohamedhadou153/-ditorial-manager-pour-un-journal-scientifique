@@ -245,97 +245,6 @@
 			<div class="lazyload" style="background-image: url(https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg);">
 			<span></span>
 			</div>
-<<<<<<< HEAD
-		</form>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
-			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
-			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/300?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::guard('editor')->user()->first_name}} <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="{{route('editor.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
-					<li class="divider"></li>
-					<li><a href="href="{{route('editor.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
-
-				</ul>
-			</li>
-		</ul>
-	</div>
-</nav>
-<section class="splide animate__animated animate__zoomIn" aria-label="Splide Basic HTML Example">
-  <h2 id="carousel-heading">Basic Structure Example</h2>
-  
-  <div class="splide__track">
-		<ul class="splide__list">
-			<li class="splide__slide">  
-				<article>
-					<div class="article-wrapper">
-					<figure>
-						<img src="https://picsum.photos/id/1011/800/450" alt="" />
-					</figure>
-					<div class="article-body">
-						<h2>This is some title</h2>
-						<p>
-						Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
-						</p>
-						<a href="#" class="read-more">
-						Read more <span class="sr-only">about this is some title</span>
-						<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-							<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-						</svg>
-						</a>
-					</div>
-					</div>
-				</article>
-			</li>
-			
-		</ul>
-  </div>
-
-</section>
-
-<main>
-<!-- <section class="articles">
-	<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
-		<h3>available</h3>
-	</div>
-  <article>
-    <div class="article-wrapper">
-      <figure>
-        <img src="https://picsum.photos/id/1011/800/450" alt="" />
-      </figure>
-      <div class="article-body">
-        <h2>This is some title</h2>
-        <p>
-          Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
-        </p>
-        <a href="#" class="read-more">
-          Read more <span class="sr-only">about this is some title</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </article>
-</section> -->
-    @yield('libre_article')
-	@yield('validation_article')
-	@yield('show_review')
-	@yield('article_traitement')
-	@yield('sed_to_reviewer')
-	@yield('profile') 
-</main>
-<div>
-</div>
-<script src="/splide.min.js"></script>
-<script>
-	var splide = new Splide( '.splide', {
-  type    : 'loop',
-  perPage : 5,
-  autoplay: true,
-} );
-=======
 			<h2>Click Me!</h2>
 			<h3>transform scale press effect</h3>
 		</button>
@@ -370,7 +279,6 @@
 			</ul>
 	</div>
 	</section>
->>>>>>> e76971f602453ff7ba932c353989b78b792becde
 
 	<main>
 

@@ -193,7 +193,7 @@
       color: #dd4b39;
     }
 </style>
-    <div class="footer-basic">
+<div class="footer-basic">
         <footer>
           <div class="social">
               <ul>
