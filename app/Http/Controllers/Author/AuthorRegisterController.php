@@ -46,6 +46,14 @@ class AuthorRegisterController extends Controller
             return redirect()->intended('author/home')
                         ->withSuccess('Signed in');
         }
+        if (Auth::guard('editor')->attempt($credentials)) {
+            return redirect()->intended('editor/home')->withSuccess('Signed in');
+           //return redirect()->back()->with('error','invalid information'); 
+        }
+        if (Auth::guard('reviewer')->attempt($credentials)) {
+            return redirect()->intended('reviewer/home')
+                        ->withSuccess('Signed in');
+        }
    
         return redirect()->back()->with('error','invalid information'); 
     } 
