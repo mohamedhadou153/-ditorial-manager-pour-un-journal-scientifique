@@ -13,6 +13,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="shortcut icon" href="../favicon.ico"> 
+		
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -205,6 +207,9 @@
     box-shadow: none!important;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/css/component.css" />
+		<script src="/js/modernizr.custom.js"></script>
 </head> 
 <body style="padding: 0px;">
 <nav class="navbar navbar-default">
@@ -248,15 +253,12 @@
 		</ul>
 	</div>
 </nav>
-<main>
 	@yield('create_article_content')
 	@yield('show_traitement_article')
 	@yield('show_accept_article')
 	@yield('show_refuse_article')
 	@yield('show_libre_article')
 	@yield('profile')
-
-</main>
 
 
     <!-- Bootstrap core JavaScript-->
