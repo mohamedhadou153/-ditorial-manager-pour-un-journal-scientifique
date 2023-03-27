@@ -11,7 +11,7 @@
 
   <div class="main-content">
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficiahttps://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80l/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px;margin-top:-20px ;background-image: url(https://raw.githubusercontent.com/creativetimofficiahttps://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80l/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
@@ -52,13 +52,14 @@
               </div>
               <div class="text-center" style="padding: 20px;">
                 <h3>
-                  {{$auth->first_name}} {{$auth->last_name}}<span class="font-weight-light">, {{$auth->age}}</span>
+                  {{$auth->first_name}} {{$auth->last_name}}
                 </h3>
+                <h3 style="margin-top :-10px">{{$auth->age}} ans</h3>
                 <div class="h5 mt-4">
                   <i class="ni business_briefcase-24 mr-2"></i>Author
                 </div>
                 <hr class="my-4">
-                <a href="{{route('author.edit-profile')}}">Edit</a>
+                <a href="{{route('author.edit-profile')}}" class="btn btn-info">Edit profile</a>
               </div>
             </div>
           </div>
@@ -120,100 +121,3 @@
   </div>
 @endforeach
 @endsection
-<!-- <form action="{{route('author.change-profile')}}" method="get">
-	
-	<div class="container">
-    <div class="main-body">
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{asset('/storage/images/authors/.auth->pic')}}"   alt="Admin" class="rounded" width="150">
-                    <div class="mt-3">
-                      <h4>{{$auth->first_name}} {{$auth->last_name}}</h4>
-                      <p class="text-secondary mb-1">Author</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-			
-            <div class="col-lg-8">
-					<div class="card">
-						<div class="card-body">
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">First Name</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->first_name}}" name="first_name" >
-								</div>
-							</div>
-                            <div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Last Name</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->last_name}}" name="last_name">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->email}}" name="email" readonly >
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Age</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->age}}" name="age">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->n_tele}}" name="n_tele">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Biographie</h6>
-								</div>
-								<div class="col-sm-9 textarea-secondary">
-								   <textarea class="form-control" id="textAreaExample1" rows="4" name="biographie">{{$auth->biographie}}</textarea>
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Change image</h6>
-								</div>
-								<div class="col-sm-9 textarea-secondary">
-									<input type="file" form="file"  name="picture">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9 text-secondary">
-									<input type="submit" class="btn btn-primary px-4" value="Save Changes">
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-            </div>
-			
-          </div>
-
-        </div>
-    </div>
-</form> -->
-

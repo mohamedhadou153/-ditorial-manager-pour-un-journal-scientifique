@@ -237,16 +237,9 @@
 
 
 		<ul class="nav navbar-nav navbar-right">
-		    <li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Register<b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="author/register">Author</a></li>
-					<li><a href="editor/register">Editor</a></li>
-					<li><a href="reviewer/register">Reviewer</a></li>
-				</ul>
-            </li>	
+		   	
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Login<b class="caret"></b></a>
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="caret"></b></a>
 				<ul class="dropdown-menu">					
 					<li><a href="author/login">Author</a></li>
 					<li><a href="editor/login">Editor</a></li>

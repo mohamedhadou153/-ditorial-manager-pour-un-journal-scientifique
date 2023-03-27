@@ -164,156 +164,7 @@
             box-shadow: none!important;
         }
     </style>
-    <style>
-        article {
-        --img-scale: 1.001;
-        --title-color: black;
-        --link-icon-translate: -20px;
-        --link-icon-opacity: 0;
-        position: relative;
-        border-radius: 16px;
-        box-shadow: none;
-        background: #fff;
-        transform-origin: center;
-        transition: all 0.4s ease-in-out;
-        overflow: hidden;
-        }
-
-        article a::after {
-        position: absolute;
-        inset-block: 0;
-        inset-inline: 0;
-        cursor: pointer;
-        content: "";
-        }
-
-        /* basic article elements styling */
-        article h2 {
-        margin: 0 0 18px 0;
-        font-family: "Bebas Neue", cursive;
-        font-size: 1.9rem;
-        letter-spacing: 0.06em;
-        color: var(--title-color);
-        transition: color 0.3s ease-out;
-        }
-
-        figure {
-        margin: 0;
-        padding: 0;
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
-        }
-
-        article img {
-        max-width: 100%;
-        transform-origin: center;
-        transform: scale(var(--img-scale));
-        transition: transform 0.4s ease-in-out;
-        }
-
-        .article-body {
-        padding: 24px;
-        }
-
-        article a {
-        display: inline-flex;
-        align-items: center;
-        text-decoration: none;
-        color: #28666e;
-        }
-
-        article a:focus {
-        outline: 1px dotted #28666e;
-        }
-
-        article a .icon {
-        min-width: 24px;
-        width: 24px;
-        height: 24px;
-        margin-left: 5px;
-        transform: translateX(var(--link-icon-translate));
-        opacity: var(--link-icon-opacity);
-        transition: all 0.3s;
-        }
-
-        /* using the has() relational pseudo selector to update our custom properties */
-        article:has(:hover, :focus) {
-        --img-scale: 1.1;
-        --title-color: #28666e;
-        --link-icon-translate: 0;
-        --link-icon-opacity: 1;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-        }
-
-
-        /************************ 
-        Generic layout (demo looks)
-        **************************/
-
-        *,
-        *::before,
-        *::after {
-        box-sizing: border-box;
-        }
-
-        body {
-        margin: 0;
-        font-family: "Figtree", sans-serif;
-        font-size: 1.2rem;
-        line-height: 1.6rem;
-        background-image: linear-gradient(45deg, #7c9885, #b5b682);
-        min-height: 100vh;
-        }
-
-        .articles {
-        display: grid;
-        max-width: 1200px;
-        margin-inline: auto;
-        padding-inline: 24px;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 24px;
-        }
-
-        @media screen and (max-width: 960px) {
-        article {
-            container: card/inline-size;
-        }
-        .article-body p {
-            display: none;
-        }
-        }
-
-        @container card (min-width: 380px) {
-        .article-wrapper {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 16px;
-        }
-        .article-body {
-            padding-left: 0;
-        }
-        figure {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        figure img {
-            height: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-        }
-        }
-
-        .sr-only:not(:focus):not(:active) {
-        clip: rect(0 0 0 0); 
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap; 
-        width: 1px;
-        }
-    </style>
+    
     
     <link rel="stylesheet" href="/splide.min.css">
 
@@ -327,9 +178,10 @@
 
 </head> 
 <body>
- <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
+		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
 			<span class="navbar-toggler-icon"></span>
 			<span class="icon-bar"></span>
@@ -339,23 +191,34 @@
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
-	
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
-			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="/">Home</a></li>
+			<li class="active"><a href="/">Aboute</a></li>
 			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/300?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::guard('editor')->user()->first_name}} <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="{{route('editor.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
-					<li class="divider"></li>
-					<li><a href="href="{{route('editor.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
-					<form action="{{route('editor.logout')}}" id="logout.form" method="POST">
-                        @csrf
-                    </form>
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Users<b class="caret"></b></a>
+				<ul class="dropdown-menu">					
+					<li><a href="{{route('author.create-article')}}">All Authors</a></li>
+					<li><a href="{{route('author.libre-article')}}">All Editors</a></li>
+					<li><a href="{{route('author.traitement-article')}}">All Reviewers</a></li>
+				</ul>
+			</li>
+			<li class="active"><a href="#article-section">Articles Section</a></li>
+
+		</ul>
+
+
+		<ul class="nav navbar-nav navbar-right">
+			
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="caret"></b></a>
+				<ul class="dropdown-menu">					
+					<li><a href="author/login">Author</a></li>
+					<li><a href="editor/login">Editor</a></li>
+					<li><a href="reviewer/login">Reviewer</a></li>
 				</ul>
 			</li>
 		</ul>
 	</div>
-    </nav>
+</nav>
     @yield('content')
 </body>
