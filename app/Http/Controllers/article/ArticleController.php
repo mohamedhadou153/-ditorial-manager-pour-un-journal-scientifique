@@ -18,23 +18,23 @@ class ArticleController extends Controller
         return view('dashboard.author.article.create_article'); 
     }
     
-    public function uploade(Request $request){
-        // $request->validate([
-        //     'title'=>['required','string'],
-        //     'category'=>['required','string'],
-        //     'abstract'=>['required','string'],
-        //     'obj_pdf'=>'mimes:pdf',
-        //     'pic'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',                        
-        // ]);
+    public function Create(Request $request){
+        //  $request->validate([
+        //      'title'=>['required','string'],
+        //      'category'=>['required','string'],
+        //      'abstract'=>['required','string'],
+        //      'obj_pdf'=>'mimes:pdf',
+        //      'pic'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',                        
+        //  ]);
 
-        if ($request->hasFile('obj_pdf') && $request->hasFile('pic')) {
+        //if ($request->hasFile('obj_pdf') && $request->hasFile('pic')) {
 
             $destination_pdf_path = 'public/pdf/articles';     
-            $pdf_name = $request->title.'.'.$request->obj_pdf->extension();
+            $pdf_name = $request->title.'.'.'pdf';
             $path_pdf = $request->file('obj_pdf')->storeAs($destination_pdf_path,$pdf_name);
 
             $destination_pic_path = 'public/images/articles';     
-            $image_name = $request->title.'.'.$request->pic->extension();
+            $image_name = $request->title.'.'.'jpg';
             $path_name = $request->file('pic')->storeAs($destination_pic_path,$image_name);
 
 
@@ -48,7 +48,7 @@ class ArticleController extends Controller
             $article->authorId = auth::user()->email;
             $article->etat  = 'libre';
             $data = $article->save();
-        } 
+       // } 
       return redirect('/author/traitement-article');
     }
 

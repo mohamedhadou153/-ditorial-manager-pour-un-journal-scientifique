@@ -1,6 +1,41 @@
 @extends('dashboard.author.home')
 @section('show_refuse_article')
-<div>
+
+
+
+
+<header class="clearfix" style="text-align: center;">
+				<h1>Refuse Articles</h1>	
+			</header>
+			<div class="main" style="width: 100%;">
+				<ul id="og-grid" class="og-grid">
+				   @foreach ($articles as $article)
+					<li>
+						<a href="" data-largesrc="{{asset('/storage///images/articles/'.$article->pic)}}" data-title="{{$article->title}}" data-description="{{$article->abstract}}">
+							<img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 350px;width: 250px;;" alt="img01"/>
+						</a>
+					</li>
+					@endforeach
+				</ul>
+			</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="/js/grid.js"></script>
+		<script>
+			$(function() {
+				Grid.init();
+				// adding more items
+				$('#og-additems').on( 'click', function() {
+					var $items = $('<li><a href="#" data-largesrc="/images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot."><img src="/images/thumbs/1.jpg" alt="img01"/></a></li>').appendTo( $( '#og-grid' ) );
+					
+					Grid.addItems( $items );
+					return false;
+				} );
+			});
+		</script>
+
+
+
+<!-- <div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -27,5 +62,5 @@
     @endforeach
   </tbody>
 </table>
-</div>
+</div> -->
 @endsection

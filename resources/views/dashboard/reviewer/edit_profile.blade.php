@@ -1,9 +1,9 @@
-@extends('dashboard.author.home')
+@extends('dashboard.reviewrer.home')
 @section('profile')
-@foreach($author as $auth)
+@foreach($reviewer as $rev)
 
-<form action="{{route('author.change-profile')}}" method="POST" enctype="multipart/form-data" >
-	@csrf
+<form action="{{route('reviewer.change-profile')}}" method="get">
+	
 	<div class="container">
     <div class="main-body">
           <div class="row gutters-sm">
@@ -13,8 +13,8 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://picsum.photos/200/200?grayscale"   alt="Admin" class="rounded" width="150">
                     <div class="mt-3">
-                      <h4>{{$auth->first_name}} {{$auth->last_name}}</h4>
-                      <p class="text-secondary mb-1">Author</p>
+                      <h4>{{$rev->first_name}} {{$rev->last_name}}</h4>
+                      <p class="text-secondary mb-1">reviewer</p>
                     </div>
                   </div>
                 </div>
@@ -29,7 +29,7 @@
 									<h6 class="mb-0">First Name</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->first_name}}" name="first_name" >
+									<input type="text" class="form-control" value="{{$rev->first_name}}" name="first_name" >
 								</div>
 							</div>
                             <div class="row mb-3">
@@ -37,7 +37,7 @@
 									<h6 class="mb-0">Last Name</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->last_name}}" name="last_name">
+									<input type="text" class="form-control" value="{{$rev->last_name}}" name="last_name">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -45,7 +45,7 @@
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->email}}" name="email" readonly >
+									<input type="text" class="form-control" value="{{$rev->email}}" name="email" readonly >
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -53,7 +53,7 @@
 									<h6 class="mb-0">Age</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->age}}" name="age">
+									<input type="text" class="form-control" value="{{$rev->age}}" name="age">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -61,7 +61,7 @@
 									<h6 class="mb-0">Phone</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->n_tele}}" name="n_tele">
+									<input type="text" class="form-control" value="{{$rev->n_tele}}" name="n_tele">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -69,7 +69,7 @@
 									<h6 class="mb-0">Biographie</h6>
 								</div>
 								<div class="col-sm-9 textarea-secondary">
-								   <textarea class="form-control" id="textAreaExample1" rows="4" name="biographie">{{$auth->biographie}}</textarea>
+								   <textarea class="form-control" id="textAreaExample1" rows="4" name="biographie">{{$rev->biographie}}</textarea>
 								</div>
 							</div>
 							<div class="row mb-3">
