@@ -1,53 +1,53 @@
 @extends('dashboard.author.home')
 @section('style')
-<style>
-			body {
-				background-image: linear-gradient(to right top, #a7b0be, #8992a7, #6f758f, #575978, #423d60);		}
+	<style>
+				body {
+					background-image: linear-gradient(to right top, #a7b0be, #8992a7, #6f758f, #575978, #423d60);		}
 
-		.form-control:focus {
-			box-shadow: none;
-			border-color: black
-		}
+			.form-control:focus {
+				box-shadow: none;
+				border-color: black
+			}
 
-		.profile-button {
-			background: rgb(99, 39, 120);
-			box-shadow: none;
-			border: none
-		}
+			.profile-button {
+				background: rgb(99, 39, 120);
+				box-shadow: none;
+				border: none
+			}
 
-		.profile-button:hover {
-			background: #682773
-		}
+			.profile-button:hover {
+				background: #682773
+			}
 
-		.profile-button:focus {
-			background: #682773;
-			box-shadow: none
-		}
+			.profile-button:focus {
+				background: #682773;
+				box-shadow: none
+			}
 
-		.profile-button:active {
-			background: #682773;
-			box-shadow: none
-		}
+			.profile-button:active {
+				background: #682773;
+				box-shadow: none
+			}
 
-		.back:hover {
-			color: #682773;
-			cursor: pointer
-		}
+			.back:hover {
+				color: #682773;
+				cursor: pointer
+			}
 
-		.labels {
-			font-size: 11px
-		}
+			.labels {
+				font-size: 11px
+			}
 
-		.add-experience:hover {
-			background: #BA68C8;
-			color: #fff;
-			cursor: pointer;
-			border: solid 1px #BA68C8
-		}
-		.col-md-12{
-			margin-top:10px
-		}
-</style>
+			.add-experience:hover {
+				background: #BA68C8;
+				color: #fff;
+				cursor: pointer;
+				border: solid 1px #BA68C8
+			}
+			.col-md-12{
+				margin-top:10px
+			}
+	</style>
 @endsection
 @section('profile')
 @foreach($author as $auth)
