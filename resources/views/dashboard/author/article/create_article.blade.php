@@ -1,5 +1,74 @@
 @extends('dashboard.author.home')
 @section('style')
+<!-- <form method="POST" action="{{ route('author.uploade') }}"  enctype="multipart/form-data">
+	@csrf
+	<div style="display: flex; justify-content: center; align-items: center;">
+	<div class="col-lg-7 " >
+					<div class="card">
+						<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">title</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="title" >
+								</div>
+							</div>
+                            <div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">category</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<select name="category" id="">
+										<option value="aad">kjnxojknoxn</option>
+										<option value="aad">jo0ij0oij0</option>
+										<option value="aad">ijonon</option>
+										<option value="aad"></option>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">pdf</h6>
+								</div>
+								<div class="col-sm-9 textarea-secondary">
+								<input type="file" name="obj_pdf">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">pic</h6>
+								</div>
+								<div class="col-sm-9 textarea-secondary">
+								   <input type="file" name="pic">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">abstract</h6>
+								</div>
+								<div class="col-sm-9 textarea-secondary">
+								   <textarea class="form-control" id="textAreaExample1" rows="4" name="abstract"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+									<input type="submit" class="btn btn-primary px-4" value="Create article">
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+            </div>
+	</div>
+	
+	
+</form> -->
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
 <style>
 	*{
@@ -213,7 +282,8 @@
 @endsection
 @section('create_article_content')
 <div class="wrapper">
-    <form method="GET" action="{{ route('author.uploade') }}"  enctype="multipart/form-data">
+    <form method="POST" action="{{ route('author.uploade') }}"  enctype="multipart/form-data">
+	@csrf
         <div id="wizard">
             <!-- SECTION 1 -->
             <h4></h4>
@@ -276,7 +346,7 @@
                     <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                 </svg>
                 <p class="success">Order placed successfully. Your order will be dispacted soon. meanwhile you can track your order in my order section.</p>
-                <input type="submit" href="/" value="Create article">
+                <input type="submit" value="Create article">
 			</section>
         </div>
     </form>

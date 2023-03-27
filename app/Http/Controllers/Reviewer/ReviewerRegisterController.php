@@ -88,6 +88,16 @@ class ReviewerRegisterController extends Controller
         return view('dashboard.reviewer.profile')->with('reviewer',$reviewer);
     }
 
+    public function edit_profile(){
+        $email = Auth::guard('reviewer')->user()->email;
+        $author = DB::table('reviewers')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',$email)
+        ->get();
+        return view('dashboard.author.edit_profile')->with('author',$author);
+    }
+
+
     public function ChangeProfile(Request $request){
         $mail1 = Auth::guard('reviewer')->user()->email;
         $first_name = $request->first_name;

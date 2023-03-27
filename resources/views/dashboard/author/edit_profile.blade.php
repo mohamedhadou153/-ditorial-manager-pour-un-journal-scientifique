@@ -52,6 +52,11 @@
 @section('profile')
 @foreach($author as $auth)
 
+<<<<<<< HEAD
+<form action="{{route('author.change-profile')}}" method="POST" enctype="multipart/form-data" >
+	@csrf
+	<div class="container">
+=======
 <form action="{{route('author.change-profile')}}" method="get">
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row" >
@@ -106,6 +111,7 @@
 @endforeach
 @endsection
 <!-- <div class="container">
+>>>>>>> a8bf575e7f129d7cde66015bd5ddc4ca7f615cef
     <div class="main-body">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
