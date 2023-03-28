@@ -1,4 +1,4 @@
-@extends('dashboard.author.home')
+@extends('dashboard.author.header')
 @section('show_refuse_article')
 
 

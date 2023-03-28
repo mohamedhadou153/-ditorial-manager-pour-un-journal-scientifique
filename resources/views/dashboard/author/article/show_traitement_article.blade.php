@@ -1,5 +1,5 @@
 
-@extends('dashboard.author.home')
+@extends('dashboard.author.header')
 @section('show_traitement_article')
 
 			<header class="clearfix" style="text-align: center;">

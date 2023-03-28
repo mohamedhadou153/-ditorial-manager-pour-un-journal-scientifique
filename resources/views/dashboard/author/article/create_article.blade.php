@@ -1,4 +1,4 @@
-@extends('dashboard.author.home')
+@extends('dashboard.author.header')
 @section('style')
 
 
@@ -82,7 +82,7 @@
 			.actions li[aria-disabled="true"] a{display: none}
 			.actions li:first-child a{padding-left: 48px}
 			.actions li:first-child a:before{content: '\f177';left: 26px}
-			.actions li:last-child a{padding-left: 29px;width: 167px;font-weight: 400}
+			.actions li:last-child a{padding-left: 29px;width: 135px;font-weight: 400}
 			.actions li:last-child a:before{right: 30px}
 			.checkbox{position: relative}
 			.checkbox label{padding-left: 21px;cursor: pointer;color: #999}
@@ -152,7 +152,7 @@
 			@keyframes dash{0%{stroke-dashoffset: 1000}100%{stroke-dashoffset: 0}}
 			@-webkit-keyframes dash-check{0%{stroke-dashoffset: -100}100%{stroke-dashoffset: 900}}
 			@keyframes dash-check{0%{stroke-dashoffset: -100}100%{stroke-dashoffset: 900}}
-			.med{
+			/* .med{
 				background:#6200EA;
 				width:167px;
 				font-weight: 400;
@@ -165,7 +165,90 @@
 				height:50px
 			}
 			.med:hover{background: #6200eaba}
-			
+			.med:hover  {
+  transform: scale(1.05);
+} */
+
+	
+	</style>
+	<style>
+		:root {
+  --motion-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --motion-duration: 0.3s;
+}
+
+.med {
+  box-sizing: border-box;
+}
+
+
+.med  {
+	display:none;
+  align-items: center;
+  display: flex;
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(16px, 5vw, 32px);
+  justify-content: center;
+  margin: 0;
+}
+
+.med button {
+ height:70px;
+ width:200px;
+background:#6200EA;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  position: relative;
+  transition: filter var(--motion-duration);
+}
+
+.med button:hover {
+  filter: brightness(1.1);
+}
+
+.med button:active {
+  filter: brightness(0.9);
+}
+
+.med button > span {
+  display: block;
+  position: relative;
+  transition: transform var(--motion-duration) var(--motion-ease);
+  z-index: 1;
+}
+
+.med button:hover > span {
+  transform: scale(1.05);
+}
+
+.med button:active > span {
+  transform: scale(0.95);
+}
+.med button > svg {
+  fill: #6200EA;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  margin: 0;
+}
+
+
+
+.med button > svg > path {
+  transition: var(--motion-duration) var(--motion-ease);
+}
+
+.med button:hover >svg >  path {
+  d: path("M0,0 C0,-5 100,-5 100,0 C105,0 105,100 100,100 C100,105 0,105 0,100 C-5,100 -5,0 0,0");
+}
+
+
 	</style>
 
 	<script>
@@ -319,7 +402,13 @@
                     <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                 </svg>
                 <p class="success">Order placed successfully. Your order will be dispacted soon. meanwhile you can track your order in my order section.</p>
-                <input type="submit" class="med" value="Create article" >
+                
+				<div class="med"><button type="submit">
+					<span>créé article</span>
+					<svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg>
+					</button></div>
 			</section>
         </div>
     </form>
