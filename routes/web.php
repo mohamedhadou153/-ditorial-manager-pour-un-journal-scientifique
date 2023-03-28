@@ -71,7 +71,9 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/article-traitement',[ArticleController::class,'article_traitement'])->name('article-traitement');
         Route::get('/send-to-reviewers',[ArticleController::class,'send_to_reviewers'])->name('send-to-reviewers');
         Route::get('/profile',[EditorRegisterController::class,'profile'])->name('profile');
-        Route::get('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change-profile');
+        Route::get('/edit-profile',[EditorRegisterController::class,'edit_profile'])->name('edit-profile');
+        Route::post('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change-profile');
+        Route::post('/change-password',[EditorRegisterController::class,'change_password'])->name('change-password');
 
 
 

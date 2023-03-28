@@ -15,7 +15,7 @@
           <div class="col-lg-7 col-md-10">
             <h1 class="display-2 text-white">Hello {{$edit->last_name}}</h1>
             <h4 class="text-white mt-0 mb-5 ">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</h4>
-            <a href="#" class="btn btn-info">Edit profile</a>
+            <a href="{{route('editor.edit-profile')}}" class="btn btn-info">Edit profile</a>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
                   <i class="ni business_briefcase-24 mr-2"></i>editor
                 </div>
                 <hr class="my-4">
-                <a href="#">Edit</a>
+                <a href="{{route('editor.edit-profile')}}" class="btn btn-info">Edit profile</a>
               </div>
             </div>
           </div>

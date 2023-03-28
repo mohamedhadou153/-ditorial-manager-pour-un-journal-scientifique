@@ -88,6 +88,15 @@ class EditorRegisterController extends Controller
         return view('dashboard.editor.profile')->with('editor',$editor);
     }
 
+    public function edit_profile(){
+        $email = Auth::guard('editor')->user()->email;
+        $editor = DB::table('editors')
+        ->select('email','first_name','password','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',$email)
+        ->get();
+        return view('dashboard.editor.edit_profile')->with('editor',$editor);
+    }
+
     public function ChangeProfile(Request $request){
         $mail1 = Auth::guard('editor')->user()->email;
         $first_name = $request->first_name;
@@ -113,6 +122,25 @@ class EditorRegisterController extends Controller
         ->get();
         return view('dashboard.editor.profile')->with('editor',$editor);
         
+
+    }
+
+    public function change_password(Request $request){
+        if (Hash::check($request->pass_old , Auth::guard('editor')->user()->password)) {
+            DB::table('editors')
+            ->where('email','=',Auth::guard('editor')->user()->email)
+            ->update(['password'=>hash::make($request->pass_new)]);
+        }
+
+        if(!(Hash::check($request->pass_old , Auth::guard('editor')->user()->password))){
+            return redirect()->back()->with('error','invalid information');
+        }
+
+        $editor = DB::table('editors')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',Auth::guard('editor')->user()->email)
+        ->get();
+        return view('dashboard.editor.profile')->with('editor',$editor);
 
     }
 }

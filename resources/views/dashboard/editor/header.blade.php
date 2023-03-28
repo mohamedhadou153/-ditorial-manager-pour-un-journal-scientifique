@@ -175,6 +175,7 @@
 	<link href="/profile.css" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
+
 </head> 
 <body>
  <nav class="navbar navbar-default">
@@ -208,4 +209,5 @@
 	</div>
     </nav>
     @yield('content')
+    @yield('profile')
 </body>

@@ -87,10 +87,6 @@ class AuthorRegisterController extends Controller
         $n_tele = $request->n_tele;
         $img = $request->picture;
 
-
-
-
-
         if ($request->hasFile('picture')){
            $destination_pic_path = 'public/images/authors';     
            $image_name = $request->first_name.'.'.$request->picture->extension();
