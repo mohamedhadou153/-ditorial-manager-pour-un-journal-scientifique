@@ -2,7 +2,7 @@
 @section('profile')
 @foreach($editor as $edit)
 
-<form action="{{route('editor.change-profile')}}" method="get">
+ <form action="{{route('editor.change-profile')}}" method="get">
 	
 	<div class="container">
     <div class="main-body">
@@ -97,7 +97,7 @@
 
         </div>
     </div>
-</form>
+ </form>
 
 @endforeach
 @endsection

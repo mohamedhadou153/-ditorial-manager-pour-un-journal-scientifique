@@ -1,4 +1,4 @@
-@extends('dashboard.author.home')
+@extends('dashboard.author.header')
 @section('style')
 	<style>
 				body {

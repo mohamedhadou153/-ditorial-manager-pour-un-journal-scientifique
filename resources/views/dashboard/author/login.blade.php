@@ -225,7 +225,7 @@
 
 
 
-<div class="body">
+ <div class="body">
     <div class="container">
       <input type="checkbox" id="flip">
       <div class="cover">

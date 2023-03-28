@@ -384,110 +384,110 @@
         }
     </style>
     <style>
-		/* mockup code */
+						/* mockup code */
 
-		.med a {
-		background: #ffffff;
-		border: solid 1px #e6e6e6;
-		border-radius: 2px;
-		display: inline-block;
-		height: 50px;
-		line-height: 100px;
-		margin: 5px;
-		position: relative;
-		text-align: right;
-		
-		width: 80px;
-}
+						.med a {
+						background: #ffffff;
+						border: solid 1px #e6e6e6;
+						border-radius: 2px;
+						display: inline-block;
+						height: 50px;
+						line-height: 100px;
+						margin: 5px;
+						position: relative;
+						text-align: right;
+						
+						width: 80px;
+				}
 
-.med a span {
-		background: #f2594b;
-		border-radius: 4px;
-		color: #ffffff;
-		display: inline-block;
-		font-size: 11px;
-		font-weight: 700;
-		line-height: normal;
-		padding: 3px;
-		position: relative;
-		text-transform: uppercase;
-		z-index: 1;
-}
+				.med a span {
+						background: #f2594b;
+						border-radius: 4px;
+						color: #ffffff;
+						display: inline-block;
+						font-size: 11px;
+						font-weight: 700;
+						line-height: normal;
+						padding: 3px;
+						position: relative;
+						text-transform: uppercase;
+						z-index: 1;
+				}
 
-.med a span:last-child {
-		margin-left: -20px;
-}
+				.med a span:last-child {
+						margin-left: -20px;
+				}
 
-.med a:before,
-.med a:after {
-		background: #ffffff;
-		border: solid 3px #9fb4cc;
-		border-radius: 4px;
-		content: '';
-		display: block;
-		height: 35px;
-		left: 50%;
-		margin: -17px 0 0 -12px;
-		position: absolute;
-		top: 50%;
-		/*transform:translate(-50%,-50%);*/
-		
-		width: 25px;
-}
+				.med a:before,
+				.med a:after {
+						background: #ffffff;
+						border: solid 3px #9fb4cc;
+						border-radius: 4px;
+						content: '';
+						display: block;
+						height: 35px;
+						left: 50%;
+						margin: -17px 0 0 -12px;
+						position: absolute;
+						top: 50%;
+						/*transform:translate(-50%,-50%);*/
+						
+						width: 25px;
+				}
 
-.med a:hover:before,
-.med a:hover:after {
-		background: #e2e8f0;
-}
-/*a:before{transform:translate(-30%,-60%);}*/
+				.med a:hover:before,
+				.med a:hover:after {
+						background: #e2e8f0;
+				}
+				/*a:before{transform:translate(-30%,-60%);}*/
 
-.med a:before {
-		margin: -23px 0 0 -5px;
-}
+				.med a:before {
+						margin: -23px 0 0 -5px;
+				}
 
-.med a:hover {
-		background: #e2e8f0;
-		border-color: #9fb4cc;
-}
+				.med a:hover {
+						background: #e2e8f0;
+						border-color: #9fb4cc;
+				}
 
-.med a:active {
-		background: #dae0e8;
-		box-shadow: inset 0 2px 2px rgba(0, 0, 0, .25);
-}
+				.med a:active {
+						background: #dae0e8;
+						box-shadow: inset 0 2px 2px rgba(0, 0, 0, .25);
+				}
 
-.med a span:first-child {
-		display: none;
-}
+				.med a span:first-child {
+						display: none;
+				}
 
-.med a:hover span:first-child {
-		display: inline-block;
-}
+				.med a:hover span:first-child {
+						display: inline-block;
+				}
 
-.med a:hover span:last-child {
-		display: none;
-}
-/* custom code for the demo */
+				.med a:hover span:last-child {
+						display: none;
+				}
+				/* custom code for the demo */
 
 
-.med {
-		height: 100%;
-		width: 100%;
-}
+				.med {
+						height: 100%;
+						width: 100%;
+				}
 
-.med  {
-		display: table;
-}
+				.med  {
+						display: table;
+				}
 
-.med  {
-	background: #f5f5f5;
-		color: #ffffff;
-		display: table-cell;
-		margin: 0;
-		text-align: center;
-		vertical-align: middle;
-		
-		
-}
+				.med  {
+					background: #f5f5f5;
+						color: #ffffff;
+						display: table-cell;
+						margin: 0;
+						text-align: center;
+						vertical-align: middle;
+						
+						
+				}
 	</style>
 @endsection
 @section('content')
