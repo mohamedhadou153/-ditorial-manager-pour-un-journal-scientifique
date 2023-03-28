@@ -13,9 +13,9 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello {{$edit->last_name}}</h1>
-            <h4 class="text-white mt-0 mb-5 ">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</h4>
-            <a href="{{route('editor.edit-profile')}}" class="btn btn-info">Edit profile</a>
+            <h1 class="display-2 text-white">Bonjour {{$edit->last_name}}</h1>
+            <h4 class="text-white mt-0 mb-5 ">Ceci est votre page de profil. Vous pouvez voir l'avancement de votre travail et gérer vos projets ou tâches assignées</h4>
+            <a href="{{route('editor.edit-profile')}}" class="btn btn-info">modifier le profil</a>
           </div>
         </div>
       </div>
@@ -47,7 +47,10 @@
               </div>
               <div class="text-center" style="padding: 20px;">
                 <h3>
-                  {{$edit->first_name}} {{$edit->last_name}}<span class="font-weight-light">, {{$edit->age}}</span>
+                  {{$edit->first_name}} {{$edit->last_name}}
+                </h3>
+                <h3>
+                  {{$edit->age}} ans
                 </h3>
                 <div class="h5 mt-4">
                   <i class="ni business_briefcase-24 mr-2"></i>editor
