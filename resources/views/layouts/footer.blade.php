@@ -198,7 +198,7 @@
           <div class="social">
               <ul>
                 <li>
-                  <a class="facebook" href="#">
+                  <a class="facebook" href="http://www.fsa.ac.ma/">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -207,7 +207,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="twitter" href="#">
+                  <a class="twitter" href="http://www.fsa.ac.ma/">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -216,7 +216,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="instagram" href="#">
+                  <a class="instagram" href="http://www.fsa.ac.ma/">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -225,7 +225,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="google" href="#">
+                  <a class="google" href="http://www.fsa.ac.ma/">
                     <span></span>
                     <span></span>
                     <span></span>

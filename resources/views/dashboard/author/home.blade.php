@@ -14,13 +14,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="../favicon.ico"> 
-		
-
-   
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"  rel="stylesheet">
-	<link href="/profile.css" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link rel="stylesheet" type="text/css" href="/css/component.css" />
+<script src="/js/modernizr.custom.js"></script>	
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"  rel="stylesheet">
+<link href="/profile.css" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <style>
 	body {
@@ -147,7 +148,6 @@
 		}
 	}
 </style>
-@yield('style')
 <style>
 
 	.main-body {
@@ -199,12 +199,15 @@
 		box-shadow: none!important;
 	}
 </style>
-<link rel="stylesheet" type="text/css" href="/css/default.css" />
-		<link rel="stylesheet" type="text/css" href="/css/component.css" />
-		<script src="/js/modernizr.custom.js"></script>
+
+@yield('style')
+
 </head> 
 <body style="padding: 0px;">
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+
+
+
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -214,45 +217,49 @@
 			<span class="icon-bar"></span>
 		</button>
 	</div>
+
+
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="{{route('author.create-article')}}">Create Article</a></li>
-					<li><a href="{{route('author.traitement-article')}}">Traitement article</a></li>
-					<li><a href="{{route('author.accept-article')}}">Accept Article</a></li>
-					<li><a href="{{route('author.refuse-article')}}">Refuse Article</a></li>
-				</ul>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
-			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
-			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/200?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
-					<li class="divider"></li>
-					<li><a href="href="{{route('author.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
-					<form action="{{route('author.logout')}}" id="logout.form" method="POST">
-                        @csrf
-                    </form>
-				</ul>
-			</li>
-		</ul>
+				<div class="nav navbar-nav">
+						<li class="active"><a href="/">Home</a></li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
+							<ul class="dropdown-menu">					
+								<li><a href="{{route('author.create-article')}}">Create Article</a></li>
+								<li><a href="{{route('author.traitement-article')}}">Traitement article</a></li>
+								<li><a href="{{route('author.accept-article')}}">Accept Article</a></li>
+								<li><a href="{{route('author.refuse-article')}}">Refuse Article</a></li>
+							</ul>
+						</li>
+                </div>
+		        <div class="p-2 annonce bd-highlight " style="text-align: center;"  href="#">  
+                    <a href="#"  >
+                    <a href="{{route('author.create-article')}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">cree article</a></a>
+					
+
+					<div class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/200?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
+								<li class="divider"></li>
+								<li><a href="href="{{route('author.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
+								<form action="{{route('author.logout')}}" id="logout.form" method="POST">
+									@csrf
+								</form>
+							</ul>
+			         </li>
+                </div>
+                </div>
+				
+		
+		
+			
+		
 	</div>
 </nav>
-	@yield('create_article_content')
-	@yield('show_traitement_article')
-	@yield('show_accept_article')
-	@yield('show_refuse_article')
-	@yield('show_libre_article')
-	@yield('profile')
-	@yield('login')
-
+	@yield('content')
 
     <!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>

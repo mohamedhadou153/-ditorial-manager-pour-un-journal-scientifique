@@ -49,15 +49,14 @@
 			}
 	</style>
 @endsection
-@section('profile')
+@section('content')
 @foreach($author as $auth)
 
-<<<<<<< HEAD
-<form action="{{route('author.change-profile')}}" method="POST" enctype="multipart/form-data" >
-	@csrf
+
+
 	<div class="container">
-=======
-<form action="{{route('author.change-profile')}}" method="get">
+
+
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row" >
         <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
@@ -65,26 +64,8 @@
 			<h3><span class="font-weight-bold" style="margin-left:20px;">{{$auth->first_name}} {{$auth->last_name}}</span></h3>
         </div>
         <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">First Name:</label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}" value=""></div>
-                    <div class="col-md-6"><label class="labels">LAst Name:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Email:</label><input type="text" name="email" class="form-control" value="{{$auth->email}}" value=""></div>
-                    <div class="col-md-12"><label class="labels">Phone:</label><input type="text" name="n_tele" class="form-control" value="{{$auth->n_tele}}" value=""></div>
-                    <div class="col-md-12"><label class="labels">Age:</label><input type="text" name="age" class="form-control" value="{{$auth->age}}" value=""></div>
-                    <div class="col-md-12"><label class="labels">Biographie:</label><input type="textarea" name="biographie" class="form-control" value="{{$auth->biographie}}" value=""></div>
-                </div>
-                
-                <div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
+		<div class="p-3 py-5 border-bottom" style="border-bottom: 1px solid gray;">
+		 <form action="{{route('author.change-profile')}}" method="GET" enctype="multipart/form-data" >
 			<div class="col-sm-3">
 									<h4 >Change_image</h4>
 								</div>
@@ -100,107 +81,48 @@
 
 							
                 </div>
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">First Name:</label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}"></div>
+                    <div class="col-md-6"><label class="labels">LAst Name:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Email:</label><input type="text" name="email" class="form-control" value="{{$auth->email}}"></div>
+                    <div class="col-md-12"><label class="labels">Phone:</label><input type="text" name="n_tele" class="form-control" value="{{$auth->n_tele}}"></div>
+                    <div class="col-md-12"><label class="labels">Age:</label><input type="text" name="age" class="form-control" value="{{$auth->age}}"></div>
+                    <div class="col-md-12"><label class="labels">Biographie:</label><input type="textarea" name="biographie" class="form-control" value="{{$auth->biographie}}"></div>
+                </div>
+                
+                <div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
+            </div>
+		</form>
+        </div>
+		
+        <div class="col-md-4">
+		<div class="p-3 py-5">
+		   <form action="{{route('author.change-profile')}}" method="POST" enctype="multipart/form-data" >
+			        <div >
+						<h4 >change_password</h4>
+					</div>
+					<div class="row mt-3">
+						<div class="col-md-12"><label class="labels">old pass:</label><input type="text" name="email" class="form-control" placeholder="old pass"></div>
+						<div class="col-md-12"><label class="labels">new pass:</label><input type="text" name="n_tele" class="form-control" placeholder="new pass"></div>
+						<div class="col-md-12"><label class="labels">confirm:</label><input type="text" name="age" class="form-control" placeholder="confirm pass"></div>
+					</div>
+					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
+
+					</form>				
+                </div>
         </div>
     </div>
 </div>
 </div>
 </div>
 
-</form>
+
 
 @endforeach
 @endsection
-<!-- <div class="container">
->>>>>>> a8bf575e7f129d7cde66015bd5ddc4ca7f615cef
-    <div class="main-body">
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://picsum.photos/200/200?grayscale"   alt="Admin" class="rounded" width="150">
-                    <div class="mt-3">
-                      <h4>{{$auth->first_name}} {{$auth->last_name}}</h4>
-                      <p class="text-secondary mb-1">Author</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-			
-            <div class="col-lg-8">
-					<div class="card">
-						<div class="card-body">
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">First Name</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->first_name}}" name="first_name" >
-								</div>
-							</div>
-                            <div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Last Name</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->last_name}}" name="last_name">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->email}}" name="email" readonly >
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Age</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->age}}" name="age">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$auth->n_tele}}" name="n_tele">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Biographie</h6>
-								</div>
-								<div class="col-sm-9 textarea-secondary">
-								   <textarea class="form-control" id="textAreaExample1" rows="4" name="biographie">{{$auth->biographie}}</textarea>
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Change image</h6>
-								</div>
-								<div class="col-sm-9 textarea-secondary">
-									<input type="file" form="file"  name="picture">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9 text-secondary">
-									<input type="submit" class="btn btn-primary px-4" value="Save Changes">
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-            </div>
-			
-          </div>
-
-        </div>
-    </div> -->
