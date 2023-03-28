@@ -16,5 +16,6 @@ class Article extends Model
         'etat',
         'obj_pdf',
         'pic',
+        'type',
     ];
 }
