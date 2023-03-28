@@ -53,7 +53,6 @@
 @foreach($editor as $edit)
 <div class="container">
 
-<<<<<<< HEAD
 
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row" >
@@ -76,24 +75,6 @@
 								<input type="file" form="file"  name="picture">
 								</div>
                 </label> 
-=======
- <form action="{{route('editor.change-profile')}}" method="get">
-	
-	<div class="container">
-    <div class="main-body">
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://picsum.photos/200/200?grayscale"   alt="Admin" class="rounded" width="150">
-                    <div class="mt-3">
-                      <h4>{{$edit->first_name}} {{$edit->last_name}}</h4>
-                      <p class="text-secondary mb-1">editor</p>
-                    </div>
-                  </div>
-                </div>
->>>>>>> fe4d4d1efead71ab88f392e5570d09e49f6296e1
               </div>
 
 							
@@ -126,9 +107,9 @@
 						<h4 >change_password</h4>
 					</div>
 					<div class="row mt-3">
-						<div class="col-md-12"><label class="labels">old pass:</label><input type="text" name="pass_old" class="form-control" placeholder="old pass"></div>
-						<div class="col-md-12"><label class="labels">new pass:</label><input type="text" name="pass_new" class="form-control" placeholder="new pass"></div>
-						<div class="col-md-12"><label class="labels">confirm:</label><input type="text" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
+						<div class="col-md-12"><label class="labels">old pass:</label><input type="password" name="pass_old" class="form-control" placeholder="old pass"></div>
+						<div class="col-md-12"><label class="labels">new pass:</label><input type="password" name="pass_new" class="form-control" placeholder="new pass"></div>
+						<div class="col-md-12"><label class="labels">confirm:</label><input type="password" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
 					</div>
 					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
 
@@ -136,16 +117,12 @@
                 </div>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 </div>
 </div>
 
 
 
-=======
- </form>
->>>>>>> fe4d4d1efead71ab88f392e5570d09e49f6296e1
 
 @endforeach
 @endsection

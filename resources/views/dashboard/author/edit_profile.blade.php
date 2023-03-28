@@ -107,9 +107,9 @@
 						<h4 >change_password</h4>
 					</div>
 					<div class="row mt-3">
-						<div class="col-md-12"><label class="labels">old pass:</label><input type="text" name="pass_old" class="form-control" placeholder="old pass"></div>
-						<div class="col-md-12"><label class="labels">new pass:</label><input type="text" name="pass_new" class="form-control" placeholder="new pass"></div>
-						<div class="col-md-12"><label class="labels">confirm:</label><input type="text" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
+						<div class="col-md-12"><label class="labels">old pass:</label><input type="password" name="pass_old" class="form-control" placeholder="old pass"></div>
+						<div class="col-md-12"><label class="labels">new pass:</label><input type="password" name="pass_new" class="form-control" placeholder="new pass"></div>
+						<div class="col-md-12"><label class="labels">confirm:</label><input type="password" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
 					</div>
 					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
 
