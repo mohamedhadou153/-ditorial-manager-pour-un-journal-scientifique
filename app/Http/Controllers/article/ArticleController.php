@@ -47,6 +47,7 @@ class ArticleController extends Controller
             $article->pic = $image_name;
             $article->authorId = auth::user()->email;
             $article->etat  = 'libre';
+            $article->type = $request->type;
             $data = $article->save();
        // } 
       return redirect('/author/traitement-article');
@@ -55,7 +56,7 @@ class ArticleController extends Controller
     public function index_show_libre_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('authorID','=',$authId)->where('etat','=','libre')
         ->where('editorId','=',null)
         ->get();
@@ -65,7 +66,7 @@ class ArticleController extends Controller
     public function index_show_traitement_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('authorID','=',$authId )
         ->where('etat','!=','accept')
         ->where('etat','!=','refuse')
@@ -76,7 +77,7 @@ class ArticleController extends Controller
     public function index_show_refuse_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('authorID','=',$authId)
         ->where('etat','=','refuse')
         ->get();
@@ -86,7 +87,7 @@ class ArticleController extends Controller
     public function index_show_accept_article(){
         $authId = auth::user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('authorID','=',$authId)
         ->where('etat','=','accept')
         ->get();
@@ -108,7 +109,7 @@ class ArticleController extends Controller
     public function article_traitement(){
         $req = auth::guard('editor')->user()->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('etat','=','traitement')
         ->where('editorId','=',$req)
         ->get();
@@ -121,7 +122,7 @@ class ArticleController extends Controller
         $req = $request->id;
         $req1 = $request->e;
         $article = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('id','=',$req)
         ->get();
 
@@ -195,7 +196,7 @@ class ArticleController extends Controller
         $rev = auth::guard('reviewer')->user()->email;
         $reviewerId = $request->email;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('etat','traitement')
         ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
         ->get();
@@ -205,7 +206,7 @@ class ArticleController extends Controller
     public function creation_review(Request $request){
         $req = $request->id;
         $articles = DB::table('articles')
-        ->select('id','title','category','etat','authorId','editorId','reviewer1Id','reviewer2Id','pic','abstract')
+        ->select('*')
         ->where('id','=',$req)
         ->get();
         return view('dashboard.reviewer.article.creation_review')->with('articles',$articles);

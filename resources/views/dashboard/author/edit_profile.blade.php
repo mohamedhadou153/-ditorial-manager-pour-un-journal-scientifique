@@ -51,9 +51,6 @@
 @endsection
 @section('content')
 @foreach($author as $auth)
-
-
-
 	<div class="container">
 
 
@@ -65,7 +62,8 @@
         </div>
         <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
 		<div class="p-3 py-5 border-bottom" style="border-bottom: 1px solid gray;">
-		 <form action="{{route('author.change-profile')}}" method="GET" enctype="multipart/form-data" >
+		 <form action="{{route('author.change_profile')}}" method="post" enctype="multipart/form-data" >
+			@csrf
 			<div class="col-sm-3">
 									<h4 >Change_image</h4>
 								</div>
@@ -103,14 +101,15 @@
 		
         <div class="col-md-4">
 		<div class="p-3 py-5">
-		   <form action="{{route('author.change-profile')}}" method="POST" enctype="multipart/form-data" >
+		   <form action="{{route('author.change-password')}}" method="post" enctype="multipart/form-data" >
+			@csrf
 			        <div >
 						<h4 >change_password</h4>
 					</div>
 					<div class="row mt-3">
-						<div class="col-md-12"><label class="labels">old pass:</label><input type="text" name="email" class="form-control" placeholder="old pass"></div>
-						<div class="col-md-12"><label class="labels">new pass:</label><input type="text" name="n_tele" class="form-control" placeholder="new pass"></div>
-						<div class="col-md-12"><label class="labels">confirm:</label><input type="text" name="age" class="form-control" placeholder="confirm pass"></div>
+						<div class="col-md-12"><label class="labels">old pass:</label><input type="text" name="pass_old" class="form-control" placeholder="old pass"></div>
+						<div class="col-md-12"><label class="labels">new pass:</label><input type="text" name="pass_new" class="form-control" placeholder="new pass"></div>
+						<div class="col-md-12"><label class="labels">confirm:</label><input type="text" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
 					</div>
 					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
 

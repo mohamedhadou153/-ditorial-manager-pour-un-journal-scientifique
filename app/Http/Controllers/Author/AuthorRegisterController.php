@@ -33,6 +33,7 @@ class AuthorRegisterController extends Controller
     $data = $author->save();
     return redirect()->intended('author/login');
     }
+
     public function customLogin(Request $request)
     {
         $request->validate([
@@ -44,14 +45,6 @@ class AuthorRegisterController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::guard('author')->attempt($credentials)) {
             return redirect()->intended('author/home')
-                        ->withSuccess('Signed in');
-        }
-        if (Auth::guard('editor')->attempt($credentials)) {
-            return redirect()->intended('editor/home')->withSuccess('Signed in');
-           //return redirect()->back()->with('error','invalid information'); 
-        }
-        if (Auth::guard('reviewer')->attempt($credentials)) {
-            return redirect()->intended('reviewer/home')
                         ->withSuccess('Signed in');
         }
    
@@ -77,13 +70,13 @@ class AuthorRegisterController extends Controller
     public function edit_profile(){
         $email = Auth::guard('author')->user()->email;
         $author = DB::table('authors')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->select('email','first_name','password','last_name','age','n_tele','biographie','created_at','updated_at','pic')
         ->where('email','=',$email)
         ->get();
         return view('dashboard.author.edit_profile')->with('author',$author);
     }
 
-    public function Change_Profile(Request $request){
+    public function ChangeProfile(Request $request){
 
         $mail1 = Auth::guard('author')->user()->email;
         $first_name = $request->first_name;
@@ -94,11 +87,15 @@ class AuthorRegisterController extends Controller
         $n_tele = $request->n_tele;
         $img = $request->picture;
 
-       // if ($request->hasFile('picture')){
+
+
+
+
+        if ($request->hasFile('picture')){
            $destination_pic_path = 'public/images/authors';     
            $image_name = $request->first_name.'.'.$request->picture->extension();
            $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
-        //}
+        }
 
 
         DB::table('authors')
@@ -109,7 +106,7 @@ class AuthorRegisterController extends Controller
                   'age'=>$age,
                   'biographie'=>$biographie,
                   'n_tele'=>$n_tele,
-                  'pic'=>$image_name
+                  //'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('author')->user()->email;  
         $author = DB::table('authors')
@@ -117,7 +114,23 @@ class AuthorRegisterController extends Controller
         ->where('email','=',$mail2)
         ->get();
         return view('dashboard.author.profile')->with('author',$author);
-        
+    }
+    public function change_password(Request $request){
+        if (Hash::check($request->pass_old , Auth::guard('author')->user()->password)) {
+            DB::table('authors')
+            ->where('email','=',Auth::guard('author')->user()->email)
+            ->update(['password'=>hash::make($request->pass_new)]);
+        }
+
+        if(!(Hash::check($request->pass_old , Auth::guard('author')->user()->password))){
+            return redirect()->back()->with('error','invalid information');
+        }
+
+        $author = DB::table('authors')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',Auth::guard('author')->user()->email)
+        ->get();
+        return view('dashboard.author.profile')->with('author',$author);
 
     }
 }
