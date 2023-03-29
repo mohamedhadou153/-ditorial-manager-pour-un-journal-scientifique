@@ -31,7 +31,7 @@
 					<td>{{$article->type}}</td>
 					<td style="color: red;">Refuse</td>
 					<td>{{$article->editorId}}</td>
-					<td><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 50px; with: 50px;"  alt=""></td>
+					<td><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 35px; width: 35px;"  alt=""></td>
 				</tr>
 			@endforeach	
 			</tbody>
