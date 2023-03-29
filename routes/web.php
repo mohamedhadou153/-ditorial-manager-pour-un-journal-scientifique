@@ -24,13 +24,15 @@ use App\Models\Article;
 Route::get('/',[ArticleController::class,'show_accept_article_home'])->name('libre-article');
 Route::get('/search_article',[ArticleController::class,'shearch_article'])->name('search_article');
 
-Auth::routes();
+//Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('author')->name('author.')->group(function(){
     Route::middleware(['guest:author'])->group(function(){
         Route::view('/login','dashboard.author.login')->name('login');
         Route::view('/register','dashboard.author.register')->name('register');
+        Route::get('/Login',[AuthorRegisterController::class,'Login'])->name('Login');
+        Route::post('/Register',[AuthorRegisterController::class,'Register'])->name('Register');
         Route::post('/create',[AuthorRegisterController::class,'create'])->name('create');
         Route::post('/customLogin',[AuthorRegisterController::class,'customLogin'])->name('customLogin');
     });
@@ -72,7 +74,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/send-to-reviewers',[ArticleController::class,'send_to_reviewers'])->name('send-to-reviewers');
         Route::get('/profile',[EditorRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[EditorRegisterController::class,'edit_profile'])->name('edit-profile');
-        Route::post('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change-profile');
+        Route::get('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change-profile');
         Route::post('/change-password',[EditorRegisterController::class,'change_password'])->name('change-password');
 
 

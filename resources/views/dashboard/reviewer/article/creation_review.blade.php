@@ -1,5 +1,5 @@
 @extends('dashboard.reviewer.home')
-@section('creation-review')
+@section('content')
 @foreach($articles as $article)
 <form action="{{route('reviewer.SendToEditor')}}" method="GET">
     <label for="">Set review:</label>

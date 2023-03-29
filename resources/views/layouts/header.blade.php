@@ -241,7 +241,7 @@
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="caret"></b></a>
 				<ul class="dropdown-menu">					
-					<li><a href="author/login">Author</a></li>
+					<li><a href="{{route('author.Login')}}">Author</a></li>
 					<li><a href="editor/login">Editor</a></li>
 					<li><a href="reviewer/login">Reviewer</a></li>
 				</ul>

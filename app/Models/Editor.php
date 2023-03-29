@@ -23,6 +23,7 @@ class Editor extends Authenticatable
         'last_name',
         'email',
         'password',
+        'pic',
     ];
 
     /**

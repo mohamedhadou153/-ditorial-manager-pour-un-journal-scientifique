@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\DB;
 
 class AuthorRegisterController extends Controller
 {
+
+    public function Login(){
+        return redirect('author/login');
+    }
+
+
    public function create(Request $request){
     $request->validate([
         'first_name' => ['required', 'string', 'max:255'],

@@ -224,7 +224,7 @@ class ArticleController extends Controller
         ->where('etat','traitement')
         ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
         ->get();
-        return view('dashboard.reviewer.article.review_commande')->with('articles',$articles);  
+        return view('dashboard.reviewer.home')->with('articles',$articles);  
     }
 
     public function creation_review(Request $request){

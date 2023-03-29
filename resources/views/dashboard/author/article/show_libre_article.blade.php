@@ -1,5 +1,5 @@
 @extends('dashboard.author.header')
-@section('show_libre_article')
+@section('content')
 <div>
 <table class="table table-striped">
   <thead>

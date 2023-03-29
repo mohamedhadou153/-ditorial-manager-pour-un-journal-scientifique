@@ -1,240 +1,196 @@
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap All in One Navbar</title>
-<link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="/profile.css" rel="stylesheet"> 
-<style>
-	body {
-		background: #eeeeee;
-	}
-    .form-inline {
-        display: inline-block;
-    }
-	.navbar {		
-		background: #fff;
-		padding-left: 16px;
-		padding-right: 16px;
-		border-bottom: 1px solid #d6d6d6;
-		box-shadow: 0 0 4px rgba(0,0,0,.1);
-	}
-	.nav img {
-		border-radius: 50%;
-		width: 36px;
-		height: 36px;
-		margin: -8px 0;
-		float: left;
-		margin-right: 10px;
-	}
-	.navbar .navbar-brand {
-		color: #555;
-		padding-left: 0;
-		padding-right: 50px;
-		font-family: 'Merienda One', sans-serif;
-	}
-	.navbar .navbar-brand i {
-		font-size: 20px;
-		margin-right: 5px;
-	}
-	.search-box {
-        position: relative;
-    }	
-    .search-box input {
-		box-shadow: none;
-        padding-right: 35px;
-        border-radius: 3px !important;
-    }
-	.search-box .input-group-addon {
-        min-width: 35px;
-        border: none;
-        background: transparent;
-        position: absolute;
-        right: 0;
-        z-index: 9;
-        padding: 7px;
-		height: 100%;
-    }
-    .search-box i {
-        color: #a0a5b1;
-		font-size: 19px;
-    }
-	.navbar ul li i {
-		font-size: 18px;
-	}
-	.navbar .dropdown-menu i {
-		font-size: 16px;
-		min-width: 22px;
-	}
-	.navbar .dropdown.open > a {
-		background: none !important;
-	}
-	.navbar .dropdown-menu {
-		border-radius: 1px;
-		border-color: #e5e5e5;
-		box-shadow: 0 2px 8px rgba(0,0,0,.05);
-	}
-	.navbar .dropdown-menu li a {
-		color: #777;
-		padding: 8px 20px;
-		line-height: normal;
-	}
-	.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
-		color: #333;
-	}	
-	.navbar .dropdown-menu .material-icons {
-		font-size: 21px;
-		line-height: 16px;
-		vertical-align: middle;
-		margin-top: -2px;
-	}
-	.navbar .badge {
-		background: #f44336;
-		font-size: 11px;
-		border-radius: 20px;
-		position: absolute;
-		min-width: 10px;
-		padding: 4px 6px 0;
-		min-height: 18px;
-		top: 5px;
-	}
-	.navbar ul.nav li a.notifications, .navbar ul.nav li a.messages {
-		position: relative;
-		margin-right: 10px;
-	}
-	.navbar ul.nav li a.messages {
-		margin-right: 20px;
-	}
-	.navbar a.notifications .badge {
-		margin-left: -8px;
-	}
-	.navbar a.messages .badge {
-		margin-left: -4px;
-	}	
-	.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
-		background: transparent !important;
-	}
-	@media (min-width: 1200px){
-		.form-inline .input-group {
-			width: 300px;
-			margin-left: 30px;
+@extends('dashboard.reviewer.header')
+@section('style')
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DataTables </title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+	<!--Replace with your tailwind.css once created-->
+
+
+	<!--Regular Datatables CSS-->
+	<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+	<!--Responsive Extension Datatables CSS-->
+	<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
+	<style>
+		/*Overrides for Tailwind CSS */
+
+		/*Form fields*/
+		.dataTables_wrapper select,
+		.dataTables_wrapper .dataTables_filter input {
+			color: #4a5568;
+			/*text-gray-700*/
+			padding-left: 1rem;
+			/*pl-4*/
+			padding-right: 1rem;
+			/*pl-4*/
+			padding-top: .5rem;
+			/*pl-2*/
+			padding-bottom: .5rem;
+			/*pl-2*/
+			line-height: 1.25;
+			/*leading-tight*/
+			border-width: 2px;
+			/*border-2*/
+			border-radius: .25rem;
+			border-color: #edf2f7;
+			/*border-gray-200*/
+			background-color: #edf2f7;
+			/*bg-gray-200*/
 		}
-	}
-	@media (max-width: 1199px){
-		.form-inline {
-			display: block;
-			margin-bottom: 10px;
+
+		/*Row Hover*/
+		table.dataTable.hover tbody tr:hover,
+		table.dataTable.display tbody tr:hover {
+			background-color: #ebf4ff;
+			/*bg-indigo-100*/
 		}
-		.input-group {
-			width: 100%;
+
+		/*Pagination Buttons*/
+		.dataTables_wrapper .dataTables_paginate .paginate_button {
+			font-weight: 700;
+			/*font-bold*/
+			border-radius: .25rem;
+			/*rounded*/
+			border: 1px solid transparent;
+			/*border border-transparent*/
 		}
-	}
-</style>
-<style>
-	.main-body {
-    padding: 15px;
-	}
-	.card {
-		box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-	}
 
-	.card {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		min-width: 0;
-		word-wrap: break-word;
-		background-color: #fff;
-		background-clip: border-box;
-		border: 0 solid rgba(0,0,0,.125);
-		border-radius: .25rem;
-	}
+		/*Pagination Buttons - Current selected */
+		.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+			color: #fff !important;
+			/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+			/*shadow*/
+			font-weight: 700;
+			/*font-bold*/
+			border-radius: .25rem;
+			/*rounded*/
+			background: #667eea !important;
+			/*bg-indigo-500*/
+			border: 1px solid transparent;
+			/*border border-transparent*/
+		}
 
-	.card-body {
-		flex: 1 1 auto;
-		min-height: 1px;
-		padding: 1rem;
-	}
+		/*Pagination Buttons - Hover */
+		.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+			color: #fff !important;
+			/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+			/*shadow*/
+			font-weight: 700;
+			/*font-bold*/
+			border-radius: .25rem;
+			/*rounded*/
+			background: #667eea !important;
+			/*bg-indigo-500*/
+			border: 1px solid transparent;
+			/*border border-transparent*/
+		}
 
-	.gutters-sm {
-		margin-right: -8px;
-		margin-left: -8px;
-	}
+		/*Add padding to bottom border */
+		table.dataTable.no-footer {
+			border-bottom: 1px solid #e2e8f0;
+			/*border-b-1 border-gray-300*/
+			margin-top: 0.75em;
+			margin-bottom: 0.75em;
+		}
 
-	.gutters-sm>.col, .gutters-sm>[class*=col-] {
-		padding-right: 8px;
-		padding-left: 8px;
-	}
-	.mb-3, .my-3 {
-		margin-bottom: 1rem!important;
-	}
+		/*Change colour of responsive icon*/
+		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+		table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+			background-color: #667eea !important;
+			/*bg-indigo-500*/
+		}
+	</style>	
 
-	.bg-gray-300 {
-		background-color: #e2e8f0;
-	}
-	.h-100 {
-		height: 100%!important;
-	}
-	.shadow-none {
-		box-shadow: none!important;
-}
-</style>
-</head> 
-<body>
-<nav class="navbar navbar-default">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
-		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-			<span class="navbar-toggler-icon"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
+
+ 
+@endsection
+@section('content')
+
+
+	
+	
+	
+
+<!--Container-->
+<div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+
+	
+
+	<!--Card-->
+	<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+
+
+		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+			<thead>
+				<tr>
+					<th data-priority="1">Title</th>
+					<th data-priority="2">Category</th>
+					<th data-priority="3">Type</th>
+					<th data-priority="4">Editor Email</th>
+					<th data-priority="5">Article file</th>
+					<th data-priority="6">Desition</th>
+				</tr>
+			</thead>
+			
+			
+			<tbody>
+			<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth; $rev = auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')->where('etat','traitement')->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)->get();?>
+			@foreach ($articles as $article)
+				<tr>
+					<td>{{$article->title}}</td>
+					<td>{{$article->category}}</td>
+					<td>{{$article->type}}</td>
+					<td>{{$article->editorId}}</td>
+					<td>{{$article->obj_pdf}}</td>
+					<td>
+                       <form action="{{route('reviewer.creation-review')}}"  method="get" >         
+                         @csrf         
+                          <input type="hidden" value="{{$article->id}}" name="id">
+                          <input type="hidden" value="{{auth::guard('reviewer')->user()->email}}" name="e">
+                          <button type="submit" name="submit">review</button>
+                      </form>
+                   </td>
+				</tr>
+			@endforeach	
+			</tbody>
+		</table>
+
+
 	</div>
-	<!-- Collection of nav links, forms, and other content for toggling -->
-	<div id="navbarCollapse" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="{{route('reviewer.review-commande')}}">Review Commande</a></li>
-				</ul>
-			</li>
-		</ul>
-		<form class="navbar-form form-inline">
-			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="Search by Name">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-		</form>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
-			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
-			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/300?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::guard('reviewer')->user()->first_name}} <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="{{route('reviewer.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
-					<li class="divider"></li>
-					<li><a href="{{route('reviewer.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()">logout</a>
-					<form action="{{route('reviewer.logout')}}" id="logout.form" method="POST">
-                        @csrf
-                    </form>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</nav>
-<main>
-	@yield('review-commande')
-    @yield('creation-review')
-	@yield('profile')
-</main>
+	<!--/Card-->
 
-</body>
 
+</div>
+<!--/container-->
+
+
+
+
+
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		var table = $('#example').DataTable({
+				responsive: true
+			})
+			.columns.adjust()
+			.responsive.recalc();
+	});
+</script>
+
+
+
+
+@endsection

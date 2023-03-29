@@ -1,6 +1,6 @@
 
 @extends('dashboard.author.header')
-@section('show_traitement_article')
+@section('content')
 <!--Container-->
 <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
 

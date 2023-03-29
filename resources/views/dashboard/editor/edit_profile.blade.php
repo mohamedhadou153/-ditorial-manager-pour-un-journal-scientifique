@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
 		<div class="p-3 py-5 border-bottom" style="border-bottom: 1px solid gray;">
-		 <form action="{{route('editor.change-profile')}}" method="post" enctype="multipart/form-data" >
+		 <form action="{{route('editor.change-profile')}}" method="GET" enctype="multipart/form-data" >
 			@csrf
 			<div class="col-sm-3">
 									<h4 >Change_image</h4>
@@ -72,7 +72,7 @@
                 <label>
                     
 					          <div>
-								<input type="file" form="file"  name="picture">
+								<input type="file" name="picture">
 								</div>
                 </label> 
               </div>

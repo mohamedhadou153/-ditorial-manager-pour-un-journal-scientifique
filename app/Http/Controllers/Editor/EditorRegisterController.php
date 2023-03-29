@@ -106,6 +106,14 @@ class EditorRegisterController extends Controller
         $biographie = $request->biographie;
         $n_tele = $request->n_tele;
 
+        $img = $request->picture;
+
+        if ($request->hasFile('picture')){
+           $destination_pic_path = 'public/images/editors';     
+           $image_name = $request->picture.'.'.$request->picture->extension();
+           $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
+        }
+
         DB::table('editors')
         ->where('email','=',$mail1)
         ->update(['first_name'=>$first_name,
@@ -113,7 +121,8 @@ class EditorRegisterController extends Controller
                   'email'=>$email,
                   'age'=>$age,
                   'biographie'=>$biographie,
-                  'n_tele'=>$n_tele
+                  'n_tele'=>$n_tele,
+                  //'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('editor')->user()->email;  
         $editor = DB::table('editors')
