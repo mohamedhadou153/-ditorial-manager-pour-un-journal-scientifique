@@ -337,21 +337,21 @@
                 <div class="form-row">  
 					<span id="select2" name="type">
 					<select id="select21"class="form-control" name="type1" style="display:inline;">
-					<option value="1">Select</option>
+					<option value="1"></option>
 					<option value="2">Web devlopement</option>
 					<option value="3">Web devlopement</option>
 					<option value="4">Security System</option>
 					</select>
 					
 					<select id="select22" class="form-control" name="type2" style="display:none;">
-					<option value="5">Select</option>
+					<option value="5"></option>
 					<option value="6">Mecanique classique</option>
 					<option value="7">Mecanique quantique</option>
 					<option value="8">Mecanique fleuide</option>
 					</select>
 					
 					<select id="select23" class="form-control" name="type3" style="display:none;">
-					<option value="9">Select</option>
+					<option value="9"></option>
 					<option value="10">Humane mecanisme</option>
 					<option value="11">j</option>
 					<option value="12">j</option>
