@@ -1,34 +1,71 @@
 @extends('dashboard.author.header')
 @section('show_accept_article')
 
-<header class="clearfix" style="text-align: center;">
-				<h1>Accept Articles</h1>	
-			</header>
-			<div class="main" style="width: 100%;">
-				<ul id="og-grid" class="og-grid">
-				   @foreach ($articles as $article)
-					<li>
-						<a href="" data-largesrc="{{asset('/storage///images/articles/'.$article->pic)}}" data-title="{{$article->title}}" data-description="{{$article->abstract}}">
-							<img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 350px;width: 250px;;" alt="img01"/>
-						</a>
-					</li>
-					@endforeach
-				</ul>
-			</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="/js/grid.js"></script>
-		<script>
-			$(function() {
-				Grid.init();
-				// adding more items
-				$('#og-additems').on( 'click', function() {
-					var $items = $('<li><a href="#" data-largesrc="/images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot."><img src="/images/thumbs/1.jpg" alt="img01"/></a></li>').appendTo( $( '#og-grid' ) );
-					
-					Grid.addItems( $items );
-					return false;
-				} );
-			});
-		</script>
+<!--Container-->
+<div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+
+	
+
+	<!--Card-->
+	<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+
+
+		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+			<thead>
+				<tr>
+					<th data-priority="1">Title</th>
+					<th data-priority="2">Etat</th>
+					<th data-priority="3">Editor Email</th>
+					<th data-priority="4">review1</th>
+					<th data-priority="5">review2</th>
+					<th data-priority="6">article image</th>
+				</tr>
+			</thead>
+			
+			
+			<tbody>
+			<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $articles = DB::table('articles')->select('*')->where('authorId',Auth::guard('author')->user()->email) ->where('etat','=','accept')->get();?>
+			@foreach ($articles as $article)
+				<tr>
+					<td>{{$article->title}}</td>
+					<td style="color:green;">Accept</td>
+					<td>{{$article->editorId}}</td>
+					<td>{{$article->review1}}</td>
+					<td>{{$article->review2}}</td>
+					<td><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 50px; with: 50px;"  alt=""></td>
+				</tr>
+			@endforeach	
+			</tbody>
+		</table>
+
+
+	</div>
+	<!--/Card-->
+
+
+</div>
+<!--/container-->
+
+
+
+
+
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		var table = $('#example').DataTable({
+				responsive: true
+			})
+			.columns.adjust()
+			.responsive.recalc();
+	});
+</script>
 
 
 

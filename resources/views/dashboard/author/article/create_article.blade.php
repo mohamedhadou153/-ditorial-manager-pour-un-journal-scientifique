@@ -329,29 +329,32 @@ background:#6200EA;
                 <div class="form-row"> <input type="text" class="form-control" name="title" placeholder="Title"> </div>
                 <div class="form-row"> 
 					<select id="select1" name="category" class="form-control" onchange="app_sel(this.value);" >
-							<option value="1">info</option>
-							<option value="2">lettre</option>
-							<option value="3">ppl</option>
+							<option value="1">Informatique</option>
+							<option value="2">Physique</option>
+							<option value="3">Biologie</option>
 					</select>
 				</div>
                 <div class="form-row">  
 					<span id="select2" name="type">
-					<select id="select21"class="form-control" style="display:inline;">
-					<option value="1">info</option>
-					<option value="2">l</option>
-					<option value="3">c</option>
+					<select id="select21"class="form-control" name="type1" style="display:inline;">
+					<option value="1">Select</option>
+					<option value="2">Web devlopement</option>
+					<option value="3">Web devlopement</option>
+					<option value="4">Security System</option>
 					</select>
 					
-					<select id="select22" class="form-control" style="display:none;">
-					<option value="4">letre</option>
-					<option value="5">b</option>
-					<option value="6">c</option>
+					<select id="select22" class="form-control" name="type2" style="display:none;">
+					<option value="5">Select</option>
+					<option value="6">Mecanique classique</option>
+					<option value="7">Mecanique quantique</option>
+					<option value="8">Mecanique fleuide</option>
 					</select>
 					
-					<select id="select23" class="form-control" style="display:none;">
-					<option value="7">ppl</option>
-					<option value="8">l</option>
-					<option value="9">j</option>
+					<select id="select23" class="form-control" name="type3" style="display:none;">
+					<option value="9">Select</option>
+					<option value="10">Humane mecanisme</option>
+					<option value="11">j</option>
+					<option value="12">j</option>
 					</select>
 					</span> 
 				</div>

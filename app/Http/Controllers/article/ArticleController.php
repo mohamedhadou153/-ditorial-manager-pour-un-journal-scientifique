@@ -38,19 +38,43 @@ class ArticleController extends Controller
             $path_name = $request->file('pic')->storeAs($destination_pic_path,$image_name);
 
 
+            //category select
+            $category = 'Not Selected';
+            if ($request->category == 1) {$category = 'Informatique';}
+            if ($request->category == 2) {$category = 'Physique';}
+            if ($request->category == 3) {$category = 'Biologie';}
+
+            //type select
+            $type = 'Not Selected';
+            if ($request->type1 != 1 && $request->type2 == 4 && $request->type3 == 9) {
+                if ($request->type1 == 2) {$type = 'Data sience';}
+                if ($request->type1 == 3) {$type = 'Web devlopement';}
+                if ($request->type1 == 4) {$type = 'Security System';}
+            }
+            if ($request->type2 != 5 && $request->type1 == 1 && $request->type3 == 9) {
+                if ($request->type2 == 6) {$type = 'Mecanique classique';}
+                if ($request->type2 == 7) {$type = 'Mecanique quantique';}
+                if ($request->type2 == 8) {$type = 'Mecanique fleuide';}
+            }
+            if ($request->type3 != 9 && $request->type1 == 1 && $request->type2 == 5) {
+                if ($request->type3 == 10) {$type = 'Humane mecanisme';}
+                if ($request->type3 == 11) {$type = 'Humane mecanisme';}
+                if ($request->type3 == 12) {$type = 'Humane mecanisme';}
+            }
+
 
             $article = new article();
             $article->title = $request->title;
-            $article->category = $request->category;
+            $article->category = $category;
             $article->abstract = $request->abstract;
             $article->obj_pdf = $pdf_name;
             $article->pic = $image_name;
             $article->authorId = auth::user()->email;
             $article->etat  = 'libre';
-            $article->type = $request->type;
+            $article->type = $type;
             $data = $article->save();
        // } 
-      return redirect('/author/traitement-article');
+      return redirect('/author/home');
     }
 
     public function index_show_libre_article(){

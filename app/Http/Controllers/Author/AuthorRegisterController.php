@@ -44,8 +44,9 @@ class AuthorRegisterController extends Controller
     
         $credentials = $request->only('email', 'password');
         if (Auth::guard('author')->attempt($credentials)) {
-            return redirect()->intended('author/home')
-                        ->withSuccess('Signed in');
+            $articles = DB::table('articles')->select('*')->where('authorId',Auth::guard('author')->user()->email)->get();
+            return view('dashboard.author.home',compact('articles'));
+           // return view('dashboard.author.home')->with('articles',$articles);
         }
    
         return redirect()->back()->with('error','invalid information'); 
