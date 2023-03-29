@@ -32,7 +32,7 @@
 					<td>{{$article->editorId}}</td>
 					<td>{{$article->review1}}</td>
 					<td>{{$article->review2}}</td>
-					<td><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 50px; with: 50px;"  alt=""></td>
+					<td><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 35px; width: 35px;"  alt=""></td>
 				</tr>
 			@endforeach	
 			</tbody>
