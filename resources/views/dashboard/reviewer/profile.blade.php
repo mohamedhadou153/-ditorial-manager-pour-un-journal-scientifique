@@ -48,13 +48,16 @@
               </div>
               <div class="text-center" style="padding: 20px;">
                 <h3>
-                  {{$rev->first_name}} {{$rev->last_name}}<span class="font-weight-light">, {{$rev->age}}</span>
+                  {{$rev->first_name}} {{$rev->last_name}}
+                </h3>
+                <h3>
+                  {{$rev->age}} ans
                 </h3>
                 <div class="h5 mt-4">
                   <i class="ni business_briefcase-24 mr-2"></i>reviewer
                 </div>
                 <hr class="my-4">
-                <a href="{{route('reviewer.edit-profile')}}">Edit</a>
+                <a href="{{route('reviewer.edit-profile')}}" class="btn btn-info">Edit profile</a>
               </div>
             </div>
           </div>

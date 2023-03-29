@@ -90,11 +90,11 @@ class ReviewerRegisterController extends Controller
 
     public function edit_profile(){
         $email = Auth::guard('reviewer')->user()->email;
-        $author = DB::table('reviewers')
+        $reviewer = DB::table('reviewers')
         ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
         ->where('email','=',$email)
         ->get();
-        return view('dashboard.author.edit_profile')->with('author',$author);
+        return view('dashboard.reviewer.edit_profile')->with('reviewer',$reviewer);
     }
 
 
@@ -123,6 +123,25 @@ class ReviewerRegisterController extends Controller
         ->get();
         return view('dashboard.reviewer.profile')->with('reviewer',$reviewer);
         
+
+    }
+
+    public function change_password(Request $request){
+        if (Hash::check($request->pass_old , Auth::guard('reviewer')->user()->password)) {
+            DB::table('reviewers')
+            ->where('email','=',Auth::guard('reviewer')->user()->email)
+            ->update(['password'=>hash::make($request->pass_new)]);
+        }
+
+        if(!(Hash::check($request->pass_old , Auth::guard('reviewer')->user()->password))){
+            return redirect()->back()->with('error','invalid information');
+        }
+
+        $reviewer = DB::table('reviewers')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',Auth::guard('reviewer')->user()->email)
+        ->get();
+        return view('dashboard.reviewer.profile')->with('reviewer',$reviewer);
 
     }
 }

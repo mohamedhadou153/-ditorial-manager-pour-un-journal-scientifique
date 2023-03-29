@@ -97,6 +97,7 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
         Route::get('/profile',[ReviewerRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[ReviewerRegisterController::class,'edit_profile'])->name('edit-profile');
         Route::get('/change-profile',[ReviewerRegisterController::class,'ChangeProfile'])->name('change-profile');
+        Route::post('/change-password',[ReviewerRegisterController::class,'change_password'])->name('change-password');
     
     });
 });
