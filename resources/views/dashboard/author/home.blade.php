@@ -15,6 +15,14 @@
 	<!--Responsive Extension Datatables CSS-->
 	<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
+	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+	<!--Replace with your tailwind.css once created-->
+
+
+	
+
+	
+
 	<style>
 		/*Overrides for Tailwind CSS */
 
@@ -105,10 +113,7 @@
 			background-color: #667eea !important;
 			/*bg-indigo-500*/
 		}
-	</style>	
-
-
- 
+	</style>
 @endsection
 @section('content')
 
