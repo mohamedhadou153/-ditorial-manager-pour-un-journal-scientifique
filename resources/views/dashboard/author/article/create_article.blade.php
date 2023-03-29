@@ -171,80 +171,80 @@
 	</style>
 	<style>
 		:root {
-  --motion-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  --motion-duration: 0.3s;
-}
+			--motion-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+			--motion-duration: 0.3s;
+			}
 
-.med {
-  box-sizing: border-box;
-}
-
-
-.med  {
-	display:none;
-  align-items: center;
-  display: flex;
-  font-family: 'Rubik', sans-serif;
-  font-size: clamp(16px, 5vw, 32px);
-  justify-content: center;
-  margin: 0;
-}
-
-.med button {
- height:70px;
- width:200px;
-background:#6200EA;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1;
-  position: relative;
-  transition: filter var(--motion-duration);
-}
-
-.med button:hover {
-  filter: brightness(1.1);
-}
-
-.med button:active {
-  filter: brightness(0.9);
-}
-
-.med button > span {
-  display: block;
-  position: relative;
-  transition: transform var(--motion-duration) var(--motion-ease);
-  z-index: 1;
-}
-
-.med button:hover > span {
-  transform: scale(1.05);
-}
-
-.med button:active > span {
-  transform: scale(0.95);
-}
-.med button > svg {
-  fill: #6200EA;
-  position: absolute;
-  top: -5%;
-  left: -5%;
-  width: 110%;
-  height: 110%;
-  margin: 0;
-}
+			.med {
+			box-sizing: border-box;
+			}
 
 
+			.med  {
+				display:none;
+			align-items: center;
+			display: flex;
+			font-family: 'Rubik', sans-serif;
+			font-size: clamp(16px, 5vw, 32px);
+			justify-content: center;
+			margin: 0;
+			}
 
-.med button > svg > path {
-  transition: var(--motion-duration) var(--motion-ease);
-}
+			.med button {
+			height:70px;
+			width:200px;
+			background:#6200EA;
+			border: 0;
+			color: #fff;
+			cursor: pointer;
+			font: inherit;
+			font-weight: 500;
+			line-height: 1;
+			position: relative;
+			transition: filter var(--motion-duration);
+			}
 
-.med button:hover >svg >  path {
-  d: path("M0,0 C0,-5 100,-5 100,0 C105,0 105,100 100,100 C100,105 0,105 0,100 C-5,100 -5,0 0,0");
-}
+			.med button:hover {
+			filter: brightness(1.1);
+			}
+
+			.med button:active {
+			filter: brightness(0.9);
+			}
+
+			.med button > span {
+			display: block;
+			position: relative;
+			transition: transform var(--motion-duration) var(--motion-ease);
+			z-index: 1;
+			}
+
+			.med button:hover > span {
+			transform: scale(1.05);
+			}
+
+			.med button:active > span {
+			transform: scale(0.95);
+			}
+			.med button > svg {
+			fill: #6200EA;
+			position: absolute;
+			top: -5%;
+			left: -5%;
+			width: 110%;
+			height: 110%;
+			margin: 0;
+			}
+
+
+
+			.med button > svg > path {
+			transition: var(--motion-duration) var(--motion-ease);
+			}
+
+			.med button:hover >svg >  path {
+			d: path("M0,0 C0,-5 100,-5 100,0 C105,0 105,100 100,100 C100,105 0,105 0,100 C-5,100 -5,0 0,0");
+			}
 
 
 	</style>
