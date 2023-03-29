@@ -209,7 +209,7 @@
 
 
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
+		<a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
 			<span class="navbar-toggler-icon"></span>
 			<span class="icon-bar"></span>
@@ -222,11 +222,10 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 				<div class="nav navbar-nav">
-						<li class="active"><a href="/">Home</a></li>
+						
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
 							<ul class="dropdown-menu">					
-								<li><a href="{{route('author.create-article')}}">Create Article</a></li>
 								<li><a href="{{route('author.traitement-article')}}">Traitement article</a></li>
 								<li><a href="{{route('author.accept-article')}}">Accept Article</a></li>
 								<li><a href="{{route('author.refuse-article')}}">Refuse Article</a></li>
