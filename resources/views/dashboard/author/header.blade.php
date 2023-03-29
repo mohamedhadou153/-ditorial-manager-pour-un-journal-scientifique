@@ -23,7 +23,7 @@
 <link href="/profile.css" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+@yield('style')
 <style>
 		/*Overrides for Tailwind CSS */
 
