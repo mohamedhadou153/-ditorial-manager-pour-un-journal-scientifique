@@ -49,7 +49,7 @@
 			}
 	</style>
 @endsection
-@section('profile')
+@section('content')
 @foreach($reviewer as $rev)
 <div class="container">
 

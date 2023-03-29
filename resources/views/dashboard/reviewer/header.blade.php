@@ -209,12 +209,6 @@
 				</ul>
 			</li>
 		</ul>
-		<form class="navbar-form form-inline">
-			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="Search by Name">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-		</form>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
 			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
