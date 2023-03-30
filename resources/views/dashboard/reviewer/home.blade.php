@@ -33,6 +33,9 @@
 	tr th:nth-child(1) {
 		border-radius: .625rem 0 0 .625rem;
 	}
+	h1{
+		color:white;
+	}
 </style>	
 
 
@@ -45,6 +48,9 @@
 		<div class="overflow-auto lg:overflow-visible ">
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
+					<tr class="bg-gray-900">
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">invitations </th>
+					</tr>
 					<tr>
 						<th class="p-3">Brand</th>
 						<th class="p-3 text-left">Category</th>
@@ -70,7 +76,7 @@
 						<td class="p-3 font-bold">
 							200.00$
 						</td>
-						<td class="fex p-3">
+						<td class=" p-3">
 							<span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
 							<span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
 
