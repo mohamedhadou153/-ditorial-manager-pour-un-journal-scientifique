@@ -68,10 +68,10 @@
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>
-						<th class="p-3 text-left">Category</th>
-						<th class="p-3 text-left">Type</th>
-						<th class="p-3 text-left">Abstract</th>
-						<th class="p-3 text-left">Action</th>
+						<th class="p-3 ">Category</th>
+						<th class="p-3 ">Type</th>
+						<th class="p-3 ">Abstract</th>
+						<th class="p-3 ">Action</th>
 					</tr>
 				</thead>
 				<tbody>
