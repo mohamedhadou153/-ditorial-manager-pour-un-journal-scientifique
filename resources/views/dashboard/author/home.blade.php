@@ -139,7 +139,7 @@
 					<th data-priority="3">Type</th>
 					<th data-priority="4">Etat</th>
 					<th data-priority="5">creation date</th>
-					<th data-priority="6">article image </th>
+					<th data-priority="6">last update </th>
 				</tr>
 			</thead>
 			
@@ -163,7 +163,12 @@
 					
 					@endif
 					<td>{{$article->created_at}}</td>
+<<<<<<< HEAD
 					<td style="text-align: center;"><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 50px; width: 50px;"  alt=""></td>
+=======
+					<td>{{$article->updated_at}}</td>
+					
+>>>>>>> 57b91504cde0244ca56ac06177abd26c66b72d1a
 				</tr>
 			@endforeach	
 			</tbody>

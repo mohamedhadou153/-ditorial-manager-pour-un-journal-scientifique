@@ -1,174 +1,149 @@
 @extends('dashboard.reviewer.header')
 @section('style')
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>DataTables </title>
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
-	<!--Replace with your tailwind.css once created-->
-
-
-	<!--Regular Datatables CSS-->
-	<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-	<!--Responsive Extension Datatables CSS-->
-	<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
+<link
+	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+	rel="stylesheet">
 	<style>
-		/*Overrides for Tailwind CSS */
+	.table {
+		border-spacing: 0 15px;
+	}
 
-		/*Form fields*/
-		.dataTables_wrapper select,
-		.dataTables_wrapper .dataTables_filter input {
-			color: #4a5568;
-			/*text-gray-700*/
-			padding-left: 1rem;
-			/*pl-4*/
-			padding-right: 1rem;
-			/*pl-4*/
-			padding-top: .5rem;
-			/*pl-2*/
-			padding-bottom: .5rem;
-			/*pl-2*/
-			line-height: 1.25;
-			/*leading-tight*/
-			border-width: 2px;
-			/*border-2*/
-			border-radius: .25rem;
-			border-color: #edf2f7;
-			/*border-gray-200*/
-			background-color: #edf2f7;
-			/*bg-gray-200*/
-		}
+	i {
+		font-size: 1rem !important;
+	}
 
-		/*Row Hover*/
-		table.dataTable.hover tbody tr:hover,
-		table.dataTable.display tbody tr:hover {
-			background-color: #ebf4ff;
-			/*bg-indigo-100*/
-		}
+	.table tr {
+		border-radius: 20px;
+	}
 
-		/*Pagination Buttons*/
-		.dataTables_wrapper .dataTables_paginate .paginate_button {
-			font-weight: 700;
-			/*font-bold*/
-			border-radius: .25rem;
-			/*rounded*/
-			border: 1px solid transparent;
-			/*border border-transparent*/
-		}
+	tr td:nth-child(n+5),
+	tr th:nth-child(n+5) {
+		border-radius: 0 .625rem .625rem 0;
+	}
 
-		/*Pagination Buttons - Current selected */
-		.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-			color: #fff !important;
-			/*text-white*/
-			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-			/*shadow*/
-			font-weight: 700;
-			/*font-bold*/
-			border-radius: .25rem;
-			/*rounded*/
-			background: #667eea !important;
-			/*bg-indigo-500*/
-			border: 1px solid transparent;
-			/*border border-transparent*/
-		}
-
-		/*Pagination Buttons - Hover */
-		.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-			color: #fff !important;
-			/*text-white*/
-			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-			/*shadow*/
-			font-weight: 700;
-			/*font-bold*/
-			border-radius: .25rem;
-			/*rounded*/
-			background: #667eea !important;
-			/*bg-indigo-500*/
-			border: 1px solid transparent;
-			/*border border-transparent*/
-		}
-
-		/*Add padding to bottom border */
-		table.dataTable.no-footer {
-			border-bottom: 1px solid #e2e8f0;
-			/*border-b-1 border-gray-300*/
-			margin-top: 0.75em;
-			margin-bottom: 0.75em;
-		}
-
-		/*Change colour of responsive icon*/
-		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-		table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-			background-color: #667eea !important;
-			/*bg-indigo-500*/
-		}
-	</style>	
+	tr td:nth-child(1),
+	tr th:nth-child(1) {
+		border-radius: .625rem 0 0 .625rem;
+	}
+</style>	
 
 
  
 @endsection
 @section('content')
 
-
-	
-	
-	
-
-<!--Container-->
-<div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
-
-	
-
-	<!--Card-->
-	<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-
-
-		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-			<thead>
-				<tr>
-					<th data-priority="1">Title</th>
-					<th data-priority="2">Category</th>
-					<th data-priority="3">Type</th>
-					<th data-priority="4">Editor Email</th>
-					<th data-priority="5">Article file</th>
-					<th data-priority="6">Desition</th>
-				</tr>
-			</thead>
-			
-			
-			<tbody>
-			<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth; $rev = auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')->where('etat','traitement')->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)->get();?>
-			@foreach ($articles as $article)
-				<tr>
-					<td>{{$article->title}}</td>
-					<td>{{$article->category}}</td>
-					<td>{{$article->type}}</td>
-					<td>{{$article->editorId}}</td>
-					<td>{{$article->obj_pdf}}</td>
-					<td>
-                       <form action="{{route('reviewer.creation-review')}}"  method="get" >         
-                         @csrf         
-                          <input type="hidden" value="{{$article->id}}" name="id">
-                          <input type="hidden" value="{{auth::guard('reviewer')->user()->email}}" name="e">
-                          <button type="submit" name="submit">review</button>
-                      </form>
-                   </td>
-				</tr>
-			@endforeach	
-			</tbody>
-		</table>
-
-
+<div class="flex items-center justify-center min-h-screen bg-gray-900">
+	<div class="col-span-12">
+		<div class="overflow-auto lg:overflow-visible ">
+			<table class="table text-gray-400 border-separate space-y-6 text-sm">
+				<thead class="bg-gray-800 text-gray-500">
+					<tr>
+						<th class="p-3">Brand</th>
+						<th class="p-3 text-left">Category</th>
+						<th class="p-3 text-left">Price</th>
+						<th class="p-3 text-left">Status</th>
+						<th class="p-3 text-left">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="bg-gray-800">
+						<td class="p-3">
+							<div class="flex align-items-center">
+								<img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
+								<div class="ml-3">
+									<div class="">Appple</div>
+									<div class="text-gray-500">mail@rgmail.com</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							Technology
+						</td>
+						<td class="p-3 font-bold">
+							200.00$
+						</td>
+						<td class="p-3">
+							<span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+						</td>
+						<td class="p-3 ">
+							<a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+								<i class="material-icons-outlined text-base">visibility</i>
+							</a>
+							<a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
+								<i class="material-icons-outlined text-base">edit</i>
+							</a>
+							<a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
+								<i class="material-icons-round text-base">delete_outline</i>
+							</a>
+						</td>
+					</tr>
+					<tr class="bg-gray-800">
+						<td class="p-3">
+							<div class="flex align-items-center">
+								<img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
+								<div class="ml-3">
+									<div class="">Realme</div>
+									<div class="text-gray-500">mail@rgmail.com</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							Technology
+						</td>
+						<td class="p-3 font-bold">
+							200.00$
+						</td>
+						<td class="p-3">
+							<span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+						</td>
+						<td class="p-3">
+							<a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
+								<i class="material-icons-outlined text-base">visibility</i>
+							</a>
+							<a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
+								<i class="material-icons-outlined text-base">edit</i>
+							</a>
+							<a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
+								<i class="material-icons-round text-base">delete_outline</i>
+							</a>
+						</td>
+					</tr>
+					<tr class="bg-gray-800">
+						<td class="p-3">
+							<div class="flex align-items-center">
+								<img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
+								<div class="ml-3">
+									<div class="">Samsung</div>
+									<div class="text-gray-500">mail@rgmail.com</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							Technology
+						</td>
+						<td class="p-3 font-bold">
+							200.00$
+						</td>
+						<td class="p-3">
+							<span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
+						</td>
+						<td class="p-3">
+							<a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+								<i class="material-icons-outlined text-base">visibility</i>
+							</a>
+							<a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
+								<i class="material-icons-outlined text-base">edit</i>
+							</a>
+							<a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
+								<i class="material-icons-round text-base">delete_outline</i>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	<!--/Card-->
-
-
 </div>
-<!--/container-->
-
 
 
 

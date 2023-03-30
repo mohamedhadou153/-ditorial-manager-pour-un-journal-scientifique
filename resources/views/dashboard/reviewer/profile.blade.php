@@ -1,4 +1,7 @@
 @extends('dashboard.reviewer.home')
+@section('style')
+<link href="/profile.css" rel="stylesheet">
+@endsection
 @section('content')
 @foreach($reviewer as $rev)
 
