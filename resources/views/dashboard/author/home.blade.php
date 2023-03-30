@@ -131,7 +131,7 @@
 	<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
 
-		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em; ">
 			<thead>
 				<tr>
 					<th data-priority="1">Title</th>
@@ -163,8 +163,12 @@
 					
 					@endif
 					<td>{{$article->created_at}}</td>
+<<<<<<< HEAD
+					<td style="text-align: center;"><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 50px; width: 50px;"  alt=""></td>
+=======
 					<td>{{$article->updated_at}}</td>
 					
+>>>>>>> 57b91504cde0244ca56ac06177abd26c66b72d1a
 				</tr>
 			@endforeach	
 			</tbody>
@@ -186,7 +190,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <!--Datatables -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script  src="/js/hometable.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script>
 	$(document).ready(function() {
