@@ -39,6 +39,7 @@
  
 @endsection
 @section('content')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $articles = DB::table('articles')->select('*')->where('authorId',Auth::guard('author')->user()->email)->get();?>
 <div class="med">
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
@@ -46,10 +47,10 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr>
-						<th class="p-3">Brand</th>
+						<th class="p-3">Title</th>
 						<th class="p-3 text-left">Category</th>
-						<th class="p-3 text-left">Price</th>
-						<th class="p-3 text-left">Status</th>
+						<th class="p-3 text-left">Type</th>
+						<th class="p-3 text-left">Abstract</th>
 						<th class="p-3 text-left">Action</th>
 					</tr>
 				</thead>
