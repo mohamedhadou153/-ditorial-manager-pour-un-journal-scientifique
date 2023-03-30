@@ -68,9 +68,9 @@
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>
-						<th class="p-3 ">Category</th>
-						<th class="p-3 ">Type</th>
 						<th class="p-3 ">Abstract</th>
+						<th class="p-3 ">Review</th>
+						<th class="p-3 ">Article pdf</th>
 						<th class="p-3 ">Action</th>
 					</tr>
 				</thead>
@@ -85,19 +85,20 @@
 								</div>
 							</div>
 						</td>
-						<td class="ml-3">
-							{{$article->category}}
-						</td>
-						<td class="ml-3">
-							{{$article->type}}
-						</td>
 						<td class="p-3">
 						<textarea id="autoShowHide" rows="3" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800 border ">{{$article->abstract}}</textarea>
+						</td>
+                        <form action="{{route('reviewer.SendToEditor')}}" method="get">
+						<td class="p-3">
+						<textarea id="" rows="3" cols="30" name="review"   class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800 border "></textarea>
+						</td>
+						<td class="ml-3">
+							{{$article->obj_pdf}}
 						</td>
 
 						<td class="ml-3 ">
 						<div style="display:flex; justify-content:center;">
-						<form action="{{route('reviewer.validation-review')}}" method="get">
+						
 							<input type="hidden" name="id" value="{{$article->id}}">
 							<input type="submit" value="Create Review" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
 						</form>

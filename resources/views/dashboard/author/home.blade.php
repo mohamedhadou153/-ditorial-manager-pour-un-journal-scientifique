@@ -163,7 +163,7 @@
 					
 					@endif
 					<td>{{$article->created_at}}</td>
-					
+					<td>{{$article->updated_at}}</td>
 				</tr>
 			@endforeach	
 			</tbody>
