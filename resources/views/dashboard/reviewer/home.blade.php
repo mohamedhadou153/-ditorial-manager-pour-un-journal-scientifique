@@ -9,8 +9,8 @@
 		}
 	.table { 
 		margin-top:50px;
-		height:400px;
-		width:900px;
+		height:200px;
+		width:1200px;
 		border-spacing: 0 15px;
 	}
 
@@ -38,11 +38,24 @@
 	}
 </style>	
 
+<style>
 
+#autoShowHide {
+  text-align: center;
+  width: 400px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
+</style>
  
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $articles = DB::table('articles')->select('*')->where('authorId',Auth::guard('author')->user()->email)->get();?>
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
+        ->where('etat','traitement')
+        ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
+        ->get();?>
 <div class="med">
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
@@ -61,101 +74,31 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="bg-gray-800" style="">
+				@foreach ($articles as $article)
+					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="flex align-items-center">
-							<img class="rounded-circle  h20 w-20   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
+							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
 								<div class="ml-3">
-									<div class="">Appple</div>
-									<div class="text-gray-500">mail@rgmail.com</div>
+									<div class="">{{$article->title}}</div>
 								</div>
 							</div>
 						</td>
-						<td class="p-3 ">
-							Technology
+						<td class="ml-3">
+							{{$article->category}}
 						</td>
-						<td class="p-3 font-bold">
-							200.00$
+						<td class="ml-3">
+							{{$article->type}}
 						</td>
-						<td class=" p-3">
-							<span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
-							<span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
-
+						<td class="p-3">
+						<textarea id="autoShowHide" rows="3" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800 border ">{{$article->abstract}}</textarea>
 						</td>
-						<td class="p-3 ">
-							<a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-								<i class="material-icons-outlined text-base">visibility</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
-								<i class="material-icons-outlined text-base">edit</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
-								<i class="material-icons-round text-base">delete_outline</i>
-							</a>
+						<td class="ml-3 ">
+							<a  href="#" style="text-decoration: none;" class="bg-green-400 text-gray-50 rounded-md px-2">Accept</a>
+							<a href="#" style="text-decoration: none;" class="bg-red-400 text-gray-50 rounded-md px-2">Refuse</a>
 						</td>
 					</tr>
-					<tr class="bg-gray-800">
-						<td class="p-3">
-							<div class="flex align-items-center">
-							<img class="rounded-circle  h20 w-20   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
-								<div class="ml-3">
-									<div class="">Realme</div>
-									<div class="text-gray-500">mail@rgmail.com</div>
-								</div>
-							</div>
-						</td>
-						<td class="p-3">
-							Technology
-						</td>
-						<td class="p-3 font-bold">
-							200.00$
-						</td>
-						<td class="p-3">
-							<span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
-						</td>
-						<td class="p-3">
-							<a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
-								<i class="material-icons-outlined text-base">visibility</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-								<i class="material-icons-outlined text-base">edit</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-								<i class="material-icons-round text-base">delete_outline</i>
-							</a>
-						</td>
-					</tr>
-					<tr class="bg-gray-800">
-						<td class="p-3">
-							<div class="flex align-items-center">
-								<img class="rounded-circle  h20 w-20   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
-								<div class="ml-3">
-									<div class="">Samsung</div>
-									<div class="text-gray-500">mail@rgmail.com</div>
-								</div>
-							</div>
-						</td>
-						<td class="p-3">
-							Technology
-						</td>
-						<td class="p-3 font-bold">
-							200.00$
-						</td>
-						<td class="p-3">
-							<span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
-						</td>
-						<td class="p-3">
-							<a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-								<i class="material-icons-outlined text-base">visibility</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-								<i class="material-icons-outlined text-base">edit</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-								<i class="material-icons-round text-base">delete_outline</i>
-							</a>
-						</td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>

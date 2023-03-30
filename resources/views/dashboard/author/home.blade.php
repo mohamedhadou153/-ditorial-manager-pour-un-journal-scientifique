@@ -163,12 +163,7 @@
 					
 					@endif
 					<td>{{$article->created_at}}</td>
-<<<<<<< HEAD
-					<td style="text-align: center;"><img src="{{asset('/storage///images/articles/'.$article->pic)}}" style="height: 50px; width: 50px;"  alt=""></td>
-=======
-					<td>{{$article->updated_at}}</td>
 					
->>>>>>> 57b91504cde0244ca56ac06177abd26c66b72d1a
 				</tr>
 			@endforeach	
 			</tbody>
