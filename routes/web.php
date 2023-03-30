@@ -95,6 +95,7 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
         Route::post('/logout',[ReviewerRegisterController::class,'logout'])->name('logout');
         Route::get('/review-commande',[ArticleController::class,'review_commande'])->name('review-commande');
         Route::get('/creation-review',[ArticleController::class,'creation_review'])->name('creation-review');
+        Route::get('/validation-review',[ArticleController::class,'validation_review'])->name('validation-review');
         Route::get('/SendToEditor',[ArticleController::class,'SendToEditor'])->name('SendToEditor');
         Route::get('/profile',[ReviewerRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[ReviewerRegisterController::class,'edit_profile'])->name('edit-profile');

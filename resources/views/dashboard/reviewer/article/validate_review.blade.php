@@ -54,7 +54,7 @@
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
-		->where('rev_active','NOT LIKE',"%{$rev}%")
+		->where('rev_active','LIKE',"%{$rev}%")
         ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
         ->get();?>
 <div class="med">
@@ -97,13 +97,9 @@
 
 						<td class="ml-3 ">
 						<div style="display:flex; justify-content:center;">
-						<form action="{{route('reviewer.validation-review')}}">
+						<form action="{{route('reviewer.validation-review')}}" method="get">
 							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Accept" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
-						</form>
-						<form action="">
-							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Refuse" style="text-decoration: none;" class="bg-red-400 text-gray-50 rounded-md px-2"></input>
+							<input type="submit" value="Create Review" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
 						</form>
 						</div>	
 						</td>

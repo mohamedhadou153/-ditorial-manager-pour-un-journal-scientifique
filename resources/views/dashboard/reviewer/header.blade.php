@@ -207,6 +207,7 @@
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
 				<ul class="dropdown-menu">					
 					<li><a href="{{route('reviewer.review-commande')}}">Review Commande</a></li>
+					<li><a href="{{route('reviewer.validation-review')}}">Validate Review</a></li>
 				</ul>
 			</li>
 		</ul>

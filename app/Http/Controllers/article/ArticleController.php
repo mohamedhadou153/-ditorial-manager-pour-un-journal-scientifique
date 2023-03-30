@@ -224,7 +224,23 @@ class ArticleController extends Controller
         ->where('etat','traitement')
         ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
         ->get();
-        return view('dashboard.reviewer.article.home')->with('articles',$articles);  
+        return view('dashboard.reviewer.home')->with('articles',$articles);  
+    }
+    
+    public function validation_review(Request $request){
+        $rev = auth::guard('reviewer')->user()->email;
+        $req = $request->id;
+        $reviewer = DB::table('articles')->select('rev_active')->where('id',$req)->get();
+        foreach($reviewer as $reviewer){
+        DB::table('articles')
+        ->where('id',$req)
+        ->update(['rev_active'=>$reviewer->rev_active.$rev]);
+        }
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();
+        return view('dashboard.reviewer.article.validate_review')->with('articles',$articles);  
     }
 
     public function creation_review(Request $request){
@@ -237,19 +253,25 @@ class ArticleController extends Controller
     }
 
     public function SendToEditor(Request $request){
+        $req = $request->id;
         $reviewer = auth::guard('reviewer')->user()->email;
         $id_article = $request->id;
         $review = $request->review;
-        
-        DB::table('articles')
-        ->where('id',$id_article)
-            ->where('reviewer1Id', $reviewer)
-       ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s')]);
 
-       DB::table('articles')
-       ->where('id',$id_article)
-        ->where('reviewer2Id', $reviewer)
-      ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s')]);
+        $reviewer = DB::table('articles')->select('rev_active')->where('id',$req)->get();
+        foreach($reviewer as $reviewer){
+          DB::table('articles')
+             ->where('id',$id_article)
+             ->where('reviewer1Id', $reviewer)
+             ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$reviewer->rev_active.'dev1']);
+
+          DB::table('articles')
+             ->where('id',$id_article)
+             ->where('reviewer2Id', $reviewer)
+             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$reviewer->rev_active.'dev2']);
+        }
+        
+
 
         return view('dashboard.reviewer.home');
 

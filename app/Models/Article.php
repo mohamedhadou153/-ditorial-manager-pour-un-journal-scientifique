@@ -17,5 +17,6 @@ class Article extends Model
         'obj_pdf',
         'pic',
         'type',
+        'rev_article'
     ];
 }
