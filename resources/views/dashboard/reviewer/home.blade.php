@@ -4,16 +4,24 @@
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
 	<style>
-	.table {
+		.med{
+			margin-top:-20px
+		}
+	.table { 
+		margin-top:50px;
+		height:400px;
+		width:900px;
 		border-spacing: 0 15px;
 	}
 
 	i {
-		font-size: 1rem !important;
+		font-size: 10rem ;
 	}
 
 	.table tr {
 		border-radius: 20px;
+		font-size: 20px;
+		
 	}
 
 	tr td:nth-child(n+5),
@@ -31,9 +39,9 @@
  
 @endsection
 @section('content')
-
-<div class="flex items-center justify-center min-h-screen bg-gray-900">
-	<div class="col-span-12">
+<div class="med">
+<div class="flex  justify-center min-h-screen bg-gray-900">
+	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
@@ -46,24 +54,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="bg-gray-800">
+					<tr class="bg-gray-800" style="">
 						<td class="p-3">
 							<div class="flex align-items-center">
-								<img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
+							<img class="rounded-circle  h20 w-20   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
 								<div class="ml-3">
 									<div class="">Appple</div>
 									<div class="text-gray-500">mail@rgmail.com</div>
 								</div>
 							</div>
 						</td>
-						<td class="p-3">
+						<td class="p-3 ">
 							Technology
 						</td>
 						<td class="p-3 font-bold">
 							200.00$
 						</td>
-						<td class="p-3">
+						<td class="fex p-3">
 							<span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+							<span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+
 						</td>
 						<td class="p-3 ">
 							<a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
@@ -80,7 +90,7 @@
 					<tr class="bg-gray-800">
 						<td class="p-3">
 							<div class="flex align-items-center">
-								<img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
+							<img class="rounded-circle  h20 w-20   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
 								<div class="ml-3">
 									<div class="">Realme</div>
 									<div class="text-gray-500">mail@rgmail.com</div>
@@ -111,7 +121,7 @@
 					<tr class="bg-gray-800">
 						<td class="p-3">
 							<div class="flex align-items-center">
-								<img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
+								<img class="rounded-circle  h20 w-20   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
 								<div class="ml-3">
 									<div class="">Samsung</div>
 									<div class="text-gray-500">mail@rgmail.com</div>
@@ -145,7 +155,9 @@
 	</div>
 </div>
 
+</div>
 
+</div>
 
 
 <!-- jQuery -->
