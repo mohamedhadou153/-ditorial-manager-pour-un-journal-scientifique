@@ -252,6 +252,15 @@ class ArticleController extends Controller
         return view('dashboard.reviewer.article.creation_review')->with('articles',$articles);
     }
 
+    public function review_section(Request $request){
+        $req = $request->id;
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();
+        return view('dashboard.reviewer.article.review_section')->with('articles',$articles);
+    }
+
     public function SendToEditor(Request $request){
         $req = $request->id;
         $reviewer = auth::guard('reviewer')->user()->email;

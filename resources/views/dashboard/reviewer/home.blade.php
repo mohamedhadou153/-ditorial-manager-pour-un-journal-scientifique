@@ -79,7 +79,7 @@
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="flex align-items-center">
-							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
+							 <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image">
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>

@@ -86,11 +86,11 @@
 							</div>
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="3" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800 border ">{{$article->abstract}}</textarea>
+						<textarea id="autoShowHide" rows="1" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
 						</td>
-                        <form action="{{route('reviewer.SendToEditor')}}" method="get">
+                        <form action="{{route('reviewer.review-section')}}" method="get">
 						<td class="p-3">
-						<textarea id="" rows="3" cols="30" name="review"   class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800 border "></textarea>
+						<textarea id="" rows="1" cols="30" name="review"   class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  "></textarea>
 						</td>
 						<td class="ml-3">
 							{{$article->obj_pdf}}
