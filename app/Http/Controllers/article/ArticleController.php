@@ -264,7 +264,7 @@ class ArticleController extends Controller
     public function SendToEditor(Request $request){
         $req = $request->art_id;
         $reviewer = auth::guard('reviewer')->user()->email;
-        $id_article = $request->art_id;
+
         $review = $request->review;
 
         $rev = DB::table('articles')->select('rev_active')->where('id',$req)->get();
