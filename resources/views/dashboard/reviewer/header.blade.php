@@ -10,11 +10,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @vite('resources/css/app.css')
-<link href="/profile.css" rel="stylesheet"> 
+<link href="/profile.css" rel="stylesheet">
+@yield('style') 
 <style>
 	body {
 		background-image: linear-gradient(45deg, #7c9885, #b5b682);
-
 	}
     .form-inline {
         display: inline-block;
@@ -137,56 +137,6 @@
 		}
 	}
 </style>
-<style>
-	.main-body {
-    padding: 15px;
-	}
-	.card {
-		box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-	}
-
-	.card {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		min-width: 0;
-		word-wrap: break-word;
-		background-color: #fff;
-		background-clip: border-box;
-		border: 0 solid rgba(0,0,0,.125);
-		border-radius: .25rem;
-	}
-
-	.card-body {
-		flex: 1 1 auto;
-		min-height: 1px;
-		padding: 1rem;
-	}
-
-	.gutters-sm {
-		margin-right: -8px;
-		margin-left: -8px;
-	}
-
-	.gutters-sm>.col, .gutters-sm>[class*=col-] {
-		padding-right: 8px;
-		padding-left: 8px;
-	}
-	.mb-3, .my-3 {
-		margin-bottom: 1rem!important;
-	}
-
-	.bg-gray-300 {
-		background-color: #e2e8f0;
-	}
-	.h-100 {
-		height: 100%!important;
-	}
-	.shadow-none {
-		box-shadow: none!important;
-}
-</style>
-@yield('style')
 </head> 
 <body>
 <nav class="navbar navbar-default">
@@ -207,7 +157,7 @@
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
 				<ul class="dropdown-menu">					
 					<li><a href="{{route('reviewer.review-commande')}}">Review Commande</a></li>
-					<li><a href="{{route('reviewer.validation-review')}}">Validate Review</a></li>
+					<li><a href="{{route('reviewer.validation-section')}}">Validate Review</a></li>
 				</ul>
 			</li>
 		</ul>

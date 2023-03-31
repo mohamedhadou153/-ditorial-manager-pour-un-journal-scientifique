@@ -240,7 +240,7 @@ class ArticleController extends Controller
         ->select('*')
         ->where('id','=',$req)
         ->get();
-        return view('dashboard.reviewer.article.validate_review')->with('articles',$articles);  
+        return view('dashboard.reviewer.home')->with('articles',$articles);  
     }
 
     public function creation_review(Request $request){
@@ -262,26 +262,23 @@ class ArticleController extends Controller
     }
 
     public function SendToEditor(Request $request){
-        $req = $request->id;
+        $req = $request->art_id;
         $reviewer = auth::guard('reviewer')->user()->email;
-        $id_article = $request->id;
+        $id_article = $request->art_id;
         $review = $request->review;
 
-        $reviewer = DB::table('articles')->select('rev_active')->where('id',$req)->get();
-        foreach($reviewer as $reviewer){
+        $rev = DB::table('articles')->select('rev_active')->where('id',$req)->get();
+        foreach($rev as $rev){
           DB::table('articles')
-             ->where('id',$id_article)
+             ->where('id','=',$req)
              ->where('reviewer1Id', $reviewer)
-             ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$reviewer->rev_active.'dev1']);
+             ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev1']);
 
           DB::table('articles')
-             ->where('id',$id_article)
+             ->where('id','=',$req)
              ->where('reviewer2Id', $reviewer)
-             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$reviewer->rev_active.'dev2']);
+             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev2']);
         }
-        
-
-
         return view('dashboard.reviewer.home');
 
     }

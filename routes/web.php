@@ -86,12 +86,14 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
     Route::middleware(['guest:reviewer'])->group(function(){
         Route::view('/login','dashboard.reviewer.login')->name('login');
         Route::view('/register','dashboard.reviewer.register')->name('register');
+
         Route::post('/create',[ReviewerRegisterController::class,'create'])->name('create');
         Route::post('/dologin',[ReviewerRegisterController::class,'dologin'])->name('dologin');
         Route::post('/customLogin',[ReviewerRegisterController::class,'customLogin'])->name('customLogin');
     });
     Route::middleware(['auth:reviewer'])->group(function(){
         Route::view('/home','dashboard.Reviewer.home')->name('home');
+        Route::view('/validation-section','dashboard.reviewer.article.validate_review')->name('validation-section');
         Route::post('/logout',[ReviewerRegisterController::class,'logout'])->name('logout');
         Route::get('/review-commande',[ArticleController::class,'review_commande'])->name('review-commande');
         Route::get('/creation-review',[ArticleController::class,'creation_review'])->name('creation-review');
