@@ -1,7 +1,4 @@
-@extends('dashboard.reviewer.home')
-@section('style')
-<link href="/profile.css" rel="stylesheet">
-@endsection
+@extends('dashboard.reviewer.header')
 @section('content')
 @foreach($reviewer as $rev)
 
@@ -17,7 +14,7 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello {{$rev->last_name}}</h1>
+            <h1 class="display-2 text-white">Bonjour {{$rev->last_name}}</h1>
             <h4 class="text-white mt-0 mb-5 ">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</h4>
             <a href="{{route('reviewer.edit-profile')}}" class="btn btn-info">Edit profile</a>
           </div>

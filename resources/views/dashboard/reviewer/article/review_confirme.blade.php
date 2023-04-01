@@ -1,12 +1,13 @@
 @extends('dashboard.reviewer.header')
 @section('style')
+@vite('resources/css/app.css')
 <link
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
 <style>
-		.med{
-			margin-top:-20px
-		}
+			body {
+		background:#111824;
+	}
 	.table { 
 		margin-top:50px;
 		height:200px;
@@ -23,7 +24,10 @@
 		font-size: 20px;
 		
 	}
-
+	.table tr td{
+		
+		text-align: center;
+	}
 	tr td:nth-child(n+6),
 	tr th:nth-child(n+6) {
 		border-radius: 0 .625rem .625rem 0;
@@ -84,7 +88,7 @@
                 @if($article->rev_des1 == 'accept')
 					<tr class="bg-gray-800" >
 						<td class="p-3">
-							<div class="flex align-items-center">
+							<div class="">
 							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
@@ -98,7 +102,7 @@
 							{{$article->type}}
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="1" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
+						<textarea id="autoShowHide" rows="1" cols="30" readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
 						</td>
 						 <td class="p-3">
 						 <textarea id="" rows="1" cols="30"    class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->review1}}</textarea>

@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="/css/boot.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-@vite('resources/css/app.css')
-<link href="/profile.css" rel="stylesheet">
 
 <style>
 	body {
@@ -137,6 +135,7 @@
 		}
 	}
 </style>
+<link href="/profile.css" rel="stylesheet">
 @yield('style') 
 </head> 
 <body>
