@@ -491,7 +491,12 @@
 	</style>
 @endsection
 @section('content')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth; $editor=auth::guard('editor')->user()->email; $articles = DB::table('articles')->select('*')
+->where('etat','libre')
+->get();
 
+
+?>
 
 	<div class="button-container">
 
@@ -510,19 +515,20 @@
 	<section class="splide animate__animated animate__zoomIn" id="mydiv" aria-label="Splide Basic HTML Example" style="display:none" >
 	<div class="splide__track">
 			<ul class="splide__list">
+				@foreach($articles as $article)
 				<li class="splide__slide">  
 					<article>
 						<div class="article-wrapper">
 						<figure>
-							<img src="https://picsum.photos/id/1011/800/450" alt="" />
+							<img src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="" />
 						</figure>
 						<div class="article-body">
-							<h2>This is some title</h2>
+							<h2>{{$article->title}}</h2>
 							<p>
-							Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+							{{$article->abstract}}
 							</p>
 							<h5>to read more:</h5>
-							<div class="med" >
+							<div class="med">
 							<a href="#" download><span>Download</span><span>PDF</span></a>
 							</div>
 							
@@ -530,6 +536,7 @@
 						</div>
 					</article>
 				</li>
+				@endforeach
 				
 			</ul>
 	</div>
@@ -549,11 +556,30 @@
 	</div>
 	<script src="/splide.min.js"></script>
 		<script>
-			var splide = new Splide( '.splide', {
-		type    : 'loop',
-		perPage : 5,
-		autoplay: true,
-		} );
+var splide = new Splide( '.splide', {
+  perPage: 5,
+  gap    : '2rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap    : '.7rem',
+      height : '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap    : '.7rem',
+      height : '6rem',
+    },
+  },
+} );
+
+splide.mount();;
+
+splide.mount();;
+
+splide.mount();
+
+splide.mount();
 
 		splide.mount();
 		function affiche(){
