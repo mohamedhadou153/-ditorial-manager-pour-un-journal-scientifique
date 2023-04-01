@@ -488,6 +488,7 @@
 						
 						
 				}
+				
 	</style>
 @endsection
 @section('content')
@@ -511,6 +512,7 @@
 		</button>
 
 	</div>
+	
 
 	<section class="splide animate__animated animate__zoomIn" id="mydiv" aria-label="Splide Basic HTML Example" style="display:none" >
 	<div class="splide__track">
@@ -540,18 +542,6 @@
 				
 			</ul>
 	</div>
-	</section>
-
-	<main>
-
-
-		@yield('libre_article')
-		@yield('validation_article')
-		@yield('show_review')
-		@yield('article_traitement')
-		@yield('sed_to_reviewer')
-		@yield('profile')
-	</main>
 	<div>
 	</div>
 	<script src="/splide.min.js"></script>
@@ -587,7 +577,7 @@ splide.mount();
 			if(x.style.display=="none")
 			x.style.display="block";
 			else
-			x.style.display="none"
+			x.style.display="none";
 		}
 	</script>
 @endsection
