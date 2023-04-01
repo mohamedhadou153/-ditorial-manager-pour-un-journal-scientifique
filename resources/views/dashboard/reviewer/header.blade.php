@@ -158,8 +158,8 @@
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
 				<ul class="dropdown-menu">		
 				    <li><a href="{{route('reviewer.review-commande')}}">invitation</a></li>			
-					<li><a href="{{route('reviewer.review-commande')}}">en attente</a></li>
-					<li><a href="{{route('reviewer.validation-section')}}">decision final</a></li>
+					<li><a href="{{route('reviewer.validation-section')}}">en attente</a></li>
+					<li><a href="{{route('reviewer.review-confirme')}}">decision final</a></li>
 				</ul>
 			</li>
 		</ul>
