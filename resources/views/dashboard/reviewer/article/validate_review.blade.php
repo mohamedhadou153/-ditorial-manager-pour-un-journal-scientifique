@@ -55,9 +55,14 @@
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email.'accept'; $reviewer=auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
 		->where('rev_active','LIKE',"%{$rev}%")
-        ->where('reviewer1Id','=',$reviewer)->orwhere('reviewer2Id','=',$reviewer)
+		->where('rev_active','NOT LIKE',"%dev1%")
+        ->where('reviewer1Id','=',$reviewer)
+		->orwhere('reviewer2Id','=',$reviewer)
+		->where('etat','traitement')
+		->where('rev_active','LIKE',"%{$rev}%")
+		->where('rev_active','NOT LIKE',"%dev2%")
         ->get();?>
-<div class="med">
+<div class="med bg-gray-900">
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">

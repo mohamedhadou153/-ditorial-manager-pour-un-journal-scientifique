@@ -250,7 +250,7 @@ class ArticleController extends Controller
         foreach($reviewer as $reviewer){
         DB::table('articles')
         ->where('id',$req)
-        ->update(['rev_active'=>$reviewer->rev_active.$rev.'refuse']);
+        ->update(['rev_active'=>$reviewer->rev_active.$rev.'refusedev']);
         }
         $articles = DB::table('articles')
         ->select('*')
@@ -288,12 +288,12 @@ class ArticleController extends Controller
           DB::table('articles')
              ->where('id','=',$req)
              ->where('reviewer1Id', $reviewer)
-             ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev1']);
+             ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev1','rev_des1'=>$request->rev_des]);
 
           DB::table('articles')
              ->where('id','=',$req)
              ->where('reviewer2Id', $reviewer)
-             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev2']);
+             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev2','rev_des2'=>$request->rev_des]);
         }
         return view('dashboard.reviewer.home');
 

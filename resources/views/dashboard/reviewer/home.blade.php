@@ -3,14 +3,14 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
-	<style>
+<style>
 		.med{
 			margin-top:-20px
 		}
 	.table { 
 		margin-top:50px;
 		height:200px;
-		width:1200px;
+		width:1300px;
 		border-spacing: 0 15px;
 	}
 
@@ -24,8 +24,8 @@
 		
 	}
 
-	tr td:nth-child(n+5),
-	tr th:nth-child(n+5) {
+	tr td:nth-child(n+6),
+	tr th:nth-child(n+6) {
 		border-radius: 0 .625rem .625rem 0;
 	}
 
@@ -40,15 +40,16 @@
 
 <style>
 
-#autoShowHide {
-  text-align: center;
-  width: 400px; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+	#autoShowHide {
+	text-align: center;
+	width: 400px; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
 
-#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
+	#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
 </style>
+
 <style>
 	
 .alert {
@@ -178,9 +179,13 @@
         ->where('etat','traitement')
 		->where('rev_active','NOT LIKE',"%{$rev1}%")
 		->where('rev_active','NOT LIKE',"%{$rev2}%")
-        ->where('reviewer1Id','=',$reviewer)->orwhere('reviewer2Id','=',$reviewer)
+        ->where('reviewer1Id','=',$reviewer)
+		->orwhere('reviewer2Id','=',$reviewer)
+		->where('etat','traitement')
+		->where('rev_active','NOT LIKE',"%{$rev1}%")
+		->where('rev_active','NOT LIKE',"%{$rev2}%")
         ->get();?>
-<div class="med">
+<div class="med bg-gray-900">
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">
@@ -188,18 +193,6 @@
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
 						<th colspan="5" style="border-radius: 0px;font-size: 50px;">invitations </th>
-					</tr>
-					<tr class="bg-gray-900">
-					<div class="container bootstrap snippets bootdey">
-					<div class="alert alert-success alert-white rounded">
-                      <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
-                      <div class="icon">
-                          <i class="fa fa-check"></i>
-                      </div>
-                      <strong>Success!</strong> 
-                         Changes has been saved successfully!
-                    </div> 
-					</div>
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>
@@ -227,7 +220,7 @@
 							{{$article->type}}
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="3" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800 border ">{{$article->abstract}}</textarea>
+						<textarea id="autoShowHide" rows="1" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
 						</td>
 
 						<td class="ml-3 ">

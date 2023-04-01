@@ -140,11 +140,13 @@ input:active+.design::after {
 
 @endsection
 @section('content')
+<?php use Illuminate\Support\Facades\Auth;  $reviewer = auth::guard('reviewer')->user()->email;?>
 @foreach ($articles as $article)
+
 
 <div class="row" style="width:100%;height:95.5%;border:5px solid black;margin:0">
     <div class="col-md-6" id="div1"style="width:70%;height:100%;padding:0">
-<embed src="{{asset('/storage/pdf/articles/'.$article->obj_pdf.'#toolbar=0')}}"  aria-readonly="true" frameborder="0" style="width:100%;height:100%;border-right:5px solid gray;"/>
+<embed src="{{asset('/storage/pdf/articles/'.$article->obj_pdf)}}"  aria-readonly="true" frameborder="0" style="width:100%;height:100%;border-right:5px solid gray;"/>
 
     </div>
     <div class="col-md-6" id="div2"style="width:30%;padding:0">
@@ -153,30 +155,30 @@ input:active+.design::after {
 
     <div class="container" style="padding:0">
          
-                <form id="algin-form"style="height:100%">
+                <form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:100%">
                     <div class="form-group">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
                         <h4 style="font-size:20zpx">Donner ton point de vue</h4>
-                        <textarea name="msg" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white"></textarea>
+                        <textarea name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white"></textarea>
                     </div>
                    
                  
   <h1>ta decision final</h1>
 
 <label>
-  <input type="radio" name="dark" checked>
+  <input type="radio" name="rev_des" value="accept" checked>
   <span class="design"></span>
   <span class="text">accepter l'article</span>
 </label>
 
 <label>
-  <input type="radio" name="dark">
+  <input type="radio" name="rev_des" value="accept avec revision">
   <span class="design"></span>
   <span class="text">accepter l'article avec une révision</span>
 </label>
 
 <label>
-  <input type="radio" name="dark">
+  <input type="radio" name="rev_des" value="refuse">
   <span class="design"></span>
   <span class="text">refuser l'article</span>
 </label>
@@ -185,7 +187,8 @@ input:active+.design::after {
 
                     
                     <div class="form-group">
-                        <button type="button" id="post" class="btn">envoyer votre point vue</button>
+                      <input type="hidden" name="art_id" value="{{$article->id}}">
+                        <button type="submit" id="post" class="btn">envoyer votre point vue</button>
                     </div>
                 </form>
            
