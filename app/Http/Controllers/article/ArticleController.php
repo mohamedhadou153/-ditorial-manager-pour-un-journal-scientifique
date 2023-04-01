@@ -67,6 +67,7 @@ class ArticleController extends Controller
             $article->title = $request->title;
             $article->category = $category;
             $article->abstract = $request->abstract;
+            $article->nbrfigure = $request->nbrfigure;
             $article->obj_pdf = $pdf_name;
             $article->pic = $image_name;
             $article->authorId = auth::user()->email;
@@ -234,7 +235,22 @@ class ArticleController extends Controller
         foreach($reviewer as $reviewer){
         DB::table('articles')
         ->where('id',$req)
-        ->update(['rev_active'=>$reviewer->rev_active.$rev]);
+        ->update(['rev_active'=>$reviewer->rev_active.$rev.'accept']);
+        }
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();
+        return view('dashboard.reviewer.home')->with('articles',$articles);  
+    }
+    public function validation_refuse_review(Request $request){
+        $rev = auth::guard('reviewer')->user()->email;
+        $req = $request->id;
+        $reviewer = DB::table('articles')->select('rev_active')->where('id',$req)->get();
+        foreach($reviewer as $reviewer){
+        DB::table('articles')
+        ->where('id',$req)
+        ->update(['rev_active'=>$reviewer->rev_active.$rev.'refuse']);
         }
         $articles = DB::table('articles')
         ->select('*')

@@ -94,10 +94,12 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
     Route::middleware(['auth:reviewer'])->group(function(){
         Route::view('/home','dashboard.Reviewer.home')->name('home');
         Route::view('/validation-section','dashboard.reviewer.article.validate_review')->name('validation-section');
+        Route::view('/invitation-confirmer','dashboard.reviewer.article.review_confirme')->name('review-confirme');
         Route::post('/logout',[ReviewerRegisterController::class,'logout'])->name('logout');
         Route::get('/review-commande',[ArticleController::class,'review_commande'])->name('review-commande');
         Route::get('/creation-review',[ArticleController::class,'creation_review'])->name('creation-review');
         Route::get('/validation-review',[ArticleController::class,'validation_review'])->name('validation-review');
+        Route::get('/validation-refuse-review',[ArticleController::class,'validation_refuse_review'])->name('validation-refuse-review');
         Route::get('/review-section',[ArticleController::class,'review_section'])->name('review-section');
         Route::get('/SendToEditor',[ArticleController::class,'SendToEditor'])->name('SendToEditor');
         Route::get('/profile',[ReviewerRegisterController::class,'profile'])->name('profile');

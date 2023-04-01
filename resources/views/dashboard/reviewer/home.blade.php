@@ -174,10 +174,11 @@
  
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev1 = auth::guard('reviewer')->user()->email.'accept';$rev2 = auth::guard('reviewer')->user()->email.'refuse'; $reviewer=auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
-		->where('rev_active','NOT LIKE',"%{$rev}%")
-        ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
+		->where('rev_active','NOT LIKE',"%{$rev1}%")
+		->where('rev_active','NOT LIKE',"%{$rev2}%")
+        ->where('reviewer1Id','=',$reviewer)->orwhere('reviewer2Id','=',$reviewer)
         ->get();?>
 <div class="med">
 <div class="flex  justify-center min-h-screen bg-gray-900">
@@ -213,7 +214,7 @@
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="flex align-items-center">
-							 <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image">
+							 <!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
@@ -235,7 +236,7 @@
 							<input type="hidden" name="id" value="{{$article->id}}">
 							<input type="submit" value="Accept" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
 						</form>
-						<form action="">
+						<form action="{{route('reviewer.validation-refuse-review')}}">
 							<input type="hidden" name="id" value="{{$article->id}}">
 							<input type="submit" value="Refuse" style="text-decoration: none;" class="bg-red-400 text-gray-50 rounded-md px-2"></input>
 						</form>

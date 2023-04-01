@@ -358,7 +358,7 @@
 					</select>
 					</span> 
 				</div>
-                <div class="form-row"> <input type="text" class="form-control" name="Nombre de figures" placeholder="Nombre de figures"> </div>
+                <div class="form-row"> <input type="text" class="form-control" name="nbrfigure" placeholder="Nombre de figures"> </div>
             </section> <!-- SECTION 2 -->
             <h4></h4>
             <section>

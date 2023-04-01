@@ -52,10 +52,10 @@
  
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email.'accept'; $reviewer=auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
 		->where('rev_active','LIKE',"%{$rev}%")
-        ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
+        ->where('reviewer1Id','=',$reviewer)->orwhere('reviewer2Id','=',$reviewer)
         ->get();?>
 <div class="med">
 <div class="flex  justify-center min-h-screen bg-gray-900">
@@ -64,13 +64,13 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">invitations </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">invitations accepter </th>
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>
+						<th class="p-3 ">Category</th>
+						<th class="p-3 ">Type</th>
 						<th class="p-3 ">Abstract</th>
-						<th class="p-3 ">Review</th>
-						<th class="p-3 ">Article pdf</th>
 						<th class="p-3 ">Action</th>
 					</tr>
 				</thead>
@@ -86,16 +86,23 @@
 							</div>
 						</td>
 						<td class="p-3">
+							<div class="flex align-items-center">
+								<div class="ml-3">
+									<div class="">{{$article->category}}</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							<div class="flex align-items-center">
+								<div class="ml-3">
+									<div class="">{{$article->type}}</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
 						<textarea id="autoShowHide" rows="1" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
 						</td>
                         <form action="{{route('reviewer.review-section')}}" method="get">
-						<td class="p-3">
-						<textarea id="" rows="1" cols="30" name="review"   class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  "></textarea>
-						</td>
-						<td class="ml-3">
-							{{$article->obj_pdf}}
-						</td>
-
 						<td class="ml-3 ">
 						<div style="display:flex; justify-content:center;">
 						
