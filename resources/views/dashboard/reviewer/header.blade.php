@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @vite('resources/css/app.css')
 <link href="/profile.css" rel="stylesheet">
-@yield('style') 
+
 <style>
 	body {
 		background-image: linear-gradient(45deg, #7c9885, #b5b682);
@@ -137,9 +137,10 @@
 		}
 	}
 </style>
+@yield('style') 
 </head> 
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default"style="margin-bottom:0px" >
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -155,9 +156,10 @@
 			<li class="active"><a href="/">Home</a></li>
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="{{route('reviewer.review-commande')}}">Review Commande</a></li>
-					<li><a href="{{route('reviewer.validation-section')}}">Validate Review</a></li>
+				<ul class="dropdown-menu">		
+				    <li><a href="{{route('reviewer.review-commande')}}">invitation</a></li>			
+					<li><a href="{{route('reviewer.review-commande')}}">en attente</a></li>
+					<li><a href="{{route('reviewer.validation-section')}}">decision final</a></li>
 				</ul>
 			</li>
 		</ul>
