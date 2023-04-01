@@ -526,7 +526,7 @@
 						</figure>
 						<div class="article-body">
 							<h2>{{$article->title}}</h2>
-							<p>
+							<p style="font-size:medium;">
 							{{$article->abstract}}
 							</p>
 							<h5>to read more:</h5>
