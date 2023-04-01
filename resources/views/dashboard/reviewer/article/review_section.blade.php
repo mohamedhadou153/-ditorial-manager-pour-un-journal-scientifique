@@ -1,6 +1,7 @@
 
 @extends('dashboard.reviewer.header')
 @section('style')
+
 <style>
 body{
     background-color: rgba(16, 46, 46, 0.973);

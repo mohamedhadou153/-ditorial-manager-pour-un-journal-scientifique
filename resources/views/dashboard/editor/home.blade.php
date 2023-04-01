@@ -234,6 +234,7 @@
 
 	</style>
 	<style>
+		
         article {
         --img-scale: 1.001;
         --title-color: black;
@@ -385,7 +386,7 @@
     </style>
     <style>
 						/* mockup code */
-
+		
 						.med a {
 						background: #ffffff;
 						border: solid 1px #e6e6e6;
@@ -489,6 +490,11 @@
 						
 				}
 				
+	</style>
+	<style>
+						body{
+			background:#111824;
+		}
 	</style>
 @endsection
 @section('content')

@@ -1,12 +1,13 @@
 @extends('dashboard.reviewer.header')
 @section('style')
+@vite('resources/css/app.css')
 <link
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
-	<style>
-		.med{
-			margin-top:-20px
-		}
+<style>
+		body {
+		background:#111824;
+	}
 	.table { 
 		margin-top:50px;
 		height:200px;
@@ -22,6 +23,10 @@
 		border-radius: 20px;
 		font-size: 20px;
 		
+	}
+	.table tr td{
+		
+		text-align: center;
 	}
 
 	tr td:nth-child(n+5),
@@ -40,14 +45,14 @@
 
 <style>
 
-#autoShowHide {
-  text-align: center;
-  width: 400px; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+	#autoShowHide {
+	text-align: center;
+	width: 400px; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
 
-#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
+	#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
 </style>
  
 @endsection
@@ -63,7 +68,7 @@
 		->where('rev_active','NOT LIKE',"%dev2%")
         ->get();?>
 <div class="med bg-gray-900">
-<div class="flex  justify-center min-h-screen bg-gray-900">
+<div class="flex  justify-center  bg-gray-900">
 	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
@@ -83,7 +88,7 @@
 				@foreach ($articles as $article)
 					<tr class="bg-gray-800" >
 						<td class="p-3">
-							<div class="flex align-items-center">
+							<div class="">
 							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
@@ -91,21 +96,21 @@
 							</div>
 						</td>
 						<td class="p-3">
-							<div class="flex align-items-center">
+							<div class="">
 								<div class="ml-3">
 									<div class="">{{$article->category}}</div>
 								</div>
 							</div>
 						</td>
 						<td class="p-3">
-							<div class="flex align-items-center">
+							<div class="">
 								<div class="ml-3">
 									<div class="">{{$article->type}}</div>
 								</div>
 							</div>
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="1" cols="30" readonly  class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
+						<textarea id="autoShowHide" rows="1" cols="30" readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
 						</td>
                         <form action="{{route('reviewer.review-section')}}" method="get">
 						<td class="ml-3 ">
