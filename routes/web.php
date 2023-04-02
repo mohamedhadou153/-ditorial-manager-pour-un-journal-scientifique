@@ -64,9 +64,12 @@ Route::prefix('editor')->name('editor.')->group(function(){
     });
     Route::middleware(['auth:editor'])->group(function(){
         Route::view('/home','dashboard.editor.home')->name('home');
+        Route::view('/revision-complete','dashboard.editor.article.revesion_complete')->name('revision-complete');
+        Route::view('/revision-incomplete','dashboard.editor.article.revesion-incomplete')->name('revision-incomplete');
+        Route::view('/aucune-réponse','dashboard.editor.article.aucune_réponse')->name('aucune-réponse');
         Route::post('/logout',[EditorRegisterController::class,'logout'])->name('logout');
         Route::get('/libre-article',[ArticleController::class,'show_libre_article'])->name('libre-article');
-        Route::get('/validation-article',[ArticleController::class,'validation_article'])->name('validation-article');
+        Route::get('/validation-article/{id}',[ArticleController::class,'validation_article'])->name('validation-article');
         Route::get('/update-etat',[ArticleController::class,'update_etat'])->name('update-etat');
         Route::get('/SendToReviewers',[ArticleController::class,'SendToReviewers'])->name('SendToReviewers');
         Route::get('/show-review',[ArticleController::class,'Show_Review'])->name('show-review');

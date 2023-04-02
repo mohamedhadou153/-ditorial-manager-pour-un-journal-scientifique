@@ -57,6 +57,18 @@
  
 @endsection
 @section('content')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
+        ->where('etat','traitement')
+        ->where('editorId',auth::guard('editor')->user()->email)
+        ->where('reviewer1Id','!=', null)
+        ->where('rev_active','NOT LIKE',"%dev%")
+        ->where('rev_active','LIKE',"%.com%")
+        ->orwhere('reviewer2Id','=', null)
+        ->where('etat','traitement')
+        ->where('rev_active',' NOT LIKE',"%dev%")
+        ->where('rev_active','LIKE',"%.com%")
+        ->where('editorId',auth::guard('editor')->user()->email)
+        ->get();?>
 <div class="med bg-gray-900">
 <div class="flex  justify-center  bg-gray-900">
 	<div class="col-span-120">
@@ -64,7 +76,7 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Nouvelles soumissions </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">soumissions avec révisions requis incompléte </th>
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>

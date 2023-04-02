@@ -139,35 +139,45 @@ class ArticleController extends Controller
         ->where('editorId','=',$req)
         ->get();
         
-        return view('dashboard.editor.article.traitement_article')->with('articles',$articles)->with('req',$req);
+        return view('dashboard.editor.article.validation_article')->with('articles',$articles)->with('req',$req);
     }
 
-    public function validation_article(Request $request){
+    public function validation_article($id){
         $editorId = auth::guard('editor')->user()->email;
-        $req = $request->id;
-        $req1 = $request->e;
-        $article = DB::table('articles')
-        ->select('*')
-        ->where('id','=',$req)
-        ->get();
+        $req = $id;     
 
         DB::table('articles')->where('id',$req)
         ->update(['etat'=> 'traitement','updated_at'=>date('d-m-y h:i:s')]);
 
         DB::table('articles')->where('id',$req)
         ->update(['editorId'=> $editorId]);
-        return view('dashboard.editor.article.validation_article')->with('articles',$article);
+
+        $article = DB::table('articles')
+        ->select('*')
+        ->where('etat','=','traitement')
+        ->where('editorId','=',$editorId)
+        ->get();
+        return view('dashboard.editor.home')->with('articles',$article);
     }
 
     public function send_to_reviewers(Request $request){
         $req1 = auth::guard('editor')->user()->email;
         $req = $request->id;
+
         DB::table('articles')->where('id',$req)
         ->update(['etat'=> 'traitement','updated_at'=>date('d-m-y h:i:s')]);
+
         DB::table('articles')->where('id',$req)
         ->update(['editorId'=> $req1]);
+
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();
+
         $reviewers = DB::table('reviewers')->select('*')->where('status','active')->get();
-        return view('dashboard.editor.article.send_to_reviewers')->with('id',$req)->with('reviewers',$reviewers);
+
+        return view('dashboard.editor.article.send_to_reviewers')->with('id',$req)->with('reviewers',$reviewers)->with('articles',$articles);
     }
 
     public function update_etat(Request $request){
