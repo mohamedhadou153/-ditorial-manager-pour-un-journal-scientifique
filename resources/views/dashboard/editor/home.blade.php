@@ -518,7 +518,7 @@
 
 	
 
-		<button class="unique-button-class" href="{{route('editor.final')}}" onclick="affiche2()">
+		<button class="unique-button-class"  onclick="affiche2()">
 			<div class="lazyload" style="background-image: url(https://thumbs.dreamstime.com/b/r%C3%A9sultats-un-effort-de-preuve-de-r%C3%A9sultat-final-de-r%C3%A9ponse-de-r%C3%A9sultats-de-panneau-routier-de-mani%C3%A8re-42237815.jpg);">
 			<span></span>
 			</div>
