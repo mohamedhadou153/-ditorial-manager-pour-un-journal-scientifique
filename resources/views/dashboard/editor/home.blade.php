@@ -58,7 +58,7 @@
 			.button-container {
 			width: 100%;
 			max-width: var(--button-container-max-width);
-			margin: 0 ;
+			margin: 20px ;
 			}
 
 			/* BUTTON MARK-UP 
@@ -326,15 +326,9 @@
         box-sizing: border-box;
         }
 
-        body {
-        margin: 0;
-        font-family: "Figtree", sans-serif;
-        font-size: 1.2rem;
-        line-height: 1.6rem;
-        background-image: linear-gradient(45deg, #7c9885, #b5b682);
-        min-height: 100vh;
-        }
-
+		.splide__list{
+					height:450px;
+				}
         .articles {
         display: grid;
         max-width: 1200px;
@@ -383,117 +377,58 @@
         white-space: nowrap; 
         width: 1px;
         }
-    </style>
-    <style>
-						/* mockup code */
-		
-						.med a {
-						background: #ffffff;
-						border: solid 1px #e6e6e6;
-						border-radius: 2px;
-						display: inline-block;
-						height: 50px;
-						line-height: 100px;
-						margin: 5px;
-						position: relative;
-						text-align: right;
-						
-						width: 80px;
-				}
-
-				.med a span {
-						background: #f2594b;
-						border-radius: 4px;
-						color: #ffffff;
-						display: inline-block;
-						font-size: 11px;
-						font-weight: 700;
-						line-height: normal;
-						padding: 3px;
-						position: relative;
-						text-transform: uppercase;
-						z-index: 1;
-				}
-
-				.med a span:last-child {
-						margin-left: -20px;
-				}
-
-				.med a:before,
-				.med a:after {
-						background: #ffffff;
-						border: solid 3px #9fb4cc;
-						border-radius: 4px;
-						content: '';
-						display: block;
-						height: 35px;
-						left: 50%;
-						margin: -17px 0 0 -12px;
-						position: absolute;
-						top: 50%;
-						/*transform:translate(-50%,-50%);*/
-						
-						width: 25px;
-				}
-
-				.med a:hover:before,
-				.med a:hover:after {
-						background: #e2e8f0;
-				}
-				/*a:before{transform:translate(-30%,-60%);}*/
-
-				.med a:before {
-						margin: -23px 0 0 -5px;
-				}
-
-				.med a:hover {
-						background: #e2e8f0;
-						border-color: #9fb4cc;
-				}
-
-				.med a:active {
-						background: #dae0e8;
-						box-shadow: inset 0 2px 2px rgba(0, 0, 0, .25);
-				}
-
-				.med a span:first-child {
-						display: none;
-				}
-
-				.med a:hover span:first-child {
-						display: inline-block;
-				}
-
-				.med a:hover span:last-child {
-						display: none;
-				}
-				/* custom code for the demo */
-
-
-				.med {
-						height: 100%;
-						width: 100%;
-				}
-
-				.med  {
-						display: table;
-				}
-
-				.med  {
-					background: #f5f5f5;
-						color: #ffffff;
-						display: table-cell;
-						margin: 0;
-						text-align: center;
-						vertical-align: middle;
-						
-						
-				}
-				
-	</style>
+    </style>  
 	<style>
-						body{
+		body{
 			background:#111824;
+		}
+		
+		.butt {
+			
+			margin:10px;
+		}
+		.butt ul{
+			margin:50px;
+			margin-top:60px;
+			list-style: none;
+		}
+		.butt ul li{
+			margin:50px;
+			
+		}
+		buttono {
+			margin:10px;
+					margin-left:50px;
+		--c:  #229091; /* the color*/
+		
+		box-shadow: 0 0 0 .1em inset var(--c); 
+		--_g: linear-gradient(var(--c) 0 0) no-repeat;
+		background: 
+			var(--_g) calc(var(--_p,0%) - 100%) 0%,
+			var(--_g) calc(200% - var(--_p,0%)) 0%,
+			var(--_g) calc(var(--_p,0%) - 100%) 100%,
+			var(--_g) calc(200% - var(--_p,0%)) 100%;
+		background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+		outline-offset: .1em;
+		transition: background-size .4s, background-position 0s .4s;
+		}
+		buttono:hover {
+		--_p: 100%;
+		transition: background-position .4s, background-size 0s;
+		}
+		buttono:active {
+		box-shadow: 0 0 9e9q inset #0009; 
+		background-color: var(--c);
+		color: #fff;
+		}
+
+		buttono {
+		font-family: system-ui, sans-serif;
+		font-size: 3.5rem;
+		cursor: pointer;
+		padding: .1em .6em;
+		font-weight: bold;  
+		border: none;
 		}
 	</style>
 @endsection
@@ -510,44 +445,87 @@
 	
 
 		<button class="unique-button-class" onclick="affiche()">
-			<div class="lazyload" style="background-image: url(https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg);">
+			<div class="lazyload" style="background-image: url(https://static.vecteezy.com/ti/vecteur-libre/p1/15397574-vecteur-d-icone-de-loupe-trouver-loupe-chercher-lentille-loupe-verre-signe-de-symbole-de-zoom-gratuit-vectoriel.jpg);">
 			<span></span>
 			</div>
-			<h2>Click Me!</h2>
-			<h3>transform scale press effect</h3>
+			<h2>Chercher!</h2>
+			<h3>Ici tu trouvera des nouveaux articles libres</h3>
 		</button>
 
 	</div>
-	
-
 	<section class="splide animate__animated animate__zoomIn" id="mydiv" aria-label="Splide Basic HTML Example" style="display:none" >
 	<div class="splide__track">
 			<ul class="splide__list">
 				@foreach($articles as $article)
 				<li class="splide__slide">  
-					<article>
-						<div class="article-wrapper">
-						<figure>
-							<img src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="" />
-						</figure>
-						<div class="article-body">
-							<h2>{{$article->title}}</h2>
-							<p>
-							{{$article->abstract}}
-							</p>
-							<h5>to read more:</h5>
-							<div class="med">
-							<a href="#" download><span>Download</span><span>PDF</span></a>
-							</div>
-							
-						</div>
-						</div>
-					</article>
+
+
+						<section class="articles">
+							<article>
+								<div class="article-wrapper">
+								<figure>
+								<img src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="" />
+								</figure>
+								<div class="article-body">
+									<h2>T{{$article->title}}</h2>
+									<p>
+									Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+									</p>
+									<a href="#" class="read-more">Read more <span class="sr-only">about this is some title</span>
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+										<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+									</svg>
+									</a>
+								</div>
+								</div>
+							</article>
+						</section >
+
 				</li>
 				@endforeach
 				
 			</ul>
 	</div>
+	</section>
+	<div class="button-container">
+
+	
+
+		<button class="unique-button-class" onclick="affiche1()">
+			<div class="lazyload" style="background-image: url(https://www.mundiapolis.ma/sites/default/files/2021-05/Gestion%20du%20temps_0.jpg);">
+			<span></span>
+			</div>
+			<h2>Gérer!</h2>
+			<h3>Articles sans décision </h3>
+		</button>
+
+	</div>
+	
+	<div class="butt" id="butt" style="display:none">
+	<ul>
+		<li> <buttono>Nouvelles soumissions</buttono></li>
+		<li> <buttono>soumissions avec révisions requis compléte</buttono></li>
+		<li> <buttono>Soumissions avec révisions requis incompléte</buttono></li>
+		<li> <buttono>Réviseur invité - "aucune réponse"</buttono></li>
+	</ul>
+	   
+	</div>
+	<div class="button-container">
+
+	
+
+		<button class="unique-button-class" onclick="affiche2()">
+			<div class="lazyload" style="background-image: url(https://thumbs.dreamstime.com/b/r%C3%A9sultats-un-effort-de-preuve-de-r%C3%A9sultat-final-de-r%C3%A9ponse-de-r%C3%A9sultats-de-panneau-routier-de-mani%C3%A8re-42237815.jpg);">
+			<span></span>
+			</div>
+			<h2>Résultats!</h2>
+			<h3>Articles avec décision final</h3>
+		</button>
+
+	</div>
+	
+
+
 	<div>
 	</div>
 	<script src="/splide.min.js"></script>
@@ -584,6 +562,27 @@ splide.mount();
 			x.style.display="block";
 			else
 			x.style.display="none";
+			y=document.getElementById("butt");
+			if(y.style.display=="block")
+			y.style.display="none";
+		}
+		function affiche1(){
+			x=document.getElementById("mydiv");
+			if(x.style.display=="block")
+			x.style.display="none";
+			y=document.getElementById("butt");
+			if(y.style.display=="none")
+			y.style.display="block";
+			else
+			y.style.display="none";
+		}
+		function affiche2(){
+			x=document.getElementById("mydiv");
+			y=document.getElementById("butt");
+			if(x.style.display=="block")
+			x.style.display="none";
+			if(y.style.display=="block")
+			y.style.display="none";
 		}
 	</script>
 @endsection
