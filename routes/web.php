@@ -64,6 +64,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
     });
     Route::middleware(['auth:editor'])->group(function(){
         Route::view('/home','dashboard.editor.home')->name('home');
+        Route::view('/article-validee','dashboard.editor.article.final')->name('final');
         Route::post('/logout',[EditorRegisterController::class,'logout'])->name('logout');
         Route::get('/libre-article',[ArticleController::class,'show_libre_article'])->name('libre-article');
         Route::get('/validation-article',[ArticleController::class,'validation_article'])->name('validation-article');
