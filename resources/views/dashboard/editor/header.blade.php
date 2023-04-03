@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/boot.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -21,9 +21,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <style>
-        body {
-            background-image: linear-gradient(45deg, #7c9885, #b5b682);
-        }
+        		body {
+			background:#111824;
+		}
         .form-inline {
             display: inline-block;
         }
@@ -33,6 +33,7 @@
             padding-right: 16px;
             border-bottom: 1px solid #d6d6d6;
             box-shadow: 0 0 4px rgba(0,0,0,.1);
+            margin:0px;
         }
         .nav img {
             border-radius: 50%;

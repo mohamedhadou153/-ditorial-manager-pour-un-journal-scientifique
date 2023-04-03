@@ -1,59 +1,59 @@
 @extends('dashboard.reviewer.header')
 @section('style')
-@vite('resources/css/app.css')
-<link
-	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-	rel="stylesheet">
-<style>
-			body {
-		background:#111824;
-	}
-	.table { 
-		margin-top:50px;
-		height:200px;
-		width:1300px;
-		border-spacing: 0 15px;
-	}
+	@vite('resources/css/app.css')
+	<link
+		href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+		rel="stylesheet">
+	<style>
+				body {
+			background:#111824;
+		}
+		.table { 
+			margin-top:50px;
+			height:200px;
+			width:1300px;
+			border-spacing: 0 15px;
+		}
 
-	i {
-		font-size: 10rem ;
-	}
+		i {
+			font-size: 10rem ;
+		}
 
-	.table tr {
-		border-radius: 20px;
-		font-size: 20px;
-		
-	}
-	.table tr td{
-		
+		.table tr {
+			border-radius: 20px;
+			font-size: 20px;
+			
+		}
+		.table tr td{
+			
+			text-align: center;
+		}
+		tr td:nth-child(n+6),
+		tr th:nth-child(n+6) {
+			border-radius: 0 .625rem .625rem 0;
+		}
+
+		tr td:nth-child(1),
+		tr th:nth-child(1) {
+			border-radius: .625rem 0 0 .625rem;
+		}
+		h1{
+			color:white;
+		}
+	</style>	
+
+	<style>
+
+		#autoShowHide {
 		text-align: center;
-	}
-	tr td:nth-child(n+6),
-	tr th:nth-child(n+6) {
-		border-radius: 0 .625rem .625rem 0;
-	}
+		width: 400px; 
+		overflow: hidden;
+		text-overflow: ellipsis;
+		}
 
-	tr td:nth-child(1),
-	tr th:nth-child(1) {
-		border-radius: .625rem 0 0 .625rem;
-	}
-	h1{
-		color:white;
-	}
-</style>	
-
-<style>
-
-	#autoShowHide {
-	text-align: center;
-	width: 400px; 
-	overflow: hidden;
-	text-overflow: ellipsis;
-	}
-
-	#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
-</style>
- 
+		#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
+	</style>
+	
 @endsection
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email; $reviewer=auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
