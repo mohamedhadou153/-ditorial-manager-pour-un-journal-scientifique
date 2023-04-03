@@ -74,6 +74,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/SendToReviewers',[ArticleController::class,'SendToReviewers'])->name('SendToReviewers');
         Route::get('/show-review',[ArticleController::class,'Show_Review'])->name('show-review');
         Route::get('/article-traitement',[ArticleController::class,'article_traitement'])->name('article-traitement');
+        Route::get('/final-decision',[ArticleController::class,'final_decision'])->name('final_decision');
         Route::get('/send-to-reviewers',[ArticleController::class,'send_to_reviewers'])->name('send-to-reviewers');
         Route::get('/profile',[EditorRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[EditorRegisterController::class,'edit_profile'])->name('edit-profile');

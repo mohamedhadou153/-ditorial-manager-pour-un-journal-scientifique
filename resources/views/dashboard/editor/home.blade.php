@@ -523,7 +523,7 @@
 			<span></span>
 			</div>
 			<h2>Résultats!</h2>
-			<h3>Articles avec décision final</h3>
+			<h3 href="{{route('editor.final_decision')}}">Articles avec décision final</h3>
 		</button>
 
 	</div>

@@ -98,6 +98,7 @@ class ArticleController extends Controller
         ->get();
         return view('dashboard.author.article.show_traitement_article')->with('articles',$articles);
     }
+    
 
     public function index_show_refuse_article(){
         $authId = auth::user()->email;
@@ -140,6 +141,15 @@ class ArticleController extends Controller
         ->get();
         
         return view('dashboard.editor.article.validation_article')->with('articles',$articles)->with('req',$req);
+    }
+    public function final_decision(){
+        $req = auth::guard('editor')->user()->email;
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('etat','=','accept')
+        ->where('etat','=','refuse')
+        ->get();
+        return view('dashboard.author.article.final_decision')->with('articles',$articles);
     }
 
     public function validation_article($id){
