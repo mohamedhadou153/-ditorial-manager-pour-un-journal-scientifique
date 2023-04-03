@@ -518,12 +518,13 @@
 
 	
 
-		<button class="unique-button-class"  onclick="affiche2()">
+		<button class="unique-button-class"  onclick="affiche2()"> <a href="{{route('editor.final_decision')}}">
 			<div class="lazyload" style="background-image: url(https://thumbs.dreamstime.com/b/r%C3%A9sultats-un-effort-de-preuve-de-r%C3%A9sultat-final-de-r%C3%A9ponse-de-r%C3%A9sultats-de-panneau-routier-de-mani%C3%A8re-42237815.jpg);">
 			<span></span>
 			</div>
 			<h2>Résultats!</h2>
-			<h3 href="{{route('editor.final_decision')}}">Articles avec décision final</h3>
+			<h3 >Articles avec décision final</h3>
+			</a>
 		</button>
 
 	</div>

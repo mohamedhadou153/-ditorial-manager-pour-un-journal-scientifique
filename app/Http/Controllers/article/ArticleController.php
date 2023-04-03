@@ -149,7 +149,7 @@ class ArticleController extends Controller
         ->where('etat','=','accept')
         ->where('etat','=','refuse')
         ->get();
-        return view('dashboard.author.article.final_decision')->with('articles',$articles);
+        return view('dashboard.editor.article.final_decision')->with('articles',$articles);
     }
 
     public function validation_article($id){

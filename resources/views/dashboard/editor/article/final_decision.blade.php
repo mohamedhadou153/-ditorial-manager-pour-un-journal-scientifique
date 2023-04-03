@@ -2,5 +2,5 @@
 @section('style')
 @vite('resources/css/app.css')
 <h2>bonjour</h2>
-@endforeach
+
 @endsection
