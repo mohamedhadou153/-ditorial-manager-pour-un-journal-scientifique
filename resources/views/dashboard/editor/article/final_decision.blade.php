@@ -1,10 +1,8 @@
 @extends('dashboard.editor.header')
 @section('style')
-@vite('resources/css/app.css')
-<link
-		href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-		rel="stylesheet">
-	<style>
+ @vite('resources/css/app.css')
+ <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+ <style>
 				body {
 			background:#111824;
 		}
@@ -40,7 +38,7 @@
 		h1{
 			color:white;
 		}
-	</style>	
+ </style>	
 
 	<style>
 

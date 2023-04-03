@@ -21,9 +21,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <style>
-        body {
-            background-image: linear-gradient(45deg, #7c9885, #b5b682);
-        }
+        		body {
+			background:#111824;
+		}
         .form-inline {
             display: inline-block;
         }
@@ -33,6 +33,7 @@
             padding-right: 16px;
             border-bottom: 1px solid #d6d6d6;
             box-shadow: 0 0 4px rgba(0,0,0,.1);
+            margin:0px;
         }
         .nav img {
             border-radius: 50%;
