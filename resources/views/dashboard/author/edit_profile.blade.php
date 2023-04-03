@@ -57,7 +57,7 @@
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row" >
         <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" width="150px" alt="Admin" src="https://picsum.photos/200/200?grayscale"></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" style="height: 150px;width:150px" alt="Admin" src="{{asset('/storage/images/authors/'.$auth->pic)}}"></div>
 			<h3><span class="font-weight-bold" style="margin-left:20px;">{{$auth->first_name}} {{$auth->last_name}}</span></h3>
         </div>
         <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
@@ -72,7 +72,7 @@
                 <label>
                     
 					          <div>
-								<input type="file" form="file"  name="picture">
+								<input type="file"   name="picture">
 								</div>
                 </label> 
               </div>
@@ -84,14 +84,14 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">First Name:</label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}"></div>
-                    <div class="col-md-6"><label class="labels">LAst Name:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
+                    <div class="col-md-6"><label class="labels"><h6>First Name:</h6></label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}"></div>
+                    <div class="col-md-6"><label class="labels">Last Name:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Email:</label><input type="text" name="email" class="form-control" value="{{$auth->email}}"></div>
-                    <div class="col-md-12"><label class="labels">Phone:</label><input type="text" name="n_tele" class="form-control" value="{{$auth->n_tele}}"></div>
-                    <div class="col-md-12"><label class="labels">Age:</label><input type="text" name="age" class="form-control" value="{{$auth->age}}"></div>
-                    <div class="col-md-12"><label class="labels">Biographie:</label><input type="textarea" name="biographie" class="form-control" value="{{$auth->biographie}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>Email:</h6></label><input type="text" name="email" class="form-control" value="{{$auth->email}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>Phone:</h6></label><input type="text" name="n_tele" class="form-control" value="{{$auth->n_tele}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>Age:</h6></label><input type="text" name="age" class="form-control" value="{{$auth->age}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>Biographie:</h6></label><input type="textarea" name="biographie" class="form-control" value="{{$auth->biographie}}"></div>
                 </div>
                 
                 <div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
@@ -107,9 +107,9 @@
 						<h4 >change_password</h4>
 					</div>
 					<div class="row mt-3">
-						<div class="col-md-12"><label class="labels">old pass:</label><input type="password" name="pass_old" class="form-control" placeholder="old pass"></div>
-						<div class="col-md-12"><label class="labels">new pass:</label><input type="password" name="pass_new" class="form-control" placeholder="new pass"></div>
-						<div class="col-md-12"><label class="labels">confirm:</label><input type="password" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
+						<div class="col-md-12"><label class="labels"><h6>old pass:</h6></label><input type="password" name="pass_old" class="form-control" placeholder="old pass"></div>
+						<div class="col-md-12"><label class="labels"><h6>new pass:</h6></label><input type="password" name="pass_new" class="form-control" placeholder="new pass"></div>
+						<div class="col-md-12"><label class="labels"><h6>confirm:</h6></label><input type="password" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
 					</div>
 					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
 

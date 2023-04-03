@@ -57,7 +57,7 @@
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row" >
         <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" width="150px" alt="Admin" src="https://picsum.photos/200/200?grayscale"></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5"  alt="Admin" src="{{asset('/storage/images/reviewers/'.$rev->pic)}}" style="height: 150px;width:150px"></div>
 			<h3><span class="font-weight-bold" style="margin-left:20px;">{{$rev->first_name}} {{$rev->last_name}}</span></h3>
         </div>
         <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
@@ -72,7 +72,7 @@
                 <label>
                     
 					          <div>
-								<input type="file" form="file"  name="picture">
+								<input type="file"   name="picture">
 								</div>
                 </label> 
               </div>

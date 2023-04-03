@@ -80,7 +80,7 @@ class ReviewerRegisterController extends Controller
     public function profile(){
         $email = Auth::guard('reviewer')->user()->email;
         $reviewer = DB::table('reviewers')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at')
+        ->select('*')
         ->where('email','=',$email)
         ->get();
         
@@ -91,7 +91,7 @@ class ReviewerRegisterController extends Controller
     public function edit_profile(){
         $email = Auth::guard('reviewer')->user()->email;
         $reviewer = DB::table('reviewers')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->select('*')
         ->where('email','=',$email)
         ->get();
         return view('dashboard.reviewer.edit_profile')->with('reviewer',$reviewer);
@@ -106,6 +106,12 @@ class ReviewerRegisterController extends Controller
         $age = $request->age;
         $biographie = $request->biographie;
         $n_tele = $request->n_tele;
+        $img = $request->picture;
+
+
+        $destination_pic_path = 'public/images/reviewers';     
+        $image_name = $request->first_name.'.'.$request->picture->extension();
+        $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
 
         DB::table('reviewers')
         ->where('email','=',$mail1)
@@ -114,7 +120,8 @@ class ReviewerRegisterController extends Controller
                   'email'=>$email,
                   'age'=>$age,
                   'biographie'=>$biographie,
-                  'n_tele'=>$n_tele
+                  'n_tele'=>$n_tele,
+                  'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('reviewer')->user()->email;  
         $reviewer = DB::table('reviewers')

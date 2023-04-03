@@ -78,7 +78,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/send-to-reviewers',[ArticleController::class,'send_to_reviewers'])->name('send-to-reviewers');
         Route::get('/profile',[EditorRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[EditorRegisterController::class,'edit_profile'])->name('edit-profile');
-        Route::get('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change-profile');
+        Route::post('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change_profile');
         Route::post('/change-password',[EditorRegisterController::class,'change_password'])->name('change-password');
 
 
@@ -108,7 +108,7 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
         Route::get('/SendToEditor',[ArticleController::class,'SendToEditor'])->name('SendToEditor');
         Route::get('/profile',[ReviewerRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[ReviewerRegisterController::class,'edit_profile'])->name('edit-profile');
-        Route::get('/change-profile',[ReviewerRegisterController::class,'ChangeProfile'])->name('change-profile');
+        Route::post('/change-profile',[ReviewerRegisterController::class,'ChangeProfile'])->name('change-profile');
         Route::post('/change-password',[ReviewerRegisterController::class,'change_password'])->name('change-password');
     
     });

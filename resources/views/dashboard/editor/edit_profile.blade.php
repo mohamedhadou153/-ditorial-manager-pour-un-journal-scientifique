@@ -57,12 +57,12 @@
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row" >
         <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" width="150px" alt="Admin" src="https://picsum.photos/200/200?grayscale"></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" style="height: 150px;width:150px" alt="Admin" src="{{asset('/storage/images/authors/'.$edit->pic)}}"></div>
 			<h3><span class="font-weight-bold" style="margin-left:20px;">{{$edit->first_name}} {{$edit->last_name}}</span></h3>
         </div>
         <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
 		<div class="p-3 py-5 border-bottom" style="border-bottom: 1px solid gray;">
-		 <form action="{{route('editor.change-profile')}}" method="GET" enctype="multipart/form-data" >
+		<form action="{{route('editor.change_profile')}}" method="post" enctype="multipart/form-data" >
 			@csrf
 			<div class="col-sm-3">
 									<h4 >Change_image</h4>
@@ -72,7 +72,7 @@
                 <label>
                     
 					          <div>
-								<input type="file" name="picture">
+							  <input type="file"   name="picture">
 								</div>
                 </label> 
               </div>

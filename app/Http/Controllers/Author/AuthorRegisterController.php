@@ -94,11 +94,11 @@ class AuthorRegisterController extends Controller
         $n_tele = $request->n_tele;
         $img = $request->picture;
 
-        if ($request->hasFile('picture')){
+      //  if ($request->hasFile('picture')){
            $destination_pic_path = 'public/images/authors';     
            $image_name = $request->first_name.'.'.$request->picture->extension();
            $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
-        }
+        //}
 
 
         DB::table('authors')
@@ -109,7 +109,7 @@ class AuthorRegisterController extends Controller
                   'age'=>$age,
                   'biographie'=>$biographie,
                   'n_tele'=>$n_tele,
-                  //'pic'=>$image_name
+                  'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('author')->user()->email;  
         $author = DB::table('authors')

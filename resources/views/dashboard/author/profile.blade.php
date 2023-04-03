@@ -29,7 +29,7 @@
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
                     <a href="#">
-                      <img src="https://picsum.photos/200/200?grayscale" class="rounded-circle">
+                      <img src="{{asset('/storage/images/authors/'.$auth->pic)}}" style="height: 150px;width:150px" class="rounded-circle">
                     </a>
                   </div>
                 </div>

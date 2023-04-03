@@ -189,7 +189,7 @@
 
 					<div class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/200?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/authors/'.$auth->pic)}}"class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
 								<li class="divider"></li>

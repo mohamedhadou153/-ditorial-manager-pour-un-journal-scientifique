@@ -80,7 +80,7 @@ class EditorRegisterController extends Controller
     public function profile(){
         $email = Auth::guard('editor')->user()->email;
         $editor = DB::table('editors')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->select('*')
         ->where('email','=',$email)
         ->get();
         
@@ -108,11 +108,11 @@ class EditorRegisterController extends Controller
 
         $img = $request->picture;
 
-        if ($request->hasFile('picture')){
+       // if ($request->hasFile('picture')){
            $destination_pic_path = 'public/images/editors';     
            $image_name = $request->picture.'.'.$request->picture->extension();
            $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
-        }
+       // }
 
         DB::table('editors')
         ->where('email','=',$mail1)
@@ -122,7 +122,7 @@ class EditorRegisterController extends Controller
                   'age'=>$age,
                   'biographie'=>$biographie,
                   'n_tele'=>$n_tele,
-                  //'pic'=>$image_name
+                  'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('editor')->user()->email;  
         $editor = DB::table('editors')
@@ -132,6 +132,41 @@ class EditorRegisterController extends Controller
         return view('dashboard.editor.profile')->with('editor',$editor);
         
 
+    }
+    public function change_profile(Request $request){
+        $mail1 = Auth::guard('editor')->user()->email;
+        $first_name = $request->first_name;
+        $last_name = $request->last_name;
+        $email = $request->email;
+        $age = $request->age;
+        $biographie = $request->biographie;
+        $n_tele = $request->n_tele;
+
+        $img = $request->picture;
+
+       // if ($request->hasFile('picture')){
+           $destination_pic_path = 'public/images/editor';     
+           $image_name = $request->picture.'.'.$request->picture->extension();
+           $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
+       // }
+
+        DB::table('editors')
+        ->where('email','=',$mail1)
+        ->update(['first_name'=>$first_name,
+                  'last_name'=>$last_name,
+                  'email'=>$email,
+                  'age'=>$age,
+                  'biographie'=>$biographie,
+                  'n_tele'=>$n_tele,
+                  'pic'=>$image_name
+        ]);
+        $mail2 = Auth::guard('editor')->user()->email;  
+        $editor = DB::table('editors')
+        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at')
+        ->where('email','=',$mail2)
+        ->get();
+        return view('dashboard.editor.profile')->with('editor',$editor);
+        
     }
 
     public function change_password(Request $request){
