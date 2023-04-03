@@ -6,7 +6,7 @@
 	rel="stylesheet">
 <style>
 		body {
-		background:#111824;
+		background:#111827;
 	}
 	.table { 
 		margin-top:50px;
@@ -67,11 +67,11 @@
 						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Nouvelles soumissions </th>
 					</tr>
 					<tr>
-						<th class="p-3">Title</th>
-						<th class="p-3 ">Category</th>
-						<th class="p-3 ">Type</th>
-						<th class="p-3 ">Abstract</th>
-						<th class="p-3 ">Action</th>
+						<th class="p-3" style="width:200px">Title</th>
+						<th class="p-3 "style="width:300px">Category</th>
+						<th class="p-3 "style="width:200px">Type</th>
+						<th class="p-3 "style="width:300px">Abstract</th>
+						<th class="p-3 "style="width:200px">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -79,7 +79,6 @@
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
-							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
@@ -100,17 +99,59 @@
 							</div>
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="1" cols="30" readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
+						<textarea id="autoShowHide" rows="1"readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  "style="width:300px">{{$article->abstract}}</textarea>
 						</td>
-                        <form action="{{route('editor.send-to-reviewers')}}" method="get">
+                        
 						<td class="ml-3 ">
-						<div style="display:flex; justify-content:center;">
-							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Gérer l'article" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
-						</form>
-						</div>	
+							<button  onclick="invv({{$article->title}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">inviter réviseur</button>
 						</td>
 					</tr>
+					
+					
+							<tr class="bg-gray-800" style="display:none;" id="{{$article->title}}" >
+								<td class="p-3">
+									<div class="">
+										<div class="ml-3">
+											<div class="">1er réviseur</div>
+										</div>
+									</div>
+								</td>
+								<td class="p-3">
+									<div class="">
+										<div class="ml-3">
+										<div class=""><select id="select1" name="category" class="form-control" onchange="app_sel(this.value);" >
+																	<option value="1">Informatique</option>
+																	<option value="2">Physique</option>
+																	<option value="3">Biologie</option>
+															</select></div>
+										</div>
+									</div>
+								</td>
+								<td class="p-3">
+									<div class="">
+										<div class="ml-3">
+											<div class="">2eme réviseur</div>
+										</div>
+									</div>
+								</td>
+								<td class="p-3">
+									<div class="">
+										<div class="ml-3">
+											<div class=""><select id="select1" name="category" class="form-control" onchange="app_sel(this.value);" >
+																	<option value="1">Informatique</option>
+																	<option value="2">Physique</option>
+																	<option value="3">Biologie</option>
+															</select></div>
+										</div>
+									</div>
+								</td>
+								<td class="ml-3 ">
+							<button  onclick="invv({{$article->title}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">terminer</button>
+						</td>
+							</tr>
+
+				
+					
 					@endforeach
 				</tbody>
 			</table>
@@ -138,26 +179,14 @@
 			.columns.adjust()
 			.responsive.recalc();
 	});
+	function invv(y){
+		if(y.style.display=="none")
+		y.style.display="table-row";
+			else
+			y.style.display="none";
+		}
+		
 </script>
 
-@foreach($articles as $article)
 
-<!-- <form action="{{route('editor.update-etat')}}" method="GET">
-    <label for="">Set etat:</label>
-    <input type="text" name="etat">
-    <input type="hidden" name="id" value="{{$article->id}}">
-    <button type="submit"> change</button>
-</form>
-<br>
-<form action="{{route('editor.SendToReviewers')}}" method="GET">
-    <label for="">send to reviewer 1</label> 
-    <input type="text" name="reveiwer1Id">
-    <br>
-    <label for="">send to reviewer 2</label> 
-    <input type="text" name="reveiwer2Id">
-
-    <input type="hidden" name="id" value="{{$article->id}}">
-    <button type="submit">send</button>
-</form> -->
-@endforeach
 @endsection
