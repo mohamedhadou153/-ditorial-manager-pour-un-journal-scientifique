@@ -138,6 +138,8 @@ class ArticleController extends Controller
         ->select('*')
         ->where('etat','=','traitement')
         ->where('editorId','=',$req)
+        ->where('reviewer1Id',null)
+        ->where('reviewer2Id',null)
         ->get();
         
         return view('dashboard.editor.article.validation_article')->with('articles',$articles)->with('req',$req);
@@ -204,21 +206,25 @@ class ArticleController extends Controller
     }
 
     public function SendToReviewers(Request $request){
-        $reviewer1Id = $request->reviewer1Id;
-        $reviewer2Id = $request->reviewer2Id;
+        $req = auth::guard('editor')->user()->email;
+        $reviewer1 = $request->reviewer1;
+        $reviewer2 = $request->reviewer2;
         $id = $request->id;
-        if ($reviewer1Id) {
-            DB::table('articles')
-            ->where('id',$id)
-            ->update(['reviewer1Id'=> $reviewer1Id,'updated_at'=>date('d-m-y h:i:s')]);
-        }
-        if ($reviewer2Id) {
-            DB::table('articles')
-            ->where('id',$id)
-            ->update(['reviewer2Id'=> $reviewer2Id,'updated_at'=>date('d-m-y h:i:s')]); 
-        }
+
        
-        return view('dashboard.editor.home');
+            DB::table('articles')
+            ->where('id',$id)
+            ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('d-m-y h:i:s')]);
+
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('etat','=','traitement')
+        ->where('editorId','=',$req)
+        ->where('reviewer1Id',null)
+        ->where('reviewer2Id',null)
+        ->get();
+       
+        return view('dashboard.editor.article.validation_article')->with('articles',$articles);
     }   
     
     public function Show_Review(){

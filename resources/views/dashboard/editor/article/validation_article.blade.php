@@ -57,6 +57,9 @@
  
 @endsection
 @section('content')
+<?php
+use Illuminate\Support\Facades\DB;  $reviewers = DB::table('reviewers')->select('*')->get();
+?>
 <div class="med bg-gray-900">
 <div class="flex  justify-center  bg-gray-900">
 	<div class="col-span-120">
@@ -107,8 +110,8 @@
 						</td>
 					</tr>
 					
-					
-							<tr class="bg-gray-800" style="display:none;" id="{{$article->title}}" >
+					<form action="{{route('editor.SendToReviewers')}}" >
+						<tr class="bg-gray-800" style="display:none;" id="{{$article->title}}" >
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">
@@ -119,10 +122,10 @@
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">
-										<div class=""><select id="select1" name="category" class="form-control" onchange="app_sel(this.value);" >
-																	<option value="1">Informatique</option>
-																	<option value="2">Physique</option>
-																	<option value="3">Biologie</option>
+										<div class=""><select id="select1" name="reviewer1" class="form-control" onchange="app_sel(this.value);" >
+										                            @foreach($reviewers as $reviewer)
+																    	<option value="{{$reviewer->email}}">{{$reviewer->email}}</option>
+																	@endforeach
 															</select></div>
 										</div>
 									</div>
@@ -137,18 +140,22 @@
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">
-											<div class=""><select id="select1" name="category" class="form-control" onchange="app_sel(this.value);" >
-																	<option value="1">Informatique</option>
-																	<option value="2">Physique</option>
-																	<option value="3">Biologie</option>
+											<div class=""><select id="select1" name="reviewer2" class="form-control" onchange="app_sel(this.value);" >
+											
+											                        @foreach($reviewers as $reviewer)
+																    	<option value="{{$reviewer->email}}">{{$reviewer->email}}</option>
+																	@endforeach
 															</select></div>
 										</div>
 									</div>
 								</td>
 								<td class="ml-3 ">
-							<button  onclick="invv({{$article->title}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">terminer</button>
+							<button   style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2"><input type="submit" value="terminer"/></button>
 						</td>
 							</tr>
+							<input type="hidden" value="{{$article->id}}" name="id">
+					</form>
+							
 
 				
 					
