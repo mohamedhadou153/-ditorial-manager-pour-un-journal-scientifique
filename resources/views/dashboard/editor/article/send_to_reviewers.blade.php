@@ -4,7 +4,7 @@
 
 <style>
 body{
-    background-color: rgba(16, 46, 46, 0.973);
+    background:#111827;
 
 }
 
@@ -24,7 +24,7 @@ body{
 }
 .container{
    width:100%;
-height:100%;
+  height:70%;
 }
 h1,h4{
     color: white;
@@ -41,7 +41,7 @@ h1,h4{
     
     form{
     border: 1px solid rgba(16, 46, 46, 1);
-    background-color: rgba(16, 46, 46, 0.973);
+    background:#111827;
     
  }
 
@@ -148,7 +148,7 @@ input:active+.design::after {
 <embed src="{{asset('/storage/pdf/articles/'.$article->obj_pdf)}}"  aria-readonly="true" frameborder="0" style="width:100%;height:100%;border-right:5px solid gray;"/>
 
     </div>
-    <div class="col-md-6" id="div2"style="width:30%;padding:0">
+    <div class="col-md-6" id="div2"style="width:30%;padding: 20px;">
     
 
 
@@ -156,11 +156,11 @@ input:active+.design::after {
          
                 <form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:100%">
                     <div class="form-group">
-                        <h4 style="font-size:20px">Donner ton point de vue</h4>
+                        <h4 style="font-size:20px">Réviseurs décisions</h4>
                         <h4 style="font-size:20zpx">Reviewer 1</h4>
-                        <textarea name="review" id=""msg cols="30" rows="1" class="form-control" style="background-color: black;color:white"></textarea>
+                        <textarea name="review" id="msg" cols="30" rows="1" class="form-control" style="background-color: black;color:white"></textarea>
                         <h4 style="font-size:20zpx">Reviewer 2</h4>
-                        <textarea name="review" id=""msg cols="30" rows="1" class="form-control" style="background-color: black;color:white"></textarea>
+                        <textarea name="review" id="msg" cols="30" rows="1" class="form-control" style="background-color: black;color:white"></textarea>
                     </div>
                    
                  
