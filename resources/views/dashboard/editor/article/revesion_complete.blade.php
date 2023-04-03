@@ -29,8 +29,8 @@
 			text-align: center;
 		}
 
-		tr td:nth-child(n+5),
-		tr th:nth-child(n+5) {
+		tr td:nth-child(n+6),
+		tr th:nth-child(n+6) {
 			border-radius: 0 .625rem .625rem 0;
 		}
 
@@ -60,10 +60,7 @@
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
-        ->where('reviewer1Id','!=', null)
-        ->where('reviewer2Id','!=', null)
-		->where('rev_active1','LIKE',"%acceptdev1%")
-        ->where('rev_active2','LIKE',"%acceptdev2%")
+        
         ->get();?>
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
@@ -122,7 +119,7 @@
                         @endif
 						</td>
                          <td class="ml-3 ">
-						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:blueviolet;">gerer</span>
+						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:blueviolet;"><a href="{{route('editor.send-to-reviewers')}}" >gerer</a></span>
                          </td>
 				@endforeach
 				</tbody>

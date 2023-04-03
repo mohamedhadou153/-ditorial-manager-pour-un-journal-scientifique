@@ -3,139 +3,139 @@
 @section('style')
 
 <style>
-body{
-    background-color: rgba(16, 46, 46, 0.973);
+    body{
+        background-color: rgba(16, 46, 46, 0.973);
 
-}
+    }
 
-#post{
-    margin: 10px;
-    padding: 6px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    text-align: center;
-    background-color: #ecb21f;
-    border-color: #a88734 #9c7e31 #846a29;
-    color: black;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 13px;
-    
-}
-.container{
-   width:100%;
-height:100%;
-}
-h1,h4{
-    color: white;
-    font-weight: bold;
-}
-.form-group input,.form-group textarea{
-    background-color: black;
-    border: 1px solid rgba(16, 46, 46, 1);
-    border-radius: 12px;
-}
-.text{
-    color:white;
-}
-    
-    form{
-    border: 1px solid rgba(16, 46, 46, 1);
-    background-color: rgba(16, 46, 46, 0.973);
-    
- }
+    #post{
+        margin: 10px;
+        padding: 6px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align: center;
+        background-color: #ecb21f;
+        border-color: #a88734 #9c7e31 #846a29;
+        color: black;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 13px;
+        
+    }
+    .container{
+      width:100%;
+    height:100%;
+    }
+    h1,h4{
+        color: white;
+        font-weight: bold;
+    }
+    .form-group input,.form-group textarea{
+        background-color: black;
+        border: 1px solid rgba(16, 46, 46, 1);
+        border-radius: 12px;
+    }
+    .text{
+        color:white;
+    }
+        
+        form{
+        border: 1px solid rgba(16, 46, 46, 1);
+        background-color: rgba(16, 46, 46, 0.973);
+        
+    }
 
-label {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: nowrap;
-  margin: 12px 30;
-  cursor: pointer;
-  position: relative;
-}
-
-
-/* input */
-input {
-    
-  opacity: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
+    label {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap;
+      margin: 12px 30;
+      cursor: pointer;
+      position: relative;
+    }
 
 
-/* .design */
-.design {
-  width: 16px;
-  height: 16px;
-
-  border: 1px solid var(--other);
-  border-radius: 100%;
-  margin-right: 16px;
-
-  position: relative;
-}
-
-.design::before,
-.design::after {
-  content: "";
-  display: block;
-
-  width: inherit;
-  height: inherit;
-
-  border-radius: inherit;
-
-  position: absolute;
-  transform: scale(0);
-  transform-origin: center center;
-}
-
-.design:before {
-  background: var(--other);
-  opacity: 0;
-  transition: .3s;
-}
-
-.design::after {
-  background: var(--primary);
-  opacity: .4;
-  transition: .6s;
-}
+    /* input */
+    input {
+        
+      opacity: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
 
 
+    /* .design */
+    .design {
+      width: 16px;
+      height: 16px;
 
-/* checked state */
-input:checked+.design::before {
-  opacity: 1;
-  transform: scale(.6);
-}
+      border: 1px solid var(--other);
+      border-radius: 100%;
+      margin-right: 16px;
+
+      position: relative;
+    }
+
+    .design::before,
+    .design::after {
+      content: "";
+      display: block;
+
+      width: inherit;
+      height: inherit;
+
+      border-radius: inherit;
+
+      position: absolute;
+      transform: scale(0);
+      transform-origin: center center;
+    }
+
+    .design:before {
+      background: var(--other);
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .design::after {
+      background: var(--primary);
+      opacity: .4;
+      transition: .6s;
+    }
 
 
-/* other states */
-input:hover+.design,
-input:focus+.design {
-  border: 1px solid var(--primary);
-}
 
-input:hover+.design:before,
-input:focus+.design:before {
-  background: var(--primary);
-}
+    /* checked state */
+    input:checked+.design::before {
+      opacity: 1;
+      transform: scale(.6);
+    }
 
-input:hover~.text {
-  color: var(--primary);
-}
 
-input:focus+.design::after,
-input:active+.design::after {
-  opacity: .1;
-  transform: scale(2.6);
-}
+    /* other states */
+    input:hover+.design,
+    input:focus+.design {
+      border: 1px solid var(--primary);
+    }
+
+    input:hover+.design:before,
+    input:focus+.design:before {
+      background: var(--primary);
+    }
+
+    input:hover~.text {
+      color: var(--primary);
+    }
+
+    input:focus+.design::after,
+    input:active+.design::after {
+      opacity: .1;
+      transform: scale(2.6);
+    }
 
 </style>
 
