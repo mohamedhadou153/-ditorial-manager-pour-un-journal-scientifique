@@ -102,7 +102,7 @@
                         @if($article->rev_des1 == 'refuse')
                         <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                         @endif
-                        @if($article->rev_des1 == 'revision')
+                        @if($article->rev_des1 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
 						</td>
@@ -113,7 +113,7 @@
                         @if($article->rev_des2 == 'refuse')
                         <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                         @endif
-                        @if($article->rev_des2 == 'revision')
+                        @if($article->rev_des2 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
 						</td>
@@ -144,7 +144,7 @@
                         @if($article->rev_des1 == 'refuse')
                         <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                         @endif
-                        @if($article->rev_des1 == 'revision')
+                        @if($article->rev_des1 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
 						</td>
@@ -155,7 +155,7 @@
                         @if($article->rev_des2 == 'refuse')
                         <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                         @endif
-                        @if($article->rev_des2 == 'revision')
+                        @if($article->rev_des2 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
 						</td>
@@ -186,7 +186,7 @@
                         @if($article->rev_des1 == 'refuse')
                         <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                         @endif
-                        @if($article->rev_des1 == 'revision')
+                        @if($article->rev_des1 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
 						</td>
@@ -197,7 +197,7 @@
                         @if($article->rev_des2 == 'refuse')
                         <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                         @endif
-                        @if($article->rev_des2 == 'revision')
+                        @if($article->rev_des2 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
 						</td>

@@ -183,13 +183,13 @@
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev1 = auth::guard('reviewer')->user()->email.'accept';$rev2 = auth::guard('reviewer')->user()->email.'refuse'; $reviewer=auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
-		->where('rev_active','NOT LIKE',"%{$rev1}%")
-		->where('rev_active','NOT LIKE',"%{$rev2}%")
+		->where('rev_active1','NOT LIKE',"%{$rev1}%")
+		->where('rev_active1','NOT LIKE',"%{$rev2}%")
         ->where('reviewer1Id','=',$reviewer)
 		->orwhere('reviewer2Id','=',$reviewer)
 		->where('etat','traitement')
-		->where('rev_active','NOT LIKE',"%{$rev1}%")
-		->where('rev_active','NOT LIKE',"%{$rev2}%")
+		->where('rev_active2','NOT LIKE',"%{$rev1}%")
+		->where('rev_active2','NOT LIKE',"%{$rev2}%")
         ->get();?>
 <div class="med bg-gray-900">
 <div class="flex  justify-center  bg-gray-900">

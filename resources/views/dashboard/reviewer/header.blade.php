@@ -139,6 +139,7 @@
 @yield('style') 
 </head> 
 <body>
+	<?php use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->first_name; ?>
 <nav class="navbar navbar-default"style="margin-bottom:0px" >
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
@@ -166,7 +167,7 @@
 			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
 			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
 			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/reviewers/'.$rev->first_name.'.jpg')}}" class="avatar" alt="Avatar"> welcom {{Auth::guard('reviewer')->user()->first_name}} <b class="caret"></b></a>
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/reviewers/'.$rev.'.jpg')}}" class="avatar" alt="Avatar"> welcom {{Auth::guard('reviewer')->user()->first_name}} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{route('reviewer.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
 					<li class="divider"></li>

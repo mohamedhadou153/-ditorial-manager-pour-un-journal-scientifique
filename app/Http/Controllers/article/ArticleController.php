@@ -204,18 +204,18 @@ class ArticleController extends Controller
     }
 
     public function SendToReviewers(Request $request){
-        $reveiwer1Id = $request->reveiwer1Id;
-        $reveiwer2Id = $request->reveiwer2Id;
+        $reviewer1Id = $request->reviewer1Id;
+        $reviewer2Id = $request->reviewer2Id;
         $id = $request->id;
-        if ($reveiwer1Id) {
+        if ($reviewer1Id) {
             DB::table('articles')
             ->where('id',$id)
-            ->update(['reviewer1Id'=> $reveiwer1Id,'updated_at'=>date('d-m-y h:i:s')]);
+            ->update(['reviewer1Id'=> $reviewer1Id,'updated_at'=>date('d-m-y h:i:s')]);
         }
-        if ($reveiwer2Id) {
+        if ($reviewer2Id) {
             DB::table('articles')
             ->where('id',$id)
-            ->update(['reviewer2Id'=> $reveiwer2Id,'updated_at'=>date('d-m-y h:i:s')]); 
+            ->update(['reviewer2Id'=> $reviewer2Id,'updated_at'=>date('d-m-y h:i:s')]); 
         }
        
         return view('dashboard.editor.home');
@@ -243,7 +243,9 @@ class ArticleController extends Controller
         $articles = DB::table('articles')
         ->select('*')
         ->where('etat','traitement')
-        ->where('reviewer1Id','=',$rev)->orwhere('reviewer2Id','=',$rev)
+        ->where('reviewer1Id','=',$rev)
+        ->orwhere('reviewer2Id','=',$rev)
+        ->where('etat','traitement')
         ->get();
         return view('dashboard.reviewer.home')->with('articles',$articles);  
     }
@@ -251,32 +253,78 @@ class ArticleController extends Controller
     public function validation_review(Request $request){
         $rev = auth::guard('reviewer')->user()->email;
         $req = $request->id;
-        $reviewer = DB::table('articles')->select('rev_active')->where('id',$req)->get();
-        foreach($reviewer as $reviewer){
-        DB::table('articles')
-        ->where('id',$req)
-        ->update(['rev_active'=>$reviewer->rev_active.$rev.'accept']);
+        $reviewer1Id = DB::table('articles')->select('reviewer1Id')->where('id',$req)->get();
+        $reviewer2Id = DB::table('articles')->select('reviewer2Id')->where('id',$req)->get();
+        
+        $reviewer1 = DB::table('articles')->select('rev_active1')->where('id',$req)->get();
+        foreach($reviewer1 as $reviewer){
+            foreach($reviewer1Id as $reviewer1Id){
+                DB::table('articles')
+                ->where('id',$req)
+                ->where('reviewer1Id',$rev)
+                ->update(['rev_active1'=>$reviewer->rev_active1.$rev.'accept']);
+            }
+        }
+        
+        $reviewer2 = DB::table('articles')->select('rev_active2')->where('id',$req)->get();
+        foreach($reviewer2 as $reviewer){
+            foreach($reviewer2Id as $reviewer2Id){
+              DB::table('articles')
+             ->where('id',$req)
+             ->where('reviewer2Id',$rev)
+              ->update(['rev_active2'=>$reviewer->rev_active2.$rev.'accept']);
+            }
         }
         $articles = DB::table('articles')
         ->select('*')
         ->where('id','=',$req)
         ->get();
-        return view('dashboard.reviewer.home')->with('articles',$articles);  
+
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();    
+
+        return view('dashboard.reviewer.home')->with('articles',$articles);
     }
+
+
     public function validation_refuse_review(Request $request){
         $rev = auth::guard('reviewer')->user()->email;
         $req = $request->id;
-        $reviewer = DB::table('articles')->select('rev_active')->where('id',$req)->get();
-        foreach($reviewer as $reviewer){
-        DB::table('articles')
-        ->where('id',$req)
-        ->update(['rev_active'=>$reviewer->rev_active.$rev.'refusedev']);
+        $reviewer1Id = DB::table('articles')->select('reviewer1Id')->where('id',$req)->get();
+        $reviewer2Id = DB::table('articles')->select('reviewer2Id')->where('id',$req)->get();
+        
+        $reviewer1 = DB::table('articles')->select('rev_active1')->where('id',$req)->get();
+        foreach($reviewer1 as $reviewer){
+            foreach($reviewer1Id as $reviewer1Id){
+                DB::table('articles')
+                ->where('id',$req)
+                ->where('reviewer1Id',$rev)
+                ->update(['rev_active1'=>$reviewer->rev_active1.$rev.'refusedev']);
+            }
+        }
+        
+        $reviewer2 = DB::table('articles')->select('rev_active2')->where('id',$req)->get();
+        foreach($reviewer2 as $reviewer){
+            foreach($reviewer2Id as $reviewer2Id){
+              DB::table('articles')
+             ->where('id',$req)
+             ->where('reviewer2Id',$rev)
+              ->update(['rev_active2'=>$reviewer->rev_active2.$rev.'refusedev']);
+            }
         }
         $articles = DB::table('articles')
         ->select('*')
         ->where('id','=',$req)
         ->get();
-        return view('dashboard.reviewer.home')->with('articles',$articles);  
+
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();    
+
+        return view('dashboard.reviewer.home')->with('articles',$articles);
     }
 
     public function creation_review(Request $request){
@@ -299,23 +347,43 @@ class ArticleController extends Controller
 
     public function SendToEditor(Request $request){
         $req = $request->art_id;
-        $reviewer = auth::guard('reviewer')->user()->email;
-
-        $review = $request->review;
-
-        $rev = DB::table('articles')->select('rev_active')->where('id',$req)->get();
-        foreach($rev as $rev){
-          DB::table('articles')
-             ->where('id','=',$req)
-             ->where('reviewer1Id', $reviewer)
-             ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev1','rev_des1'=>$request->rev_des]);
-
-          DB::table('articles')
-             ->where('id','=',$req)
-             ->where('reviewer2Id', $reviewer)
-             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active'=>$rev->rev_active.'dev2','rev_des2'=>$request->rev_des]);
+        $review =  $request->review;
+        $rev = auth::guard('reviewer')->user()->email;
+        $reviewer1Id = DB::table('articles')->select('reviewer1Id')->where('id',$req)->get();
+        $reviewer2Id = DB::table('articles')->select('reviewer2Id')->where('id',$req)->get();
+        
+        $reviewer1 = DB::table('articles')->select('rev_active1')->where('id',$req)->get();
+        $reviewer2 = DB::table('articles')->select('rev_active2')->where('id',$req)->get();
+        foreach($reviewer1 as $reviewer1){
+            foreach($reviewer1Id as $reviewer1Id){
+                DB::table('articles')
+                ->where('id',$req)
+                ->where('reviewer1Id',$rev)
+                ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active1'=>$reviewer1->rev_active1. $reviewer1Id->reviewer1Id.'acceptdev1','rev_des1'=>$request->rev_des]);
+            }
         }
-        return view('dashboard.reviewer.home');
+        
+        
+        foreach($reviewer2 as $reviewer2){
+            foreach($reviewer2Id as $reviewer2Id){
+              DB::table('articles')
+             ->where('id',$req)
+             ->where('reviewer2Id',$rev)
+             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active2'=>$reviewer2->rev_active2.$reviewer2Id->reviewer2Id.'acceptdev2','rev_des2'=>$request->rev_des]);
+            }
+        }
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();
+
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$req)
+        ->get();    
+
+        return view('dashboard.reviewer.home')->with('articles',$articles);
+       
 
     }
 

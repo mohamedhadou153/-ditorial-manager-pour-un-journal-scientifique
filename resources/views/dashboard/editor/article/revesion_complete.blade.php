@@ -62,24 +62,24 @@
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
-		->where('rev_active','LIKE',"%acceptdev1%")
-        ->where('rev_active','LIKE',"%acceptdev2%")
+		->where('rev_active1','LIKE',"%acceptdev1%")
+        ->where('rev_active2','LIKE',"%acceptdev2%")
         ->get();?>
-<div class="med bg-gray-900">
-<div class="flex  justify-center  bg-gray-900">
+<div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">soumissions avec révisions requis compléte </th>
+						<th colspan="6" style="border-radius: 0px;font-size: 50px;">soumissions avec révisions requis compléte</th>
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>
-						<th class="p-3 ">Category</th>
-						<th class="p-3 ">Type</th>
-						<th class="p-3 ">Abstract</th>
-						<th class="p-3 ">Action</th>
+						<th class="p-3 ">categorie</th>
+						<th class="p-3 ">type</th>
+						<th class="p-3 ">décision R1</th>
+						<th class="p-3 ">décision R2</th>
+						<th class="p-3 ">action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -93,33 +93,38 @@
 								</div>
 							</div>
 						</td>
-						<td class="p-3">
-							<div class="">
-								<div class="ml-3">
-									<div class="">{{$article->category}}</div>
-								</div>
-							</div>
+						<td class="ml-3">
+							{{$article->category}}
+						</td>
+						<td class="ml-3">
+							{{$article->type}}
 						</td>
 						<td class="p-3">
-							<div class="">
-								<div class="ml-3">
-									<div class="">{{$article->type}}</div>
-								</div>
-							</div>
+                        @if($article->rev_des1 == 'accept')
+						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
+                        @endif
+                        @if($article->rev_des1 == 'refuse')
+                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
+                        @endif
+                        @if($article->rev_des1 == 'accept avec revision')
+                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
+                        @endif
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="1" cols="30" readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
+                        @if($article->rev_des2 == 'accept')
+						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
+                        @endif
+                        @if($article->rev_des2 == 'refuse')
+                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
+                        @endif
+                        @if($article->rev_des2 == 'accept avec revision')
+                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
+                        @endif
 						</td>
-                        <form action="{{route('editor.send-to-reviewers')}}" method="get">
-						<td class="ml-3 ">
-						<div style="display:flex; justify-content:center;">
-							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Gérer l'article" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
-						</form>
-						</div>	
-						</td>
-					</tr>
-					@endforeach
+                         <td class="ml-3 ">
+						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:blueviolet;">gerer</span>
+                         </td>
+				@endforeach
 				</tbody>
 			</table>
 		</div>
