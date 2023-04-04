@@ -186,9 +186,7 @@ class ArticleController extends Controller
         ->select('*')
         ->where('id','=',$req)
         ->get();
-
         $reviewers = DB::table('reviewers')->select('*')->where('status','active')->get();
-
         return view('dashboard.editor.article.send_to_reviewers')->with('id',$req)->with('reviewers',$reviewers)->with('articles',$articles);
     }
 
