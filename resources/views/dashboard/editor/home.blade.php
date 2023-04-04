@@ -433,13 +433,15 @@
 	</style>
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth; $editor=auth::guard('editor')->user()->email; $articles = DB::table('articles')->select('*')->where('etat','libre')->get();
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;
+$editor=auth::guard('editor')->user()->email; 
+$articles = DB::table('articles')->select('*')->where('etat','libre')->get();
 
 $l = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','libre')->get();
 
 $a = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->get();
 
-$b = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->get();
+$b = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','accept')->where('etat','!=','refuse')->where('etat','!=','accept aavec revision')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->get();
 
 $c = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
 
@@ -448,8 +450,8 @@ $d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
  //foreach($a as $a){foreach($b as $b){foreach($c as $c){foreach($d as $d){$a1 = (int)$a->count;$b1=(int)$b->count;$c1=(int)$c->count;$d1=(int)$d->count;$f1=$a1+$b1+$c1+$d1;}}}}
 $f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->orwhere('etat','!=','traitement')->where('etat','!=','libre')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
 
-$s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','libre')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
-$h = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','libre')->where('etat','!=','refuse')->where('etat','!=','accept')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
+$s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','reponse')->where('etat','!=','libre')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
+$h = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','accept avec revision')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
 
 ?>
 
