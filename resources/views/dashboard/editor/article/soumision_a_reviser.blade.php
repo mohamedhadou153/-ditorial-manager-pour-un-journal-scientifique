@@ -61,6 +61,8 @@
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
+		->where('rev_des1','!=', null
+		)->where('rev_des2','!=', null)
         ->get();?>
 
 <div class="flex  justify-center min-h-screen bg-gray-900">
@@ -69,7 +71,7 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="6" style="border-radius: 0px;font-size: 50px;">décision final </th>
+						<th colspan="6" style="border-radius: 0px;font-size: 50px;">soumission besoin de modifier "réviser" </th>
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>

@@ -443,12 +443,13 @@ $b = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
 
 $c = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
 
-$d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
+$d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
 
  //foreach($a as $a){foreach($b as $b){foreach($c as $c){foreach($d as $d){$a1 = (int)$a->count;$b1=(int)$b->count;$c1=(int)$c->count;$d1=(int)$d->count;$f1=$a1+$b1+$c1+$d1;}}}}
 $f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
 
-$s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','libre')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->get();
+$s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','libre')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
+$h = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','libre')->where('etat','!=','refuse')->where('etat','!=','accept')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
 
 ?>
 
@@ -524,7 +525,7 @@ $s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
 		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte (@foreach($b as $b){{$b->count}}@endforeach) </a></buttono></li>
 		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte (@foreach($c as $c){{$c->count}}@endforeach) </a></buttono></li>
 		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse"(@foreach($d as $d){{$d->count}}@endforeach) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission besoin de modifier"réviser" </a></buttono></li>
+		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission besoin de modifier "réviser" (@foreach($h as $h){{$h->count}}@endforeach)</a></buttono></li>
 	</ul>
 	   
 	</div>
