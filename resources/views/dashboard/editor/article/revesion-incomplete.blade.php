@@ -63,7 +63,7 @@
         ->where('reviewer1Id','!=', null)
         ->where('rev_active1','NOT LIKE',"%dev%")
         ->where('rev_active1','LIKE',"%.com%")
-        ->orwhere('reviewer2Id','=', null)
+        ->orwhere('reviewer2Id','!=', null)
         ->where('etat','traitement')
         ->where('rev_active2',' NOT LIKE',"%dev%")
         ->where('rev_active2','LIKE',"%.com%")
@@ -112,22 +112,42 @@
 							</div>
 						</td>
 						</td>
+						 @if($article->rev_des1 == null)
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->type}}</div>
+									<div class="">non confige</div>
 								</div>
 							</div>
 						</td>
-                        <form action="{{route('editor.send-to-reviewers')}}" method="get">
-						<td class="ml-3 ">
-						<div style="display:flex; justify-content:center;">
-							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Gérer l'article" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
-						</form>
-						</div>	
+						@endif
+						@if($article->rev_des1 != null)
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
+									<div class="">confige</div>
+								</div>
+							</div>
 						</td>
-					</tr>
+						@endif
+						@if($article->rev_des2 == null)
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
+									<div class="">confige</div>
+								</div>
+							</div>
+						</td>
+						@endif
+						@if($article->rev_des2 != null)
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
+									<div class="">confige</div>
+								</div>
+							</div>
+						</td>
+						@endif
 					@endforeach
 				</tbody>
 			</table>
