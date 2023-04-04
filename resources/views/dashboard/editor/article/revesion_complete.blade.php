@@ -6,7 +6,7 @@
 		rel="stylesheet">
 	<style>
 			body {
-			background:#111824;
+			background:#111827;
 		}
 		.table { 
 			margin-top:50px;
@@ -58,7 +58,10 @@
 @endsection
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
-        ->where('etat','traitement')
+		->where('etat','!=','accept avec reponse')
+		->where('etat','!=','libre')
+        ->where('etat','!=','accept')
+        ->where('etat','!=','refuse')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
@@ -90,7 +93,12 @@
 							<div class="">
 							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
 								<div class="ml-3">
-									<div class="">{{$article->title}}</div>
+									
+								@if($article->etat == 'reponse')
+								<div class="">{{$article->title}} (révise)</div>
+						@else
+						<div class="">{{$article->title}}</div>
+                        @endif
 								</div>
 							</div>
 						</td>
