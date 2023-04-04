@@ -159,12 +159,12 @@
                 <form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:100%">
                     <div class="form-group">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
-                        <h4 style="font-size:20zpx">Donner ton point de vue</h4>
+                        <h4 style="font-size:20zpx">tes remarques</h4>
                         <textarea name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white"></textarea>
                     </div>
                    
                  
-  <h1>ta decision final</h1>
+  <h3>ta decision final</h3>
 
 <label>
   <input type="radio" name="rev_des" value="accept" checked>

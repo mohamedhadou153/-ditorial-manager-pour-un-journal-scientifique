@@ -24,7 +24,8 @@
 			}
 			.container{
 			width:100%;
-			height:70%;
+			height:85%;
+			border: 1px solid rgba(16, 46, 46, 1);
 			}
 			h1,h4{
 				color: white;
@@ -40,8 +41,9 @@
 			}
 				
 				form{
+					margin:5px;
 				border: 1px solid rgba(16, 46, 46, 1);
-				background:#111827;
+				
 				
 			}
 
@@ -153,17 +155,23 @@
 
     <div class="container" style="padding:0">
          
-                <form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:100%">
+                
                     <div class="form-group">
                         <h4 style="font-size:20px">Réviseurs décisions</h4>
-                        <h4 style="font-size:20zpx">Reviewer 1</h4>
-                        <textarea name="review" id="msg" cols="30" rows="1" class="form-control" style="background-color: black;color:white"></textarea>
-                        <h4 style="font-size:20zpx">Reviewer 2</h4>
-                        <textarea name="review" id="msg" cols="30" rows="1" class="form-control" style="background-color: black;color:white"></textarea>
+                        <h4 style="font-size:20px">Reviewer 1</h4>
+                        <textarea name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des1}} 
+Remarque :{{$article->review1}}</textarea>
+                        <h4 style="font-size:20px">Reviewer 2</h4>
+                        <textarea name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
+Remarque :{{$article->review2}}</textarea>
                     </div>
-                   
-                 
-  <h1>ta decision final</h1>
+					<hr  style="height:30px ;color:white ;border:2px">
+					<form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:50%">
+                    <div class="form-group">
+                        <h4 style="font-size:20px">Donner ton point de vue</h4>
+                        <textarea name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>
+                    </div>
+  <h1 style="font-size:30px">ta decision final</h1>
 
 <label>
   <input type="radio" name="rev_des" value="accept" checked>
