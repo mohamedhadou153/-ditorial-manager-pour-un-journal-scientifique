@@ -446,7 +446,10 @@ $c = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
 $d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
 
  //foreach($a as $a){foreach($b as $b){foreach($c as $c){foreach($d as $d){$a1 = (int)$a->count;$b1=(int)$b->count;$c1=(int)$c->count;$d1=(int)$d->count;$f1=$a1+$b1+$c1+$d1;}}}}
-$f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','libre')->orwhere('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
+$f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->orwhere('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
+
+$s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','libre')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->get();
+
 ?>
 
 
@@ -510,7 +513,7 @@ $f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat'
 			<span></span>
 			</div>
 			<h2>Gérer!</h2>
-			<h3>Articles sans décision final (@foreach($f as $f){{$f->count}}@endforeach)  </h3>
+			<h3>Articles sans décision final (@foreach($f as $f){{$f->count}}@endforeach)</h3>
 		</button>
 
 	</div>
@@ -533,7 +536,7 @@ $f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat'
 			<span></span>
 			</div>
 			<h2>Résultats!</h2>
-			<h3 >Articles avec décision final </h3>
+			<h3 >Articles avec décision final (@foreach($s as $s){{$s->count}}@endforeach) </h3>
 			</a>
 		</button>
 
