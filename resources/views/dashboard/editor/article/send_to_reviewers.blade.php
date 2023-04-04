@@ -24,7 +24,7 @@
 			}
 			.container{
 			width:100%;
-			height:85%;
+			height:95%;
 			border: 1px solid rgba(16, 46, 46, 1);
 			}
 			h1,h4{
@@ -42,6 +42,7 @@
 				
 				form{
 					margin:5px;
+					margin-bottom:0px;
 				border: 1px solid rgba(16, 46, 46, 1);
 				
 				
@@ -162,14 +163,13 @@
                         <textarea name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des1}} 
 Remarque :{{$article->review1}}</textarea>
                         <h4 style="font-size:20px">Reviewer 2</h4>
-                        <textarea name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
+                        <textarea readonly name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
 Remarque :{{$article->review2}}</textarea>
                     </div>
-					<hr  style="height:30px ;color:white ;border:2px">
 					<form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:50%">
                     <div class="form-group">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
-                        <textarea name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>
+                        <textarea readonly name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>
                     </div>
   <h1 style="font-size:30px">ta decision final</h1>
 
