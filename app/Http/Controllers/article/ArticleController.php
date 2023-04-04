@@ -19,15 +19,15 @@ class ArticleController extends Controller
     }
     
     public function Create(Request $request){
-        //  $request->validate([
-        //      'title'=>['required','string'],
-        //      'category'=>['required','string'],
-        //      'abstract'=>['required','string'],
-        //      'obj_pdf'=>'mimes:pdf',
-        //      'pic'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',                        
-        //  ]);
+          $request->validate([
+              'title'=>['required','string'],
+              'category'=>['required','string'],
+              'abstract'=>['required','string'],
+              'obj_pdf'=>'mimes:pdf',
+              'pic'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',                        
+          ]);
 
-        //if ($request->hasFile('obj_pdf') && $request->hasFile('pic')) {
+        if ($request->hasFile('obj_pdf') && $request->hasFile('pic')) {
 
             $destination_pdf_path = 'public/pdf/articles';     
             $pdf_name = $request->title.'.'.'pdf';
@@ -74,7 +74,7 @@ class ArticleController extends Controller
             $article->etat  = 'libre';
             $article->type = $type;
             $data = $article->save();
-       // } 
+        } 
       return redirect('/author/home');
     }
 
