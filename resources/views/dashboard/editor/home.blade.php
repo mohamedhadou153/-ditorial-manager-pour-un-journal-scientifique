@@ -524,6 +524,7 @@ $s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
 		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte (@foreach($b as $b){{$b->count}}@endforeach) </a></buttono></li>
 		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte (@foreach($c as $c){{$c->count}}@endforeach) </a></buttono></li>
 		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse"(@foreach($d as $d){{$d->count}}@endforeach) </a></buttono></li>
+		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission besoin de modifier"réviser" </a></buttono></li>
 	</ul>
 	   
 	</div>

@@ -65,6 +65,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
     Route::middleware(['auth:editor'])->group(function(){
         Route::view('/home','dashboard.editor.home')->name('home');
         Route::view('/revision-complete','dashboard.editor.article.revesion_complete')->name('revision-complete');
+        Route::view('/soumision-a-reviser','dashboard.editor.article.soumision_a_reviser')->name('soumision_a_reviser');
         Route::view('/revision-incomplete','dashboard.editor.article.revesion-incomplete')->name('revision-incomplete');
         Route::view('/aucune-réponse','dashboard.editor.article.aucune_réponse')->name('aucune-réponse');
         Route::post('/logout',[EditorRegisterController::class,'logout'])->name('logout');
