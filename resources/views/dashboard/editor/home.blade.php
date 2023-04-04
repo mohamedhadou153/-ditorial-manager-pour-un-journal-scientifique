@@ -531,7 +531,7 @@ $s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
 
 	
 
-		<button class="unique-button-class"  onclick="affiche2()"> <a href="{{route('editor.final_decision')}}">
+		<button class="unique-button-class"  onclick="affiche2()"> <a href="{{route('editor.final_decision')}}" style="text-decoration: none;">
 			<div class="lazyload" style="background-image: url(https://thumbs.dreamstime.com/b/r%C3%A9sultats-un-effort-de-preuve-de-r%C3%A9sultat-final-de-r%C3%A9ponse-de-r%C3%A9sultats-de-panneau-routier-de-mani%C3%A8re-42237815.jpg);">
 			<span></span>
 			</div>
