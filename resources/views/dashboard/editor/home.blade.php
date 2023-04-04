@@ -436,9 +436,17 @@
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth; $editor=auth::guard('editor')->user()->email; $articles = DB::table('articles')->select('*')
 ->where('etat','libre')
 ->get();
+$a = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->get();
+
+$b = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->get();
+
+$c = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
+
+$d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->get();
 
 
 ?>
+
 
 	<div class="button-container">
 
@@ -469,7 +477,7 @@
 								<div class="article-body">
 									<h2>{{$article->title}}</h2>
 									<p >
-									Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+									{{$article->abstract}}
 									</p>
 									<form action="">
                                      <a href="{{route('editor.validation-article', ['id' => $article->id])}}" class="read-more">Choisie<span class="sr-only">about this is some title</span>
@@ -500,17 +508,17 @@
 			<span></span>
 			</div>
 			<h2>Gérer!</h2>
-			<h3>Articles sans décision </h3>
+			<h3>Articles sans décision final </h3>
 		</button>
 
 	</div>
 	
 	<div class="butt" id="butt" style="display:none">
 	<ul>
-		<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Nouvelles soumissions</a></buttono></li>
-		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte</a></buttono></li>
-		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte</a></buttono></li>
-		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse"</a></buttono></li>
+		<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Nouvelles soumissions </a></buttono></li><h1>@foreach($a as $a){{$a->count}}@endforeach</h1>
+		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte {{$b}} </a></buttono></li><h1>@foreach($b as $b){{$b->count}}@endforeach</h1>
+		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte {{$c}} </a></buttono></li><h1>@foreach($c as $c){{$c->count}}@endforeach</h1>
+		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse" {{$d}} </a></buttono></li><h1>@foreach($d as $d){{$d->count}}@endforeach</h1>
 	</ul>
 	   
 	</div>

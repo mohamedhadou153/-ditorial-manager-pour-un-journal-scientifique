@@ -60,11 +60,11 @@
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
-        // ->where('editorId',auth::guard('editor')->user()->email)
-        // ->where('reviewer1Id','!=', null)
-        // ->where('reviewer2Id','!=', null)
-		// ->where('rev_active1','LIKE',"%acceptdev1%")
-        // ->where('rev_active2','LIKE',"%acceptdev2%")
+        ->where('editorId',auth::guard('editor')->user()->email)
+        ->where('reviewer1Id','!=', null)
+        ->where('reviewer2Id','!=', null)
+		->where('rev_active1','LIKE',"%acceptdev1%")
+        ->where('rev_active2','LIKE',"%acceptdev2%")
         ->get();?>
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">

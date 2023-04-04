@@ -159,7 +159,7 @@ class ArticleController extends Controller
         $req = $id;     
 
         DB::table('articles')->where('id',$req)
-        ->update(['etat'=> 'traitement','updated_at'=>date('d-m-y h:i:s')]);
+        ->update(['etat'=> 'traitement','updated_at'=>date('y-m-d h:i:s')]);
 
         DB::table('articles')->where('id',$req)
         ->update(['editorId'=> $editorId]);
@@ -177,7 +177,7 @@ class ArticleController extends Controller
         $req = $request->id;
 
         DB::table('articles')->where('id',$req)
-        ->update(['etat'=> 'traitement','updated_at'=>date('d-m-y h:i:s')]);
+        ->update(['etat'=> 'traitement','updated_at'=>date('y-m-d h:i:s')]);
 
         DB::table('articles')->where('id',$req)
         ->update(['editorId'=> $req1]);
@@ -194,13 +194,14 @@ class ArticleController extends Controller
         
         //$request->validate(['id'=>'required']);
         $editorId = auth::guard('editor')->user()->email;
-        $id = $request->id;
+        $id = $request->art_id;
         $etat = $request->etat;
+        $review = $request->review;
 
         DB::table('articles')
         ->where('id',$id)
-        ->update(['etat'=> $etat,'editorId'=>$editorId,'updated_at'=>date('d-m-y h:i:s')]);
-        return view('dashboard.editor.home');
+        ->update(['etat'=> $etat,'editorId'=>$editorId,'review3'=>$review,'updated_at'=>date('y-m-d h:i:s')]);
+        return view('dashboard.editor.home')->with('id',$id);
     }
 
     public function SendToReviewers(Request $request){
@@ -212,7 +213,7 @@ class ArticleController extends Controller
        
             DB::table('articles')
             ->where('id',$id)
-            ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('d-m-y h:i:s')]);
+            ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('y-m-d h:i:s')]);
 
         $articles = DB::table('articles')
         ->select('*')
@@ -363,7 +364,7 @@ class ArticleController extends Controller
                 DB::table('articles')
                 ->where('id',$req)
                 ->where('reviewer1Id',$rev)
-                ->update(['review1'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active1'=>$reviewer1->rev_active1. $reviewer1Id->reviewer1Id.'acceptdev1','rev_des1'=>$request->rev_des]);
+                ->update(['review1'=> $review,'updated_at'=>date('y-m-d h:i:s'),'rev_active1'=>$reviewer1->rev_active1. $reviewer1Id->reviewer1Id.'acceptdev1','rev_des1'=>$request->rev_des]);
             }
         }
         
@@ -373,7 +374,7 @@ class ArticleController extends Controller
               DB::table('articles')
              ->where('id',$req)
              ->where('reviewer2Id',$rev)
-             ->update(['review2'=> $review,'updated_at'=>date('d-m-y h:i:s'),'rev_active2'=>$reviewer2->rev_active2.$reviewer2Id->reviewer2Id.'acceptdev2','rev_des2'=>$request->rev_des]);
+             ->update(['review2'=> $review,'updated_at'=>date('y-m-d h:i:s'),'rev_active2'=>$reviewer2->rev_active2.$reviewer2Id->reviewer2Id.'acceptdev2','rev_des2'=>$request->rev_des]);
             }
         }
         $articles = DB::table('articles')
