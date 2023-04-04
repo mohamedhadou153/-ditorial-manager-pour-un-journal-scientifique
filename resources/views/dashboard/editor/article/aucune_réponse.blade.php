@@ -61,10 +61,10 @@
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
-        ->where('rev_active','NOT LIKE',"%.com%")
+        ->where('rev_active1','NOT LIKE',"%.com%")
         ->orwhere('reviewer2Id','!=', null)
         ->where('etat','traitement')
-        ->where('rev_active','NOT LIKE',"%.com%")
+        ->where('rev_active2','NOT LIKE',"%.com%")
         ->where('editorId',auth::guard('editor')->user()->email)
         ->get();?>
 <div class="med bg-gray-900">
