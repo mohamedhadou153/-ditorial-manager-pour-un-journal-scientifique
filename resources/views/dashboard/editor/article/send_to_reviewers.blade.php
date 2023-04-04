@@ -174,19 +174,19 @@ Remarque :{{$article->review2}}</textarea>
   <h1 style="font-size:30px">ta decision final</h1>
 
 <label>
-  <input type="radio" name="rev_des" value="accept" checked>
+  <input type="radio" name="etat" value="accept" checked>
   <span class="design"></span>
   <span class="text">accepter l'article</span>
 </label>
 
 <label>
-  <input type="radio" name="rev_des" value="accept avec revision">
+  <input type="radio" name="etat" value="accept avec revision">
   <span class="design"></span>
   <span class="text">accepter l'article avec une révision</span>
 </label>
 
 <label>
-  <input type="radio" name="rev_des" value="refuse">
+  <input type="radio" name="etat" value="refuse">
   <span class="design"></span>
   <span class="text">refuser l'article</span>
 </label>
