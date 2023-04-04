@@ -516,9 +516,9 @@ $d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat',
 	<div class="butt" id="butt" style="display:none">
 	<ul>
 		<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Nouvelles soumissions </a></buttono></li><h1>@foreach($a as $a){{$a->count}}@endforeach</h1>
-		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte {{$b}} </a></buttono></li><h1>@foreach($b as $b){{$b->count}}@endforeach</h1>
-		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte {{$c}} </a></buttono></li><h1>@foreach($c as $c){{$c->count}}@endforeach</h1>
-		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse" {{$d}} </a></buttono></li><h1>@foreach($d as $d){{$d->count}}@endforeach</h1>
+		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte  </a></buttono></li><h1>@foreach($b as $b){{$b->count}}@endforeach</h1>
+		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte </a></buttono></li><h1>@foreach($c as $c){{$c->count}}@endforeach</h1>
+		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse" </a></buttono></li><h1>@foreach($d as $d){{$d->count}}@endforeach</h1>
 	</ul>
 	   
 	</div>
