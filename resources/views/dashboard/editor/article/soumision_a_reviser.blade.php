@@ -61,8 +61,8 @@
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
-		->where('rev_des1','!=', null
-		)->where('rev_des2','!=', null)
+		->where('rev_des1','!=', null)
+		->where('rev_des2','!=', null)
         ->get();?>
 
 <div class="flex  justify-center min-h-screen bg-gray-900">
