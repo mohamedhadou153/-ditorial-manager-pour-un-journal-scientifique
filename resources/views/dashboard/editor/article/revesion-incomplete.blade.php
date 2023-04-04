@@ -82,8 +82,8 @@
 						<th class="p-3">Title</th>
 						<th class="p-3 ">Category</th>
 						<th class="p-3 ">Type</th>
-						<th class="p-3 ">Abstract</th>
-						<th class="p-3 ">Action</th>
+						<th class="p-3 ">reviseur 1</th>
+						<th class="p-3 ">reviseur 2</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -111,8 +111,13 @@
 								</div>
 							</div>
 						</td>
+						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="1" cols="30" readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->abstract}}</textarea>
+							<div class="">
+								<div class="ml-3">
+									<div class="">{{$article->type}}</div>
+								</div>
+							</div>
 						</td>
                         <form action="{{route('editor.send-to-reviewers')}}" method="get">
 						<td class="ml-3 ">
