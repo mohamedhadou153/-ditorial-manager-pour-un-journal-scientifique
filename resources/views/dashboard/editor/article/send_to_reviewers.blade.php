@@ -24,8 +24,8 @@
 			}
 			.container{
 			width:100%;
-			height:90%;
-	
+			height:95%;
+			border: 1px solid rgba(16, 46, 46, 1);
 			}
 			h1,h4{
 				color: white;
@@ -40,9 +40,13 @@
 				color:white;
 			}
 				
+				form{
+					margin:5px;
+					margin-bottom:0px;
+				border: 1px solid rgba(16, 46, 46, 1);
 				
 				
-			
+			}
 
 			label {
 			display: flex;
@@ -156,16 +160,16 @@
                     <div class="form-group">
                         <h4 style="font-size:20px">Réviseurs décisions</h4>
                         <h4 style="font-size:20px">Reviewer 1</h4>
-                        <textarea name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des1}} 
+                        <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des1}} 
 Remarque :{{$article->review1}}</textarea>
                         <h4 style="font-size:20px">Reviewer 2</h4>
-                        <textarea readonly name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
+                        <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
 Remarque :{{$article->review2}}</textarea>
                     </div>
-					<form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form">
+					<form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:50%">
                     <div class="form-group">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
-                        <textarea readonly name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>
+                        <textarea readonly="readonly" name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>
                     </div>
   <h1 style="font-size:30px">ta decision final</h1>
 

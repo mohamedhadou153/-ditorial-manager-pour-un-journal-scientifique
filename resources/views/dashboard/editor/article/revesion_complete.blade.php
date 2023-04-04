@@ -125,7 +125,7 @@
 						</td>
                          <td class="ml-3 ">
 						<input type="hidden" value="{{$article->id}}" name="id">	
-						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:blueviolet;"><input type="submit" value="gerer" name="gerer"></span>
+						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:gray;"><input type="submit" value="décider" name="gerer"></span>
                          </td>
 				</form>
 					
