@@ -81,6 +81,7 @@
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
+				<form action="{{route('editor.send-to-reviewers')}}">
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
@@ -119,8 +120,11 @@
                         @endif
 						</td>
                          <td class="ml-3 ">
-						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:blueviolet;"><a href="{{route('editor.send-to-reviewers')}}" >gerer</a></span>
+						<input type="hidden" value="{{$article->id}}" name="id">	
+						 <span class="bg-green-400 text-gray-50 rounded-md px-2" style="background-color:blueviolet;"><input type="submit" value="gerer" name="gerer"></span>
                          </td>
+				</form>
+					
 				@endforeach
 				</tbody>
 			</table>
