@@ -24,8 +24,8 @@
 			}
 			.container{
 			width:100%;
-			height:95%;
-			border: 1px solid rgba(16, 46, 46, 1);
+			height:90%;
+	
 			}
 			h1,h4{
 				color: white;
@@ -40,13 +40,9 @@
 				color:white;
 			}
 				
-				form{
-					margin:5px;
-					margin-bottom:0px;
-				border: 1px solid rgba(16, 46, 46, 1);
 				
 				
-			}
+			
 
 			label {
 			display: flex;
@@ -166,7 +162,7 @@ Remarque :{{$article->review1}}</textarea>
                         <textarea readonly name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
 Remarque :{{$article->review2}}</textarea>
                     </div>
-					<form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:50%">
+					<form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form">
                     <div class="form-group">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
                         <textarea readonly name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>
