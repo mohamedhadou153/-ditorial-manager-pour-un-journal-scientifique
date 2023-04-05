@@ -74,7 +74,7 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">soumissions avec révisions requis compléte </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Réviseur invité - "aucune réponse" </th>
 					</tr>
 					<tr>
 						<th class="p-3">Title</th>
