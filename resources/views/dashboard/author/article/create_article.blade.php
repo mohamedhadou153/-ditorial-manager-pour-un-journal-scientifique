@@ -402,10 +402,10 @@
                     <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
                     <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                 </svg>
-                <p class="success">Order placed successfully. Your order will be dispacted soon. meanwhile you can track your order in my order section.</p>
+                <p class="success">article créé avec succès</p>
                 
 				<div class="med"><button type="submit">
-					<span>créé article</span>
+					<span>soumettre</span>
 					<svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
   </svg>
