@@ -338,7 +338,7 @@
 					<span id="select2" name="type">
 					<select id="select21"class="form-control" name="type1" style="display:inline;">
 					<option value="1"></option>
-					<option value="2">Web devlopement</option>
+					<option value="2">Data sience</option>
 					<option value="3">Web devlopement</option>
 					<option value="4">Security System</option>
 					</select>

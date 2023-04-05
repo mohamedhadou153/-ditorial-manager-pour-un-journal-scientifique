@@ -106,12 +106,12 @@ use Illuminate\Support\Facades\DB;  $reviewers = DB::table('reviewers')->select(
 						</td>
                         
 						<td class="ml-3 ">
-							<button  onclick="invv({{$article->title}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">inviter réviseur</button>
+							<button  onclick="invv(a{{$article->id}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">inviter réviseur</button>
 						</td>
 					</tr>
 					
 					<form action="{{route('editor.SendToReviewers')}}" >
-						<tr class="bg-gray-800" style="display:none;" id="{{$article->title}}" >
+						<tr class="bg-gray-800" style="display:none;" id="a{{$article->id}}" >
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">
