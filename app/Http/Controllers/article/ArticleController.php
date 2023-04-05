@@ -10,6 +10,8 @@ use App\Models\Editor;
 use App\Models\Reviewer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 class ArticleController extends Controller
 //articles functions
 {
@@ -77,6 +79,21 @@ class ArticleController extends Controller
         //} 
       return redirect('/author/home');
     }
+
+    public function update(Request $request){
+        $id = $request->id;
+        $articles = DB::table('articles')->select('*')
+        ->where('id',$id)
+        ->where('etat','accept avec revision')
+        ->get();
+        return view('dashboard.author.article.update_article')->with('articles',$articles);
+    }
+
+    public function update_article(){
+
+    }
+
+
 
     public function index_show_libre_article(){
         $authId = auth::user()->email;

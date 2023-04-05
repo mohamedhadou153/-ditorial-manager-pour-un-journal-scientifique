@@ -42,6 +42,7 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::post('/logout',[AuthorRegisterController::class,'logout'])->name('logout');
         Route::get('/profile',[AuthorRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[AuthorRegisterController::class,'edit_profile'])->name('edit-profile');
+        Route::get('/update-article',[AuthorRegisterController::class,'update'])->name('update-article');
         Route::post('/change-profile',[AuthorRegisterController::class,'ChangeProfile'])->name('change_profile');
         Route::post('/change-password',[AuthorRegisterController::class,'change_password'])->name('change-password');
         Route::post('/uploade',[ArticleController::class,'Create'])->name('uploade');
