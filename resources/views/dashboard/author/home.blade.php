@@ -157,10 +157,12 @@
 					@elseif($article->etat =='accept')
 					
 						<td style="color:green;">Accept</td>
-					@else
+					@elseif($article->etat =='refuse')
 					
 						<td style="color: red;">Refuse</td>
 					
+					@else
+					   <td style="color:gray;">Besion Revision</td>	
 					@endif
 					<td>{{$article->created_at}}</td>
 					<td>{{$article->updated_at}}</td>

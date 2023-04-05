@@ -63,11 +63,11 @@
         ->where('reviewer1Id','!=', null)
         ->where('rev_active1','NOT LIKE',"%dev%")
         ->where('rev_active1','LIKE',"%.com%")
-        ->orwhere('reviewer2Id','!=', null)
-        ->where('etat','traitement')
-        ->where('rev_active2',' NOT LIKE',"%dev%")
-        ->where('rev_active2','LIKE',"%.com%")
-        ->where('editorId',auth::guard('editor')->user()->email)
+        ->orwhere('etat','traitement')
+        ->where('reviewer2Id','!=', null)
+		->where('editorId',auth::guard('editor')->user()->email)
+		->where('rev_active2','NOT LIKE',"%dev%")
+		->where('rev_active2','LIKE',"%.com%")
         ->get();?>
 <div class="med bg-gray-900">
 <div class="flex  justify-center  bg-gray-900">
@@ -134,7 +134,7 @@
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">confige</div>
+									<div class="">non confige</div>
 								</div>
 							</div>
 						</td>
