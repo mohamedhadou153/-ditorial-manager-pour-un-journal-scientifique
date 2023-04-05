@@ -184,6 +184,7 @@ use Illuminate\Support\Facades\Auth;
 								<li><a href="{{route('author.traitement-article')}}">Traitement article</a></li>
 								<li><a href="{{route('author.accept-article')}}">Accept Article</a></li>
 								<li><a href="{{route('author.refuse-article')}}">Refuse Article</a></li>
+								<li><a href="{{route('author.update-article')}}">update Article</a></li>
 							</ul>
 						</li>
                 </div>
