@@ -154,11 +154,7 @@
 </style>
 </head> 
 <body style="padding: 0px;">
-<?php
 
-use Illuminate\Support\Facades\Auth;
-   $auth = auth::guard('author')->user()->first_name;
-?>
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
 
 
@@ -195,7 +191,7 @@ use Illuminate\Support\Facades\Auth;
 
 					<div class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/authors/'.$auth.'jpg')}}"class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/authors/'.Auth::user()->first_name.'.jpg')}}"class="avatar" alt="Avatar"> welcom {{Auth::user()->first_name}} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
 								<li class="divider"></li>

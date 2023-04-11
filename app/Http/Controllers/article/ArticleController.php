@@ -10,6 +10,7 @@ use App\Models\Editor;
 use App\Models\Reviewer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Type\Integer;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class ArticleController extends Controller
@@ -80,17 +81,71 @@ class ArticleController extends Controller
       return redirect('/author/home');
     }
 
-    public function update(Request $request){
-        $id = $request->id;
-        $articles = DB::table('articles')->select('*')
-        ->where('id',$id)
-        ->where('etat','accept avec revision')
+    public function show_update(){
+        $authId = auth::user()->email;
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('authorID','=',$authId )
+        ->where('etat','=','accept avec revision')
+        ->get();
+        return view('dashboard.author.article.show_update_articles')->with('articles',$articles);
+    }
+
+    public function update($id){
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('id','=',$id )
         ->get();
         return view('dashboard.author.article.update_article')->with('articles',$articles);
     }
 
-    public function update_article(){
+    public function do_update(Request $request){
 
+
+        $destination_pdf_path = 'public/pdf/articles';     
+            $pdf_name = $request->title.'.'.'pdf';
+            $path_pdf = $request->file('obj_pdf')->storeAs($destination_pdf_path,$pdf_name);
+
+            $destination_pic_path = 'public/images/articles';     
+            $image_name = $request->title.'.'.'jpg';
+            $path_name = $request->file('pic')->storeAs($destination_pic_path,$image_name);
+
+
+            //category select
+            $category = 'Not Selected';
+            if ($request->category == 1) {$category = 'Informatique';}
+            if ($request->category == 2) {$category = 'Physique';}
+            if ($request->category == 3) {$category = 'Biologie';}
+
+            //type select
+            $type = 'Not Selected';
+            if ($request->type1 != 1 && $request->type2 == 5 && $request->type3 == 9) {
+                if ($request->type1 == 2) {$type = 'Data sience';}
+                if ($request->type1 == 3) {$type = 'Web devlopement';}
+                if ($request->type1 == 4) {$type = 'Security System';}
+            }
+            if ($request->type2 != 5 && $request->type1 == 1 && $request->type3 == 9) {
+                if ($request->type2 == 6) {$type = 'Mecanique classique';}
+                if ($request->type2 == 7) {$type = 'Mecanique quantique';}
+                if ($request->type2 == 8) {$type = 'Mecanique fleuide';}
+            }
+            if ($request->type3 != 9 && $request->type1 == 1 && $request->type2 == 5) {
+                if ($request->type3 == 10) {$type = 'Humane mecanisme';}
+                if ($request->type3 == 11) {$type = 'Humane mecanisme';}
+                if ($request->type3 == 12) {$type = 'Humane mecanisme';}
+            }
+
+            DB::table('articles')
+            ->where('id',$request->id)
+            ->update(['etat'=> 'traitement',
+            'updated_at'=>date('y-m-d h:i:s'),
+            'title'=> $request->title,
+            'category'=> $request->category,
+            'abstract'=> $request->abstract,
+            'nbrfigure'=> $request->nbrfigure,
+            'type'=> $request->type,]);
+
+      return redirect('/author/home');
     }
 
 

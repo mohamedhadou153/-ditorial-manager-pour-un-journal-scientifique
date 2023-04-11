@@ -42,7 +42,9 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::post('/logout',[AuthorRegisterController::class,'logout'])->name('logout');
         Route::get('/profile',[AuthorRegisterController::class,'profile'])->name('profile');
         Route::get('/edit-profile',[AuthorRegisterController::class,'edit_profile'])->name('edit-profile');
-        Route::get('/update-article',[AuthorRegisterController::class,'update'])->name('update-article');
+        Route::get('/update-article',[ArticleController::class,'show_update'])->name('update-article');
+        Route::get('/update/{id}',[ArticleController::class,'update'])->name('update');
+        Route::post('/do_update',[ArticleController::class,'do_update'])->name('do_update');
         Route::post('/change-profile',[AuthorRegisterController::class,'ChangeProfile'])->name('change_profile');
         Route::post('/change-password',[AuthorRegisterController::class,'change_password'])->name('change-password');
         Route::post('/uploade',[ArticleController::class,'Create'])->name('uploade');
@@ -69,6 +71,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::view('/soumision-a-reviser','dashboard.editor.article.soumision_a_reviser')->name('soumision_a_reviser');
         Route::view('/revision-incomplete','dashboard.editor.article.revesion-incomplete')->name('revision-incomplete');
         Route::view('/aucune-réponse','dashboard.editor.article.aucune_réponse')->name('aucune-réponse');
+        Route::view('/invitation-refuse','dashboard.editor.article.invitation_refuse')->name('invitation-refuse');
         Route::post('/logout',[EditorRegisterController::class,'logout'])->name('logout');
         Route::get('/libre-article',[ArticleController::class,'show_libre_article'])->name('libre-article');
         Route::get('/validation-article/{id}',[ArticleController::class,'validation_article'])->name('validation-article');

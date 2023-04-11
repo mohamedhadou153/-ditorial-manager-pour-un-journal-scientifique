@@ -57,14 +57,14 @@
  
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth; $reviewers= DB::table('reviewers')->select('*')->get();   $articles = DB::table('articles')->select('*')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;    $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
-        ->where('rev_active1','NOT LIKE',"%.com%")
+        ->where('rev_active1','LIKE',"%refusedev%")
         ->orwhere('reviewer2Id','!=', null)
         ->where('etat','traitement')
-        ->where('rev_active2','NOT LIKE',"%.com%")
+        ->where('rev_active2','LIKE',"%refusedev%")
         ->where('editorId',auth::guard('editor')->user()->email)
         ->get();?>
 <div class="med bg-gray-900">
@@ -74,7 +74,7 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Réviseur invité - "aucune réponse"</th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Réviseur invité - "refuse réponse"</th>
 					</tr>
 					<tr>
 						<th class="p-3" style="width:200px">Title</th>
@@ -86,7 +86,7 @@
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
-				@if($article->rev_active1 == 'rev')
+				@if($article->rev_active1 == $reviewer1)
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">

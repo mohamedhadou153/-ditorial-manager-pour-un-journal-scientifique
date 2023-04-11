@@ -134,21 +134,21 @@
 					<th data-priority="3">Type</th>
 					<th data-priority="4">Etat</th>
 					<th data-priority="5">Editor Email</th>
-					<th data-priority="6">last update </th>
+					<th data-priority="6">Action</th>
 				</tr>
 			</thead>
 			
 			
 			<tbody>
-			<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $articles = DB::table('articles')->select('*')->where('authorId',Auth::guard('author')->user()->email)->where('etat','!=','accept')->where('etat','!=','refuse')->where('etat','!=','accept avec revision')->get();?>
+			<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $articles = DB::table('articles')->select('*')->where('authorId',Auth::guard('author')->user()->email)->where('etat','=','accept avec revision')->get();?>
 			@foreach ($articles as $article)
 				<tr>
 					<td>{{$article->title}}</td>
 					<td>{{$article->category}}</td>
 					<td>{{$article->type}}</td>
-					<td style="color:cornflowerblue;">Traitement</td>
+					<td style="color:cornflowerblue;">{{$article->etat}}</td>
 					<td>{{$article->editorId}}</td>
-					<td>{{$article->updated_at}}</td>
+					<td><a href="{{route('author.update', ['id' => $article->id])}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">changer article</a></a></td>
 				</tr>
 			@endforeach	
 			</tbody>

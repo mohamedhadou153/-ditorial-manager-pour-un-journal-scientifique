@@ -56,6 +56,7 @@
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
         ->where('etat','!=','traitement')
 		->where('etat','!=','libre')
+		->where('etat','!=','accept avec revision')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
@@ -75,8 +76,8 @@
 						<th class="p-3">Title</th>
 						<th class="p-3 ">categorie</th>
 						<th class="p-3 ">type</th>
-						<th class="p-3 ">décision R1</th>
-						<th class="p-3 ">décision R2</th>
+						<!-- <th class="p-3 ">décision R1</th>
+						<th class="p-3 ">décision R2</th> -->
 						<th class="p-3 ">décision final</th>
 					</tr>
 				</thead>
@@ -98,7 +99,7 @@
 						<td class="ml-3">
 							{{$article->type}}
 						</td>
-						<td class="p-3">
+						<!-- <td class="p-3">
                         @if($article->rev_des1 == 'accept')
 						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
                         @endif
@@ -119,7 +120,7 @@
                         @if($article->rev_des2 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
-						</td>
+						</td> -->
                          <td class="ml-3 ">
 						 <span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
                          </td>
@@ -140,7 +141,7 @@
 						<td class="ml-3">
 							{{$article->type}}
 						</td>
-						<td class="p-3">
+						<!-- <td class="p-3">
                         @if($article->rev_des1 == 'accept')
 						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
                         @endif
@@ -161,16 +162,16 @@
                         @if($article->rev_des2 == 'accept avec revision')
                         <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
                         @endif
-						</td>
+						</td> -->
                          <td class="ml-3 ">
 						 <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
                          </td>
                 @endif
-                @if($article->etat == 'accept avec revision')
-					<tr class="bg-gray-800" >
+                 @if($article->etat == 'accept avec revision')
+					<!-- <tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
-							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
+							 <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> 
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
@@ -206,7 +207,7 @@
 						</td>
                          <td class="ml-3 ">
 						 <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                         </td>
+                         </td> -->
                 @endif
 
 				@endforeach

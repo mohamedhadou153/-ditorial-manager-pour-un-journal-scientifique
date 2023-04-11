@@ -219,6 +219,7 @@
         }
       }
   </style>
+  <script src="https://kit.fontawesome.com/7f60b9a86b.js" crossorigin="anonymous"></script>
 @endsection
 @section('content')
 
