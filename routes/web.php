@@ -122,6 +122,11 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
     });
 });
 
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::view('/home','dashboard.admin.home')->name('home');
+});
+
 /*Route::prefix('article')->name('article.')->group(function(){
     Route::get('/uploade',[ArticleController::class,'uploade'])->name('uploade');
 });*/

@@ -57,7 +57,7 @@
  
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;    $articles = DB::table('articles')->select('*')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $reviewers= DB::table('reviewers')->select('*')->get();    $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
@@ -86,7 +86,7 @@
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
-				@if($article->rev_active1 == $reviewer1)
+				@if($article->rev_active1 == '')
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
