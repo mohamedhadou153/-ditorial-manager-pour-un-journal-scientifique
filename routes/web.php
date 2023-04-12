@@ -62,6 +62,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
     Route::middleware(['guest:editor'])->group(function(){
         Route::view('/login','dashboard.editor.login')->name('login');
         Route::view('/register','dashboard.editor.register')->name('register');
+        Route::view('/cv','dashboard.editor.cv')->name('cv');
         Route::post('/create',[EditorRegisterController::class,'create'])->name('create');
         Route::post('/customLogin',[EditorRegisterController::class,'customLogin'])->name('customLogin');
     });
@@ -72,6 +73,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::view('/revision-incomplete','dashboard.editor.article.revesion-incomplete')->name('revision-incomplete');
         Route::view('/aucune-réponse','dashboard.editor.article.aucune_réponse')->name('aucune-réponse');
         Route::view('/invitation-refuse','dashboard.editor.article.invitation_refuse')->name('invitation-refuse');
+        Route::post('/pdf-cv',[EditorRegisterController::class,'CV'])->name('pdf-cv');
         Route::post('/logout',[EditorRegisterController::class,'logout'])->name('logout');
         Route::get('/libre-article',[ArticleController::class,'show_libre_article'])->name('libre-article');
         Route::get('/validation-article/{id}',[ArticleController::class,'validation_article'])->name('validation-article');
@@ -95,7 +97,7 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
     Route::middleware(['guest:reviewer'])->group(function(){
         Route::view('/login','dashboard.reviewer.login')->name('login');
         Route::view('/register','dashboard.reviewer.register')->name('register');
-
+        Route::view('/cv','dashboard.reviewer.cv')->name('cv');
         Route::post('/create',[ReviewerRegisterController::class,'create'])->name('create');
         Route::post('/dologin',[ReviewerRegisterController::class,'dologin'])->name('dologin');
         Route::post('/customLogin',[ReviewerRegisterController::class,'customLogin'])->name('customLogin');
@@ -106,6 +108,7 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
         Route::view('/invitation-confirmer','dashboard.reviewer.article.review_confirme')->name('review-confirme');
         Route::post('/logout',[ReviewerRegisterController::class,'logout'])->name('logout');
         Route::get('/review-commande',[ArticleController::class,'review_commande'])->name('review-commande');
+        Route::post('/pdf-cv',[ReviewerRegisterController::class,'CV'])->name('pdf-cv');
         Route::get('/creation-review',[ArticleController::class,'creation_review'])->name('creation-review');
         Route::get('/validation-review',[ArticleController::class,'validation_review'])->name('validation-review');
         Route::get('/validation-refuse-review',[ArticleController::class,'validation_refuse_review'])->name('validation-refuse-review');

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\equalTo;
+
 class EditorRegisterController extends Controller
 {
     
@@ -49,8 +51,9 @@ class EditorRegisterController extends Controller
     $editor->last_name = $request->last_name;
     $editor->email = $request->email;
     $editor->password = Hash::make($request->password);
+    $editor->etat = "attend";
     $data = $editor->save();
-    return redirect()->intended('editor/login');
+    return redirect()->intended('editor/cv');
 
 
     }
@@ -63,14 +66,42 @@ class EditorRegisterController extends Controller
         ]);
 
     
+        $etats = DB::table('editors')->select('etat')->where('email','=',$request->email)->get();
+        foreach($etats as $etat){
+            $etat = $etat;
+        }       
         $credentials = $request->only('email', 'password');
         if (Auth::guard('editor')->attempt($credentials)) {
-            return redirect()->intended('editor/home')->withSuccess('Signed in');
-           //return redirect()->back()->with('error','invalid information'); 
+
+
+            if ($etat->etat == 'accept') {
+              return redirect()->intended('editor/home');
+            }else{return redirect()->intended('editor/cv');}      
         }
    
         return redirect()->back()->with('error','invalid information'); 
     } 
+
+    public function CV(Request $request){
+        $pdf = $request->pdf;
+        $id = auth::guard('editor')->user()->email;
+        $name = Auth::guard('editor')->user()->first_name;
+
+        $destination_pic_path = 'public/pdf/cv/editors';     
+        $pdf_name = $name.'.'.$pdf->extension();
+        $path_name = $request->file('pdf')->storeAs($destination_pic_path,$pdf_name);
+
+        DB::table('editors')
+        ->where('email',$id)
+        ->update([
+            'pdf'=>$pdf_name,
+            'etat'=>'traitement',
+        ]);
+
+        Auth::guard('reviewer')->logout();
+        return view('dashboard.editor.login');
+
+    }
 
     public function logout(){
         Auth::guard('editor')->logout();

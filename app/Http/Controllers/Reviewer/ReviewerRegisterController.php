@@ -62,15 +62,42 @@ class ReviewerRegisterController extends Controller
             'password' => 'required',
         ]);
 
+        $etats = DB::table('reviewers')->select('etat')->where('email','=',$request->email)->get();
+        foreach($etats as $etat){
+            $etat = $etat;
+        }       
     
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('reviewer')->attempt($credentials)) {
-            return redirect()->intended('reviewer/home')
-                        ->withSuccess('Signed in');
+        if (Auth::guard('reviewer')->attempt($credentials)){
+
+            if ($etat->etat == 'accept') {
+                return redirect()->intended('reviewer/home');
+            }else{return redirect()->intended('reviewer/cv');}         
         }
    
         return redirect()->back()->with('error','invalid information'); 
     } 
+
+    public function CV(Request $request){
+        $pdf = $request->pdf;
+        $id = auth::guard('reviewer')->user()->email;
+        $name = Auth::guard('reviewer')->user()->first_name;
+
+        $destination_pic_path = 'public/pdf/cv/reviewers';     
+        $pdf_name = $name.'.'.$pdf->extension();
+        $path_name = $request->file('pdf')->storeAs($destination_pic_path,$pdf_name);
+
+        DB::table('reviewers')
+        ->where('email',$id)
+        ->update([
+            'pdf'=>$pdf_name,
+            'etat'=>'traitement',
+        ]);
+
+        Auth::guard('reviewer')->logout();
+        return view('dashboard.reviewer.login');
+
+    }
 
     public function logout(){
         Auth::guard('reviewer')->logout();
