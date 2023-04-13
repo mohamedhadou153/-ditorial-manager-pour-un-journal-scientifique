@@ -5,6 +5,7 @@ use App\Http\Controllers\Author\AuthorRegisterController;
 use App\Http\Controllers\Editor\EditorRegisterController;
 use App\Http\Controllers\Reviewer\ReviewerRegisterController;
 use App\Http\Controllers\article\ArticleController;
+use App\Http\Controllers\admin\AdminController;
 use App\Models\Article;
 
 /*
@@ -125,6 +126,21 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
 
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::view('/home','dashboard.admin.home')->name('home');
+    Route::get('/authors',[AdminController::class,'get_authors'])->name('authors');
+    Route::get('/editors',[AdminController::class,'get_editors'])->name('editors');
+    Route::get('/reviewers',[AdminController::class,'get_reviewers'])->name('reviewers');
+    Route::get('/new_editors',[AdminController::class,'get_new_editors'])->name('new_editors');
+    Route::get('/new_reviewers',[AdminController::class,'get_new_reviewers'])->name('new_reviewers');
+    Route::get('/articles_accept',[AdminController::class,'articles'])->name('articles_accept');
+    Route::get('/articles_refuse',[AdminController::class,'articles'])->name('articles_refuse');
+    Route::get('/articles_revise',[AdminController::class,'articles'])->name('articles_revise');
+    Route::get('/articles_libre',[AdminController::class,'articles'])->name('articles_libre');
+    Route::get('/articles_traitement',[AdminController::class,'articles'])->name('articles_traitement');
+
+    
+
+
+
 });
 
 /*Route::prefix('article')->name('article.')->group(function(){
