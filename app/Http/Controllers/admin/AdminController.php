@@ -18,26 +18,44 @@ class AdminController extends Controller
 {
 
     public function get_authors(){
-        return view('dashboard.admin.users');
+        return view('dashboard.admin.authors');
     }
 
     public function get_editors(){
-        return view('dashboard.admin.users');
+        return view('dashboard.admin.editors');
     }
 
     public function get_reviewers(){
-        return view('dashboard.admin.users');
+        return view('dashboard.admin.reviewers');
     }
 
     public function get_new_editors(){
-        return view('dashboard.admin.users');
+        return view('dashboard.admin.new_editors');
     }
 
     public function get_new_reviewers(){
-        return view('dashboard.admin.users');
+        return view('dashboard.admin.new_reviewers');
     }
 
-    public function articles(){
-        return view('dashboard.admin.articles');
+    public function articles_traitement(){
+        return view('dashboard.admin.articles_traitement');
     }
+
+    public function articles_libre(){
+        return view('dashboard.admin.articles_libre');
+    }
+
+    public function articles_revise(){
+        return view('dashboard.admin.articles_revision');
+    }
+
+    public function articles_refuse(){
+        return view('dashboard.admin.articles_refuse');
+    }
+
+    
+    public function articles_accept(){
+        return view('dashboard.admin.articles_accept');
+    }
+
 }

@@ -1,5 +1,21 @@
 @extends('dashboard.admin.header')
 @section('content')
+<?php use Illuminate\Support\Facades\DB;
+$total_authors = DB::table('authors')->select(DB::raw('count(id) as count'))->get();
+$total_editors = DB::table('editors')->select(DB::raw('count(id) as count'))->get();
+$total_reviewers = DB::table('reviewers')->select(DB::raw('count(id) as count'))->get();
+$total_articles = DB::table('articles')->count();
+$total_articles_accept = (int)(DB::table('articles')->where('etat','accept')->count()  / $total_articles *  100);
+$total_articles_refuse = (int)(DB::table('articles')->where('etat','refuse')->count()  / $total_articles *  100);
+$total_articles_traitement = (int)(DB::table('articles')->where('etat','traitement')->count()  / $total_articles *  100);
+
+
+
+$total_articles_revision = (int)(DB::table('articles')->where('etat','accept avec revision')->count()  / $total_articles *  100);
+$total_articles_libre = (int)(DB::table('articles')->where('etat','libre')->count()  / $total_articles *  100);
+
+// $total_articles_accept_p = $total_articles_accept_int / $total_articles_int * 100;
+?>
 <div class="container-fluid">
 
 <!-- Page Heading -->
@@ -18,7 +34,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Totals (Autheurs)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">40</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@foreach($total_authors as $l){{$l->count}}@endforeach</div>
                     </div>
                     <div class="col-auto">
                         <i class="fa-solid fa-user-pen fa-2x text-gray-300"></i>
@@ -36,7 +52,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Totals (éditeurs)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@foreach($total_editors as $l){{$l->count}}@endforeach</div>
                     </div>
                     <div class="col-auto">
                         <i class="fa-sharp fa-solid fa-user-tie fa-2x text-gray-300"></i>
@@ -55,7 +71,7 @@
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Totals (réviseurs)
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@foreach($total_reviewers as $l){{$l->count}}@endforeach</div>
                     </div>
                     <div class="col-auto">
                         <i class="fa-sharp fa-solid fa-user-tie fa-2x text-gray-300"></i>
@@ -73,7 +89,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Total(Articles)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">180</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_articles}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fa-solid fa-newspaper fa-2x text-gray-300"></i>
@@ -97,29 +113,430 @@
             </div>
             <div class="card-body">
                 <h4 class="small font-weight-bold">Articles refuser <span
-                        class="float-right">30%</span></h4>
+                        class="float-right">{{$total_articles_refuse}}%</span>
+                </h4>
+                @if($total_articles_refuse == 0)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 0%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 0 && $total_articles_refuse <= 10)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 10 && $total_articles_refuse <= 20)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 20 && $total_articles_refuse <= 30)
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: 30%"
                         aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
+                @endif
+                @if($total_articles_refuse > 30 && $total_articles_refuse <= 40)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 40%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 40 && $total_articles_refuse <= 50)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 50 && $total_articles_refuse <= 60)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 60%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 60 && $total_articles_refuse <= 70)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 70%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 70 && $total_articles_refuse <= 80)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 80 && $total_articles_refuse <= 90)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse > 90 && $total_articles_refuse <= 99)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_refuse == 100)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                
+
+
+
+
+
+
+
+
+
+
+
                 <h4 class="small font-weight-bold">Articles en etat révision <span
-                        class="float-right">40%</span></h4>
+                        class="float-right">{{$total_articles_revision}}%</span>
+                </h4>
+                @if($total_articles_revision == 0)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 0%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 0 && $total_articles_revision <= 10)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 10%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 10 && $total_articles_revision <= 20)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 20 && $total_articles_revision <= 30)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 30 && $total_articles_revision <= 40)
                 <div class="progress mb-4">
                     <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Articles encour de traitement <span
-                        class="float-right">60%</span></h4>
+                @endif
+                @if($total_articles_revision > 40 && $total_articles_revision <= 50)
                 <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%"
-                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
+                @endif
+                @if($total_articles_revision > 50 && $total_articles_revision <= 60)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 60 && $total_articles_revision <= 70)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 70 && $total_articles_revision <= 80)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 80 && $total_articles_revision <= 90)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision > 90 && $total_articles_revision <= 99)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_revision == 100)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <h4 class="small font-weight-bold">Articles encour de traitement <span
+                        class="float-right">{{$total_articles_traitement}}%</span>
+                </h4>
+                @if($total_articles_traitement == 0)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 0%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 0 && $total_articles_traitement <= 10)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 10%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 10 && $total_articles_traitement <= 20)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 20%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 20 && $total_articles_traitement <= 30)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 30%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 30 && $total_articles_traitement <= 40)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 40%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 40 && $total_articles_traitement <= 50)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 50%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 50 && $total_articles_traitement <= 60)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 60%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 60 && $total_articles_traitement <= 70)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 70%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 70 && $total_articles_traitement <= 80)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 80%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 80 && $total_articles_traitement <= 90)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement > 90 && $total_articles_traitement <= 99)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_traitement == 100)
+                <div class="progress mb-4">
+                    <div class="progress-bar " role="progressbar" style="width: 100%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <h4 class="small font-weight-bold">Articles accepter <span
-                        class="float-right">100%</span></h4>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        class="float-right">{{$total_articles_accept}}%</span>
+                </h4>
+                @if($total_articles_accept == 0)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 0%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
+                @endif
+                @if($total_articles_accept > 0 && $total_articles_accept <= 10)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 10%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 10 && $total_articles_accept <= 20)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 20%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 20 && $total_articles_accept <= 30)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 30%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 30 && $total_articles_accept <= 40)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 40%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 40 && $total_articles_accept <= 50)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 50%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 50 && $total_articles_accept <= 60)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 60%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 60 && $total_articles_accept <= 70)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 70%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 70 && $total_articles_accept <= 80)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 80%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 80 && $total_articles_accept <= 90)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept > 90 && $total_articles_accept <= 99)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_accept == 100)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 100%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+
+
+
+
+                 <h4 class="small font-weight-bold">Articles libre <span
+                        class="float-right">{{$total_articles_libre}}%</span>
+                </h4>
+                @if($total_articles_libre == 0)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 0%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 0 && $total_articles_libre <= 10)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 10%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 10 && $total_articles_libre <= 20)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 20%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 20 && $total_articles_libre <= 30)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 30%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 30 && $total_articles_libre <= 40)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 40%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 40 && $total_articles_libre <= 50)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 50%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 50 && $total_articles_libre <= 60)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 60%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 60 && $total_articles_libre <= 70)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 70%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 70 && $total_articles_libre <= 80)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 80%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 80 && $total_articles_libre <= 90)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre > 90 && $total_articles_libre <= 99)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 90%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
+                @if($total_articles_libre == 100)
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-Black " role="progressbar" style="width: 100%"
+                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                @endif
             </div>
         </div>
 

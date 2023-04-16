@@ -131,11 +131,11 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/reviewers',[AdminController::class,'get_reviewers'])->name('reviewers');
     Route::get('/new_editors',[AdminController::class,'get_new_editors'])->name('new_editors');
     Route::get('/new_reviewers',[AdminController::class,'get_new_reviewers'])->name('new_reviewers');
-    Route::get('/articles_accept',[AdminController::class,'articles'])->name('articles_accept');
-    Route::get('/articles_refuse',[AdminController::class,'articles'])->name('articles_refuse');
-    Route::get('/articles_revise',[AdminController::class,'articles'])->name('articles_revise');
-    Route::get('/articles_libre',[AdminController::class,'articles'])->name('articles_libre');
-    Route::get('/articles_traitement',[AdminController::class,'articles'])->name('articles_traitement');
+    Route::get('/articles_accept',[AdminController::class,'articles_accept'])->name('articles_accept');
+    Route::get('/articles_refuse',[AdminController::class,'articles_refuse'])->name('articles_refuse');
+    Route::get('/articles_revise',[AdminController::class,'articles_revise'])->name('articles_revise');
+    Route::get('/articles_libre',[AdminController::class,'articles_libre'])->name('articles_libre');
+    Route::get('/articles_traitement',[AdminController::class,'articles_traitement'])->name('articles_traitement');
 
     
 
