@@ -142,7 +142,7 @@
 	<?php use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->first_name; ?>
 <nav class="navbar navbar-default"style="margin-bottom:0px" >
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
+		<a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
 			<span class="navbar-toggler-icon"></span>
 			<span class="icon-bar"></span>
@@ -153,7 +153,7 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
+			<li class="active"><a href="/reviewer/home">Home</a></li>
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
 				<ul class="dropdown-menu">		
@@ -164,8 +164,6 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
-			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
 			<li class="dropdown">
 				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/reviewers/'.$rev.'.jpg')}}" class="avatar" alt="Avatar"> welcom {{Auth::guard('reviewer')->user()->first_name}} <b class="caret"></b></a>
 				<ul class="dropdown-menu">

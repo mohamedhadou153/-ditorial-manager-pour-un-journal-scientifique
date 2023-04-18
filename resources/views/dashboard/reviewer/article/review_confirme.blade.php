@@ -74,7 +74,7 @@
 						<th colspan="6" style="border-radius: 0px;font-size: 50px;">décision final </th>
 					</tr>
 					<tr>
-						<th class="p-3">Title</th>
+						<th class="p-3">Titre</th>
 						<th class="p-3 ">categorie</th>
 						<th class="p-3 ">type</th>
 						<th class="p-3 ">Abstract</th>
