@@ -437,20 +437,20 @@
 		$editor=auth::guard('editor')->user()->email; 
 		$articles = DB::table('articles')->select('*')->where('etat','libre')->get();
 
-		$l = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','libre')->get();
+		$l = DB::table('articles')->where('etat','libre')->count();
 
-		$a = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->get();
+		$a = DB::table('articles')->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->count();
 
-		$b = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','accept')->where('etat','!=','refuse')->where('etat','!=','accept avec revision')->where('editorId',$editor)->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->get();
+		$b = DB::table('articles')->where('etat','!=','accept avec reponse')->where('etat','!=','libre')->where('etat','!=','accept')->where('etat','!=','refuse')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->count();
 
-		$c = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',$editor)->get();
+		$c = DB::table('articles')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('etat','traitement')->where('reviewer2Id','!=', null)->where('editorId',auth::guard('editor')->user()->email)->where('rev_active2','NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->count();
 
-		$d = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','traitement')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%.com%") ->where('rev_active1','NOT LIKE',"%dev%")->orwhere('reviewer2Id','!=', null) ->where('etat','traitement')->where('rev_active2','NOT LIKE',"%.com%")->where('editorId',$editor)->get();
+		$d = DB::table('articles')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email) ->where('reviewer1Id','!=', null) ->where('rev_active1','NOT LIKE',"%.com%")->orwhere('reviewer2Id','!=', null)->where('etat','traitement')->where('rev_active2','NOT LIKE',"%.com%")->where('editorId',auth::guard('editor')->user()->email)->count();
 		//foreach($a as $a){foreach($b as $b){foreach($c as $c){foreach($d as $d){$a1 = (int)$a->count;$b1=(int)$b->count;$c1=(int)$c->count;$d1=(int)$d->count;$f1=$a1+$b1+$c1+$d1;}}}}
-		$f =  DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','traitement')->where('editorId','=',$editor)->where('reviewer1Id',null)->where('reviewer2Id',null)->orwhere('etat','!=','accept')->where('etat','!=','refuse')->where('etat','!=','accept avec revision')->where('editorId',$editor)->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->orwhere('editorId',$editor)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('reviewer2Id','=', null)->where('etat','traitement')->where('rev_active2',' NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->where('editorId',$editor)->orwhere('etat','=','accept avec revision')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->orwhere('etat','traitement')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%.com%") ->orwhere('reviewer2Id','!=', null) ->where('etat','traitement')->where('rev_active2','NOT LIKE',"%.com%")->where('editorId',$editor)->get();
-		$s = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','!=','traitement')->where('etat','!=','reponse')->where('etat','!=','libre')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
-		$h = DB::table('articles')->select(DB::raw('count(id) as count'))->where('etat','=','accept avec revision')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->get();
-
+		$s = DB::table('articles')->where('etat','!=','traitement')->where('etat','!=','reponse')->where('etat','!=','libre')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->count();
+		$h = DB::table('articles')->where('etat','=','accept avec revision')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->count();
+		$g = DB::table('articles')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','LIKE',"%refusedev%")->orwhere('reviewer2Id','!=', null)->where('etat','traitement')->where('rev_active2','LIKE',"%refusedev%")->where('editorId',auth::guard('editor')->user()->email)->count();
+		$f = $a + $b + $c + $d + $h + $g;
 ?>
 
 
@@ -463,7 +463,7 @@
 			<span></span>
 			</div>
 			<h2>Chercher!</h2>
-			<h3>Ici tu trouvera des nouveaux articles libres (@foreach($l as $l){{$l->count}}@endforeach)</h3>
+			<h3>Ici tu trouvera des nouveaux articles libres ({{$l}})</h3>
 		</button>
 
 	</div>
@@ -514,18 +514,19 @@
 			<span></span>
 			</div>
 			<h2>Gérer!</h2>
-			<h3>Articles sans décision final (@foreach($f as $f){{$f->count}}@endforeach)</h3>
+			<h3>Articles sans décision final ({{$f}})</h3>
 		</button>
 
 	</div>
 	
 	<div class="butt" id="butt" style="display:none">
 	<ul>
-		<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Nouvelles soumissions (@foreach($a as $a){{$a->count}}@endforeach)</a></buttono></li>
-		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte (@foreach($b as $b){{$b->count}}@endforeach) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte (@foreach($c as $c){{$c->count}}@endforeach) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse"(@foreach($d as $d){{$d->count}}@endforeach) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission besoin de modifier "réviser" (@foreach($h as $h){{$h->count}}@endforeach)</a></buttono></li>
+		<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Nouvelles soumissions ({{$a}})</a></buttono></li>
+		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte ({{$b}}) </a></buttono></li>
+		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte ({{$c}}) </a></buttono></li>
+		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse"({{$d}}) </a></buttono></li>
+		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission besoin de modifier "réviser" ({{$h}})</a></buttono></li>
+		<li> <buttono><a href="{{route('editor.invitation-refuse')}}" style="text-decoration: none;">Réviseur invité - "réponse refuser" ({{$g}})</a></buttono></li>
 	</ul>
 	   
 	</div>
@@ -538,7 +539,7 @@
 			<span></span>
 			</div>
 			<h2>Résultats!</h2>
-			<h3 >Articles avec décision final (@foreach($s as $s){{$s->count}}@endforeach) </h3>
+			<h3 >Articles avec décision final ({{$s}}) </h3>
 			</a>
 		</button>
 
