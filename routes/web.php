@@ -24,7 +24,9 @@ use App\Models\Article;
 
 Route::get('/',[ArticleController::class,'show_accept_article_home'])->name('libre-article');
 Route::get('/search_article',[ArticleController::class,'shearch_article'])->name('search_article');
-
+Route::get('contact', function () {
+    return view('dashboard.contact.index');
+})->name('contact');
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
