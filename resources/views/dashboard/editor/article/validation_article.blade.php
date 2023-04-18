@@ -67,11 +67,11 @@ use Illuminate\Support\Facades\DB;  $reviewers = DB::table('reviewers')->select(
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Nouvelles soumissions </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Nouvelles Soumissions </th>
 					</tr>
 					<tr>
-						<th class="p-3" style="width:200px">Title</th>
-						<th class="p-3 "style="width:300px">Category</th>
+						<th class="p-3" style="width:200px">Titre</th>
+						<th class="p-3 "style="width:300px">Categorie</th>
 						<th class="p-3 "style="width:200px">Type</th>
 						<th class="p-3 "style="width:300px">Abstract</th>
 						<th class="p-3 "style="width:200px">Action</th>

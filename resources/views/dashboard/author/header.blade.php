@@ -177,6 +177,9 @@ $pic =  Auth::guard('author')->user()->pic;
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 				<div class="nav navbar-nav">
+				<li class="dropdown">
+							<a class="dropdown-toggle" href="/author/home">Home</a>
+						</li>
 						
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>

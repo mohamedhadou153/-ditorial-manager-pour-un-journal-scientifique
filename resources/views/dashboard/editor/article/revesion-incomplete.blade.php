@@ -76,11 +76,11 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">soumissions avec révisions requis incompléte </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Soumissions Avec Révisions Requis Incompléte </th>
 					</tr>
 					<tr>
-						<th class="p-3">Title</th>
-						<th class="p-3 ">Category</th>
+						<th class="p-3">Titre</th>
+						<th class="p-3 ">Categorie</th>
 						<th class="p-3 ">Type</th>
 						<th class="p-3 ">reviseur 1</th>
 						<th class="p-3 ">reviseur 2</th>

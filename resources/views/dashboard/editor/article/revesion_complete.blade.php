@@ -74,15 +74,15 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="6" style="border-radius: 0px;font-size: 50px;">soumissions avec révisions requis compléte</th>
+						<th colspan="6" style="border-radius: 0px;font-size: 50px;">Soumissions Avec Révisions Requis Compléte</th>
 					</tr>
 					<tr>
-						<th class="p-3">Title</th>
-						<th class="p-3 ">categorie</th>
-						<th class="p-3 ">type</th>
-						<th class="p-3 ">décision R1</th>
-						<th class="p-3 ">décision R2</th>
-						<th class="p-3 ">action</th>
+						<th class="p-3">Titre</th>
+						<th class="p-3 ">Categorie</th>
+						<th class="p-3 ">Type</th>
+						<th class="p-3 ">Décision R1</th>
+						<th class="p-3 ">Décision R2</th>
+						<th class="p-3 ">Action</th>
 					</tr>
 				</thead>
 				<tbody>

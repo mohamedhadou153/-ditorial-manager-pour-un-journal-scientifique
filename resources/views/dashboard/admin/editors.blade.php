@@ -52,7 +52,7 @@
                                             <th>Email</th>
                                             <th>Date de creation</th>
                                             <th>Date de mise a jour</th>
-                                            <th>Salary</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

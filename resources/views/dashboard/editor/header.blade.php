@@ -179,6 +179,7 @@
     
 
 </head> 
+<?php use Illuminate\Support\Facades\Auth; $pic = Auth::guard('editor')->user()->pic;?>
 <body>
  <nav class="navbar navbar-default">
 	<div class="navbar-header">
@@ -192,12 +193,16 @@
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
+    <div class="nav navbar-nav">
+						
+						<li class="dropdown">
+							<a class="dropdown-toggle" href="/editor/home">Home</a>
+						</li>
+    </div>
 	
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
-			<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">7</span></a></li>
 			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://picsum.photos/200/300?grayscale" class="avatar" alt="Avatar"> welcom {{Auth::guard('editor')->user()->first_name}} <b class="caret"></b></a>
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/editors/'.$pic)}}" class="avatar" alt="Avatar"> welcom {{Auth::guard('editor')->user()->first_name}} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{route('editor.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
 					<li class="divider"></li>

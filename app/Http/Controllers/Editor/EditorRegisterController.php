@@ -53,7 +53,7 @@ class EditorRegisterController extends Controller
     $editor->password = Hash::make($request->password);
     $editor->etat = "attend";
     $data = $editor->save();
-    return redirect()->intended('editor/cv');
+    return redirect()->intended('editor/login');
 
 
     }

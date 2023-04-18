@@ -77,10 +77,10 @@
 						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Réviseur invité - "aucune réponse"</th>
 					</tr>
 					<tr>
-						<th class="p-3" style="width:200px">Title</th>
-						<th class="p-3 "style="width:300px">Category</th>
+						<th class="p-3" style="width:200px">Titre</th>
+						<th class="p-3 "style="width:300px">Categorie</th>
 						<th class="p-3 "style="width:200px">Type</th>
-						<th class="p-3 "style="width:300px">reviseur email</th>
+						<th class="p-3 "style="width:300px">Réviseur email</th>
 						<th class="p-3 "style="width:200px">Action</th>
 					</tr>
 				</thead>
