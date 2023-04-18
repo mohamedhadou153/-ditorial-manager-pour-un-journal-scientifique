@@ -57,7 +57,13 @@
  
 @endsection
 @section('content')
-<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $reviewers= DB::table('reviewers')->select('*')->get();    $articles = DB::table('articles')->select('*')
+<?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $reviewers= DB::table('reviewers')->select('*')->get();
+function like_match($pattern, $subject)
+{
+    $pattern = str_replace('%', '.*', preg_quote($pattern, '/'));
+    return (bool) preg_match("/^{$pattern}$/i", $subject);
+}
+    $articles = DB::table('articles')->select('*')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
@@ -86,7 +92,7 @@
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
-				@if($article->rev_active1 == '')
+				@if(like_match('%refusedev%',$article->rev_active1))
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
@@ -120,7 +126,7 @@
 							<button  onclick="invv(a{{$article->id}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">modifier réviseur</button>
 						</td>
 					</tr>
-						<form action="{{route('editor.SendToReviewers')}}" >
+						<form action="{{route('editor.SendToReviewer')}}" >
 						<tr class="bg-gray-800" style="display:none;" id="a{{$article->id}}" >
 								<td class="p-3">
 									<div class="">
@@ -147,7 +153,7 @@
 							<input type="hidden" value="{{$article->id}}" name="id">
 					</form>
 					@endif
-					@if($article->rev_active2 == 'rev')
+					@if(like_match('%refusedev%',$article->rev_active2))
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
@@ -181,7 +187,7 @@
 							<button  onclick="invv(a{{$article->title}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">modifier réviseur</button>
 						</td>
 					</tr>
-					<form action="{{route('editor.SendToReviewers')}}" >
+					<form action="{{route('editor.SendToReviewer')}}" >
 						<tr class="bg-gray-800" style="display:none;" id="a{{$article->title}}" >
 								<td class="p-3">
 									<div class="">

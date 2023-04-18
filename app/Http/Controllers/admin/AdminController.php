@@ -58,4 +58,33 @@ class AdminController extends Controller
         return view('dashboard.admin.articles_accept');
     }
 
+    public function accept_editor($id){
+        DB::table('editors')
+        ->where('id',$id)
+        ->update(['etat'=>'accept']);
+        return view('dashboard.admin.new_editors');
+    }
+
+    public function refuse_editor($id){
+        DB::table('editors')
+        ->where('id',$id)
+        ->update(['etat'=>'refuse']);
+        return view('dashboard.admin.new_editors');
+    }
+
+    public function accept_reviewer($id){
+        DB::table('reviewers')
+        ->where('id',$id)
+        ->update(['etat'=>'accept']);
+        return view('dashboard.admin.new_reviewers');
+    }
+
+    public function refuse_reviewer($id){
+        DB::table('reviewers')
+        ->where('id',$id)
+        ->update(['etat'=>'refuse']);
+        return view('dashboard.admin.new_reviewers');
+    }
+
+
 }

@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap All in One Navbar</title>
+<title>Brand Article</title>
 <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
 <link rel="shortcut icon" href="../favicon.ico"> 
 <link rel="stylesheet" type="text/css" href="/css/default.css" />
 <link rel="stylesheet" type="text/css" href="/css/component.css" />
-<script src="/js/modernizr.custom.js"></script>	
+<!-- <script src="/js/modernizr.custom.js"></script>	 -->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"  rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -155,6 +155,7 @@
 </head> 
 <?php use Illuminate\Support\Facades\Auth;
 $name =  Auth::guard('author')->user()->first_name;
+$pic =  Auth::guard('author')->user()->pic;
 ?>
 <body style="padding: 0px;">
 
@@ -180,25 +181,25 @@ $name =  Auth::guard('author')->user()->first_name;
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
 							<ul class="dropdown-menu">					
-								<li><a href="{{route('author.traitement-article')}}">Traitement article</a></li>
-								<li><a href="{{route('author.accept-article')}}">Accept Article</a></li>
-								<li><a href="{{route('author.refuse-article')}}">Refuse Article</a></li>
-								<li><a href="{{route('author.update-article')}}">update Article</a></li>
+								<li><a href="{{route('author.traitement-article')}}">Article en Traitement</a></li>
+								<li><a href="{{route('author.accept-article')}}">Article Accepter</a></li>
+								<li><a href="{{route('author.refuse-article')}}">Article Refuser</a></li>
+								<li><a href="{{route('author.update-article')}}">Article à mettre à jour</a></li>
 							</ul>
 						</li>
                 </div>
 		        <div class="p-2 annonce bd-highlight " style="text-align: center;"  href="#">  
                     <a href="#"  >
-                    <a href="{{route('author.create-article')}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">cree article</a></a>
+                    <a href="{{route('author.create-article')}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">Créer Un Article</a></a>
 					
 
 					<div class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/authors/'.$name.'.jpg')}}"class="avatar" alt="Avatar"> welcom {{$name}} <b class="caret"></b></a>
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/authors/'.$pic)}}"class="avatar" alt="Avatar"> Bienvenue {{$name}} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
+								<li><a href="{{route('author.profile')}}"><i class="fa fa-user-o"></i> Profil</a></li>
 								<li class="divider"></li>
-								<li><a href="href="{{route('author.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
+								<li><a href="href="{{route('author.logout')}}" onclick="event.preventDefault();document.getElementById('logout.form').submit()"><i class="material-icons">&#xE8AC;</i> Se déconnecter</a></li>
 								<form action="{{route('author.logout')}}" id="logout.form" method="POST">
 									@csrf
 								</form>
@@ -210,22 +211,22 @@ $name =  Auth::guard('author')->user()->first_name;
 </nav>
 	@yield('content')
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   
+    <!-- <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
     <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- <script src="/vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
     <!-- Custom scripts for all pages-->
-    <script src="/vendor/js/sb-admin-2.min.js"></script>
+    <!-- <script src="/vendor/js/sb-admin-2.min.js"></script> -->
 
     <!-- Page level plugins -->
-    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="publiv/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="publiv/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <script src="/vendor/js/demo/datatables-demo.js"></script>
+    <!-- <script src="/vendor/js/demo/datatables-demo.js"></script> -->
 
 </body>
 

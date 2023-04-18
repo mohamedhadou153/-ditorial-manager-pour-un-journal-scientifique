@@ -164,15 +164,11 @@ p {
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <div class="card-block">
-                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-900">Information</h6>
                                                                 <div class="row">
-                                                                    <div class="col-sm-6">
+                                                                    <div class="col-sm-9">
                                                                         <p class="m-b-10 f-w-600">Email</p>
                                                                         <h6 class="text-muted f-w-400">{{$editor->email}}</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Phone</p>
-                                                                        <h6 class="text-muted f-w-400">{{$editor->n_tele}}</h6>
                                                                     </div>
                                                                 </div>
                                                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
@@ -183,8 +179,8 @@ p {
                                                                     </div>
                                                                     <div class="col-sm-6" style="display: flex;justify-content:space-between">
                                                                         <p class="m-b-10 f-w-600">Action</p>
-                                                                        <a href=""><i class="fa-solid fa-check fa-2xl" style="color:#ee5a6f"></i></a>
-                                                                        <a href=""><i class="fa-sharp fa-solid fa-xmark fa-2xl" style="color:forestgreen"></i></a>
+                                                                        <a href="{{route('admin.accept-editor', ['id' => $editor->id])}}"><i class="fa-solid fa-check fa-2xl" style="color:forestgreen"></i></a>
+                                                                        <a href="{{route('admin.refuse-editor', ['id' => $editor->id])}}"><i class="fa-sharp fa-solid fa-xmark fa-2xl" style="color:#ee5a6f"></i></a>
                                                                     </div>
                                                                 </div>
                                                                 <ul class="social-link list-unstyled m-t-40 m-b-10">

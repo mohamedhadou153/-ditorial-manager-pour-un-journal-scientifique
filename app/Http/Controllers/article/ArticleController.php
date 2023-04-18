@@ -10,6 +10,7 @@ use App\Models\Editor;
 use App\Models\Reviewer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\BinaryOp\Equal;
 use Ramsey\Uuid\Type\Integer;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -281,8 +282,6 @@ class ArticleController extends Controller
         $reviewer1 = $request->reviewer1;
         $reviewer2 = $request->reviewer2;
         $id = $request->id;
-
-       
             DB::table('articles')
             ->where('id',$id)
             ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('y-m-d h:i:s')]);
@@ -296,6 +295,27 @@ class ArticleController extends Controller
         ->get();
        
         return view('dashboard.editor.article.validation_article')->with('articles',$articles);
+    }   
+
+    public function SendToReviewer(Request $request){
+        $req = auth::guard('editor')->user()->email;
+        $reviewer1 = $request->reviewer1;
+        $reviewer2 = $request->reviewer2;
+        $id = $request->id;
+        $rev1 = DB::table('articles')->select('reviewer1Id')->where('id',$id)->get();
+        $rev2 = DB::table('articles')->select('reviewer2Id')->where('id',$id)->get();
+
+        if ($reviewer1.(null)){
+            foreach($rev1 as $rev1){ $reviewer1 = $rev1->reviewer1Id;}
+        }
+        if ($reviewer2.equalTo(null)){
+            foreach($rev2 as $rev2){ $reviewer1 = $rev2->reviewer2Id;}
+        }
+            DB::table('articles')
+            ->where('id',$id)
+            ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('y-m-d h:i:s')]);
+       
+        return view('dashboard.editor.article.invitation_refuse');
     }   
     
     public function Show_Review(){

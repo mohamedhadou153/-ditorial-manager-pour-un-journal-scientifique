@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>DataTables </title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
@@ -134,12 +133,12 @@
 		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em; ">
 			<thead>
 				<tr>
-					<th data-priority="1">Title</th>
-					<th data-priority="2">Category</th>
+					<th data-priority="1">Titre</th>
+					<th data-priority="2">Catégorie</th>
 					<th data-priority="3">Type</th>
-					<th data-priority="4">Etat</th>
-					<th data-priority="5">creation date</th>
-					<th data-priority="6">last update </th>
+					<th data-priority="4">État</th>
+					<th data-priority="5">date de création</th>
+					<th data-priority="6">dernière mise à jour </th>
 				</tr>
 			</thead>
 			
@@ -153,13 +152,13 @@
 					<td>{{$article->type}}</td>
 					@if($article->etat =='traitement' || $article->etat =='libre')
 					
-						<td style="color:cornflowerblue;">Traitement</td>
+						<td style="color:cornflowerblue;">En Traitement</td>
 					@elseif($article->etat =='accept')
 					
-						<td style="color:green;">Accept</td>
+						<td style="color:green;">Accepter</td>
 					@elseif($article->etat =='refuse')
 					
-						<td style="color: red;">Refuse</td>
+						<td style="color: red;">Refuser</td>
 					
 					@else
 					   <td style="color:gray;">Besion Revision</td>	

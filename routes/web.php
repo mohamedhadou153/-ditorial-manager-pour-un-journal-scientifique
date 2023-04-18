@@ -80,6 +80,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/validation-article/{id}',[ArticleController::class,'validation_article'])->name('validation-article');
         Route::get('/update-etat',[ArticleController::class,'update_etat'])->name('update-etat');
         Route::get('/SendToReviewers',[ArticleController::class,'SendToReviewers'])->name('SendToReviewers');
+        Route::get('/SendToReviewer',[ArticleController::class,'SendToReviewer'])->name('SendToReviewer');
         Route::get('/show-review',[ArticleController::class,'Show_Review'])->name('show-review');
         Route::get('/article-traitement',[ArticleController::class,'article_traitement'])->name('article-traitement');
         Route::get('/final-decision',[ArticleController::class,'final_decision'])->name('final_decision');
@@ -136,6 +137,11 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/articles_revise',[AdminController::class,'articles_revise'])->name('articles_revise');
     Route::get('/articles_libre',[AdminController::class,'articles_libre'])->name('articles_libre');
     Route::get('/articles_traitement',[AdminController::class,'articles_traitement'])->name('articles_traitement');
+    Route::get('/accept-editor/{id}',[AdminController::class,'accept_editor'])->name('accept-editor');
+    Route::get('/refuse-editor/{id}',[AdminController::class,'refuse_editor'])->name('refuse-editor');
+    Route::get('/accept-reviewer/{id}',[AdminController::class,'accept_reviewer'])->name('accept-reviewer');
+    Route::get('/refuse-reviewer/{id}',[AdminController::class,'refuse_reviewer'])->name('refuse-reviewer');
+
 
     
 

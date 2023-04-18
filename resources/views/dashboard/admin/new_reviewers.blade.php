@@ -1,7 +1,5 @@
 @extends('dashboard.admin.header')
 @section('style')
-
-<!-- <link rel="stylesheet" href="/splide.min.css"> -->
 <style>
     body {
     background-color: #f9f9fa
@@ -166,25 +164,21 @@ p {
                                                             <div class="card-block">
                                                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
                                                                 <div class="row">
-                                                                    <div class="col-sm-6">
+                                                                    <div class="col-sm-9">
                                                                         <p class="m-b-10 f-w-600">Email</p>
                                                                         <h6 class="text-muted f-w-400">{{$reviewer->email}}</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Phone</p>
-                                                                        <h6 class="text-muted f-w-400">{{$reviewer->n_tele}}</h6>
                                                                     </div>
                                                                 </div>
                                                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                                                 <div class="row">
                                                                     <div class="col-sm-6" style="display: flex;justify-content:space-between">
                                                                         <p class="m-b-10 f-w-600">CV</p>
-                                                                        <a href=""><a href="" style="color: black; margin-right:50px"><i class="fa-solid fa-download fa-xl"></i></a>
+                                                                        <a href=""><a href="" download="" style="color: black; margin-right:50px"><i class="fa-solid fa-download fa-xl"></i></a>
                                                                     </div>
                                                                     <div class="col-sm-6" style="display: flex;justify-content:space-between">
                                                                         <p class="m-b-10 f-w-600">Action</p>
-                                                                        <a href=""><i class="fa-solid fa-check fa-2xl" style="color:#ee5a6f"></i></a>
-                                                                        <a href=""><i class="fa-sharp fa-solid fa-xmark fa-2xl" style="color:forestgreen"></i></a>
+                                                                        <a href="{{route('admin.accept-reviewer', ['id' => $reviewer->id])}}"><i class="fa-solid fa-check fa-2xl" style="color:forestgreen"></i></a>
+                                                                        <a href="{{route('admin.refuse-reviewer', ['id' => $reviewer->id])}}"><i class="fa-sharp fa-solid fa-xmark fa-2xl" style="color:#ee5a6f"></i></a>
                                                                     </div>
                                                                 </div>
                                                                 <ul class="social-link list-unstyled m-t-40 m-b-10">
@@ -198,24 +192,4 @@ p {
                                                 </div>
                                             </div>
 @endforeach                                   
-</div>
-<script src="/splide.min.js"></script>
-		<script>
-var splide = new Splide( '.splide', {
-  perPage: 5,
-  gap    : '2rem',
-  breakpoints: {
-    640: {
-      perPage: 2,
-      gap    : '.7rem',
-      height : '6rem',
-    },
-    480: {
-      perPage: 1,
-      gap    : '.7rem',
-      height : '6rem',
-    },
-  },
-} );
-</script>
 @endsection

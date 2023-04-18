@@ -245,23 +245,23 @@
             @if(Session::has('error'))
                 <div class="alert alert-danger">{{Session::get('error')}}</div>
               @endif
-              <div class="title">Login</div>
+              <div class="title">Connexion</div>
             <form method="POST" action="{{ route('author.customLogin') }}">
               @csrf
               <div class="input-boxes">
                 <div class="input-box">
                   <i class="fas fa-envelope"></i>
-                  <input type="text" id="email" placeholder="Enter a valid email address"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                  <input type="text" id="email" placeholder="Entrez une adresse mail valide"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                 </div>
                 <div class="input-box">
                   <i class="fas fa-lock"></i>
-                  <input type="password"placeholder="Enter password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" required>
+                  <input type="password"placeholder="Entrer le mot de passe" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" required>
                 </div>
-                <div class="text"><a href="#">Forgot password?</a></div>
+                <div class="text"><a href="#">Mot de passe oublié?</a></div>
                 <div class="button input-box">
-                  <input type="submit" value="Sumbit">
+                  <input type="submit" value="Soumettre">
                 </div>
-                <div class="text sign-up-text">Don't have an account? <label for="flip">Sign up now</label></div>
+                <div class="text sign-up-text">Vous n'avez pas de compte? <label for="flip">S'inscrire maintenant</label></div>
               </div>
             </form>
         </div>
@@ -270,13 +270,13 @@
 
 
           <div class="signup-form">
-            <div class="title">Sign up</div>
+            <div class="title">S'inscrire</div>
             <form method="POST" action="{{ route('author.create') }}" >
             @csrf
               <div class="input-boxes">
                 <div class="input-box">
                   <i class="fas fa-user"></i>
-                  <input type="text" id="first_name" class=" @error('first name') is-invalid @enderror" placeholder="Enter your first name" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" required>
+                  <input type="text" id="first_name" class=" @error('first name') is-invalid @enderror" placeholder="Entrez votre prénom" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" required>
                   @error('first name')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -285,7 +285,7 @@
                 </div>
                 <div class="input-box">
                   <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Enter your last name" class="@error('last name') is-invalid @enderror"  name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" required>
+                  <input type="text" placeholder="Entrez votre nom de famille" class="@error('last name') is-invalid @enderror"  name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" required>
                   @error('last name')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -294,7 +294,7 @@
                 </div>
                 <div class="input-box">
                   <i class="fas fa-envelope"></i>
-                  <input type="text" placeholder="Enter your email" class="@error('last name') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" required>
+                  <input type="text" placeholder="Entrer votre Email" class="@error('last name') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" required>
                   @error('last name')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -303,7 +303,7 @@
                 </div>
                 <div class="input-box">
                   <i class="fas fa-lock"></i>
-                  <input type="password" placeholder="Enter your password" class="@error('email') is-invalid @enderror"  name="password" required autocomplete="new-password" required>
+                  <input type="password" placeholder="Tapez votre mot de passe" class="@error('email') is-invalid @enderror"  name="password" required autocomplete="new-password" required>
                   @error('email')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -312,7 +312,7 @@
                 </div>
                 <div class="input-box">
                   <i class="fas fa-lock"></i>
-                  <input type="password" placeholder="Confirm your password" class="@error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" required>
+                  <input type="password" placeholder="Confirmer votre mot de passe" class="@error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" required>
                   @error('password')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -320,9 +320,9 @@
                   @enderror
                 </div>
                 <div class="button input-box">
-                  <input type="submit" value="Sumbit">
+                  <input type="submit" value="Soumettre">
                 </div>
-                <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+                <div class="text sign-up-text">Vous avez déjà un compte? <label for="flip">Connecte-toi maintenant</label></div>
               </div>
             </form>
         </div>

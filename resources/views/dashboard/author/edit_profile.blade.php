@@ -65,7 +65,7 @@
 		 <form action="{{route('author.change_profile')}}" method="post" enctype="multipart/form-data" >
 			@csrf
 			<div class="col-sm-3">
-									<h4 >Change_image</h4>
+									<h4 >Changer l'image</h4>
 								</div>
 								<svg class="text-indigo-500 w-24 mx-auto mb-4" style="height: 100px;width:100px;margin-top:40px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
             <div class="input_field flex flex-col w-max mx-auto text-center">
@@ -81,20 +81,20 @@
                 </div>
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+                    <h4 class="text-right">Paramètres de profil</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels"><h6>First Name:</h6></label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}"></div>
-                    <div class="col-md-6"><label class="labels">Last Name:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
+                    <div class="col-md-6"><label class="labels"><h6>Prénom:</h6></label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}"></div>
+                    <div class="col-md-6"><label class="labels">Nom de famille:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels"><h6>Email:</h6></label><input type="text" name="email" class="form-control" value="{{$auth->email}}"></div>
-                    <div class="col-md-12"><label class="labels"><h6>Phone:</h6></label><input type="text" name="n_tele" class="form-control" value="{{$auth->n_tele}}"></div>
-                    <div class="col-md-12"><label class="labels"><h6>Age:</h6></label><input type="text" name="age" class="form-control" value="{{$auth->age}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>E-mail:</h6></label><input type="text" name="email" class="form-control" value="{{$auth->email}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>Téléphone:</h6></label><input type="text" name="n_tele" class="form-control" value="{{$auth->n_tele}}"></div>
+                    <div class="col-md-12"><label class="labels"><h6>Âge:</h6></label><input type="text" name="age" class="form-control" value="{{$auth->age}}"></div>
                     <div class="col-md-12"><label class="labels"><h6>Biographie:</h6></label><input type="textarea" name="biographie" class="form-control" value="{{$auth->biographie}}"></div>
                 </div>
                 
-                <div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
+                <div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Sauvegarder les modifications" style="margin:10px"></div>
             </div>
 		</form>
         </div>
@@ -104,14 +104,14 @@
 		   <form action="{{route('author.change-password')}}" method="post" enctype="multipart/form-data" >
 			@csrf
 			        <div >
-						<h4 >change_password</h4>
+						<h4 >changer le mot de passe</h4>
 					</div>
 					<div class="row mt-3">
-						<div class="col-md-12"><label class="labels"><h6>old pass:</h6></label><input type="password" name="pass_old" class="form-control" placeholder="old pass"></div>
-						<div class="col-md-12"><label class="labels"><h6>new pass:</h6></label><input type="password" name="pass_new" class="form-control" placeholder="new pass"></div>
-						<div class="col-md-12"><label class="labels"><h6>confirm:</h6></label><input type="password" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
+						<div class="col-md-12"><label class="labels"><h6>ancien mot de passe:</h6></label><input type="password" name="pass_old" class="form-control" placeholder="old pass"></div>
+						<div class="col-md-12"><label class="labels"><h6>nouveau mot de passe:</h6></label><input type="password" name="pass_new" class="form-control" placeholder="new pass"></div>
+						<div class="col-md-12"><label class="labels"><h6>confirmer:</h6></label><input type="password" name="pass_conf" class="form-control" placeholder="confirm pass"></div>
 					</div>
-					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Save Changes" style="margin:10px"></div>
+					<div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Sauvegarder les modifications" style="margin:10px"></div>
 
 					</form>				
                 </div>

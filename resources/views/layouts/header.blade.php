@@ -147,6 +147,7 @@
 		justify-content: center;
 		text-align: center;
 		color: #fff;
+		margin-bottom: 150px;
 	}
 	.banner-title{
 		font-size: 5rem;
@@ -220,7 +221,7 @@
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
+		<!-- <ul class="nav navbar-nav">
 			<li class="active"><a href="/">Home</a></li>
 			<li class="active"><a href="/">Aboute</a></li>
 			<li class="dropdown">
@@ -233,7 +234,7 @@
 			</li>
 			<li class="active"><a href="#article-section">Articles Section</a></li>
 
-		</ul>
+		</ul> -->
 
 
 		<ul class="nav navbar-nav navbar-right">
@@ -253,8 +254,8 @@
 	<div class="container">
 		<h1 class="banner-title">
 		    <span><i class="fa fa-cube"></i>Brand<b>Article</b></span> 
-			<p>All you need to know about science</p>
-			<button class="button-17" role="button" ><a id="a-buttom" href="#article-section" >Discover More</a></button>
+			<p>Tout ce que vous devez savoir sur la science</p>
+			<!-- <button class="button-17" role="button" ><a id="a-buttom" href="#article-section" >Discover More</a></button> -->
 		</h1>
 	</div>
 </div>

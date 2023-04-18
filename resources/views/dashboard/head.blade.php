@@ -196,30 +196,19 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="/">Home</a></li>
-			<li class="active"><a href="/">Aboute</a></li>
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Users<b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="{{route('author.create-article')}}">All Authors</a></li>
-					<li><a href="{{route('author.libre-article')}}">All Editors</a></li>
-					<li><a href="{{route('author.traitement-article')}}">All Reviewers</a></li>
-				</ul>
-			</li>
-			<li class="active"><a href="#article-section">Articles Section</a></li>
-
 		</ul>
 
 
 		<ul class="nav navbar-nav navbar-right">
 			
-			<li class="dropdown">
+			<!-- <li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="caret"></b></a>
 				<ul class="dropdown-menu">					
 					<li><a href="author/login">Author</a></li>
 					<li><a href="editor/login">Editor</a></li>
 					<li><a href="reviewer/login">Reviewer</a></li>
 				</ul>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 </nav>

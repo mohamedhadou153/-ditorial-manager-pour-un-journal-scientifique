@@ -13,9 +13,9 @@
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
             <div class="col-lg-7 col-md-10">
-              <h1 class="display-2 text-white">Hello {{$auth->last_name}}</h1>
-              <h4 class="text-white mt-0 mb-5 ">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</h4>
-              <a href="{{route('author.edit-profile')}}" class="btn btn-info">Edit profile</a>
+              <h1 class="display-2 text-white">Bonjour {{$auth->last_name}}</h1>
+              <h4 class="text-white mt-0 mb-5 ">Ceci est votre page de profil. Vous pouvez voir l'avancement de votre travail et gérer vos informations ou les tâches assignées</h4>
+              <a href="{{route('author.edit-profile')}}" class="btn btn-info">Editer le profil</a>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
                     <i class="ni business_briefcase-24 mr-2"></i>Author
                   </div>
                   <hr class="my-4">
-                  <a href="{{route('author.edit-profile')}}" class="btn btn-info">Edit profile</a>
+                  <a href="{{route('author.edit-profile')}}" class="btn btn-info">Editer le profil</a>
                 </div>
               </div>
             </div>
@@ -64,21 +64,21 @@
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">My account</h3>
+                    <h3 class="mb-0">Mon compte</h3>
                   </div>
                   <div class="col-4 text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">Activate</a>
+                    <a href="#!" class="btn btn-sm btn-primary">Activer</a>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <form>
-                  <h6 class="heading-small text-muted mb-4">User information</h6>
+                  <h6 class="heading-small text-muted mb-4">Informations de l'utilisateur</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-email">Email address</label>
+                          <label class="form-control-label" for="input-email">Adresse e-mail</label>
                           <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="" value="{{$auth->email}}" name="email">
                         </div>
                       </div>
@@ -86,13 +86,13 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-first-name">First name</label>
+                          <label class="form-control-label" for="input-first-name">Prénom</label>
                           <input type="text" id="input-first-name" class="form-control form-control-alternative" value="{{$auth->first_name}}" name="first_name">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-last-name">Last name</label>
+                          <label class="form-control-label" for="input-last-name">Nom de famille</label>
                           <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{$auth->last_name}}" name="last_name">
                         </div>
                       </div>
@@ -100,11 +100,11 @@
                   </div>
                   <hr class="my-4">
                   <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4">About me</h6>
+                  <h6 class="heading-small text-muted mb-4">Sur moi</h6>
                   <div class="pl-lg-4">
                     <div class="form-group focused">
-                      <label>About Me</label>
-                      <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..." name="biographie">{{$auth->biographie}}</textarea>
+                      <label>Sur moi</label>
+                      <textarea rows="4" class="form-control form-control-alternative" placeholder="Quelques mots sur vous..." name="biographie">{{$auth->biographie}}</textarea>
                     </div>
                   </div>
                 </form>
