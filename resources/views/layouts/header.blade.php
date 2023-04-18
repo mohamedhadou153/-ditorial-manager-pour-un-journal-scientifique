@@ -156,9 +156,9 @@
 	</div>
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 				<div class="nav navbar-nav">
-				<li class="nav-item">
-                        <a class="nav-link"  href="{{ route('contact') }}">Contact</a>
-                    </li>
+				<li class="dropdown">
+				<a class="nav-link"  href="{{ route('contact') }}">Contact</a>
+						</li>
                 </div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
@@ -179,5 +179,6 @@
 @yield('content')
 
 </header>
+@yield('foter')
 </body>
 </html>

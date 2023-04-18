@@ -13,7 +13,7 @@
 		padding: 0 1.2rem;
 	}
 	header{
-		min-height: 121vh;
+		min-height: 100vh;
 		background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://wallpaperaccess.com/full/19381.jpg') center/cover no-repeat fixed;
 		display: flex;
 		flex-direction: column;
@@ -96,10 +96,12 @@
 		</h1>
 	</div>
 </div>
+
+   
+@endsection
+@section('foter')
 <div>
 	@include('layouts.footer')
   </div>
-   
 @endsection
-
   
