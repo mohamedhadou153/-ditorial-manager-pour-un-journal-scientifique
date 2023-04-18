@@ -77,8 +77,8 @@
 						<th colspan="5" style="border-radius: 0px;font-size: 50px;">invitations accepter </th>
 					</tr>
 					<tr>
-						<th class="p-3">Title</th>
-						<th class="p-3 ">Category</th>
+						<th class="p-3">Titre</th>
+						<th class="p-3 ">Categorie</th>
 						<th class="p-3 ">Type</th>
 						<th class="p-3 ">Abstract</th>
 						<th class="p-3 ">Action</th>
