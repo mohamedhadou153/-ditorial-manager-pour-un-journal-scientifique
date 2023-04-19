@@ -199,8 +199,10 @@ input:active+.design::after {
                       <div style="display: flex;justify-content:center">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
                       </div>
-                        
-                        <h4 style="font-size:20zpx">cet article est-il valable scientifiquement:</h4>
+ <div style="display: flex;justify-content:center">                    
+ <h4 style="font-size:20zpx">cet article est-il valable scientifiquement?:</h4>
+ </div>
+ <div style="display: flex;justify-content:center">                    
 <section class="light">
   <label style="margin-right:10px;">
     <input type="radio" name="light" checked>
@@ -214,7 +216,11 @@ input:active+.design::after {
     <span class="text">Non</span>
   </label>
 </section>
-<h4 style="font-size:20zpx">est-ce que cet article respecte le nombre  des figures:</h4>
+ </div>
+ <div style="display: flex;justify-content:center">
+<h4 style="font-size:20zpx">cet article respecte le nombre  des figures?:</h4>
+ </div>
+ <div style="display: flex;justify-content:center">
 <section class="light">
   <label style="margin-right:10px;">
     <input type="radio" name="light1" checked>
@@ -228,7 +234,11 @@ input:active+.design::after {
     <span class="text">Non</span>
   </label>
 </section>
-<h4 style="font-size:20zpx">est-ce que le contenu de cet article a des erreurs de langage :</h4>
+ </div>
+ <div style="display: flex;justify-content:center">
+<h4 style="font-size:20zpx">le contenu de cet article a des erreurs de langage?:</h4>
+ </div>
+ <div style="display: flex;justify-content:center">
 <section class="light">
   <label style="margin-right:10px;">
     <input type="radio" name="light2" checked>
@@ -242,7 +252,11 @@ input:active+.design::after {
     <span class="text">Non</span>
   </label>
 </section>
-<h4 style="font-size:20zpx">est-ce que cet article respecte le nombre des pages:</h4>
+ </div>
+ <div style="display: flex;justify-content:center">
+<h4 style="font-size:20zpx">cet article respecte le nombre des pages?:</h4>
+ </div>
+ <div style="display: flex;justify-content:center">
 <section class="light">
   <label style="margin-right:10px;">
     <input type="radio" name="light3" checked>
@@ -256,6 +270,8 @@ input:active+.design::after {
     <span class="text">Non</span>
   </label>
 </section>
+ </div>
+ 
 
                         <h4 style="font-size:20zpx">tes remarques</h4>
                         <textarea name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white"></textarea>
