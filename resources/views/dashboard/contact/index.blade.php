@@ -1,17 +1,27 @@
 @extends('layouts.header')
 
 @section('style')
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+       
+ 
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/second_page/contact.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <script src="/js/contact/jquery.min.js"></script>
+    <script src="/js/contact/popper.js"></script>
+    <script src="/js/contact/bootstrap.min.js"></script>
+    <script src="/js/contact/jquery.validate.min.js"></script>
+    <script src="/js/contact/main.js"></script>
+    <style>
+        .lkl{
+            display:none;
+        }
+    </style>
 @endsection
 
 @section('content')
-    <section class="ftco-section">
+    <section class="ftco-section" style="background:#DCDCDC;margin-top:-20px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
@@ -39,7 +49,7 @@
                                 <span class="fa fa-phone"></span>
                             </div>
                             <div class="text">
-                            <p><span>Téléphoner:</span> <a href="tel://+212626982869">+212626982869</a></p>
+                            <p><span>Téléphoner:</span> <a href="tel://+212626982869">+212687849685</a></p>
                             </div>
                         </div>
                             </div>
@@ -49,7 +59,7 @@
                                 <span class="fa fa-paper-plane"></span>
                             </div>
                             <div class="text">
-                            <p><span>Email:</span> <a href="mailto:oussama.lassiri@edu.uiz.ac.ma">oussama.lassiri@edu.uiz.ac.ma</a></p>
+                            <p><span>Email:</span> <a href="mailto:oussama.lassiri@edu.uiz.ac.ma">mohamed.hadou@edu.uiz.ac.ma</a></p>
                             </div>
                         </div>
                             </div>
@@ -59,7 +69,7 @@
                                 <span class="fa fa-globe"></span>
                             </div>
                             <div class="text">
-                            <p><span>Website</span> <a >PAP.ma</a></p>
+                            <p><span>Website</span> <a href="/">BrandArticle</a></p>
                             </div>
                         </div>
                             </div>
@@ -108,9 +118,9 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-5 d-flex align-items-stretch">
-                                <div class="info-wrap w-100  img" style="background-image: url(img/logo.png);">
-                        </div>
+                            <div class="col-md-5 d-flex align-items-stretch" style="margin-left:0px">
+                            <a href="/"  class="info-wrap w-100  img" style="background-image: url(img/logo.png);"></a>
+                           
                             </div>
                         </div>
                     </div>
@@ -119,10 +129,6 @@
         </div>
     </section>
 
-    <script src="/js/contact/jquery.min.js"></script>
-    <script src="/js/contact/popper.js"></script>
-    <script src="/js/contact/bootstrap.min.js"></script>
-    <script src="/js/contact/jquery.validate.min.js"></script>
-    <script src="/js/contact/main.js"></script>
+ 
 
 @endsection

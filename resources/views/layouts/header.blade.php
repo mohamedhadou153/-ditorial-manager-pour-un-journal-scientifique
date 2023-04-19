@@ -145,7 +145,7 @@
 <header>
 	<nav class="navbar navbar-default">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
+		<a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
 		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
 			<span class="navbar-toggler-icon"></span>
@@ -166,7 +166,7 @@
 		<ul class="nav navbar-nav navbar-right">
 		   	
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="caret"></b></a>
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="lkl caret"></b></a>
 				<ul class="dropdown-menu">					
 					<li><a href="{{route('author.Login')}}">Author</a></li>
 					<li><a href="editor/login">Editor</a></li>
