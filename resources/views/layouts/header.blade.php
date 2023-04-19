@@ -83,7 +83,7 @@
 		box-shadow: 0 2px 8px rgba(0,0,0,.05);
 	}
 	.navbar .dropdown-menu li a {
-		color: #777;
+		color:black;
 		padding: 8px 20px;
 		line-height: normal;
 	}
@@ -157,7 +157,7 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 				<div class="nav navbar-nav">
 				<li class="dropdown">
-				<a class="nav-link"  href="{{ route('contact') }}">Contact</a>
+				<a class="nav-link"  href="{{ route('contact') }}" style="color:black;font-size:15px">Contactez-nous</a>
 						</li>
                 </div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
@@ -166,7 +166,7 @@
 		<ul class="nav navbar-nav navbar-right">
 		   	
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="lkl caret"></b></a>
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#" style="color:black;font-size:15px">Connexion<b class="lkl caret"></b></a>
 				<ul class="dropdown-menu">					
 					<li><a href="{{route('author.Login')}}">Author</a></li>
 					<li><a href="editor/login">Editor</a></li>
