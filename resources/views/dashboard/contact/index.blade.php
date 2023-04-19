@@ -119,7 +119,15 @@
                                 </div>
                             </div>
                             <div class="col-md-5 d-flex align-items-stretch" style="margin-left:0px">
-                            <a href="/"  class="info-wrap w-100  img" style="background-image: url(img/logo.png);"></a>
+                            <div style="text-align:center;">
+                            <a href="/">  
+                                <p><i class="fa fa-cube"style="color:black;font-size:150px;margin-left:80px;margin-top:80px"></i></p>
+                              
+                                 <span style="color:black;font-size:50px ;margin-left:80px;font-family:Merienda One">Brand<b>Article</b></span> 
+</p>
+                
+              </a>  
+          </div>
                            
                             </div>
                         </div>

@@ -177,19 +177,20 @@ $pic =  Auth::guard('author')->user()->pic;
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 				<div class="nav navbar-nav">
-				<li class="dropdown">
-							<a class="dropdown-toggle" href="/author/home">Home</a>
-						</li>
-						
-						<li class="dropdown">
+					<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Mes articles <b class="caret"></b></a>
 							<ul class="dropdown-menu">					
 								<li><a href="{{route('author.traitement-article')}}">Articles en Traitement</a></li>
 								<li><a href="{{route('author.accept-article')}}">Articles Accepter</a></li>
 								<li><a href="{{route('author.refuse-article')}}">Articles Refuser</a></li>
-								<li><a href="{{route('author.update-article')}}">Articles besoin de modifier</a></li>
+								<li><a href="{{route('author.update-article')}}">Articles besoins de modifier</a></li>
 							</ul>
 						</li>
+				<li class="dropdown">
+							<a class="dropdown-toggle" href="/author/home">Home</a>
+						</li>
+						
+						
                 </div>
 		        <div class="p-2 annonce bd-highlight " style="text-align: center;"  href="#">  
                     <a href="#"  >

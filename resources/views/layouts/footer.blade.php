@@ -193,7 +193,8 @@
       color: #dd4b39;
     }
 </style>
-<div class="footer-basic">
+
+<div class="footer-basic" style="padding-bottom:1px">
         <footer>
           <div class="social">
               <ul>
@@ -235,16 +236,18 @@
                 </li>
               </ul>
           </div>
-          
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-            </ul>
-            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by <a href="http://127.0.0.1:8000" target="_blank">BrandArticle.com</a>
+          <div style="text-align:center;">
+          <p class="copyright" style="display: inline;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by <a href="http://127.0.0.1:8000" target="_blank">
+                  
+                    
+                  <p class="banner-title" style=" display: inline;">
+                      <span style="color:white;font-size:25px"><i class="fa fa-cube"></i>Brand<b>Article</b></span> 
+</p>
+                
+              </a>  </p>
+          </div>
+           
+            
 					
         </footer>
     </div>
