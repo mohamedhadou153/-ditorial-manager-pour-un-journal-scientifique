@@ -66,7 +66,9 @@
         ->where('etat','traitement')
         ->where('rev_active2','NOT LIKE',"%.com%")
         ->where('editorId',auth::guard('editor')->user()->email)
-        ->get();?>
+        ->get();
+		$a = 0;
+		?>
 <div class="med bg-gray-900">
 <div class="flex  justify-center  bg-gray-900">
 	<div class="col-span-120">
@@ -86,6 +88,7 @@
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
+				{{$a++}}
 				@if($article->rev_active1 == 'rev')
 					<tr class="bg-gray-800" >
 						<td class="p-3">
@@ -121,7 +124,7 @@
 						</td>
 					</tr>
 						<form action="{{route('editor.SendToReviewers')}}" >
-						<tr class="bg-gray-800" style="display:none;" id="a{{$article->id}}" >
+						<tr class="bg-gray-800" style="display:none;" id="a{{$article->id}}">
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">
@@ -178,11 +181,11 @@
 							</div>
 						</td>
 						<td class="ml-3 ">
-							<button  onclick="invv(a{{$article->title}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">modifier réviseur</button>
+							<button  onclick="invv(a)" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">modifier réviseur</button>
 						</td>
 					</tr>
 					<form action="{{route('editor.SendToReviewers')}}" >
-						<tr class="bg-gray-800" style="display:none;" id="a{{$article->title}}" >
+						<tr class="bg-gray-800" style="display:none;" id="a" >
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">
@@ -221,11 +224,11 @@
 
 
 <!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 
 <!--Datatables -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
 <script>
 	$(document).ready(function() {
 
@@ -241,8 +244,6 @@
 			else
 			y.style.display="none";
 		}
-		
-		
 </script>
 
 

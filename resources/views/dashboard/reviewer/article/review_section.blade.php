@@ -1,142 +1,180 @@
 
 @extends('dashboard.reviewer.header')
 @section('style')
-
 <style>
-    body{
-        background-color: rgba(16, 46, 46, 0.973);
+/* section */
+section {
+  width: 50%;
+  min-height: inherit;
 
-    }
+  display: flex;
+  justify-content: center;
 
-    #post{
-        margin: 10px;
-        padding: 6px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        text-align: center;
-        background-color: #ecb21f;
-        border-color: #a88734 #9c7e31 #846a29;
-        color: black;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 13px;
-        
-    }
-    .container{
-      width:100%;
-    height:100%;
-    }
-    h1,h4{
-        color: white;
-        font-weight: bold;
-    }
-    .form-group input,.form-group textarea{
-        background-color: black;
-        border: 1px solid rgba(16, 46, 46, 1);
-        border-radius: 12px;
-    }
-    .text{
-        color:white;
-    }
-        
-        form{
-        border: 1px solid rgba(16, 46, 46, 1);
-        background-color: rgba(16, 46, 46, 0.973);
-        
-    }
+  position: relative;
+}
 
-    label {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: nowrap;
-      margin: 12px 30;
-      cursor: pointer;
-      position: relative;
-    }
+section::before,
+section::after {
+  display: block;
 
+  border-radius: 100%;
 
-    /* input */
-    input {
-        
-      opacity: 0;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-    }
+  position: absolute;
+}
+
+section::before {
+  width: 30px;
+  height: 30px;
+
+  background: var(--primary);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+
+  top: 18px;
+  left: 18px;
+}
+
+section::after {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--primary);
+
+  top: 11px;
+  left: 11px;
+}
+
+.light {
+  --primary: hsl(250, 100%, 44%);
+  --other: hsl(0, 0%, 14%);
+
+  background: hsl(0, 0%, 98%);
+}
+
+.dark {
+  --primary: hsl(1, 100%, 68%);
+  --other: hsl(0, 0%, 90%);
+
+  background: hsl(0, 0%, 10%);
+}
 
 
-    /* .design */
-    .design {
-      width: 16px;
-      height: 16px;
-
-      border: 1px solid var(--other);
-      border-radius: 100%;
-      margin-right: 16px;
-
-      position: relative;
-    }
-
-    .design::before,
-    .design::after {
-      content: "";
-      display: block;
-
-      width: inherit;
-      height: inherit;
-
-      border-radius: inherit;
-
-      position: absolute;
-      transform: scale(0);
-      transform-origin: center center;
-    }
-
-    .design:before {
-      background: var(--other);
-      opacity: 0;
-      transition: .3s;
-    }
-
-    .design::after {
-      background: var(--primary);
-      opacity: .4;
-      transition: .6s;
-    }
+/* h1 */
+h1 {
+  color: var(--other);
+  padding: 8px 4px;
+  border-bottom: 2px solid var(--other);
+}
 
 
+/* label */
+label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
 
-    /* checked state */
-    input:checked+.design::before {
-      opacity: 1;
-      transform: scale(.6);
-    }
+  margin: 12px 0;
+
+  cursor: pointer;
+  position: relative;
+}
 
 
-    /* other states */
-    input:hover+.design,
-    input:focus+.design {
-      border: 1px solid var(--primary);
-    }
+/* input */
+input {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
 
-    input:hover+.design:before,
-    input:focus+.design:before {
-      background: var(--primary);
-    }
 
-    input:hover~.text {
-      color: var(--primary);
-    }
+/* .design */
+.design {
+  width: 16px;
+  height: 16px;
 
-    input:focus+.design::after,
-    input:active+.design::after {
-      opacity: .1;
-      transform: scale(2.6);
-    }
+  border: 1px solid var(--other);
+  border-radius: 100%;
+  margin-right: 16px;
 
+  position: relative;
+}
+
+.design::before,
+.design::after {
+  content: "";
+  display: block;
+
+  width: inherit;
+  height: inherit;
+
+  border-radius: inherit;
+
+  position: absolute;
+  transform: scale(0);
+  transform-origin: center center;
+}
+
+.design:before {
+  background: var(--other);
+  opacity: 0;
+  transition: .3s;
+}
+
+.design::after {
+  background: var(--primary);
+  opacity: .4;
+  transition: .6s;
+}
+
+
+/* .text */
+.text {
+  color: var(--other);
+  font-weight: bold;
+}
+
+
+/* checked state */
+input:checked+.design::before {
+  opacity: 1;
+  transform: scale(.6);
+}
+
+
+/* other states */
+input:hover+.design,
+input:focus+.design {
+  border: 1px solid var(--primary);
+}
+
+input:hover+.design:before,
+input:focus+.design:before {
+  background: var(--primary);
+}
+
+input:hover~.text {
+  color: var(--primary);
+}
+
+input:focus+.design::after,
+input:active+.design::after {
+  opacity: .1;
+  transform: scale(2.6);
+}
+
+.abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0, 0%, 0%, .6);
+  background: hsla(0, 0%, 98%, .6);
+  font-size: 16px;
+}
+}
 </style>
 
 @endsection
@@ -158,18 +196,67 @@
          
                 <form method="" action="{{route('reviewer.SendToEditor')}}" id="algin-form"style="height:100%">
                     <div class="form-group">
+                      <div style="display: flex;justify-content:center">
                         <h4 style="font-size:20px">Donner ton point de vue</h4>
+                      </div>
+                        
                         <h4 style="font-size:20zpx">cet article est-il valable scientifiquement:</h4>
- <label>
-  <input type="radio" name="q1" value="">
-  <span class="design"></span>
-  <span class="text">Oui</span>
-<label>
-  <input type="radio" name="q1" value="">
-  <span class="design"></span>
-  <span class="text">Nom</span>
-</label>
-                        <input type="radio" name="q1" value="oui">
+<section class="light">
+  <label style="margin-right:10px;">
+    <input type="radio" name="light" checked>
+    <span class="design"></span>
+    <span class="text">Oui</span>
+  </label>
+
+  <label>
+    <input type="radio" name="light">
+    <span class="design"></span>
+    <span class="text">Non</span>
+  </label>
+</section>
+<h4 style="font-size:20zpx">est-ce que cet article respecte le nombre  des figures:</h4>
+<section class="light">
+  <label style="margin-right:10px;">
+    <input type="radio" name="light" checked>
+    <span class="design"></span>
+    <span class="text">Oui</span>
+  </label>
+
+  <label>
+    <input type="radio" name="light">
+    <span class="design"></span>
+    <span class="text">Non</span>
+  </label>
+</section>
+<h4 style="font-size:20zpx">est-ce que le contenu de cet article a des erreurs de langage :</h4>
+<section class="light">
+  <label style="margin-right:10px;">
+    <input type="radio" name="light" checked>
+    <span class="design"></span>
+    <span class="text">Oui</span>
+  </label>
+
+  <label>
+    <input type="radio" name="light">
+    <span class="design"></span>
+    <span class="text">Non</span>
+  </label>
+</section>
+<h4 style="font-size:20zpx">est-ce que cet article respecte le nombre des pages:</h4>
+<section class="light">
+  <label style="margin-right:10px;">
+    <input type="radio" name="light" checked>
+    <span class="design"></span>
+    <span class="text">Oui</span>
+  </label>
+
+  <label>
+    <input type="radio" name="light">
+    <span class="design"></span>
+    <span class="text">Non</span>
+  </label>
+</section>
+
                         <h4 style="font-size:20zpx">tes remarques</h4>
                         <textarea name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white"></textarea>
                     </div>
