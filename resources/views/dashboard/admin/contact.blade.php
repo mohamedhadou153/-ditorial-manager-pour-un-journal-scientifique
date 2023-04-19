@@ -145,7 +145,7 @@ p {
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $contacts = DB::table('contacts')->select('*')->get();?>
 
 
- <div style="display:flex; flex-wrap:wrap ;justify-content:space-between">
+<div style="display:flex; flex-wrap:wrap ;justify-content:space-between">
  @foreach($contacts as $contact)
 <div class="col-xl-6 col-md-12">
                                                 <div class="card user-card-full">
@@ -187,5 +187,7 @@ p {
                                                     </div>
                                                 </div>
                                             </div>
-@endforeach                                   
+</div>
+@endforeach 
+</div>                                  
 @endsection
