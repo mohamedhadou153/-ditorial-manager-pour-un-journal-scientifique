@@ -97,7 +97,7 @@ class AdminController extends Controller
         $email = $request->email;
         $sujet = $request->sujet;
         $message = $request->message;
-        DB::table('contacts')->insert(['name'=>$name,'email'=>$email,'sujet'=>$sujet,'message',$message]);
-        return view('dashboard.admin.contact');
+        DB::table('contacts')->insert(['name'=>$name,'email'=>$email,'sujet'=>$sujet,'message'=>$message]);
+        return view('layouts.app');
     }
 }

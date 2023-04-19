@@ -82,7 +82,7 @@
                             <div id="form-message-success" class="mb-4">
                                 Votre message a été envoyé, merci !
                             </div>
-                                    <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                    <form method="get" action="{{route('admin.set_contacts')}}">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
