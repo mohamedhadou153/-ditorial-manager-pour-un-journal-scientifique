@@ -120,7 +120,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/">
+                <a class="nav-link collapsed" href="{{route('admin.contacts')}}">
                 <i class="fa-solid fa-address-book"></i>
                     <span>Contacts</span>
                 </a>
@@ -182,7 +182,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
+    <!-- Logout Modal
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -200,7 +200,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>

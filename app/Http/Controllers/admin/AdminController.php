@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Sanctum\Guard;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class AdminController extends Controller
 {
@@ -86,5 +87,17 @@ class AdminController extends Controller
         return view('dashboard.admin.new_reviewers');
     }
 
+    public function contacts(){
 
+        return view('dashboard.admin.contact');
+    }
+
+    public function set_contacts(Request $request){
+        $name = $request->name;
+        $email = $request->email;
+        $sujet = $request->sujet;
+        $message = $request->message;
+        DB::table('contacts')->insert(['name'=>$name,'email'=>$email,'sujet'=>$sujet,'message',$message]);
+        return view('dashboard.admin.contact');
+    }
 }

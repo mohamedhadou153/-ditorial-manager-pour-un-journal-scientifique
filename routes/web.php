@@ -143,6 +143,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/refuse-editor/{id}',[AdminController::class,'refuse_editor'])->name('refuse-editor');
     Route::get('/accept-reviewer/{id}',[AdminController::class,'accept_reviewer'])->name('accept-reviewer');
     Route::get('/refuse-reviewer/{id}',[AdminController::class,'refuse_reviewer'])->name('refuse-reviewer');
+    Route::get('/contacts',[AdminController::class,'contacts'])->name('contacts');
 
 
     
