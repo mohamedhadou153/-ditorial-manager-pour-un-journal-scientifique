@@ -217,13 +217,13 @@ input:active+.design::after {
 <h4 style="font-size:20zpx">est-ce que cet article respecte le nombre  des figures:</h4>
 <section class="light">
   <label style="margin-right:10px;">
-    <input type="radio" name="light" checked>
+    <input type="radio" name="light1" checked>
     <span class="design"></span>
     <span class="text">Oui</span>
   </label>
 
   <label>
-    <input type="radio" name="light">
+    <input type="radio" name="light1">
     <span class="design"></span>
     <span class="text">Non</span>
   </label>
@@ -231,13 +231,13 @@ input:active+.design::after {
 <h4 style="font-size:20zpx">est-ce que le contenu de cet article a des erreurs de langage :</h4>
 <section class="light">
   <label style="margin-right:10px;">
-    <input type="radio" name="light" checked>
+    <input type="radio" name="light2" checked>
     <span class="design"></span>
     <span class="text">Oui</span>
   </label>
 
   <label>
-    <input type="radio" name="light">
+    <input type="radio" name="light2">
     <span class="design"></span>
     <span class="text">Non</span>
   </label>
@@ -245,13 +245,13 @@ input:active+.design::after {
 <h4 style="font-size:20zpx">est-ce que cet article respecte le nombre des pages:</h4>
 <section class="light">
   <label style="margin-right:10px;">
-    <input type="radio" name="light" checked>
+    <input type="radio" name="light3" checked>
     <span class="design"></span>
     <span class="text">Oui</span>
   </label>
 
   <label>
-    <input type="radio" name="light">
+    <input type="radio" name="light3">
     <span class="design"></span>
     <span class="text">Non</span>
   </label>
