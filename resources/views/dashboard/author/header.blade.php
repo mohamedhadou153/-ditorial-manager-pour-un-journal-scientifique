@@ -182,12 +182,12 @@ $pic =  Auth::guard('author')->user()->pic;
 						</li>
 						
 						<li class="dropdown">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Mes articles <b class="caret"></b></a>
 							<ul class="dropdown-menu">					
-								<li><a href="{{route('author.traitement-article')}}">Article en Traitement</a></li>
-								<li><a href="{{route('author.accept-article')}}">Article Accepter</a></li>
-								<li><a href="{{route('author.refuse-article')}}">Article Refuser</a></li>
-								<li><a href="{{route('author.update-article')}}">Article à mettre à jour</a></li>
+								<li><a href="{{route('author.traitement-article')}}">Articles en Traitement</a></li>
+								<li><a href="{{route('author.accept-article')}}">Articles Accepter</a></li>
+								<li><a href="{{route('author.refuse-article')}}">Articles Refuser</a></li>
+								<li><a href="{{route('author.update-article')}}">Articles besoin de modifier</a></li>
 							</ul>
 						</li>
                 </div>

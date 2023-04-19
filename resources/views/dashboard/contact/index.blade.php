@@ -13,6 +13,11 @@
     <script src="/js/contact/bootstrap.min.js"></script>
     <script src="/js/contact/jquery.validate.min.js"></script>
     <script src="/js/contact/main.js"></script>
+    <style>
+        .lkl{
+            display:none;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -114,8 +119,8 @@
                                 </div>
                             </div>
                             <div class="col-md-5 d-flex align-items-stretch" style="margin-left:0px">
-                                <div class="info-wrap w-100  img" style="background-image: url(img/logo.png);">
-                        </div>
+                            <a href="/"  class="info-wrap w-100  img" style="background-image: url(img/logo.png);"></a>
+                           
                             </div>
                         </div>
                     </div>
