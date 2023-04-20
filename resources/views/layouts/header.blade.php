@@ -168,9 +168,9 @@
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#" style="color:black;font-size:15px">Connexion<b class="lkl caret"></b></a>
 				<ul class="dropdown-menu">					
-					<li><a href="{{route('author.Login')}}">Author</a></li>
-					<li><a href="editor/login">Editor</a></li>
-					<li><a href="reviewer/login">Reviewer</a></li>
+					<li><a href="{{route('author.Login')}}">Auteur</a></li>
+					<li><a href="editor/login">Éditeur</a></li>
+					<li><a href="reviewer/login">Réviseur</a></li>
 				</ul>
 			</li>
 		</ul>

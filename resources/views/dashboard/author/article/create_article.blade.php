@@ -43,9 +43,9 @@
 			.steps ul li a{display: inline-block;width: 100%;height: 7px;background: #e6e6e6;border-radius: 3.5px}
 			.steps ul li.first a, .steps ul li.checked a{background: #6645eb;transition: all 0.5s ease}
 			.steps ul:before{content: "informations";font-size: 22px;font-family: "Poppins-SemiBold";color: #333;top: -38px;position: absolute}
-			.steps ul.step-2:before{content: "Abstract"}
-			.steps ul.step-3:before{content: "Upload file"}
-			.steps ul.step-4:before{content: "Upload pic"}
+			.steps ul.step-2:before{content: "résumé"}
+			.steps ul.step-3:before{content: "Télécharger le fichier PDF"}
+			.steps ul.step-4:before{content: "Télécharger l'image"}
 			.steps ul.step-5:before{content: "Final"}
 			h3{font-family: "Poppins-SemiBold"}
 			.form-row{margin-bottom: 24px}
@@ -145,7 +145,7 @@
 			animation: dash .9s ease-in-out}&.line{stroke-dashoffset: 1000;-webkit-animation: dash .9s .35s ease-in-out forwards;
 			animation: dash .9s .35s ease-in-out forwards}&.check{stroke-dashoffset: -100;-webkit-animation: dash-check .9s .35s ease-in-out forwards;
 			animation: dash-check .9s .35s ease-in-out forwards}}p{text-align: center;margin: 20px 0 60px;
-			font-size: 1.25em;&.success{color: #73AF55}&.error{color: #D06079}}@-webkit-keyframes dash{0%{stroke-dashoffset: 1000}100%{stroke-dashoffset: 0}}
+			font-size: 1.25em;&.success{color: #006400;font-size:25px}&.error{color: #D06079}}@-webkit-keyframes dash{0%{stroke-dashoffset: 1000}100%{stroke-dashoffset: 0}}
 			@keyframes dash{0%{stroke-dashoffset: 1000}100%{stroke-dashoffset: 0}}
 			@-webkit-keyframes dash-check{0%{stroke-dashoffset: -100}100%{stroke-dashoffset: 900}}
 			@keyframes dash-check{0%{stroke-dashoffset: -100}100%{stroke-dashoffset: 900}}
@@ -285,8 +285,8 @@
 				},
 				labels: {
 					
-					next: "Next",
-					previous: "Previous"
+					next: "suivant",
+					previous: "précédent"
 				}
 			});
 			// Custom Steps Jquery Steps
@@ -361,7 +361,7 @@
             </section> <!-- SECTION 2 -->
             <h4></h4>
             <section>
-                <div class="form-row"> <textarea name="abstract" class="form-control" cols="30" rows="10" placeholder="abstract"></textarea> </div>
+                <div class="form-row"> <textarea name="abstract" class="form-control" cols="30" rows="10" placeholder="résumé"></textarea> </div>
             </section> <!-- SECTION 3 -->
             <h4></h4>
             <section>
@@ -401,7 +401,7 @@
                     <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
                     <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                 </svg>
-                <p class="success">article créé avec succès</p>
+                <p class="success">formulaire rempli avec succès</p>
                 
 				<div class="med"><button type="submit">
 					<span>soumettre</span>

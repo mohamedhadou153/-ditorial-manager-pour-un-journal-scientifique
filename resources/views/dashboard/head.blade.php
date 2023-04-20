@@ -192,25 +192,7 @@
 			<span class="icon-bar"></span>
 		</button>
 	</div>
-	<!-- Collection of nav links, forms, and other content for toggling -->
-	<div id="navbarCollapse" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
-		</ul>
 
-
-		<ul class="nav navbar-nav navbar-right">
-			
-			<!-- <li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Connexion<b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-					<li><a href="author/login">Author</a></li>
-					<li><a href="editor/login">Editor</a></li>
-					<li><a href="reviewer/login">Reviewer</a></li>
-				</ul>
-			</li> -->
-		</ul>
-	</div>
 </nav>
     @yield('content')
 </body>
