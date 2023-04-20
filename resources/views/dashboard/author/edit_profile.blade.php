@@ -85,7 +85,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels"><h6>Prénom:</h6></label><input type="text" name="first_name" class="form-control" value="{{$auth->first_name}}"></div>
-                    <div class="col-md-6"><label class="labels">Nom de famille:</label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
+                    <div class="col-md-6"><label class="labels"><h6>Nom de famille:</h6></label><input type="text" name="last_name" class="form-control"  value="{{$auth->last_name}}"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels"><h6>E-mail:</h6></label><input type="text" name="email" class="form-control" value="{{$auth->email}}"></div>
