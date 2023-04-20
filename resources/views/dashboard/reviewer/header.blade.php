@@ -12,7 +12,7 @@
 
 <style>
 	body {
-		background-image: linear-gradient(45deg, #7c9885, #b5b682);
+		/* background-image: linear-gradient(45deg, #7c9885, #b5b682); */
 	}
     .form-inline {
         display: inline-block;
