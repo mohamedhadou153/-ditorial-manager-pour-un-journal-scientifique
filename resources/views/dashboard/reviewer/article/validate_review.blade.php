@@ -74,7 +74,7 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">invitations accepter </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Invitations Accepter </th>
 					</tr>
 					<tr>
 						<th class="p-3">Titre</th>

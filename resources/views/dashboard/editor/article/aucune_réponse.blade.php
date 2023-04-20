@@ -88,7 +88,6 @@
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
-				{{$a++}}
 				@if($article->rev_active1 == 'rev')
 					<tr class="bg-gray-800" >
 						<td class="p-3">
@@ -150,6 +149,8 @@
 							<input type="hidden" value="{{$article->id}}" name="id">
 					</form>
 					@endif
+					@endforeach
+					@foreach ($articles as $article)
 					@if($article->rev_active2 == 'rev')
 					<tr class="bg-gray-800" >
 						<td class="p-3">
@@ -181,11 +182,11 @@
 							</div>
 						</td>
 						<td class="ml-3 ">
-							<button  onclick="invv(a)" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">modifier réviseur</button>
+							<button  onclick="invv(b)" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">modifier réviseur</button>
 						</td>
 					</tr>
 					<form action="{{route('editor.SendToReviewers')}}" >
-						<tr class="bg-gray-800" style="display:none;" id="a" >
+						<tr class="bg-gray-800" style="display:none;" id="b" >
 								<td class="p-3">
 									<div class="">
 										<div class="ml-3">

@@ -26,7 +26,7 @@
 
 			.profile-button:active {
 				background: #682773;
-				box-shadow: none
+				box-shadow: none;
 			}
 
 			.back:hover {
