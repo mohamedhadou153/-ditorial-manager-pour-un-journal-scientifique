@@ -196,7 +196,7 @@
     <div class="nav navbar-nav">
 						
 						<li class="dropdown">
-							<a class="dropdown-toggle" href="/editor/home">Home</a>
+							<a class="dropdown-toggle" href="/editor/home">Accueil</a>
 						</li>
     </div>
 	
