@@ -177,6 +177,10 @@ $pic =  Auth::guard('author')->user()->pic;
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 				<div class="nav navbar-nav">
+				</li>
+				<li class="dropdown">
+							<a class="dropdown-toggle" href="/author/home">Home</a>
+						</li>
 					<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Mes articles <b class="caret"></b></a>
 							<ul class="dropdown-menu">					
@@ -185,16 +189,13 @@ $pic =  Auth::guard('author')->user()->pic;
 								<li><a href="{{route('author.refuse-article')}}">Articles Refuser</a></li>
 								<li><a href="{{route('author.update-article')}}">Articles besoins de modifier</a></li>
 							</ul>
-						</li>
-				<li class="dropdown">
-							<a class="dropdown-toggle" href="/author/home">Home</a>
-						</li>
+						
 						
 						
                 </div>
 		        <div class="p-2 annonce bd-highlight " style="text-align: center;"  href="#">  
                     <a href="#"  >
-                    <a href="{{route('author.create-article')}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">Créer Un Article</a></a>
+                    <a href="{{route('author.create-article')}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">+Soumettre Un Article</a></a>
 					
 
 					<div class="nav navbar-nav navbar-right">

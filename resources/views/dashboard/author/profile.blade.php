@@ -12,10 +12,10 @@
         <!-- Header container -->
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
-            <div class="col-lg-7 col-md-10">
-              <h1 class="display-2 text-white">Bonjour {{$auth->last_name}}</h1>
-              <h4 class="text-white mt-0 mb-5 ">Ceci est votre page de profil. Vous pouvez voir l'avancement de votre travail et gérer vos informations ou les tâches assignées</h4>
-              <a href="{{route('author.edit-profile')}}" class="btn btn-info">Editer le profil</a>
+            <div class=" col-md-10">
+              <h1 class="display-2 text-white">Bienvenue {{$auth->first_name}}</h1>
+              <h4 class="text-white mt-0 mb-5 ">Ceci est votre page de profil. Vous pouvez gérer vos informations </h4>
+              
             </div>
           </div>
         </div>
@@ -54,7 +54,8 @@
                     <i class="ni business_briefcase-24 mr-2"></i>Author
                   </div>
                   <hr class="my-4">
-                  <a href="{{route('author.edit-profile')}}" class="btn btn-info">Editer le profil</a>
+                  <a href="{{route('author.edit-profile')}}" class="btn btn-info">modifier le profil</a>
+                  <a href="{{route('author.edit-profile')}}" class="btn btn-info" style="margin-top:5px">changer le mot de passe</a>
                 </div>
               </div>
             </div>
