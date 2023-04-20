@@ -179,7 +179,7 @@ $pic =  Auth::guard('author')->user()->pic;
 				<div class="nav navbar-nav">
 				</li>
 				<li class="dropdown">
-							<a class="dropdown-toggle" href="/author/home">Home</a>
+							<a class="dropdown-toggle" href="/author/home">Accueil</a>
 						</li>
 					<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Mes articles <b class="caret"></b></a>
