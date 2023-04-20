@@ -139,11 +139,14 @@ class EditorRegisterController extends Controller
 
         $img = $request->picture;
 
-       // if ($request->hasFile('picture')){
+       if ($request->hasFile('picture')){
            $destination_pic_path = 'public/images/editors';     
            $image_name = $request->picture.'.'.$request->picture->extension();
            $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
-       // }
+           DB::table('editors')
+           ->where('email','=',$mail1)
+           ->update(['pic'=>$image_name]);
+       }
 
         DB::table('editors')
         ->where('email','=',$mail1)
@@ -153,11 +156,10 @@ class EditorRegisterController extends Controller
                   'age'=>$age,
                   'biographie'=>$biographie,
                   'n_tele'=>$n_tele,
-                  'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('editor')->user()->email;  
         $editor = DB::table('editors')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at')
+        ->select('*')
         ->where('email','=',$mail2)
         ->get();
         return view('dashboard.editor.profile')->with('editor',$editor);
@@ -217,5 +219,14 @@ class EditorRegisterController extends Controller
         ->get();
         return view('dashboard.editor.profile')->with('editor',$editor);
 
+    }
+
+    public function password(){
+        $email = Auth::guard('editor')->user()->email;
+        $editor = DB::table('editors')
+        ->select('email','first_name','password','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',$email)
+        ->get();
+        return view('dashboard.editor.change_password')->with('editor',$editor);
     }
 }

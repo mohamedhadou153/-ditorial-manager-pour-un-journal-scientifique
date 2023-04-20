@@ -92,6 +92,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/edit-profile',[EditorRegisterController::class,'edit_profile'])->name('edit-profile');
         Route::post('/change-profile',[EditorRegisterController::class,'ChangeProfile'])->name('change_profile');
         Route::post('/change-password',[EditorRegisterController::class,'change_password'])->name('change-password');
+        Route::get('/password',[EditorRegisterController::class,'password'])->name('password');
 
 
 

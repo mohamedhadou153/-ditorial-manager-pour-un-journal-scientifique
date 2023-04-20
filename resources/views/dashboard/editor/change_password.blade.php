@@ -56,11 +56,11 @@
 
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row">
-        <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
+        <!-- <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" style="height: 150px;width:150px" alt="Admin" src="{{asset('/storage/images/editors/'.$edit->pic)}}"></div>
 			<h3><span class="font-weight-bold" style="margin-left:20px;">{{$edit->first_name}} {{$edit->last_name}}</span></h3>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
 		<div class="p-3 py-5 border-bottom" style="border-bottom: 1px solid gray;">
 		 <form action="{{route('editor.change_profile')}}" method="post" enctype="multipart/form-data" >
 			@csrf
@@ -85,7 +85,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels"><h6>Prénom:</h6></label><input type="text" name="first_name" class="form-control" value="{{$edit->first_name}}"></div>
-                    <div class="col-md-6"><label class="labels"><h6>Nom de famille:</h6></label><input type="text" name="last_name" class="form-control"  value="{{$edit->last_name}}"></div>
+                    <div class="col-md-6"><label class="labels">Nom de famille:</label><input type="text" name="last_name" class="form-control"  value="{{$edit->last_name}}"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels"><h6>E-mail:</h6></label><input type="text" name="email" class="form-control" value="{{$edit->email}}"></div>
@@ -97,9 +97,9 @@
                 <div class="mt-5 text-center"><input type="submit" class="btn btn-primary profile-button" value="Sauvegarder les modifications" style="margin:10px"></div>
             </div>
 		</form>
-        </div>
+        </div> -->
 		
-        <!-- <div class="col-md-4">
+        <div class="col-md-4">
 		<div class="p-3 py-5">
 		   <form action="{{route('editor.change-password')}}" method="post" enctype="multipart/form-data" >
 			@csrf
@@ -115,7 +115,7 @@
 
 					</form>				
                 </div>
-        </div> -->
+        </div>
     </div>
 </div>
 </div>
