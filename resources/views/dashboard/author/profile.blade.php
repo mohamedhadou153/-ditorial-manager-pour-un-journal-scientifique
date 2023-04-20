@@ -55,7 +55,7 @@
                   </div>
                   <hr class="my-4">
                   <a href="{{route('author.edit-profile')}}" class="btn btn-info">modifier le profil</a>
-                  <a href="{{route('author.edit-profile')}}" class="btn btn-info" style="margin-top:5px">changer le mot de passe</a>
+                  <a href="{{route('author.password')}}" class="btn btn-info" style="margin-top:5px">changer le mot de passe</a>
                 </div>
               </div>
             </div>

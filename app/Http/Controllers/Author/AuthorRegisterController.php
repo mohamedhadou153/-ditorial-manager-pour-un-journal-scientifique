@@ -83,6 +83,15 @@ class AuthorRegisterController extends Controller
         return view('dashboard.author.edit_profile')->with('author',$author);
     }
 
+    public function password(){
+        $email = Auth::guard('author')->user()->email;
+        $author = DB::table('authors')
+        ->select('email','first_name','password','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',$email)
+        ->get();
+        return view('dashboard.author.change_password')->with('author',$author);
+    }
+
     public function ChangeProfile(Request $request){
 
         $mail1 = Auth::guard('author')->user()->email;
