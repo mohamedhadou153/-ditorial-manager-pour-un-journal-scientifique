@@ -174,7 +174,7 @@ input:active+.design::after {
   background: hsla(0, 0%, 98%, .6);
   font-size: 16px;
 }
-}
+
 </style>
 
 @endsection

@@ -135,8 +135,9 @@
 		}
 	}
 </style>
-<link href="/profile.css" rel="stylesheet">
+
 @yield('style') 
+<link href="/profile.css" rel="stylesheet">
 </head> 
 <body>
 	<?php use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->first_name; ?>

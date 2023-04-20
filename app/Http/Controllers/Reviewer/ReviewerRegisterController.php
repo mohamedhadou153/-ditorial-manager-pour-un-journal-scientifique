@@ -136,9 +136,14 @@ class ReviewerRegisterController extends Controller
         $img = $request->picture;
 
 
+        if ($request->hasFile('picture')){
         $destination_pic_path = 'public/images/reviewers';     
         $image_name = $request->first_name.'.'.$request->picture->extension();
         $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
+        DB::table('reviewers')
+        ->where('email','=',$mail1)
+        ->update(['pic'=>$image_name ]);
+     }
 
         DB::table('reviewers')
         ->where('email','=',$mail1)
@@ -148,11 +153,10 @@ class ReviewerRegisterController extends Controller
                   'age'=>$age,
                   'biographie'=>$biographie,
                   'n_tele'=>$n_tele,
-                  'pic'=>$image_name
         ]);
         $mail2 = Auth::guard('reviewer')->user()->email;  
         $reviewer = DB::table('reviewers')
-        ->select('email','first_name','last_name','age','n_tele','biographie','created_at','updated_at')
+        ->select('*')
         ->where('email','=',$mail2)
         ->get();
         return view('dashboard.reviewer.profile')->with('reviewer',$reviewer);
@@ -177,5 +181,14 @@ class ReviewerRegisterController extends Controller
         ->get();
         return view('dashboard.reviewer.profile')->with('reviewer',$reviewer);
 
+    }
+
+    public function password(){
+        $email = Auth::guard('reviewer')->user()->email;
+        $reviewer = DB::table('reviewers')
+        ->select('email','first_name','password','last_name','age','n_tele','biographie','created_at','updated_at','pic')
+        ->where('email','=',$email)
+        ->get();
+        return view('dashboard.reviewer.change_password')->with('reviewer',$reviewer);
     }
 }
