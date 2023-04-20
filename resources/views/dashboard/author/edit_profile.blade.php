@@ -78,7 +78,7 @@
               </div>
 
 							
-                </div>
+            </div>
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Paramètres de profil</h4>
@@ -99,7 +99,7 @@
 		</form>
         </div>
 		
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
 		<div class="p-3 py-5">
 		   <form action="{{route('author.change-password')}}" method="post" enctype="multipart/form-data" >
 			@csrf
@@ -115,7 +115,7 @@
 
 					</form>				
                 </div>
-        </div>
+        </div> -->
     </div>
 </div>
 </div>
