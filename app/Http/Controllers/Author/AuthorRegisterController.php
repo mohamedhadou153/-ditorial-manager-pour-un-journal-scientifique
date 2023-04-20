@@ -107,6 +107,9 @@ class AuthorRegisterController extends Controller
            $destination_pic_path = 'public/images/authors';     
            $image_name = $request->first_name.'.'.$request->picture->extension();
            $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
+           DB::table('authors')
+           ->where('email','=',$mail1)
+           ->update(['pic'=>$image_name ]);
         }
 
 
@@ -117,8 +120,7 @@ class AuthorRegisterController extends Controller
                   'email'=>$email,
                   'age'=>$age,
                   'biographie'=>$biographie,
-                  'n_tele'=>$n_tele,
-                  'pic'=>$image_name
+                  'n_tele'=>$n_tele,        
         ]);
         $mail2 = Auth::guard('author')->user()->email;  
         $author = DB::table('authors')
