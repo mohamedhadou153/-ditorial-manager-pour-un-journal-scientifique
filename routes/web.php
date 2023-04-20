@@ -50,6 +50,7 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::post('/do_update',[ArticleController::class,'do_update'])->name('do_update');
         Route::post('/change-profile',[AuthorRegisterController::class,'ChangeProfile'])->name('change_profile');
         Route::post('/change-password',[AuthorRegisterController::class,'change_password'])->name('change-password');
+        Route::get('/password',[AuthorRegisterController::class,'password'])->name('password');
         Route::post('/uploade',[ArticleController::class,'Create'])->name('uploade');
         Route::get('/create-article',[ArticleController::class,'index_create_article'])->name('create-article');
         Route::get('/traitement-article',[ArticleController::class,'index_show_traitement_article'])->name('traitement-article');
