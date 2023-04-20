@@ -55,12 +55,12 @@
 
 
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
-    <div class="row" >
+    <div class="row">
         <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"style="margin-top:20px;margin-left:40px;"><img class="rounded-circle mt-5" style="height: 150px;width:150px" alt="Admin" src="{{asset('/storage/images/authors/'.$auth->pic)}}"></div>
 			<h3><span class="font-weight-bold" style="margin-left:20px;">{{$auth->first_name}} {{$auth->last_name}}</span></h3>
         </div>
-        <div class="col-md-5 border-right" style="border-right: 1px solid gray;">
+        <div class="col-md-5">
 		<div class="p-3 py-5 border-bottom" style="border-bottom: 1px solid gray;">
 		 <form action="{{route('author.change_profile')}}" method="post" enctype="multipart/form-data" >
 			@csrf
