@@ -2,7 +2,7 @@
 @section('style')
 	<style>
 				body {
-					background-image: linear-gradient(to right top, #a7b0be, #8992a7, #6f758f, #575978, #423d60);		}
+					background:#111824;		}
 
 			.form-control:focus {
 				box-shadow: none;

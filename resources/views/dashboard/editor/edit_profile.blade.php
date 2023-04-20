@@ -2,7 +2,7 @@
 @section('style')
 	<style>
 				body {
-					background-image: linear-gradient(to right top, #a7b0be, #8992a7, #6f758f, #575978, #423d60);		}
+					background:#111824;	}
 
 			.form-control:focus {
 				box-shadow: none;
@@ -52,8 +52,6 @@
 @section('content')
 @foreach($editor as $edit)
 	<div class="container">
-
-
 <div class="container rounded bg-white mt-5 mb-5" style="border: 1px solid;">
     <div class="row">
         <div class="col-md-3 border-right" style="border-right: 1px solid gray;">
