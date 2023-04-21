@@ -85,10 +85,10 @@ $articles = DB::table('articles')->select('*')
 						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Réviseurs n'ont pas répondu à l'invitation</th>
 					</tr>
 					<tr>
-						<th class="p-3" style="width:200px">Titre</th>
-						<th class="p-3 "style="width:300px">Categorie</th>
-						<th class="p-3 "style="width:200px">Type</th>
-						<th class="p-3 "style="width:300px">reviseur email</th>
+					<th class="p-3 "style="width:300px">reviseur email</th>
+						<th class="p-3" style="width:200px">Titre d'article</th>
+						<th class="p-3 "style="width:300px">invitation envoyer le</th>
+						<th class="p-3 "style="width:200px">temps d'attente</th>
 						<th class="p-3 "style="width:200px">Action</th>
 					</tr>
 				</thead>
