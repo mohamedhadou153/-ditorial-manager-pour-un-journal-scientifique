@@ -67,7 +67,7 @@ use Illuminate\Support\Facades\DB;  $reviewers = DB::table('reviewers')->select(
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Nouvelles Soumissions </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Inviter réviseurs </th>
 					</tr>
 					<tr>
 						<th class="p-3" style="width:200px">Titre</th>
@@ -102,11 +102,11 @@ use Illuminate\Support\Facades\DB;  $reviewers = DB::table('reviewers')->select(
 							</div>
 						</td>
 						<td class="p-3">
-						<textarea id="autoShowHide" rows="1"readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  "style="width:300px">{{$article->abstract}}</textarea>
+						<textarea id="autoShowHide" rows="2"readonly  class=" p-2.5 w-full  ml-3  rounded-lg bg-gray-800  "style="width:300px">{{$article->abstract}}</textarea>
 						</td>
                         
 						<td class="ml-3 ">
-							<button  onclick="invv(a{{$article->id}})" style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2">inviter réviseur</button>
+							<button  onclick="invv(a{{$article->id}})" style="text-decoration: none;margin-right:10px; color:maroon"  class="bg-green-400 text-gray-50 rounded-md px-2">Sélectionner réviseur</button>
 						</td>
 					</tr>
 					
@@ -150,7 +150,7 @@ use Illuminate\Support\Facades\DB;  $reviewers = DB::table('reviewers')->select(
 									</div>
 								</td>
 								<td class="ml-3 ">
-							<button   style="text-decoration: none;margin-right:10px;"  class="bg-green-400 text-gray-50 rounded-md px-2"><input type="submit" value="terminer"/></button>
+							<button   style="text-decoration: none;margin-right:10px; color:maroon"  class="bg-green-400 text-gray-50 rounded-md px-2"><input type="submit" value="Inviter"/></button>
 						</td>
 							</tr>
 							<input type="hidden" value="{{$article->id}}" name="id">

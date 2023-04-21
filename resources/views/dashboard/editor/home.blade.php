@@ -441,7 +441,7 @@
 									{{$article->abstract}}
 									</p>
 									<form action="">
-                                     <a href="{{route('editor.validation-article', ['id' => $article->id])}}" class="read-more">sélectionner
+                                     <a href="{{route('editor.validation-article', ['id' => $article->id])}}" class="read-more"  style="font-size:20px">sélectionner
 									 <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
 										<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
 								     </svg>
@@ -477,12 +477,12 @@
 	
 	<div class="butt" id="butt" style="display:none">
 	<ul>
-		<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Nouvelles soumissions ({{$a}})</a></buttono></li>
-		<li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte ({{$b}}) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte ({{$c}}) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseur invité - "aucune réponse"({{$d}}) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission besoin de modifier "réviser" ({{$h}})</a></buttono></li>
-		<li> <buttono><a href="{{route('editor.invitation-refuse')}}" style="text-decoration: none;">Réviseur invité - "réponse refuser" ({{$g}})</a></buttono></li>
+	<li> <buttono><a href="{{route('editor.article-traitement')}}" style="text-decoration: none;">Inviter réviseurs ({{$a}})</a></buttono></li>
+        <li> <buttono><a href="{{route('editor.invitation-refuse')}}" style="text-decoration: none;">Réviseurs déclinent l'invitation ({{$b}})</a></buttono></li>
+        <li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseurs n'ont pas répondu à l'invitation({{$c}}) </a></buttono></li>
+        <li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incompléte ({{$d}}) </a></buttono></li>
+        <li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumission doit être modifiée ({{$h}})</a></buttono></li>
+        <li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis compléte ({{$g}}) </a></buttono></li>
 	</ul>
 	   
 	</div>
