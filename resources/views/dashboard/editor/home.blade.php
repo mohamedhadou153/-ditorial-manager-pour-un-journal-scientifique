@@ -1,8 +1,9 @@
+
 @extends('dashboard.editor.header')
 @section('style')
-<link href="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
-" rel="stylesheet">
+<link rel="stylesheet" href="path-to-the-file/splide.min.css">
+<link rel="stylesheet" href="/splide.min.css">
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 	<style>
 		
 	
@@ -237,7 +238,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 	</style>
 	<style>
-		
+		article{
+			height:380px
+		}
         article {
         --img-scale: 1.001;
         --title-color: black;
@@ -330,56 +333,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         }
 
 		.splide__list{
-					height:450px;
+					height:410px;
 				}
-        .articles {
-        display: grid;
-        max-width: 1200px;
-        margin-inline: auto;
-        padding-inline: 24px;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 24px;
-        }
-
-        @media screen and (max-width: 960px) {
-        article {
-            container: card/inline-size;
-        }
-        .article-body p {
-            display: none;
-        }
-        }
-
-        @container card (min-width: 380px) {
-        .article-wrapper {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 16px;
-        }
-        .article-body {
-            padding-left: 0;
-        }
-        figure {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        figure img {
-            height: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-        }
-        }
-
-        .sr-only:not(:focus):not(:active) {
-        clip: rect(0 0 0 0); 
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap; 
-        width: 1px;
-        }
+        
     </style>  
 	<style>
 		body{
@@ -434,6 +390,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 		border: none;
 		}
 	</style>
+	 
 @endsection
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;
@@ -458,9 +415,6 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 
 	<div class="button-container">
-
-	
-
 		<button class="unique-button-class" onclick="affiche()">
 			<div class="lazyload" style="background-image: url(https://static.vecteezy.com/ti/vecteur-libre/p1/15397574-vecteur-d-icone-de-loupe-trouver-loupe-chercher-lentille-loupe-verre-signe-de-symbole-de-zoom-gratuit-vectoriel.jpg);">
 			<span></span>
@@ -475,19 +429,19 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 			<ul class="splide__list">
 				@foreach($articles as $article)
 				<li class="splide__slide">  
-						<section class="articles">
+						<section class="article">
 							<article >
 								<div class="article-wrapper">
 								<figure>
 								<img src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="" />
 								</figure>
 								<div class="article-body">
-									<h2>{{$article->title}}</h2>
-									<p >
+									<h2 style="height:30px;">{{$article->title}}</h2>
+									<p style="height:90px;">
 									{{$article->abstract}}
 									</p>
 									<form action="">
-                                     <a href="{{route('editor.validation-article', ['id' => $article->id])}}" class="read-more">Choisie<span class="sr-only">about this is some title</span>
+                                     <a href="{{route('editor.validation-article', ['id' => $article->id])}}" class="read-more">sélectionner
 									 <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
 										<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
 								     </svg>
@@ -506,9 +460,10 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 			</ul>
 	</div>
 	</section>
-	<div class="button-container">
+
 
 	
+	<div class="button-container">
 
 		<button class="unique-button-class" onclick="affiche1()">
 			<div class="lazyload" style="background-image: url(https://www.mundiapolis.ma/sites/default/files/2021-05/Gestion%20du%20temps_0.jpg);">
@@ -550,65 +505,57 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 	<div>
 	</div>
-	<script src="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
-"></script>
-		<script>
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
 
 
 
-// var splide = new Splide( '.splide', {
-//   type   : 'loop',
-//   perPage: 5,
-//   perMove: 1,
-// } );
 
-// splide.mount();
-var splide = new Splide( '.splide', {
-  perPage: 5,
-  gap    : '2rem',
-  breakpoints: {
-    640: {
-      perPage: 2,
-      gap    : '.7rem',
-      height : '6rem',
-    },
-    480: {
-      perPage: 1,
-      gap    : '.7rem',
-      height : '6rem',
-    },
-  },
-} );
+		var splide = new Splide( '.splide', {
+		perPage: 5,
+		perMove: 1,
+		breakpoints: {
+			640: {
+			perPage: 2,
+			gap    : '.7rem',
+			height : '6rem',
+			},
+			480: {
+			perPage: 1,
+			gap    : '.7rem',
+			height : '6rem',
+			},
+		},
+		} );
 
-splide.mount();
-		function affiche(){
-			x=document.getElementById("mydiv");
-			if(x.style.display=="none")
-			x.style.display="block";
-			else
-			x.style.display="none";
-			y=document.getElementById("butt");
-			if(y.style.display=="block")
-			y.style.display="none";
-		}
-		function affiche1(){
-			x=document.getElementById("mydiv");
-			if(x.style.display=="block")
-			x.style.display="none";
-			y=document.getElementById("butt");
-			if(y.style.display=="none")
-			y.style.display="block";
-			else
-			y.style.display="none";
-		}
-		function affiche2(){
-			x=document.getElementById("mydiv");
-			y=document.getElementById("butt");
-			if(x.style.display=="block")
-			x.style.display="none";
-			if(y.style.display=="block")
-			y.style.display="none";
-		}
-	</script>
+		splide.mount();
+				function affiche(){
+					x=document.getElementById("mydiv");
+					if(x.style.display=="none")
+					x.style.display="block";
+					else
+					x.style.display="none";
+					y=document.getElementById("butt");
+					if(y.style.display=="block")
+					y.style.display="none";
+				}
+				function affiche1(){
+					x=document.getElementById("mydiv");
+					if(x.style.display=="block")
+					x.style.display="none";
+					y=document.getElementById("butt");
+					if(y.style.display=="none")
+					y.style.display="block";
+					else
+					y.style.display="none";
+				}
+				function affiche2(){
+					x=document.getElementById("mydiv");
+					y=document.getElementById("butt");
+					if(x.style.display=="block")
+					x.style.display="none";
+					if(y.style.display=="block")
+					y.style.display="none";
+				}
+</script>
 @endsection
