@@ -63,12 +63,15 @@ function like_match($pattern, $subject)
     $pattern = str_replace('%', '.*', preg_quote($pattern, '/'));
     return (bool) preg_match("/^{$pattern}$/i", $subject);
 }
+
 $articles = DB::table('articles')->select('*')
+		->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('rev_active1','NOT LIKE',"%.com%")
         ->orwhere('reviewer2Id','!=', null)
+        ->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
         ->where('etat','traitement')
         ->where('rev_active2','NOT LIKE',"%.com%")
         ->where('editorId',auth::guard('editor')->user()->email)
@@ -94,7 +97,10 @@ $articles = DB::table('articles')->select('*')
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
-				@if(like_match('rev_active1','NOT LIKE',"%.com%"))
+				<?php
+				$date = date("Y");
+				?>
+				@if(! like_match('%.com%',$article->rev_active1))
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
@@ -155,7 +161,7 @@ $articles = DB::table('articles')->select('*')
 							<input type="hidden" value="{{$article->id}}" name="id">
 					</form>
 					@endif
-					@if(like_match('rev_active2','NOT LIKE',"%.com%"))
+					@if(! like_match('%.com%',$article->rev_active2))
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
