@@ -68,12 +68,10 @@ $articles = DB::table('articles')->select('*')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('rev_active1','NOT LIKE',"%.com%")
-		->where((DATEDIFF(day, 'created_at', 'update_at'))>5)
         ->orwhere('reviewer2Id','!=', null)
         ->where('etat','traitement')
         ->where('rev_active2','NOT LIKE',"%.com%")
         ->where('editorId',auth::guard('editor')->user()->email)
-		->where((DATEDIFF(day, 'created_at', 'update_at'))>5)
         ->get();
 		$a = 0;
 		?>
