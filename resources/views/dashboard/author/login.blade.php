@@ -259,7 +259,7 @@
                 </div>
                 <div class="text"><a href="#">Mot de passe oublié?</a></div>
                 <div class="button input-box">
-                  <input type="submit" value="Soumettre">
+                  <input type="submit" value="Se connecter">
                 </div>
                 <div class="text sign-up-text">Vous n'avez pas de compte? <label for="flip">S'inscrire maintenant</label></div>
               </div>
@@ -320,7 +320,7 @@
                   @enderror
                 </div>
                 <div class="button input-box">
-                  <input type="submit" value="Soumettre">
+                  <input type="submit" value="S'inscrire">
                 </div>
                 <div class="text sign-up-text">Vous avez déjà un compte? <label for="flip">Connecte-toi maintenant</label></div>
               </div>

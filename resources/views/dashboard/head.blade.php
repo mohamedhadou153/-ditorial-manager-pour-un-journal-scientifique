@@ -183,7 +183,7 @@
 <body>
 <nav class="navbar navbar-default">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
+		<a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
 		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
 			<span class="navbar-toggler-icon"></span>
@@ -192,7 +192,12 @@
 			<span class="icon-bar"></span>
 		</button>
 	</div>
-
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+				<div class="nav navbar-nav">
+				<li class="dropdown">
+				<a class="nav-link"  href="{{ route('contact') }}" style="color:black;font-size:15px">Contactez-nous</a>
+						</li>
+                </div>
 </nav>
     @yield('content')
 </body>
