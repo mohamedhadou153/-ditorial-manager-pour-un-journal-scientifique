@@ -140,7 +140,7 @@ class EditorRegisterController extends Controller
         $img = $request->picture;
 
        if ($request->hasFile('picture')){
-           $destination_pic_path = 'public/images/editors';     
+           $destination_pic_path = 'Editor';     
            $image_name = $request->picture.'.'.$request->picture->extension();
            $path_name = $request->file('picture')->storeAs($destination_pic_path,$image_name);
            DB::table('editors')

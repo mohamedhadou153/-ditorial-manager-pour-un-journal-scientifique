@@ -174,7 +174,6 @@
             box-shadow: none!important;
         }
     </style>
-    @yield('head')
     @yield('style')
     
 

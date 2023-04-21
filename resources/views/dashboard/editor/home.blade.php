@@ -1,5 +1,8 @@
 @extends('dashboard.editor.header')
-@section('head')
+@section('style')
+<link href="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+" rel="stylesheet">
 	<style>
 		
 	
@@ -334,7 +337,7 @@
         max-width: 1200px;
         margin-inline: auto;
         padding-inline: 24px;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 24px;
         }
 
@@ -471,11 +474,9 @@
 	<div class="splide__track">
 			<ul class="splide__list">
 				@foreach($articles as $article)
-				<li class="splide__slide" style="margin-left: 50px;">  
-
-
+				<li class="splide__slide">  
 						<section class="articles">
-							<article>
+							<article >
 								<div class="article-wrapper">
 								<figure>
 								<img src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="" />
@@ -549,8 +550,20 @@
 
 	<div>
 	</div>
-	<script src="/splide.min.js"></script>
+	<script src="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+"></script>
 		<script>
+
+
+
+// var splide = new Splide( '.splide', {
+//   type   : 'loop',
+//   perPage: 5,
+//   perMove: 1,
+// } );
+
+// splide.mount();
 var splide = new Splide( '.splide', {
   perPage: 5,
   gap    : '2rem',
@@ -568,15 +581,7 @@ var splide = new Splide( '.splide', {
   },
 } );
 
-splide.mount();;
-
-splide.mount();;
-
 splide.mount();
-
-splide.mount();
-
-		splide.mount();
 		function affiche(){
 			x=document.getElementById("mydiv");
 			if(x.style.display=="none")
