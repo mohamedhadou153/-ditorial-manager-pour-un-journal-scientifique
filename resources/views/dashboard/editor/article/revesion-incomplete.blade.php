@@ -76,7 +76,7 @@
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Soumissions Avec Révisions Requis Incompléte </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Soumissions Avec Révisions Requis Incomplétes </th>
 					</tr>
 					<tr>
 						<th class="p-3">Titre</th>
@@ -116,7 +116,7 @@
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">non confige</div>
+									<div class="">non configuré</div>
 								</div>
 							</div>
 						</td>
@@ -125,7 +125,7 @@
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">confige</div>
+									<div class="">configuré</div>
 								</div>
 							</div>
 						</td>
@@ -134,7 +134,7 @@
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">non confige</div>
+									<div class="">non configuré</div>
 								</div>
 							</div>
 						</td>
@@ -143,7 +143,7 @@
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">confige</div>
+									<div class="">configuré</div>
 								</div>
 							</div>
 						</td>
