@@ -403,13 +403,13 @@
 
 		$b = DB::table('articles')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','LIKE',"%refusedev%")->orwhere('reviewer2Id','!=', null)->where('etat','traitement')->where('rev_active2','LIKE',"%refusedev%")->where('editorId',auth::guard('editor')->user()->email)->count();
 
-		$c = DB::table('articles')->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('etat','traitement')->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')->where('reviewer2Id','!=', null)->where('editorId',auth::guard('editor')->user()->email)->where('rev_active2','NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->count();
+		$c = DB::table('articles')->whereRaw('DATEDIFF(CURDATE(),updated_at)>5')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('etat','traitement')->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')->where('reviewer2Id','!=', null)->where('editorId',auth::guard('editor')->user()->email)->where('rev_active2','NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->count();
 
 		$d = DB::table('articles')->where('etat','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('rev_active1','NOT LIKE',"%dev%")->where('rev_active1','LIKE',"%.com%")->orwhere('etat','traitement')->where('reviewer2Id','!=', null)->where('editorId',auth::guard('editor')->user()->email)->where('rev_active2','NOT LIKE',"%dev%")->where('rev_active2','LIKE',"%.com%")->count();
 		//foreach($a as $a){foreach($b as $b){foreach($c as $c){foreach($d as $d){$a1 = (int)$a->count;$b1=(int)$b->count;$c1=(int)$c->count;$d1=(int)$d->count;$f1=$a1+$b1+$c1+$d1;}}}}
 		$s = DB::table('articles')->where('etat','!=','traitement')->where('etat','!=','reponse')->where('etat','!=','libre')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->count();
 		$h = DB::table('articles')->where('etat','=','accept avec revision')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->count();
-		$g = DB::table('articles')		->where('etat','!=','traitment')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->count();
+		$g = DB::table('articles')->where('etat','!=','traitment')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->count();
 		$f = $a + $b + $c + $d + $h + $g;
 ?>
 

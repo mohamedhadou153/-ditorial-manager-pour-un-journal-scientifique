@@ -102,14 +102,18 @@ class ArticleController extends Controller
 
     public function do_update(Request $request){
 
-
-        $destination_pdf_path = 'public/pdf/articles';     
             $pdf_name = $request->title.'.'.'pdf';
+            if ($request->obj_pdf != null) {
+            $destination_pdf_path = 'public/pdf/articles';     
             $path_pdf = $request->file('obj_pdf')->storeAs($destination_pdf_path,$pdf_name);
+            }
 
-            $destination_pic_path = 'public/images/articles';     
             $image_name = $request->title.'.'.'jpg';
+            if ($request->pic != null) {
+            $destination_pic_path = 'public/images/articles';
             $path_name = $request->file('pic')->storeAs($destination_pic_path,$image_name);
+            }
+
 
 
             //category select
@@ -138,7 +142,7 @@ class ArticleController extends Controller
 
             DB::table('articles')
             ->where('id',$request->id)
-            ->update(['etat'=> 'traitement',
+            ->update(['etat'=> 'reviser',
             'updated_at'=>date('y-m-d h:i:s'),
             'title'=> $request->title,
             'category'=> $request->category,
