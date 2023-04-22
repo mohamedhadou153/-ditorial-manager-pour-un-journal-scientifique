@@ -64,7 +64,7 @@ function like_match($pattern, $subject)
     return (bool) preg_match("/^{$pattern}$/i", $subject);
 }
 
-$articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),updated_at)' ))
+$articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),updated_at )as date' ))
 		->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
@@ -105,6 +105,13 @@ $articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),update
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
+									<div class="">{{$article->reviewer1Id}}</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
 							</div>
@@ -112,21 +119,14 @@ $articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),update
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->category}}</div>
+									<div class="">{{$article->updated_at}}</div>
 								</div>
 							</div>
 						</td>
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->type}}</div>
-								</div>
-							</div>
-						</td>
-						<td class="p-3">
-							<div class="">
-								<div class="ml-3">
-									<div class="">{{$article->reviewer1Id}}</div>
+									<div class="">{{$article->date}}</div>
 								</div>
 							</div>
 						</td>
@@ -166,6 +166,20 @@ $articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),update
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
+									<div class="}}</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
+									<div class="">{{$article->reviewer1Id}}</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
 							</div>
@@ -173,21 +187,14 @@ $articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),update
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->category}}</div>
+									<div class="">{{$article->updated_at}}</div>
 								</div>
 							</div>
 						</td>
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->type}}</div>
-								</div>
-							</div>
-						</td>
-						<td class="p-3">
-							<div class="">
-								<div class="ml-3">
-									<div class="">{{$article->reviewer2Id}}</div>
+									<div class="">{{$article->date}} jours</div>
 								</div>
 							</div>
 						</td>
