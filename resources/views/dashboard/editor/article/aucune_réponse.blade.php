@@ -65,13 +65,13 @@ function like_match($pattern, $subject)
 }
 
 $articles = DB::table('articles')->select('*')
-		->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
+		->whereRaw('DATEDIFF(CURDATE(),updated_at) >= 5')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('rev_active1','NOT LIKE',"%.com%")
         ->orwhere('reviewer2Id','!=', null)
-        ->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
+        ->whereRaw('DATEDIFF(CURDATE(),updated_at) >= 5')
         ->where('etat','traitement')
         ->where('rev_active2','NOT LIKE',"%.com%")
         ->where('editorId',auth::guard('editor')->user()->email)
@@ -105,6 +105,13 @@ $articles = DB::table('articles')->select('*')
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
+									<div class="">{{$article->reviewer1Id}}</div>
+								</div>
+							</div>
+						</td>
+						<td class="p-3">
+							<div class="">
+								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
 							</div>
@@ -112,21 +119,14 @@ $articles = DB::table('articles')->select('*')
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->category}}</div>
+									<div class="">{{$article->updated_at}}</div>
 								</div>
 							</div>
 						</td>
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->type}}</div>
-								</div>
-							</div>
-						</td>
-						<td class="p-3">
-							<div class="">
-								<div class="ml-3">
-									<div class="">{{$article->reviewer1Id}}</div>
+									<div class="">!!!!?????</div>
 								</div>
 							</div>
 						</td>
