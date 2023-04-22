@@ -64,7 +64,7 @@ function like_match($pattern, $subject)
     return (bool) preg_match("/^{$pattern}$/i", $subject);
 }
 
-$articles = DB::table('articles')->select('*')
+$articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),updated_at)' ))
 		->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
