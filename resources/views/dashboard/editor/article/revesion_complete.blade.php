@@ -58,10 +58,7 @@
 @endsection
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
-		->where('etat','!=','accept avec reponse')
-		->where('etat','!=','libre')
-        ->where('etat','!=','accept')
-        ->where('etat','!=','refuse')
+		->where('etat','!=','traitment')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
