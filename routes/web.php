@@ -83,6 +83,7 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/validation-article/{id}',[ArticleController::class,'validation_article'])->name('validation-article');
         Route::get('/update-etat',[ArticleController::class,'update_etat'])->name('update-etat');
         Route::get('/SendToReviewers',[ArticleController::class,'SendToReviewers'])->name('SendToReviewers');
+        Route::get('/Redécider',[ArticleController::class,'redecider'])->name('redecider');
         Route::get('/SendToReviewer',[ArticleController::class,'SendToReviewer'])->name('SendToReviewer');
         Route::get('/show-review',[ArticleController::class,'Show_Review'])->name('show-review');
         Route::get('/article-traitement',[ArticleController::class,'article_traitement'])->name('article-traitement');

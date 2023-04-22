@@ -297,6 +297,25 @@ class ArticleController extends Controller
         return view('dashboard.editor.article.validation_article')->with('articles',$articles);
     }   
 
+    public function redecider(Request $request){
+        $req = auth::guard('editor')->user()->email;
+        $reviewer1 = $request->reviewer1;
+        $reviewer2 = $request->reviewer2;
+        $id = $request->id;
+            DB::table('articles')
+            ->where('id',$id)
+            ->update(['updated_at'=>date('y-m-d h:i:s')]);
+
+        $articles = DB::table('articles')
+        ->select('*')
+        ->where('etat','=','reviser')
+        ->where('editorId','=',$req)
+        ->where('reviewer1Id',null)
+        ->where('reviewer2Id',null)
+        ->get();
+       
+        return view('dashboard.editor.article.redecider')->with('articles',$articles);
+    }
     public function SendToReviewer(Request $request){
         $req = auth::guard('editor')->user()->email;
         $reviewer1 = $request->reviewer1;
