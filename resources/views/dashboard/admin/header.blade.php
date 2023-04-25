@@ -62,14 +62,14 @@
                 <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>utilisateurs</span>
+                    <span>Utilisateurs</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">tous utilisateurs:</h6>
-                        <a class="collapse-item" href="{{route('admin.authors')}}">autheurs</a>
-                        <a class="collapse-item" href="{{route('admin.editors')}}">editeurs</a>
-                        <a class="collapse-item" href="{{route('admin.reviewers')}}">reviseurs</a>
+                        <a class="collapse-item" href="{{route('admin.authors')}}">Auteurs</a>
+                        <a class="collapse-item" href="{{route('admin.editors')}}">Editeurs</a>
+                        <a class="collapse-item" href="{{route('admin.reviewers')}}">Réviseurs</a>
                     </div>
                 </div>
             </li>
@@ -79,14 +79,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>nouvelles demandes</span>
+                    <span>Nouvelles demandes</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="{{route('admin.new_editors')}}">éditeurs</a>
-                        <a class="collapse-item" href="{{route('admin.new_reviewers')}}">réviseurs</a>
+                        <h6 class="collapse-header">les demandes :</h6>
+                        <a class="collapse-item" href="{{route('admin.new_editors')}}">Éditeurs</a>
+                        <a class="collapse-item" href="{{route('admin.new_reviewers')}}">Réviseurs</a>
                     </div>
                 </div>
             </li>
@@ -111,11 +111,11 @@
                         <h6 class="collapse-header">Articles en etats:</h6>
                         <a class="collapse-item" href="{{route('admin.articles_accept')}}">Accepter</a>
                         <a class="collapse-item" href="{{route('admin.articles_refuse')}}">Refuser</a>
-                        <a class="collapse-item" href="{{route('admin.articles_revise')}}">attendre pour le réviser</a>
+                        <a class="collapse-item" href="{{route('admin.articles_revise')}}">besoin de modifier</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Autre etats:</h6>
                         <a class="collapse-item" href="{{route('admin.articles_libre')}}">libre</a>
-                        <a class="collapse-item" href="{{route('admin.articles_traitement')}}">en traitement</a>
+                        <a class="collapse-item" href="{{route('admin.articles_traitement')}}">En traitement</a>
                     </div>
                 </div>
             </li>

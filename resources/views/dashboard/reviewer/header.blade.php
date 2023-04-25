@@ -136,11 +136,12 @@
 	}
 </style>
 
-@yield('style') 
+
 <link href="/profile.css" rel="stylesheet">
+@yield('style') 
 </head> 
 <body>
-	<?php use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->first_name; ?>
+	<?php use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->first_name; $pic = Auth::guard('reviewer')->user()->pic;?>
 <nav class="navbar navbar-default"style="margin-bottom:0px" >
 	<div class="navbar-header">
 		<a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Brand<b>Article</b></a>  		
@@ -155,18 +156,11 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="/reviewer/home">Accueil</a></li>
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
-				<ul class="dropdown-menu">		
-				    <li><a href="{{route('reviewer.review-commande')}}">invitation</a></li>			
-					<li><a href="{{route('reviewer.validation-section')}}">en attente</a></li>
-					<li><a href="{{route('reviewer.review-confirme')}}">decision final</a></li>
-				</ul>
-			</li>
+			
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/reviewers/'.$rev.'.jpg')}}" class="avatar" alt="Avatar"> welcom {{Auth::guard('reviewer')->user()->first_name}} <b class="caret"></b></a>
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="{{asset('/storage/images/reviewers/'.$pic)}}" class="avatar" alt="Avatar"> welcom {{Auth::guard('reviewer')->user()->first_name}} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{route('reviewer.profile')}}"><i class="fa fa-user-o"></i> Profile</a></li>
 					<li class="divider"></li>

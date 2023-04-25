@@ -159,10 +159,10 @@
                 
                     <div class="form-group">
                         <h4 style="font-size:20px">Réviseurs décisions</h4>
-                        <h4 style="font-size:20px">Reviewer 1</h4>
+                        <h4 style="font-size:20px">1er Réviseur:</h4>
                         <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des1}} 
 Remarque :{{$article->review1}}</textarea>
-                        <h4 style="font-size:20px">Reviewer 2</h4>
+                        <h4 style="font-size:20px">2éme Réviseur:</h4>
                         <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
 Remarque :{{$article->review2}}</textarea>
                     </div>
