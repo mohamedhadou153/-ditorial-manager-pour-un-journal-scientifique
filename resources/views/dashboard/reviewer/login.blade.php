@@ -256,7 +256,7 @@
                 <i class="fas fa-lock"></i>
                 <input type="password"placeholder="Enter password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" required>
               </div>
-              <div class="text"><a href="#">Forgot password?</a></div>
+              <div class="text"><a href="{{ route('reviewer.forget_password') }}">Forgot password?</a></div>
               <div class="button input-box">
                 <input type="submit" value="Sumbit">
               </div>

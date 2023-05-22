@@ -73,6 +73,10 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::view('/cv','dashboard.editor.cv')->name('cv');
         Route::post('/create',[EditorRegisterController::class,'create'])->name('create');
         Route::post('/customLogin',[EditorRegisterController::class,'customLogin'])->name('customLogin');
+        Route::view('/forget_password','dashboard.editor.forget_password')->name('forget_password');
+        Route::get('/submit_code',[EditorRegisterController::class,'submit_code'])->name('submit_code');
+        Route::get('/change_pass',[EditorRegisterController::class,'changepassword'])->name('change_pass');
+        Route::get('/do_change_password',[EditorRegisterController::class,'dochangepassword'])->name('do_change_password');
     });
     Route::middleware(['auth:editor'])->group(function(){
         Route::view('/home','dashboard.editor.home')->name('home');
@@ -112,6 +116,10 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
         Route::post('/create',[ReviewerRegisterController::class,'create'])->name('create');
         Route::post('/dologin',[ReviewerRegisterController::class,'dologin'])->name('dologin');
         Route::post('/customLogin',[ReviewerRegisterController::class,'customLogin'])->name('customLogin');
+        Route::view('/forget_password','dashboard.reviewer.forget_password')->name('forget_password');
+        Route::get('/submit_code',[ReviewerRegisterController::class,'submit_code'])->name('submit_code');
+        Route::get('/change_pass',[ReviewerRegisterController::class,'changepassword'])->name('change_pass');
+        Route::get('/do_change_password',[ReviewerRegisterController::class,'dochangepassword'])->name('do_change_password');
     });
     Route::middleware(['auth:reviewer'])->group(function(){
         Route::view('/home','dashboard.Reviewer.home')->name('home');

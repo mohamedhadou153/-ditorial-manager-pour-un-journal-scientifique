@@ -33,7 +33,7 @@ class EditorRegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\Author
+     * @return \App\Models\editor
      */
 
 
@@ -228,5 +228,59 @@ class EditorRegisterController extends Controller
         ->where('email','=',$email)
         ->get();
         return view('dashboard.editor.change_password')->with('editor',$editor);
+    }
+
+    
+
+
+    public function submit_code( Request $req){
+        $email = $req->email;
+        $code = rand(100000,999999);
+        $emails = DB::table('editors')->select('email')->get();
+        $count = 0;
+        foreach($emails as $m){
+            if($m->email == $email){
+                $count++;
+            }
+        }
+        if($count == 1){
+            DB::table('editors')
+            ->where('email','=',$email)
+            ->update(['code'=>$code]);
+            $subject = "réinitialisation de mot de passe";
+            $object = "Bonjour, Voici votre code chiffre pour réinitialiser votre mot de passe \n".$code;
+           // mail($email,$subject,$object,'From: khalid.tan7@gmail.com');
+            return view('dashboard.editor.submit_code')->with('email',$email)->with('code',$code);
+        }else{
+            return redirect()->back()->with('error','invalid email');
+        }    
+    }
+
+    public function changepassword(Request $req){
+        $code = $req->code;
+        $email = $req->email;
+        $corr_code = DB::table('editors')->select('code')->where('email',$email)->get();
+        foreach($corr_code as $c){
+            if ($c->code == $code){
+                return view('dashboard.editor.chang_pass')->with('email',$email);
+            }else{
+                return redirect()->back()->with('error','invalid code');
+            }
+        }
+    }
+
+    public function dochangepassword(Request $req){
+        $email = $req->email;
+        $password = $req->password;
+        $conf_password = $req->conf_password;
+
+        if($conf_password == $password){
+            DB::table('editors')
+            ->where('email','=',$email)
+            ->update(['password'=>Hash::make($password)]);   
+            return view('dashboard.editor.login')->with('email',$email);   
+        }else{
+            return redirect()->back()->with('error','invalid password');
+        }
     }
 }
