@@ -243,7 +243,7 @@ input:active+.design::after {
   <label style="margin-right:10px;">
     <input type="radio" name="light2" checked>
     <span class="design"></span>
-    <span class="text">Oui</span>
+    <span class="text">   Oui</span>
   </label>
 
   <label>
@@ -286,13 +286,13 @@ input:active+.design::after {
   <input type="radio" name="rev_des" value="accept" checked>
   <span class="design"></span>
   <span class="text">accepter l'article</span>
-</label>
+</label><br>
 
 <label>
   <input type="radio" name="rev_des" value="accept avec revision">
   <span class="design"></span>
   <span class="text">accepter l'article avec une révision</span>
-</label>
+</label><br>
 
 <label>
   <input type="radio" name="rev_des" value="refuse">

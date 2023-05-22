@@ -233,11 +233,11 @@
 						<div style="display:flex; justify-content:center;">
 						<form action="{{route('reviewer.validation-review')}}">
 							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Accept" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
+							<input type="submit" value="Accepter" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
 						</form>
 						<form action="{{route('reviewer.validation-refuse-review')}}">
 							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Refuse" style="text-decoration: none;" class="bg-red-400 text-gray-50 rounded-md px-2"></input>
+							<input type="submit" value="Refuser" style="text-decoration: none;" class="bg-red-400 text-gray-50 rounded-md px-2"></input>
 						</form>
 						</div>	
 						</td>

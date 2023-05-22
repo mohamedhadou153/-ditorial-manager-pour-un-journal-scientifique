@@ -144,7 +144,7 @@
 				</div></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels"><h6>Abstract:</h6></label><textarea class="form-control" id="exampleFormControlTextarea4" rows="3">{{$article->abstract}}</textarea></div>
+                    <div class="col-md-12"><label class="labels"><h6>Abstract:</h6></label><textarea class="form-control" name="abstract" id="exampleFormControlTextarea4" rows="3">{{$article->abstract}}</textarea></div>
                 </div>
 				<div class="row mt-3">
                     <div class="col-md-12"><label class="labels"><h6>Remarques:</h6></label><textarea class="form-control" readonly id="exampleFormControlTextarea4" rows="3">{{$article->review3}}</textarea></div>

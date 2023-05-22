@@ -78,8 +78,8 @@
 						<th class="p-3 ">categorie</th>
 						<th class="p-3 ">type</th>
 						<th class="p-3 ">Abstract</th>
-						<th class="p-3 ">Review</th>
-						<th class="p-3 ">Action</th>
+						<th class="p-3 ">Remarques</th>
+						<th class="p-3 ">Décision</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -108,7 +108,7 @@
 						 <textarea id="" rows="1" cols="30"    class="block p-2.5 w-full  ml-3  rounded-lg bg-gray-800  ">{{$article->review1}}</textarea>
 						 </td>
                          <td class="ml-3 ">
-						 <span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
+						 <span class="bg-green-400 text-gray-50 rounded-md px-2">Accepter</span>
                 @endif
 				@endif
                 @if($reviewer == $article->reviewer1Id)

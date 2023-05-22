@@ -117,7 +117,7 @@
 						<div style="display:flex; justify-content:center;">
 						
 							<input type="hidden" name="id" value="{{$article->id}}">
-							<input type="submit" value="Create Review" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
+							<input type="submit" value="Réviser" style="text-decoration: none;margin-right:10px;" class="bg-green-400 text-gray-50 rounded-md px-2"></input>
 						</form>
 						</div>	
 						</td>
