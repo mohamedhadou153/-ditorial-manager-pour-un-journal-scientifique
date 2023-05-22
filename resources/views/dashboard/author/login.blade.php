@@ -257,7 +257,7 @@
                   <i class="fas fa-lock"></i>
                   <input type="password"placeholder="Entrer le mot de passe" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" required>
                 </div>
-                <div class="text"><a href="#">Mot de passe oublié?</a></div>
+                <div class="text"><a href="{{ route('author.forget_password') }}">Mot de passe oublié?</a></div>
                 <div class="button input-box">
                   <input type="submit" value="Se connecter">
                 </div>

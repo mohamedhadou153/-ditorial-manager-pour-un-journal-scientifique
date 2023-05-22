@@ -312,7 +312,7 @@ class ArticleController extends Controller
         if ($reviewer1.(null)){
             foreach($rev1 as $rev1){ $reviewer1 = $rev1->reviewer1Id;}
         }
-        if ($reviewer2.equalTo(null)){
+        if ($reviewer2.(null)){
             foreach($rev2 as $rev2){ $reviewer1 = $rev2->reviewer2Id;}
         }
             DB::table('articles')

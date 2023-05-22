@@ -147,4 +147,18 @@ class AuthorRegisterController extends Controller
         return view('dashboard.author.profile')->with('author',$author);
 
     }
+    
+    public function submit_code( Request $req){
+        $email = $req->email;
+        $code = rand(100000,999999);
+        $subject = "réinitialisation de mot de passe";
+        $object = "Bonjour, Voici votre code chiffre pour réinitialiser votre mot de passe \n".$code;
+        mail($email,$subject,$object,'From: khalid.tan7@gmail.com');
+        return view('dashboard.author.submit_code')->with('code',$code);
+    }
+
+    public function changepassword(){
+        return view('dashboard.author.change_password');
+    }
+    
 }

@@ -150,13 +150,26 @@ margin-right: 4px;
    
 
 
-    <form method="get" action="{{route('author.change_password')}}">
-        <h3>Réinitialisation de mot de passe</h3>
+    <form method="get" action="{{route('author.submit_code')}}">
+        <h3>vous oubliez votre mot de passe ?</h3>
 
-        <label for="username">vous pouvez changer votre mot de passe ici</label>
-        <input type="password" placeholder="nouveau mot de passe" id="username"><br>
-		<input type="password" placeholder="Confirmez le mot de passe" id="username">
+        <label for="username">pas de problème, soumettez votre email ici et nous vous envoyons un code pour réinitialiser votre mot de passe</label>
+        <input type="text" placeholder="Email" name="email" id="username">
 
-        <input type="submit" class="button" value="Changer mot de passe"> 
-       </form>
+        <input type="submit" class="button"  value="Soumettre email" >
+    </form>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
