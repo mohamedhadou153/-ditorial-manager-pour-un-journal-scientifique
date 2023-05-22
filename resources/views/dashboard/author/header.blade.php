@@ -187,7 +187,7 @@ $pic =  Auth::guard('author')->user()->pic;
 								<li><a href="{{route('author.traitement-article')}}">Articles en Traitement</a></li>
 								<li><a href="{{route('author.accept-article')}}">Articles Accepter</a></li>
 								<li><a href="{{route('author.refuse-article')}}">Articles Refuser</a></li>
-								<li><a href="{{route('author.update-article')}}">Articles besoins de modifier</a></li>
+								<li><a href="{{route('author.update-article')}}">Articles besoins de modification</a></li>
 							</ul>
 						
 						
