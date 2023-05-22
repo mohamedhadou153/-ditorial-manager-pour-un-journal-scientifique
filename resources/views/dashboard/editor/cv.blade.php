@@ -102,9 +102,9 @@ use Illuminate\Support\Facades\Auth;
 <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-            <h3>Bonjour {{$name}}</h3>
+            <h3>Bonjour Mohamed</h3>
             <div class="card">
-                <h5 class="text-center mb-4">inserer le cv pdf</h5>
+                <h5 class="text-center mb-4">inserer ton CV pdf</h5>
                 <form class="form-card" action="{{route('editor.pdf-cv')}}" method="post" enctype="multipart/form-data">
                     @csrf
                 <div class="row justify-content-center">
@@ -123,10 +123,10 @@ use Illuminate\Support\Facades\Auth;
 <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-            <h3>Bonjour {{$name}}</h3>
+            <h3>Bonjour Mohamed</h3>
             <div class="card">
             <div class="alert alert-success" role="alert">
-                on court de traitement
+            Votre demande est en cours de traitement
 </div>
             </div>
     </div>
@@ -136,10 +136,10 @@ use Illuminate\Support\Facades\Auth;
 <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-            <h3>Bonjour {{$name}}</h3>
+            <h3>Bonjour Mohamed</h3>
             <div class="card">
             <div class="alert alert-danger" role="alert">
-                commande refuser
+            La demande est rejetée
 </div>
             </div>
     </div>

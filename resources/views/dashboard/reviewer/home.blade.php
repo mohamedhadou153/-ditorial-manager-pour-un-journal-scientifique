@@ -238,7 +238,7 @@
         ->get();?>
 <div class="med bg-gray-900 justify-center">
 	<div class="had flex bg-gray-900 justify-center "style="height:110px">
-			<button style="font-size: 30px;--_p: 0px;outline-color: var(--c);outline-offset: .05em;}" >Nouvelles Invitations</button>
+			<button style="font-size: 30px;--_p: 0px;outline-color: var(--c);outline-offset: .05em;" >Nouvelles Invitations</button>
 			<a href="{{route('reviewer.validation-section')}}" style="height:50px"><button style="font-size: 30px;height:90px;--c: #6B7280;--b: 5px;--s:12px" >Invitations Acceptées</button></a>
 			<a href="{{route('reviewer.review-confirme')}}"><button style="font-size: 30px;height:90px;--c: #6B7280;--b: 5px;--s:12px">Invitations Traitées</button></a>
 	</div>
