@@ -9,7 +9,7 @@
 		background:#111824;
 	}
 	.table { 
-		margin-top:50px;
+		margin-top:30px;
 		height:200px;
 		width:1300px;
 		border-spacing: 0 15px;
@@ -177,7 +177,52 @@
 		background: #da4932;
 		}
 </style>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<style>
+		button {
+	--b: 3px;   /* border thickness */
+	--s: .15em; /* size of the corner */
+	--c: #6B7280;
+	
+	padding: calc(.05em + var(--s)) calc(.3em + var(--s));
+	color: var(--c);
+	--_p: var(--s);
+	background:
+		conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--c) 0)
+		var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+	transition: .3s linear, color 0s, background-color 0s;
+	outline: var(--b) solid #0000;
+	outline-offset: .2em;
+	}
+	button:hover,
+	button:focus-visible{
+	--_p: 0px;
+	outline-color: var(--c);
+	outline-offset: .05em;
+	}
+	:active {
+	background: var(--c);
+	color: #6B7280;
+	}
+	.had {
+		
+		margin-top : 30px;
+		
+		grid-template-columns: auto auto;
+		gap: 20px;
+		place-content: center;
+		}
+
+	button {
+	font-family: system-ui, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	margin: 10px;
+	}
+</style>
+
  
 @endsection
 @section('content')
@@ -191,14 +236,21 @@
 		->where('rev_active2','NOT LIKE',"%{$rev1}%")
 		->where('rev_active2','NOT LIKE',"%{$rev2}%")
         ->get();?>
-<div class="med bg-gray-900">
+<div class="med bg-gray-900 justify-center">
+	<div class="had flex bg-gray-900 justify-center "style="height:110px">
+			<button style="font-size: 30px;--_p: 0px;outline-color: var(--c);outline-offset: .05em;}" >Nouvelles Invitations</button>
+			<a href="{{route('reviewer.validation-section')}}" style="height:50px"><button style="font-size: 30px;height:90px;--c: #6B7280;--b: 5px;--s:12px" >Invitations Acceptées</button></a>
+			<a href="{{route('reviewer.review-confirme')}}"><button style="font-size: 30px;height:90px;--c: #6B7280;--b: 5px;--s:12px">Invitations Traitées</button></a>
+	</div>
+
 <div class="flex  justify-center  bg-gray-900">
+
 	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">
 			<table class="table text-gray-400 border-separate space-y-6 text-sm">
 				<thead class="bg-gray-800 text-gray-500">
 					<tr class="bg-gray-900">
-						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Invitations </th>
+						<th colspan="5" style="border-radius: 0px;font-size: 50px;">Nouvelles Invitations </th>
 					</tr>
 					<tr>
 						<th class="p-3">Titre</th>
@@ -269,6 +321,7 @@
 			.columns.adjust()
 			.responsive.recalc();
 	});
+
 </script>
 
 

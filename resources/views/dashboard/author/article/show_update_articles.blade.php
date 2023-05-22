@@ -129,11 +129,11 @@
 		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
 			<thead>
 				<tr>
-					<th data-priority="1">Title</th>
-					<th data-priority="2">Category</th>
+					<th data-priority="1">Titre</th>
+					<th data-priority="2">Categorie</th>
 					<th data-priority="3">Type</th>
 					<th data-priority="4">Etat</th>
-					<th data-priority="5">Editor Email</th>
+					<th data-priority="5">Editeur Email</th>
 					<th data-priority="6">Action</th>
 				</tr>
 			</thead>
@@ -148,7 +148,7 @@
 					<td>{{$article->type}}</td>
 					<td style="color:cornflowerblue;">{{$article->etat}}</td>
 					<td>{{$article->editorId}}</td>
-					<td><a href="{{route('author.update', ['id' => $article->id])}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">changer article</a></a></td>
+					<td><a href="{{route('author.update', ['id' => $article->id])}}" class="btn btn-info  me-md-2 animate__animated animate__swing" style="margin-top:5px">Réviser article</a></a></td>
 				</tr>
 			@endforeach	
 			</tbody>

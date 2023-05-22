@@ -53,7 +53,41 @@
 
 		#autoShowHide:focus { white-space: normal;  overflow: visible; width: 100%; }
 	</style>
+	<style>
+		button {
+	--b: 5px;   /* border thickness */
+	--s: .30em; /* size of the corner */
+	--c: #6B7280;
 	
+	padding: calc(.05em + var(--s)) calc(1em + var(--s));
+	color: var(--c);
+	--_p: var(--s);
+	background:
+		conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--c) 0)
+		var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+	transition: .3s linear, color 0s, background-color 0s;
+	outline: var(--b) solid #0000;
+	outline-offset: .2em;
+	}
+
+	.had {
+		
+		margin-top : 30px;
+		
+		grid-template-columns: auto auto;
+		gap: 20px;
+		place-content: center;
+		}
+
+	button {
+	font-family: system-ui, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	margin: 10px;
+	}
+</style>
 @endsection
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;  $rev = auth::guard('reviewer')->user()->email; $reviewer=auth::guard('reviewer')->user()->email;  $articles = DB::table('articles')->select('*')
@@ -64,7 +98,13 @@
 		->where('rev_active2','LIKE',"%{$rev}%")
 		->where('rev_active2','LIKE',"%dev%")
         ->get();?>
-<div class="med bg-gray-900">
+<div class="med bg-gray-900 justify-center">
+	<div class="had flex bg-gray-900 justify-center "style="height:110px">
+			<a href="{{route('reviewer.review-commande')}}"><button style="font-size: 30px;height:90px;--c: #6B7280;--b: 5px;--s:12px" >Nouvelles Invitations</button></a>
+			<a href="{{route('reviewer.validation-section')}}"><button style="font-size: 30px;height:90px;--c: #6B7280;--b: 5px;--s:12px" >Invitations Acceptées</button></a>
+			<button style="font-size: 30px;--_p: 0px;outline-color: var(--c);outline-offset: .05em;}">Invitations Traitées</button>
+	</div>
+
 <div class="flex  justify-center min-h-screen bg-gray-900">
 	<div class="col-span-120">
 		<div class="overflow-auto lg:overflow-visible ">

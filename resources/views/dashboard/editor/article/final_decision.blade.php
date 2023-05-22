@@ -56,7 +56,6 @@
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
         ->where('etat','!=','traitement')
 		->where('etat','!=','libre')
-		->where('etat','!=','accept avec revision')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('reviewer2Id','!=', null)
@@ -76,18 +75,16 @@
 						<th class="p-3">Titre</th>
 						<th class="p-3 ">Categorie</th>
 						<th class="p-3 ">Type</th>
-						<!-- <th class="p-3 ">décision R1</th>
-						<th class="p-3 ">décision R2</th> -->
 						<th class="p-3 ">Décision final</th>
 					</tr>
 				</thead>
 				<tbody>
 				@foreach ($articles as $article)
-                @if($article->etat == 'accept')
+                
 					<tr class="bg-gray-800" >
 						<td class="p-3">
 							<div class="">
-							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
+							
 								<div class="ml-3">
 									<div class="">{{$article->title}}</div>
 								</div>
@@ -99,118 +96,20 @@
 						<td class="ml-3">
 							{{$article->type}}
 						</td>
-						<!-- <td class="p-3">
-                        @if($article->rev_des1 == 'accept')
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                        @endif
-                        @if($article->rev_des1 == 'refuse')
-                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                        @endif
-                        @if($article->rev_des1 == 'accept avec revision')
-                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                        @endif
-						</td>
-						<td class="p-3">
-                        @if($article->rev_des2 == 'accept')
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                        @endif
-                        @if($article->rev_des2 == 'refuse')
-                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                        @endif
-                        @if($article->rev_des2 == 'accept avec revision')
-                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                        @endif
-						</td> -->
-                         <td class="ml-3 ">
-						 <span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                         </td>
-                @endif
-                @if($article->etat == 'refuse')
-					<tr class="bg-gray-800" >
-						<td class="p-3">
-							<div class="">
-							<!-- <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> -->
-								<div class="ml-3">
-									<div class="">{{$article->title}}</div>
-								</div>
-							</div>
-						</td>
-						<td class="ml-3">
-							{{$article->category}}
-						</td>
-						<td class="ml-3">
-							{{$article->type}}
-						</td>
-						<!-- <td class="p-3">
-                        @if($article->rev_des1 == 'accept')
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                        @endif
-                        @if($article->rev_des1 == 'refuse')
-                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                        @endif
-                        @if($article->rev_des1 == 'accept avec revision')
-                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                        @endif
-						</td>
-						<td class="p-3">
-                        @if($article->rev_des2 == 'accept')
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                        @endif
-                        @if($article->rev_des2 == 'refuse')
-                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                        @endif
-                        @if($article->rev_des2 == 'accept avec revision')
-                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                        @endif
-						</td> -->
-                         <td class="ml-3 ">
-						 <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                         </td>
-                @endif
-                 @if($article->etat == 'accept avec revision')
-					<!-- <tr class="bg-gray-800" >
-						<td class="p-3">
-							<div class="">
-							 <img class="  h20 w-20   object-cover" src="{{asset('/storage/images/articles/'.$article->pic)}}" alt="unsplash image"> 
-								<div class="ml-3">
-									<div class="">{{$article->title}}</div>
-								</div>
-							</div>
-						</td>
-						<td class="ml-3">
-							{{$article->category}}
-						</td>
-						<td class="ml-3">
-							{{$article->type}}
-						</td>
-						<td class="p-3">
-                        @if($article->rev_des1 == 'accept')
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                        @endif
-                        @if($article->rev_des1 == 'refuse')
-                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                        @endif
-                        @if($article->rev_des1 == 'accept avec revision')
-                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                        @endif
-						</td>
-						<td class="p-3">
-                        @if($article->rev_des2 == 'accept')
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">acceptée</span>
-                        @endif
-                        @if($article->rev_des2 == 'refuse')
-                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuse</span>
-                        @endif
-                        @if($article->rev_des2 == 'accept avec revision')
-                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                        @endif
-						</td>
-                         <td class="ml-3 ">
-						 <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">revision</span>
-                         </td> -->
-                @endif
 
-				@endforeach
+
+						<td class="p-3">
+                        @if($article->etat == 'accept')
+						<span class="bg-green-400 text-gray-50 rounded-md px-2">accepter</span>
+                        @endif
+                        @if($article->etat == 'refuse')
+                        <span class="bg-red-400 text-gray-50 rounded-md px-2">refuser</span>
+                        @endif
+                        @if($article->etat == 'accept avec revision')
+                        <span style="background-color:orange" class=" text-gray-50 rounded-md px-2">accepter avec révision</span>
+                        @endif
+						</td>
+						@endforeach
 				</tbody>
 			</table>
 		</div>
@@ -221,23 +120,6 @@
 
 </div>
 
-
-<!-- jQuery -->
-<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
-
-<!--Datatables -->
-<!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script> -->
-	<!-- $(document).ready(function() {
-
-		var table = $('#example').DataTable({
-				responsive: true
-			})
-			.columns.adjust()
-			.responsive.recalc();
-	});
-</script> -->
 
 
 

@@ -481,8 +481,8 @@
         <li> <buttono><a href="{{route('editor.invitation-refuse')}}" style="text-decoration: none;">Réviseurs déclinent l'invitation ({{$b}})</a></buttono></li>
         <li> <buttono><a href="{{route('editor.aucune-réponse')}}" style="text-decoration: none;">Réviseurs n'ont pas répondu à l'invitation({{$c}}) </a></buttono></li>
         <li> <buttono><a href="{{route('editor.revision-incomplete')}}" style="text-decoration: none;">Soumissions avec révisions requis incomplétes ({{$d}}) </a></buttono></li>
-        <li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">soumissions avec révisions requis complétes ({{$g}}) </a></buttono></li>
-		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">soumissions doit être modifiées ({{$h}})</a></buttono></li>
+        <li> <buttono><a href="{{route('editor.revision-complete')}}" style="text-decoration: none;">Soumissions avec révisions requis complétes ({{$g}}) </a></buttono></li>
+		<li> <buttono><a href="{{route('editor.soumision_a_reviser')}}" style="text-decoration: none;">Soumisssion réviser par l'éditeur ({{$h}})</a></buttono></li>
 	</ul>
 	   
 	</div>

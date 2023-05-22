@@ -129,12 +129,12 @@
 		<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
 			<thead>
 				<tr>
-					<th data-priority="1">Title</th>
+					<th data-priority="1">Titre</th>
+					<th data-priority="3">Editeur Email</th>
+					<th data-priority="4">Remarque</th>
+					<th data-priority="5">Date soumission</th>
+					<th data-priority="6">date dernière modification</th>
 					<th data-priority="2">Etat</th>
-					<th data-priority="3">Editor Email</th>
-					<th data-priority="4">review1</th>
-					<th data-priority="5">review2</th>
-					<th data-priority="6">last update</th>
 				</tr>
 			</thead>
 			
@@ -144,11 +144,11 @@
 			@foreach ($articles as $article)
 				<tr>
 					<td>{{$article->title}}</td>
-					<td style="color:green;">Accept</td>
 					<td>{{$article->editorId}}</td>
-					<td>{{$article->review1}}</td>
-					<td>{{$article->review2}}</td>
+					<td>{{$article->review3}}</td>
+					<td>{{$article->created_at}}</td>
 					<td>{{$article->updated_at}}</td>
+					<td style="color:green;">Accept</td>
 				</tr>
 			@endforeach	
 			</tbody>

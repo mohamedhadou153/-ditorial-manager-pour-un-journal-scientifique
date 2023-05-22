@@ -137,8 +137,8 @@
 					<th data-priority="2">Catégorie</th>
 					<th data-priority="3">Type</th>
 					<th data-priority="4">État</th>
-					<th data-priority="5">date de création</th>
-					<th data-priority="6">dernière mise à jour </th>
+					<th data-priority="5">date de soumission</th>
+					<th data-priority="6">dernière modification </th>
 				</tr>
 			</thead>
 			

@@ -150,7 +150,7 @@
     <div class="col-md-6" id="div1"style="width:70%;height:100%;padding:0">
 <embed src="{{asset('/storage/pdf/articles/'.$article->obj_pdf)}}"  aria-readonly="true" frameborder="0" style="width:100%;height:100%;border-right:5px solid gray;"/>
     </div>
-    <div class="col-md-6" id="div2"style="width:30%;padding: 20px;">
+    <div class="col-md-6" id="div2"style="width:30%;padding: 20px;height:90%">
     
 
 
@@ -158,15 +158,13 @@
          
                 
                     <div class="form-group">
-                        <h4 style="font-size:20px">Réviseurs décisions</h4>
-                        <h4 style="font-size:20px">1er Réviseur:</h4>
-                        <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des1}} 
-Remarque :{{$article->review1}}</textarea>
-                        <h4 style="font-size:20px">2éme Réviseur:</h4>
-                        <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Désision: {{$article->rev_des2}} 
-Remarque :{{$article->review2}}</textarea>
+                       
+                        <h4 style="font-size:20px">Remarques préliminaires</h4>
+                        <textarea readonly="readonly" name="review" id="msg" cols="30" rows="5" class="form-control" style="background-color: black;color:white">Remarques préliminaires :
+{{$article->review3}} </textarea>
                     </div>
-<form method="get" action="{{route('editor.update-etat')}}" id="algin-form"style="height:50%" >
+					<h4 style="font-size:20px">Redécider</h4>
+<form method="get" action="{{route('editor.update-etat')}}" id="algin-form"style="height:60%" >
                     <div class="form-group">
                         <h4 style="font-size:20px">saisir tes remarques</h4>
                         <textarea  name="review" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;color:white" placeholder="saisir tes remarques..."></textarea>

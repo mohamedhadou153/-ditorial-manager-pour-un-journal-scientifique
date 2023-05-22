@@ -64,14 +64,14 @@ function like_match($pattern, $subject)
     return (bool) preg_match("/^{$pattern}$/i", $subject);
 }
 
-$articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),updated_at )as date' ))
+$articles = DB::table('articles')->select('*')
 		->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
         ->where('etat','traitement')
         ->where('editorId',auth::guard('editor')->user()->email)
         ->where('reviewer1Id','!=', null)
         ->where('rev_active1','NOT LIKE',"%.com%")
         ->orwhere('reviewer2Id','!=', null)
-        ->whereRaw('DATEDIFF(CURDATE(),updated_at) > 5')
+        ->whereRaw('DATEDIFF(CURDATE(),updated_at) >= 5')
         ->where('etat','traitement')
         ->where('rev_active2','NOT LIKE',"%.com%")
         ->where('editorId',auth::guard('editor')->user()->email)
@@ -126,7 +126,7 @@ $articles = DB::table('articles')->select('*',DB::raw('DATEDIFF(CURDATE(),update
 						<td class="p-3">
 							<div class="">
 								<div class="ml-3">
-									<div class="">{{$article->date}}</div>
+									<div class="">{{$article->reviewer1Id}}</div>
 								</div>
 							</div>
 						</td>
