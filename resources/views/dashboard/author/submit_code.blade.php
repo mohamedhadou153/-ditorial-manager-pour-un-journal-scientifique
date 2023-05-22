@@ -152,9 +152,12 @@ margin-right: 4px;
 
     <form method="get" action="{{route('author.change_password')}}">
         <h3>vous oubliez votre mot de passe ?</h3>
-
+        @if(Session::has('error'))
+                <div class="alert alert-danger">{{Session::get('error')}}</div>
+        @endif
         <label for="username">allez dans votre boite mail et vous recevrez un mail avec un code de 6 chiffres</label>
-        <input type="text" placeholder="Code obtenue" id="username">
+       <input type="text" placeholder="" name="code" value={{$code}} id="username">
+        <input type="hidden" name="email" value={{$email}}>
 
         <input type="submit" class="button" value="Soumettre le code"> 
        </form>

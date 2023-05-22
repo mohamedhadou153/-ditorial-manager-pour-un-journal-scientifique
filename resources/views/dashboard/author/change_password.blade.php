@@ -150,12 +150,16 @@ margin-right: 4px;
    
 
 
-    <form method="get" action="{{route('author.change_password')}}">
+    <form method="get" action="{{route('author.do_change_password')}}">
         <h3>Réinitialisation de mot de passe</h3>
 
+        @if(Session::has('error'))
+                <div class="alert alert-danger">{{Session::get('error')}}</div>
+        @endif
         <label for="username">vous pouvez changer votre mot de passe ici</label>
-        <input type="password" placeholder="nouveau mot de passe" id="username"><br>
-		<input type="password" placeholder="Confirmez le mot de passe" id="username">
+        <input type="password" placeholder="nouveau mot de passe" name="password" id="username"><br>
+		<input type="password" placeholder="Confirmez le mot de passe" name="conf_password" id="username">
+        <input type="hidden" name="email" value={{$email}}>
 
         <input type="submit" class="button" value="Changer mot de passe"> 
        </form>

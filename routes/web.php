@@ -37,6 +37,7 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::view('/forget_password','dashboard.author.forget_password')->name('forget_password');
         Route::get('/submit_code',[AuthorRegisterController::class,'submit_code'])->name('submit_code');
         Route::get('/change_password',[AuthorRegisterController::class,'changepassword'])->name('change_password');
+        Route::get('/do_change_password',[AuthorRegisterController::class,'dochangepassword'])->name('do_change_password');
         Route::get('/Login',[AuthorRegisterController::class,'Login'])->name('Login');
         Route::post('/Register',[AuthorRegisterController::class,'Register'])->name('Register');
         Route::post('/create',[AuthorRegisterController::class,'create'])->name('create');

@@ -152,9 +152,12 @@ margin-right: 4px;
 
     <form method="get" action="{{route('author.submit_code')}}">
         <h3>vous oubliez votre mot de passe ?</h3>
-
+        @if(Session::has('error'))
+                <div class="alert alert-danger">{{Session::get('error')}}</div>
+        @endif
         <label for="username">pas de problème, soumettez votre email ici et nous vous envoyons un code pour réinitialiser votre mot de passe</label>
         <input type="text" placeholder="Email" name="email" id="username">
+        
 
         <input type="submit" class="button"  value="Soumettre email" >
     </form>

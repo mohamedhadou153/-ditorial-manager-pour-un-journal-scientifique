@@ -244,7 +244,7 @@
             <div class="login-form">
             @if(Session::has('error'))
                 <div class="alert alert-danger">{{Session::get('error')}}</div>
-              @endif
+            @endif
               <div class="title">Connexion</div>
             <form method="POST" action="{{ route('author.customLogin') }}">
               @csrf
