@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\article;
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\TestEmail;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require '../vendor/autoload.php';
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -296,21 +298,57 @@ class ArticleController extends Controller
             $subject = "invitaion";
             $object = "Bonjour, vous avez une invitation par l'éditeur ".auth::guard('editor')->user()->first_name." pour réviser un article, vous pouvez vous rendre dans votre espace réviseur pour décider votre situation \n";
 
-            $data = [
-                'subject'=>$subject,
-                'body'=>$object,
-            ];
-            try {
-               Mail::to($reviewer1)->send(new TestEmail($data));
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
+          
 
-            try {
-                Mail::to($reviewer2)->send(new TestEmail($data));
-             } catch (\Throwable $th) {
-                 //throw $th;
-             }
+            
+            $mail = new PHPMailer();
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'hadoumohamed153@gmail.com';                     //SMTP username
+            $mail->Password   = 'rbpiplorfernllwc';                               //SMTP password
+            $mail->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('BrandArticle@gmail.com', 'BrandArticle');
+            $mail->addAddress($reviewer1);     //Add a recipient
+
+            
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->CharSet="UTF-8";
+            $mail->Subject = $subject;
+            $mail->Body    = $object;
+            $mail->send();
+
+
+
+             
+            $mail = new PHPMailer();
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'hadoumohamed153@gmail.com';                     //SMTP username
+            $mail->Password   = 'rbpiplorfernllwc';                               //SMTP password
+            $mail->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('BrandArticle@gmail.com', 'BrandArticle');
+            $mail->addAddress($reviewer2);     //Add a recipient
+
+            
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->CharSet="UTF-8";
+            $mail->Subject = $subject;
+            $mail->Body    = $object;
+            $mail->send();
+
+
 
         $articles = DB::table('articles')
         ->select('*')
