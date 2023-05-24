@@ -24,7 +24,7 @@ class TestEmail extends Mailable
 
 
     public function build(){
-        return $this->from('hadoumohamed153@gmail.com','cambo tutoriel')->subject($this->data['subject'])->view('email.index')->with('data',$yhis->data);
+        return $this->from('hadoumohamed153@gmail.com','cambo tutoriel')->subject($this->data['subject'])->view('email.index')->with('data',$this->data);
     }
 
     // /**

@@ -197,7 +197,7 @@ class AuthorRegisterController extends Controller
             if ($c->code == $code){
                 return view('dashboard.author.change_password')->with('email',$email);
             }else{
-                return redirect()->back()->with('error','invalid code');
+                return redirect()->back()->with('error','Code invalide, nous avons renvoyé un autre code à votre boite email');
             }
         }
     }
@@ -211,9 +211,9 @@ class AuthorRegisterController extends Controller
             DB::table('authors')
             ->where('email','=',$email)
             ->update(['password'=>Hash::make($password)]);   
-            return view('dashboard.author.login')->with('email',$email);   
+            return view('dashboard.author.login')->with('sucsses','votre mot de passe est changee')->with('email',$email);   
         }else{
-            return redirect()->back()->with('error','invalid password');
+            return redirect()->back()->with('error','Mot de passe incorrect');
         }
     }
 }

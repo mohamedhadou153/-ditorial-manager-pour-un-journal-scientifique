@@ -50,8 +50,8 @@ body{
  bottom: -80px;
 }
 form{
- height: 520px;
- width: 400px;
+    height: 580px;
+ width: 455px;
  background-color: white;
  position: absolute;
  transform: translate(-50%,-50%);
