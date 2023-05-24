@@ -7,8 +7,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
 
-// use Illuminate\Support\Facades\Mail;
-// use App\Mail\TestEmail;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -196,18 +194,7 @@ class AuthorRegisterController extends Controller
                 $mail->Subject = $subject;
                 $mail->Body    = $object;
                 $mail->send();
-            //----------------------------
-            // $data = [
-            //     'subject'=>$subject,
-            //     'body'=>$object,
-            // ];
-            // try {
-            //    Mail::to($email)->send(new TestEmail($data));
-            // } catch (\Throwable $th) {
-            //     //throw $th;
-            // }
-            //--------------------------
-           // mail($email,$subject,$object,'From:hadoumohamed153@gmail.com');
+           
             return view('dashboard.author.submit_code')->with('email',$email)->with('code',$code);
         }else{
             return redirect()->back()->with('error','invalid email');
