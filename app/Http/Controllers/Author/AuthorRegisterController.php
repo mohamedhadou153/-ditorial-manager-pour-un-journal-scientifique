@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers\Author;
 
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestEmail;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -149,6 +155,7 @@ class AuthorRegisterController extends Controller
     }
     
     public function submit_code( Request $req){
+       
         $email = $req->email;
         $code = rand(100000,999999);
         $emails = DB::table('authors')->select('email')->get();
@@ -164,7 +171,18 @@ class AuthorRegisterController extends Controller
             ->update(['code'=>$code]);
             $subject = "réinitialisation de mot de passe";
             $object = "Bonjour, Voici votre code chiffre pour réinitialiser votre mot de passe \n".$code;
-            mail($email,$subject,$object,'From:khalid.tan7@gmail.com');
+          
+            $data = [
+                'subject'=>$subject,
+                'body'=>$object,
+            ];
+            try {
+               Mail::to($email)->send(new TestEmail($data));
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+           // mail($email,$subject,$object,'From:hadoumohamed153@gmail.com');
+
             return view('dashboard.author.submit_code')->with('email',$email)->with('code',$code);
         }else{
             return redirect()->back()->with('error','invalid email');
