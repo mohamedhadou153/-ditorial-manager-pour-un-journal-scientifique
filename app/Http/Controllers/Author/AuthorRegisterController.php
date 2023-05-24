@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Author;
 
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require '../vendor/autoload.php';
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\TestEmail;
+// use Illuminate\Support\Facades\Mail;
+// use App\Mail\TestEmail;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -157,7 +158,6 @@ class AuthorRegisterController extends Controller
     public function submit_code( Request $req){
        
         $email = $req->email;
-        $code = rand(100000,999999);
         $emails = DB::table('authors')->select('email')->get();
         $count = 0;
         foreach($emails as $m){
@@ -166,20 +166,47 @@ class AuthorRegisterController extends Controller
             }
         }
         if($count == 1){
+            $code = rand(100000,999999);
             DB::table('authors')
             ->where('email','=',$email)
             ->update(['code'=>$code]);
-            $subject = "réinitialisation de mot de passe";
-            $object = "Bonjour, Voici votre code chiffre pour réinitialiser votre mot de passe \n".$code;
-            $data = [
-                'subject'=>$subject,
-                'body'=>$object,
-            ];
-            try {
-               Mail::to($email)->send(new TestEmail($data));
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
+            $subject = $code."est votre code de récupération de compte BrandArticle";
+            $object = '<h1>Bonjour</h1> <br> <h3>Nous avons reçu une demande de réinitialisation de votre mot de passe Facebook.<br>
+            Entrez le code de réinitialisation du mot de passe suivant :</h3><br><h1 >'.$code.'</h1>';
+            //--------------------------
+
+                $mail = new PHPMailer();
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'hadoumohamed153@gmail.com';                     //SMTP username
+                $mail->Password   = 'rbpiplorfernllwc';                               //SMTP password
+                $mail->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                //Recipients
+                $mail->setFrom('BrandArticle@gmail.com', 'BrandArticle');
+                $mail->addAddress($email);     //Add a recipient
+
+                
+                //Content
+                $mail->isHTML(true);                                  //Set email format to HTML
+                $mail->CharSet="UTF-8";
+                $mail->Subject = $subject;
+                $mail->Body    = $object;
+                $mail->send();
+            //----------------------------
+            // $data = [
+            //     'subject'=>$subject,
+            //     'body'=>$object,
+            // ];
+            // try {
+            //    Mail::to($email)->send(new TestEmail($data));
+            // } catch (\Throwable $th) {
+            //     //throw $th;
+            // }
+            //--------------------------
            // mail($email,$subject,$object,'From:hadoumohamed153@gmail.com');
             return view('dashboard.author.submit_code')->with('email',$email)->with('code',$code);
         }else{
