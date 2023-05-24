@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\article;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require '../vendor/autoload.php';
+
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestEmail;
 
@@ -294,23 +299,72 @@ class ArticleController extends Controller
             ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('y-m-d h:i:s')]);
         
             $subject = "invitaion";
-            $object = "Bonjour, vous avez une invitation par l'éditeur ".auth::guard('editor')->user()->first_name." pour réviser un article, vous pouvez vous rendre dans votre espace réviseur pour décider votre situation \n";
+            $object = "<h1>Bonjour</h1> <br><h3> Vous avez une invitation par l'éditeur ".auth::guard('editor')->user()->first_name." pour réviser un article, vous pouvez vous rendre dans votre espace réviseur pour décider votre situation.</h3>";
 
-            $data = [
-                'subject'=>$subject,
-                'body'=>$object,
-            ];
-            try {
-               Mail::to($reviewer1)->send(new TestEmail($data));
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
+            
+           
+            //--------------------------
 
-            try {
-                Mail::to($reviewer2)->send(new TestEmail($data));
-             } catch (\Throwable $th) {
-                 //throw $th;
-             }
+                $mail1 = new PHPMailer();
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $mail1->isSMTP();                                            //Send using SMTP
+                $mail1->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail1->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail1->Username   = 'hadoumohamed153@gmail.com';                     //SMTP username
+                $mail1->Password   = 'rbpiplorfernllwc';                               //SMTP password
+                $mail1->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+                $mail1->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                //Recipients
+                $mail1->setFrom('BrandArticle@gmail.com', 'BrandArticle');
+                $mail1->addAddress($reviewer1);     //Add a recipient
+
+                
+                //Content
+                $mail1->isHTML(true);                                  //Set email format to HTML
+                $mail1->CharSet="UTF-8";
+                $mail1->Subject = $subject;
+                $mail1->Body    = $object;
+                $mail1->send();
+
+
+
+            
+            //--------------------------
+
+            $mail2 = new PHPMailer();
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail2->isSMTP();                                            //Send using SMTP
+            $mail2->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail2->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail2->Username   = 'hadoumohamed153@gmail.com';                     //SMTP username
+            $mail2->Password   = 'rbpiplorfernllwc';                               //SMTP password
+            $mail2->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+            $mail2->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail2->setFrom('BrandArticle@gmail.com', 'BrandArticle');
+            $mail2->addAddress($reviewer2);     //Add a recipient
+
+            
+            //Content
+            $mail2->isHTML(true);                                  //Set email format to HTML
+            $mail2->CharSet="UTF-8";
+            $mail2->Subject = $subject;
+            $mail2->Body    = $object;
+            $mail2->send();  
+            //----------------------------
+            // $data = [
+            //     'subject'=>$subject,
+            //     'body'=>$object,
+            // ];
+            // try {
+            //    Mail::to($email)->send(new TestEmail($data));
+            // } catch (\Throwable $th) {
+            //     //throw $th;
+            // }
+            //--------------------------
+           // mail($email,$subject,$object,'From:hadoumohamed153@gmail.com');
 
         $articles = DB::table('articles')
         ->select('*')
