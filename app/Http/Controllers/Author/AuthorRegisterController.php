@@ -164,7 +164,7 @@ class AuthorRegisterController extends Controller
             ->update(['code'=>$code]);
             $subject = "réinitialisation de mot de passe";
             $object = "Bonjour, Voici votre code chiffre pour réinitialiser votre mot de passe \n".$code;
-           // mail($email,$subject,$object,'From: khalid.tan7@gmail.com');
+            mail($email,$subject,$object,'From:khalid.tan7@gmail.com');
             return view('dashboard.author.submit_code')->with('email',$email)->with('code',$code);
         }else{
             return redirect()->back()->with('error','invalid email');

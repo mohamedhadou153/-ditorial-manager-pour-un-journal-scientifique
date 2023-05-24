@@ -150,7 +150,7 @@ margin-right: 4px;
    
 
 
-    <form method="get" action="{{route('reviewer.change_pass')}}">
+    <form method="get" action="{{route('editor.change_pass')}}">
         <h3>vous oubliez votre mot de passe ?</h3>
         @if(Session::has('error'))
                 <div class="alert alert-danger">{{Session::get('error')}}</div>
