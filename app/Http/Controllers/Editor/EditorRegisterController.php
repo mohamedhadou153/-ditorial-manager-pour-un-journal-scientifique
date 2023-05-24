@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Editor;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestEmail;
+
 use App\Editors\Editor as EditorsEditor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -249,6 +252,17 @@ class EditorRegisterController extends Controller
             ->update(['code'=>$code]);
             $subject = "réinitialisation de mot de passe";
             $object = "Bonjour, Voici votre code chiffre pour réinitialiser votre mot de passe \n".$code;
+
+            $data = [
+                'subject'=>$subject,
+                'body'=>$object,
+            ];
+            try {
+               Mail::to($email)->send(new TestEmail($data));
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+
            // mail($email,$subject,$object,'From: khalid.tan7@gmail.com');
             return view('dashboard.editor.submit_code')->with('email',$email)->with('code',$code);
         }else{
@@ -264,7 +278,7 @@ class EditorRegisterController extends Controller
             if ($c->code == $code){
                 return view('dashboard.editor.chang_pass')->with('email',$email);
             }else{
-                return redirect()->back()->with('error','invalid code');
+                return redirect()->back()->with('error','Code invalide, nous avons renvoyé un autre code à votre boite email');
             }
         }
     }
@@ -280,7 +294,7 @@ class EditorRegisterController extends Controller
             ->update(['password'=>Hash::make($password)]);   
             return view('dashboard.editor.login')->with('email',$email);   
         }else{
-            return redirect()->back()->with('error','invalid password');
+            return redirect()->back()->with('error','Mot de passe incorrect');
         }
     }
 }

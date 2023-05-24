@@ -50,8 +50,8 @@ body{
  bottom: -80px;
 }
 form{
- height: 520px;
- width: 400px;
+    height: 600px;
+        width: 600px;
  background-color: white;
  position: absolute;
  transform: translate(-50%,-50%);
@@ -150,13 +150,13 @@ margin-right: 4px;
    
 
 
-    <form method="get" action="{{route('reviewer.change_pass')}}">
+    <form method="get" action="{{route('editor.change_pass')}}">
         <h3>vous oubliez votre mot de passe ?</h3>
         @if(Session::has('error'))
                 <div class="alert alert-danger">{{Session::get('error')}}</div>
         @endif
-        <label for="username">allez dans votre boite mail et vous recevrez un mail avec un code de 6 chiffres</label>
-       <input type="text" placeholder="" name="code" value={{$code}} id="username">
+        <label for="username">Merci de vérifier dans vos e-mails que vous avez reçu un message avec votre code. Celui-ci est composé de 6 chiffres.</label>
+       <input type="text" placeholder="Entrer le code" name="code"  id="username">
         <input type="hidden" name="email" value={{$email}}>
 
         <input type="submit" class="button" value="Soumettre le code"> 

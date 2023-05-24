@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\article;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestEmail;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
@@ -289,6 +292,25 @@ class ArticleController extends Controller
             DB::table('articles')
             ->where('id',$id)
             ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('y-m-d h:i:s')]);
+        
+            $subject = "invitaion";
+            $object = "Bonjour, vous avez une invitation par l'éditeur ".auth::guard('editor')->user()->first_name." pour réviser un article, vous pouvez vous rendre dans votre espace réviseur pour décider votre situation \n";
+
+            $data = [
+                'subject'=>$subject,
+                'body'=>$object,
+            ];
+            try {
+               Mail::to($reviewer1)->send(new TestEmail($data));
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+
+            try {
+                Mail::to($reviewer2)->send(new TestEmail($data));
+             } catch (\Throwable $th) {
+                 //throw $th;
+             }
 
         $articles = DB::table('articles')
         ->select('*')
@@ -337,6 +359,24 @@ class ArticleController extends Controller
             DB::table('articles')
             ->where('id',$id)
             ->update(['reviewer1Id'=> $reviewer1,'reviewer2Id'=> $reviewer2,'updated_at'=>date('y-m-d h:i:s')]);
+            $subject = "invitaion";
+            $object = "Bonjour, vous avez une invitation par l'éditeur ".auth::guard('editor')->user()->first_name." pour réviser un article, vous pouvez vous rendre dans votre espace réviseur pour décider votre situation \n";
+
+            $data = [
+                'subject'=>$subject,
+                'body'=>$object,
+            ];
+            try {
+               Mail::to($reviewer1)->send(new TestEmail($data));
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+            
+            try {
+                Mail::to($reviewer2)->send(new TestEmail($data));
+             } catch (\Throwable $th) {
+                 //throw $th;
+             }
        
         return view('dashboard.editor.article.invitation_refuse');
     }   

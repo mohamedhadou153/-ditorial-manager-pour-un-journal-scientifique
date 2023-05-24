@@ -151,11 +151,11 @@
 
 
     <form method="get" action="{{route('author.submit_code')}}">
-        <h3>vous oubliez votre mot de passe ?</h3>
+        <h3>Trouvez votre compte</h3>
         @if(Session::has('error'))
-                <div class="alert alert-danger">{{Session::get('error')}}</div>
+                <div class="alert alert-danger">Aucun résultat de recherche</br> Votre recherche ne donne aucun résultat. Veuillez réessayer avec d’autres informations.</div>
         @endif
-        <label for="username">pas de problème, soumettez votre email ici et nous vous envoyons un code pour réinitialiser votre mot de passe</label>
+        <label for="username">Veuillez entrer votre adresse e-mail pour rechercher votre compte.</label>
         <input type="text" placeholder="Email" name="email" id="username">
         
 
