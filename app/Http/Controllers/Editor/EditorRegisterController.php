@@ -61,7 +61,39 @@ class EditorRegisterController extends Controller
     $editor->password = Hash::make($request->password);
     $editor->etat = "attend";
     $data = $editor->save();
-    return redirect()->intended('editor/login');
+    $email =  $request->email;
+
+    $code = rand(100000,999999);
+    DB::table('editors')
+    ->where('email','=',$email)
+    ->update(['code'=>$code]);
+    $subject = $code."est votre code de Verification de compte BrandArticle";
+    $object = '<h1>Bonjour</h1> <br> <h3>Nous avons reçu une demande de verification de votre compte BrandArticle.<br>
+    Entrez le code de verification suivant :</h3><br><h1 >'.$code.'</h1>';
+    //--------------------------
+
+        $mail = new PHPMailer();
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'hadoumohamed153@gmail.com';                     //SMTP username
+        $mail->Password   = 'rbpiplorfernllwc';                               //SMTP password
+        $mail->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('BrandArticle@gmail.com', 'BrandArticle');
+        $mail->addAddress($email);     //Add a recipient
+
+        
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->CharSet="UTF-8";
+        $mail->Subject = $subject;
+        $mail->Body    = $object;
+        $mail->send();
+    return redirect()->intended('author/verifier_compte')->with('email',$email);
 
 
     }
@@ -325,5 +357,19 @@ class EditorRegisterController extends Controller
         }else{
             return redirect()->back()->with('error','Mot de passe incorrect');
         }
+    }
+
+    public function verifier_compte(Request $req){
+        $email = $req->email;
+        $code  = $req->code;
+        $corr_code = DB::table('editors')->select('code')->where('email',$email)->get();
+        foreach($corr_code as $c){
+            if ($c->code == $code){
+                return view('dashboard.author.login')->with('email',$email);
+            }else{
+                return redirect()->back()->with('error',' code invalide');
+            }
+        }
+
     }
 }

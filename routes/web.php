@@ -42,6 +42,9 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::post('/Register',[AuthorRegisterController::class,'Register'])->name('Register');
         Route::post('/create',[AuthorRegisterController::class,'create'])->name('create');
         Route::post('/customLogin',[AuthorRegisterController::class,'customLogin'])->name('customLogin');
+        Route::view('/verifier_compte','dashboard.author.verifier_compte')->name('verifier_compte');
+        Route::get('/do_verifier_compte',[AuthorRegisterController::class,'verifier_compte'])->name('do_verifier_compte');
+
     });
     Route::middleware(['auth:author'])->group(function(){
         Route::view('/home','dashboard.author.home')->name('home');
@@ -77,6 +80,8 @@ Route::prefix('editor')->name('editor.')->group(function(){
         Route::get('/submit_code',[EditorRegisterController::class,'submit_code'])->name('submit_code');
         Route::get('/change_pass',[EditorRegisterController::class,'changepassword'])->name('change_pass');
         Route::get('/do_change_password',[EditorRegisterController::class,'dochangepassword'])->name('do_change_password');
+        Route::view('/verifier_compte','dashboard.editor.verifier_compte')->name('verifier_compte');
+        Route::get('/do_verifier_compte',[EditorRegisterController::class,'verifier_compte'])->name('do_verifier_compte');
     });
     Route::middleware(['auth:editor'])->group(function(){
         Route::view('/home','dashboard.editor.home')->name('home');
@@ -120,6 +125,9 @@ Route::prefix('reviewer')->name('reviewer.')->group(function(){
         Route::get('/submit_code',[ReviewerRegisterController::class,'submit_code'])->name('submit_code');
         Route::get('/change_pass',[ReviewerRegisterController::class,'changepassword'])->name('change_pass');
         Route::get('/do_change_password',[ReviewerRegisterController::class,'dochangepassword'])->name('do_change_password');
+        Route::view('/verifier_compte','dashboard.reviewer.verifier_compte')->name('verifier_compte');
+        Route::get('/do_verifier_compte',[ReviewerRegisterController::class,'verifier_compte'])->name('do_verifier_compte');
+        
     });
     Route::middleware(['auth:reviewer'])->group(function(){
         Route::view('/home','dashboard.Reviewer.home')->name('home');
