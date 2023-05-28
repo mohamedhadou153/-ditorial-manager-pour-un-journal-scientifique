@@ -343,5 +343,28 @@
 
 
 
+<!-- 
+
+<div  style=" color: #A52A2A; font-family: 'Verdana', sans-serif; font-size: 25px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;">une dernière étape ! <br>nous devons vérifier votre e-mail</div>
+           <br><br> <div  style="  font-size: 20px;  letter-spacing: -1px; line-height: 1; ">veuillez vérifier votre boîte de réception pour le code de vérification envoyé à hadoumohamed153@gmail.com</div>
 
 
+            <form method="POST" action="{{ route('author.create') }}" >
+            @csrf
+              <div class="input-boxes">
+                <div class="input-box">
+                  
+                  <input type="text" id="first_name" class=" @error('first name') is-invalid @enderror" placeholder="saisir le code de vérification" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" required>
+                  @error('first name')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                  @enderror
+                </div>
+                
+                <div class="button input-box">
+                  <input type="submit" value="Vérifier">
+                </div>
+                <div class="text sign-up-text">Code non reçu? <label for="flip">Renvoyer le code.</label></div>
+              </div>
+            </form> -->

@@ -201,7 +201,7 @@ class AuthorRegisterController extends Controller
             ->where('email','=',$email)
             ->update(['code'=>$code]);
             $subject = $code."est votre code de récupération de compte BrandArticle";
-            $object = '<h1>Bonjour</h1> <br> <h3>Nous avons reçu une demande de réinitialisation de votre mot de passe Facebook.<br>
+            $object = '<h1>Bonjour</h1> <br> <h3>Nous avons reçu une demande de réinitialisation de votre mot de passe BrandArticle Espace Auteur.<br>
             Entrez le code de réinitialisation du mot de passe suivant :</h3><br><h1 >'.$code.'</h1>';
             //--------------------------
 
@@ -241,7 +241,7 @@ class AuthorRegisterController extends Controller
             if ($c->code == $code){
                 return view('dashboard.author.change_password')->with('email',$email);
             }else{
-                return redirect()->back()->with('error','invalid code');
+                return redirect()->back()->with('error','code invalide');
             }
         }
     }
