@@ -289,6 +289,7 @@
 
         .article-body {
         padding: 24px;
+		padding-top: 5px;
         }
 
         article a {
@@ -296,6 +297,7 @@
         align-items: center;
         text-decoration: none;
         color: #28666e;
+	
         }
 
         article a:focus {
@@ -318,7 +320,7 @@
         --title-color: #28666e;
         --link-icon-translate: 0;
         --link-icon-opacity: 1;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 3px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         }
 
 
@@ -409,7 +411,7 @@
 		//foreach($a as $a){foreach($b as $b){foreach($c as $c){foreach($d as $d){$a1 = (int)$a->count;$b1=(int)$b->count;$c1=(int)$c->count;$d1=(int)$d->count;$f1=$a1+$b1+$c1+$d1;}}}}
 		$s = DB::table('articles')->where('etat','!=','traitement')->where('etat','!=','reponse')->where('etat','!=','libre')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->count();
 		$h = DB::table('articles')->where('etat','=','accept avec revision')->where('editorId',$editor)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)->count();
-		$g = DB::table('articles')->where('etat','!=','traitment')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->count();
+		$g = DB::table('articles')->where('etat','!=','traitement')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_active1','LIKE',"%acceptdev1%")->where('rev_active2','LIKE',"%acceptdev2%")->count();
 		$f = $a + $b + $c + $d + $h + $g;
 ?>
 

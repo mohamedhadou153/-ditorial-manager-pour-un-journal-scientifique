@@ -54,8 +54,7 @@
 @endsection
 @section('content')
 <?php use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Auth;   $articles = DB::table('articles')->select('*')
-        ->where('etat','=','reviser')
-        ->where('editorId',auth::guard('editor')->user()->email)
+       ->where('etat','=','accept avec revision')->where('editorId',auth::guard('editor')->user()->email)->where('reviewer1Id','!=', null)->where('reviewer2Id','!=', null)->where('rev_des1','!=', null)->where('rev_des2','!=', null)
         
         ->get();?>
 

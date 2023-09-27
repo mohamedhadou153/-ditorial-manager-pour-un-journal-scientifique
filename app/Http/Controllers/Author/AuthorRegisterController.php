@@ -94,7 +94,7 @@ class AuthorRegisterController extends Controller
         ->select('email','first_name','password','last_name','age','n_tele','biographie','created_at','updated_at','pic')
         ->where('email','=',$email)
         ->get();
-        return view('dashboard.author.change_password')->with('author',$author);
+        return view('dashboard.author.change_pass')->with('author',$author)->with('email',$email);
     }
 
     public function ChangeProfile(Request $request){
