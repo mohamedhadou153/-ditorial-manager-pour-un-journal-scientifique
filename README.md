@@ -1,1 +1,1 @@
-# editorial
+Éditorial manager pour un journal scientifique
